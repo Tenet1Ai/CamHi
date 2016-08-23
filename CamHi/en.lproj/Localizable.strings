@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  CamHi
+
+  Created by HXjiang on 16/7/11.
+  Copyright © 2016年 JiangLin. All rights reserved.
+*/
+
+
+//TabBarController
+"CAMERA" = "Camera";
+"CAMERAT" = "camera";
+
+"PICTURE" = "Local Picture";
+"PICTURET" = "picture";
+
+"VIDEO" = "video viewing";
+"VIDEOT" = "video";
+
+"ABOUT" = "About";
+"ABOUTT" = "about";
+
+"BACK" = "Back";

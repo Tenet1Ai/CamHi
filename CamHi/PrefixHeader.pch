@@ -1,0 +1,62 @@
+//
+//  PrefixHeader.pch
+//  CamHi
+//
+//  Created by HXjiang on 16/7/11.
+//  Copyright © 2016年 JiangLin. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+
+
+//用于控制是否输出调试信息
+#ifdef DEBUG
+
+#define PRINT//PRINT为手动控制宏关键字
+#ifdef PRINT
+#define LOG(...) NSLog(__VA_ARGS__);
+#define LOG_METHOD NSLog(@"%s", __func__);
+#else
+#define LOG(...)    {};
+#define LOG_METHOD  {};
+#endif
+
+#else
+#define LOG(...)    {};
+#define LOG_METHOD  {};
+#endif
+//宏定义NSLog，release版本不打印调试信息 20160707
+
+
+//全局头文件
+#import "AppDelegate.h"
+#import "UIColor+Hex.h"
+#import "UIImage+Colors.h"
+#import "HXProgress.h"
+#import "Camera.h"
+#import "GBase.h"
+#import "HiCamera.h"
+#import "HiChipSDK.h"
+#import "HiGLMonitor.h"
+
+
+//宏定义国际化字符
+#define INTERNATIONAL
+#ifdef INTERNATIONAL
+#define INTERSTR(a)   (NSLocalizedString(a, nil))
+#else
+#define INTERSTR(a)   (a)
+#endif
+
+//系统版本号
+#define SystemVersion       ([[UIDevice currentDevice] systemVersion].floatValue)
+
+
+
+#endif /* PrefixHeader_pch */
