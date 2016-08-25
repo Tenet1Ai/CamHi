@@ -63,7 +63,7 @@
     
     if (section == 0) {
         
-        cell.textLabel.text = INTERSTR(@"DayLight Saving Time");
+        cell.textLabel.text = INTERSTR(@"Daylight Saving Time");
         cell.accessoryView = self.enableSwitch;
         self.enableSwitch.on = _timeZone.u32DstMode == 1 ? YES : NO;
         

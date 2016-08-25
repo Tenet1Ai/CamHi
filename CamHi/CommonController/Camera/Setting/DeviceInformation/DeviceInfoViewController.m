@@ -43,7 +43,7 @@
 
     _infos = [[NSMutableArray alloc] initWithCapacity:0];
     _params = [[NSMutableArray alloc] initWithCapacity:0];
-    _infoTitles = @[INTERSTR(@"Device Name"), INTERSTR(@"Network Type"), INTERSTR(@"Current Connections"), INTERSTR(@"Soft Version")];
+    _infoTitles = @[INTERSTR(@"Device ID"), INTERSTR(@"Network"), INTERSTR(@"Current Users"), INTERSTR(@"Soft Version")];
     _paramTitles = @[INTERSTR(@"IP Address"), INTERSTR(@"Subnet Mask"), INTERSTR(@"Gateway"), INTERSTR(@"DNS")];
 
     __weak typeof(self) wself = self;

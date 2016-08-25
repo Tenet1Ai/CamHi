@@ -40,7 +40,7 @@
     [self.view addSubview:self.tableView];
 //    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    UIBarButtonItem *rbarBtnItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStyleDone target:self action:@selector(rbarBtnItemAction:)];
+    UIBarButtonItem *rbarBtnItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStyleDone target:self action:@selector(rbarBtnItemAction:)];
     self.navigationItem.rightBarButtonItem = rbarBtnItem;
 }
 
@@ -114,12 +114,12 @@
     LOG(@"_opwd:%@  _npwd:%@    _cpwd:%@", _opwd, _npwd, _cpwd)
     
     if (![_opwd isEqualToString:self.camera.password]) {
-        [HXProgress showText:NSLocalizedString(@"Old password is wrong", nil)];
+        [HXProgress showText:NSLocalizedString(@"Old password incorrect", nil)];
         return;
     }
     
     if (![_npwd isEqualToString:_cpwd]) {
-        [HXProgress showText:NSLocalizedString(@"Enter the Same Password", nil)];
+        [HXProgress showText:NSLocalizedString(@"New password and confirm password do not match", nil)];
         return;
     }
     

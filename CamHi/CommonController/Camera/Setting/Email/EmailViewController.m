@@ -178,7 +178,7 @@ typedef NS_ENUM(NSInteger, EmailTextField) {
                 break;
             case 4:
                 
-                cell.tfieldDetail.placeholder = INTERSTR(@"Email Account");
+                cell.tfieldDetail.placeholder = INTERSTR(@"User name");
                 cell.tfieldDetail.text = _emailParam.strUsernm;
                 cell.tfieldDetail.tag = EmailTextFieldUsername;
 
@@ -281,7 +281,7 @@ typedef NS_ENUM(NSInteger, EmailTextField) {
             
             SecureViewController *secure = [[SecureViewController alloc] init];
             secure.type = _emailParam.u32Auth;
-            secure.title = INTERSTR(@"Secure Connection");
+            secure.title = INTERSTR(@"Encrypt Type");
             secure.connectionTypeBlock = ^(BOOL success, NSInteger cmd, int type) {
                 
                 weakSelf.emailParam.u32Auth = type;
@@ -414,9 +414,9 @@ typedef NS_ENUM(NSInteger, EmailTextField) {
 
 - (NSArray *)titles {
     if (!_titles) {
-        _titles = @[INTERSTR(@"SMTP Server"), INTERSTR(@"Port"), INTERSTR(@"Secure Connection"),
-                    INTERSTR(@"Authentication"), INTERSTR(@"Email Account"), INTERSTR(@"Password"),
-                    INTERSTR(@"Receiver"), INTERSTR(@"Sender"), INTERSTR(@"Subject")];
+        _titles = @[INTERSTR(@"SMTP Server"), INTERSTR(@"Server Port"), INTERSTR(@"Encrypt Type"),
+                    INTERSTR(@"Authentication"), INTERSTR(@"User name"), INTERSTR(@"Password"),
+                    INTERSTR(@"Send To"), INTERSTR(@"Sender"), INTERSTR(@"Subject")];
     }
     return _titles;
 }

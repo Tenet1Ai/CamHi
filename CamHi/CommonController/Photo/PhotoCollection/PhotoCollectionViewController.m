@@ -376,7 +376,7 @@ static NSString * const footerIdentifier = @"footerIdentifier";
     }
     
     if (deletes.count == 0) {
-        [HXProgress showText:INTERSTR(@"Please select photos to delete")];
+        [HXProgress showText:INTERSTR(@"Please select photos to delete.")];
         return;
     }
     

@@ -94,7 +94,7 @@
         }
         
         if (row == 1) {
-            cell.textLabel.text = INTERSTR(@"Available Size");
+            cell.textLabel.text = INTERSTR(@"Free size");
             cell.detailTextLabel.text = [_sdcard available];
         }
         
@@ -102,7 +102,7 @@
     
     if (section == 1) {
         cell.textLabel.textColor = [UIColor redColor];
-        cell.textLabel.text = INTERSTR(@"Format SDCard");
+        cell.textLabel.text = INTERSTR(@"Format SD Card");
         cell.detailTextLabel.text = nil;
     }
     
@@ -120,7 +120,7 @@
             
             __weak typeof(self) weakSelf = self;
             
-            [self presentAlertTitle:nil message:INTERSTR(@"Format SDCard will lost all data") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
+            [self presentAlertTitle:nil message:INTERSTR(@"Format command will ERASE all data of SDCard") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
                 
                 [weakSelf.camera request:HI_P2P_SET_FORMAT_SD dson:nil];
                 
@@ -138,7 +138,7 @@
 #pragma mark - UIAlertViewDelegate
 - (void)presentAlertViewBeforeIOS8 {
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:INTERSTR(@"Format SDCard will lost all data") delegate:self cancelButtonTitle:INTERSTR(@"No") otherButtonTitles:INTERSTR(@"Yes"), nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:INTERSTR(@"Format command will ERASE all data of SDCard") delegate:self cancelButtonTitle:INTERSTR(@"No") otherButtonTitles:INTERSTR(@"Yes"), nil];
     
     [alertView show];
 }

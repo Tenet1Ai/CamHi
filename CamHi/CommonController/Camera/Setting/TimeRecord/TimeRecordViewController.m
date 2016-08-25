@@ -124,7 +124,7 @@
     if (row == 0) {
         
         [cell.contentView addSubview:self.tfieldDuration];
-        self.tfieldDuration.placeholder = [self.camera isGoke] ? INTERSTR(@"15-600 seconds") : INTERSTR(@"15-900 seconds");
+        self.tfieldDuration.placeholder = [self.camera isGoke] ? INTERSTR(@"15 - 900 seconds") : INTERSTR(@"15 - 600 seconds");
         self.tfieldDuration.text = [NSString stringWithFormat:@"%d", _recAutoParam.u32FileLen];
     }
     
@@ -193,7 +193,7 @@
 - (UISegmentedControl *)tsegment {
     if (!_tsegment) {
         
-        NSArray *items = @[INTERSTR(@"None"), INTERSTR(@"Day")];
+        NSArray *items = @[INTERSTR(@"None"), INTERSTR(@"All Day")];
         
         CGFloat w = 100.0f;
         CGFloat h = 30.0f;
@@ -223,7 +223,7 @@
 
 - (NSArray *)titles {
     if (!_titles) {
-        _titles = @[INTERSTR(@"Record Seconds"), INTERSTR(@"Enable Record"), INTERSTR(@"Record Time")];
+        _titles = @[INTERSTR(@"Duration"), INTERSTR(@"Enable Record"), INTERSTR(@"Record Timer")];
     }
     return _titles;
 }

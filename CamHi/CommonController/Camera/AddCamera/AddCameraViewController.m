@@ -211,15 +211,15 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         if (indexPath.section == 1) {
-            cell.textLabel.text = INTERSTR(@"Search camera UID from LAN");
+            cell.textLabel.text = INTERSTR(@"Search Camera from LAN");
         }
         
         if (indexPath.section == 2) {
-            cell.textLabel.text = INTERSTR(@"WiFi Search");
+            cell.textLabel.text = INTERSTR(@"Wireless Installation");
         }
         
         if (indexPath.section == 3) {
-            cell.textLabel.text = INTERSTR(@"Scan");
+            cell.textLabel.text = INTERSTR(@"Scan QR Code");
         }
         
         return cell;
@@ -247,7 +247,7 @@
     
     if (indexPath.section == 2) {
         WifiSetViewController *wifiSet = [[WifiSetViewController alloc] init];
-        wifiSet.title = INTERSTR(@"WiFi Search");
+        wifiSet.title = INTERSTR(@"Wireless Installation");
         
         wifiSet.setwifiBlock = ^(BOOL success, NSInteger type) {
             if (success) {
@@ -263,7 +263,7 @@
     if (indexPath.section == 3) {
         
         OCScanLifeViewController *scan = [[OCScanLifeViewController alloc] init];
-        scan.title = INTERSTR(@"Scan");
+        scan.title = INTERSTR(@"Scan QR Code");
         scan.delegate = self;
         
         [self.navigationController pushViewController:scan animated:YES];

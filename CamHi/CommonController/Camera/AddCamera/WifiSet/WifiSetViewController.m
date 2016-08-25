@@ -133,19 +133,19 @@
             
             if (_wifissid == nil || [_wifissid length] == 0) {
                 
-                [HXProgress showText:INTERSTR(@"SSID is empty")];
+                [HXProgress showText:INTERSTR(@"SSID can not be empty")];
                 return;
             }
             
             if (_wifipassword == nil || [_wifipassword length] == 0) {
                 
-                [HXProgress showText:INTERSTR(@"Password is empty")];
+                [HXProgress showText:INTERSTR(@"Password can not be empty")];
                 return;
             }
             
             
             if (SystemVersion >= 8.0) {
-                [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"Do you hear the sound from Device?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
+                [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"Do you hear the sound from camera?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
                     
                     [self showSinVoiceAlertView];
                     [self startSinVoice];

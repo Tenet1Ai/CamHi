@@ -94,7 +94,7 @@
     
     if (row == 0) {
         //The motion detecting sensitivity
-        cell.textLabel.text = NSLocalizedString(@"Enable Motion Detect", nil);
+        cell.textLabel.text = NSLocalizedString(@"Motion Detection", nil);
         cell.accessoryView = self.tswitch;
         self.tswitch.on = _mdparam.u32Enable == 1 ? YES : NO;
     }
@@ -143,7 +143,7 @@
 - (UILabel *)tlabel {
     if (!_tlabel) {
         _tlabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 7, self.view.frame.size.width-30, 30)];
-        _tlabel.text = NSLocalizedString(@"Motion Detect Sensitivity", nil);
+        _tlabel.text = NSLocalizedString(@"Level", nil);
         _tlabel.font = [UIFont systemFontOfSize:14];
     }
     return _tlabel;

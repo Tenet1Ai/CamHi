@@ -223,7 +223,7 @@
 - (UISegmentedControl *)tsegment {
     if (!_tsegment) {
         
-        NSArray *items = @[INTERSTR(@"Line"), INTERSTR(@"Mic")];
+        NSArray *items = @[INTERSTR(@"Line In"), INTERSTR(@"Mic")];
         
         CGFloat w = 150.0f;
         CGFloat h = 30.0f;

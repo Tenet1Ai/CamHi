@@ -31,7 +31,8 @@
     //init camera
     [GBase initCameras];
     
-    [self registerPushForIOS8];
+
+    SystemVersion < 8 ? [self registerPush] : [self registerPushForIOS8];
     
 //    for (UIWindow *window in [UIApplication sharedApplication].windows) {
 //        LOG(@">>>>>>>> window:%@", [NSString stringWithUTF8String:object_getClassName(window)])
@@ -56,6 +57,8 @@
     
     //disconnect camera
     [GBase disconnectCameras];
+    //进入后台通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:DidEnterBackground object:nil];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -216,6 +219,9 @@
     
 }
 
+- (void)registerPush{
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+}
 
 
 

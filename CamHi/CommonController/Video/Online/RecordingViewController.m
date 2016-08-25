@@ -101,11 +101,11 @@
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:INTERSTR(@"Dismiss") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:INTERSTR(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     
-    UIAlertAction *actionhour = [UIAlertAction actionWithTitle:INTERSTR(@"With in an hour") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *actionhour = [UIAlertAction actionWithTitle:INTERSTR(@"Within an hour") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60)] timeIntervalSince1970];
         self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
@@ -114,7 +114,7 @@
 
     }];
     
-    UIAlertAction *actionhalfDay = [UIAlertAction actionWithTitle:INTERSTR(@"With in a half day") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *actionhalfDay = [UIAlertAction actionWithTitle:INTERSTR(@"Within half day") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*12)] timeIntervalSince1970];
         self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
@@ -123,7 +123,7 @@
 
     }];
     
-    UIAlertAction *actionday = [UIAlertAction actionWithTitle:INTERSTR(@"With in a day") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *actionday = [UIAlertAction actionWithTitle:INTERSTR(@"Within a day") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*24)] timeIntervalSince1970];
         self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
@@ -132,7 +132,7 @@
 
     }];
     
-    UIAlertAction *actionweek = [UIAlertAction actionWithTitle:INTERSTR(@"With in a week") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *actionweek = [UIAlertAction actionWithTitle:INTERSTR(@"Within a week") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*24*7)] timeIntervalSince1970];
         self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];

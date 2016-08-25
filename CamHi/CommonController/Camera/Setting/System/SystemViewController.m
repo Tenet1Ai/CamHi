@@ -52,9 +52,9 @@ typedef NS_ENUM(NSInteger, CommandType) {
     
     _titles = [[NSMutableArray alloc] initWithCapacity:0];
     [_titles addObject:INTERSTR(@"Reboot Camera")];
-    [_titles addObject:INTERSTR(@"Restore Factory Settings")];
+    [_titles addObject:INTERSTR(@"Reset Camera")];
     if ([self.camera isGoke]) {
-        [_titles addObject:INTERSTR(@"Check Update")];
+        [_titles addObject:INTERSTR(@"Check update")];
     }
 
     _download = [[SetDownload alloc] init];
@@ -236,7 +236,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
         
         __weak typeof(self) weakSelf = self;
         
-        [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"Are you sure to restore factory settings?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
+        [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"Setup data will be initialized. Are you sure to reset?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
             
             [weakSelf.camera request:HI_P2P_SET_RESET dson:nil];
             weakSelf.commandType = CommandTypeReset;
@@ -246,7 +246,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
         }];//@presentAlertTitle
     }
     else {
-        [self presentAlertViewBeforeIOS8WithTag:1 message:INTERSTR(@"Are you sure to restore factory settings?")];
+        [self presentAlertViewBeforeIOS8WithTag:1 message:INTERSTR(@"Setup data will be initialized. Are you sure to reset?")];
     }
     
 }
@@ -335,7 +335,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
         [self doCheckRedirect:_urlAddress Version:_onlineVersion];
     }
     else {
-        [HXProgress showText:INTERSTR(@"No new version")];
+        [HXProgress showText:INTERSTR(@"It is the latest version already")];
     }
 }
 
@@ -413,7 +413,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
     
     if (SystemVersion > 8.0) {
         
-        [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"A new version is available, do you want to update?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
+        [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"new firmware is available, update?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
             
             [self.camera request:HI_P2P_SET_DOWNLOAD dson:[self.camera dic:_download]];
             
@@ -423,7 +423,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
         
     }
     else {
-        [self presentAlertViewBeforeIOS8WithTag:2 message:INTERSTR(@"A new version is available, do you want to update?")];
+        [self presentAlertViewBeforeIOS8WithTag:2 message:INTERSTR(@"new firmware is available, update?")];
     }
 }
 

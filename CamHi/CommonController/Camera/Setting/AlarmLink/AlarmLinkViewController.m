@@ -176,7 +176,7 @@
             ncell = [[HXCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
         }
 
-        ncell.textLabel.text = NSLocalizedString(@"Snapshot Number", nil);
+        ncell.textLabel.text = NSLocalizedString(@"Snap Number", nil);
         [ncell.contentView addSubview:self.tsegment];
         self.tsegment.selectedSegmentIndex = _snapAlarm.u32Number-1;
         return ncell;
@@ -231,10 +231,10 @@
 - (NSArray *)titles {
     if (!_titles) {
         _titles = @[NSLocalizedString(@"Alarm Notifications", nil),
-                    NSLocalizedString(@"Alarm SD Rec", nil),
-                    NSLocalizedString(@"E-mail Alarm Pictures", nil),
-                    NSLocalizedString(@"Save Pictures to FTP Server", nil),
-                    NSLocalizedString(@"Save Recordings to FTP Server", nil)];
+                    NSLocalizedString(@"Alarm SD REC", nil),
+                    NSLocalizedString(@"E-mail Alarm with Pictures", nil),
+                    NSLocalizedString(@"Save Snapshots on FTP Server", nil),
+                    NSLocalizedString(@"Save Video on FTP Server", nil)];
     }
     return _titles;
 }

@@ -50,7 +50,7 @@
             
             if (success) {
                 
-                [HXProgress showText:INTERSTR(@"Set Success")];
+                [HXProgress showText:INTERSTR(@"Save Success")];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [weakSelf.navigationController popToRootViewControllerAnimated:YES];
                 });
@@ -59,7 +59,7 @@
             else {
                 LOG(@">>>>>> cmd:%ld", cmd)
 
-                [HXProgress showText:INTERSTR(@"Set Failed")];
+                [HXProgress showText:INTERSTR(@"Save Failed")];
             }
         }
     };

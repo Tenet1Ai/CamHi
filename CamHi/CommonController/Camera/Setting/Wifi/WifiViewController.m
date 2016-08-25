@@ -132,7 +132,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    return section == 0 ? [self setupHeaderViewWithTitle:INTERSTR(@"Current Wifi")] : [self setupHeaderViewWithTitle:INTERSTR(@"Press To Join")];
+    return section == 0 ? [self setupHeaderViewWithTitle:INTERSTR(@"Current Wi-Fi")] : [self setupHeaderViewWithTitle:INTERSTR(@"Choose a Network")];
 }
 
 - (UIView *)setupHeaderViewWithTitle:(NSString *)title {
@@ -156,7 +156,7 @@
     WifiParam *tWifiParam = _wifiParam;
 
     WifiSaveViewController *wifiSave = [[WifiSaveViewController alloc] init];
-    wifiSave.title = INTERSTR(@"Join Wifi");
+    wifiSave.title = self.title;
     wifiSave.camera = self.camera;
 
     if (section == 0) {

@@ -161,7 +161,18 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         }
     };
     
+    //注册通知，进入后台时退回主界面
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryNotification:) name:DidEnterBackground object:nil];
+  
 }
+
+
+- (void)didReceiveMemoryNotification:(NSNotification *)notification {
+    
+    [self exit];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DidEnterBackground object:nil];
+}
+
 
 - (void)setupView {
     
@@ -468,13 +479,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         }
         
         if (index == 3) {
-            
-            if (self.mirror) {
-                [self.mirror removeFromSuperview];
-            }
-            
-            [self.camera stopLiveShow];
-            [self.navigationController popViewControllerAnimated:YES];
+            [self exit];
         }
         
     }
@@ -505,6 +510,23 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     }
 }
 
+
+// 退出
+- (void)exit {
+    
+    if (self.mirror) {
+        [self.mirror removeFromSuperview];
+    }
+    
+    if ([self.camera isGoke]) {
+        self.camera.image = [self.camera getSnapshot];
+    }
+    
+    
+    [self.camera stopLiveShow];
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
 
 - (void)showZoomFocus {
     

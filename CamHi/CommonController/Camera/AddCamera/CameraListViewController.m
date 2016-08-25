@@ -143,7 +143,7 @@
         
         for (Camera *mycam in [GBase sharedBase].cameras) {
             if ([mycam.uid isEqualToString:result.uid]) {
-                [HXProgress showText:NSLocalizedString(@"This device is already exists", nil)];
+                [HXProgress showText:NSLocalizedString(@"This camera already existed", nil)];
                 return;
             }
         }//@for

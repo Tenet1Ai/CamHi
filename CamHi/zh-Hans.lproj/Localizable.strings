@@ -7,402 +7,827 @@
 */
 
 
-//TabBarController
+
+
 /* No comment provided by engineer. */
-"Camera" = "摄像机";
+"admin" = "admin";
 /* No comment provided by engineer. */
-"Picture" = "照片";
+"Alaska;" = "阿拉斯加;";
+
+
+
 /* No comment provided by engineer. */
-"Video" = "录像";
+"Atlantic Time(Canada);" = "大西洋时间(加拿大);圣地亚哥;拉巴斯;";
+
+
+
 /* No comment provided by engineer. */
-"About" = "关于";
+"Azores;Cape Verde;" = "亚速尔群岛;佛得角群岛;";
+
 /* No comment provided by engineer. */
 "Back" = "返回";
+
 /* No comment provided by engineer. */
-"Yes" = "是";
+"Baku;Tbilisi;Abu Dhabi;Mascot;" = "巴库;第比利斯;阿布扎比;马斯喀特;";
+
 /* No comment provided by engineer. */
-"No" = "否";
+"Bangkok;Hanoi;Jakarta;" = "曼谷;河内;雅加达;";
+
 /* No comment provided by engineer. */
-"Warning" = "警告";
+"Beijing;Singapore;Hongkong;Taipei;" = "北京;新加坡;香港;台北;";
+
+
 /* No comment provided by engineer. */
-"Edit" = "编辑";
+"Call" = "调用";
+
+
+/* No comment provided by engineer. */
+"Camera Account can not be empty" = "账户不能为空";
+
+/* No comment provided by engineer. */
+"Camera Name" = "名称";
+
+/* No comment provided by engineer. */
+"Camera Name can not be empty" = "名称不能为空";
+
+/* No comment provided by engineer. */
+"Camera Password" = "密码";
+
+/* No comment provided by engineer. */
+"Camera Password can not be empty" = "密码不能为空";
+
+/* No comment provided by engineer. */
+"Camera UID" = "UID";
+
+/* No comment provided by engineer. */
+"Camera UID can not be empty" = "UID不能为空";
+
+/* No comment provided by engineer. */
+"Can't change quality while Speaking" = "对讲时候不能切换清晰度";
+
+/* No comment provided by engineer. */
+"Cancel" = "取消";
+
+/* No comment provided by engineer. */
+"Central Time(USA or Canada);" = "中部时间(美国和加拿大);";
+
+/* No comment provided by engineer. */
+"Confirm" = "确认";
+
+/* No comment provided by engineer. */
+"Confirm Password" = "确认密码";
+
+/* No comment provided by engineer. */
+"Connect Failed" = "连接失败";
+
+/* No comment provided by engineer. */
+"Connect Timeout" = "连接超时";
+
+/* No comment provided by engineer. */
+"Connecting..." = "连接中...";
+
+
+
+/* No comment provided by engineer. */
+"Custom" = "自定义";
+
+/* No comment provided by engineer. */
+"Dakar;Alma Ata;Novosibirsk;Astana;" = "达喀尔;阿拉木图;新西伯利亚;阿斯塔纳;";
+
+
+/* No comment provided by engineer. */
+"Delete" = "删除";
+
+/* No comment provided by engineer. */
+"Delete Photo" = "删除照片";
+
+/* No comment provided by engineer. */
+"Delete?" = "确认删除?";
+
+
+
+/* No comment provided by engineer. */
+"Device on LAN:" = "网络中的设备:";
+
+
+
+
+
+/* No comment provided by engineer. */
+"Disconnected" = "未连接";
+
 /* No comment provided by engineer. */
 "Cancel" = "取消";
 
 
-/* CameraViewController */
 /* No comment provided by engineer. */
-"Login" = "在线";
-/* No comment provided by engineer. */
-"Connecting" = "连接中...";
-/* No comment provided by engineer. */
-"Disconnected" = "未连接";
-/* No comment provided by engineer. */
-"Wrong Password" = "密码错误";
+"Do you hear the sound from camera?" = "听到设备发出声音了吗?";
 
-
-
-//AddCameraViewController
-/* No comment provided by engineer. */
-"Add Camera" = "添加摄像机";
-/* No comment provided by engineer. */
-"Name" = "摄像机名";
-/* No comment provided by engineer. */
-"User Name" = "用户名";
-/* No comment provided by engineer. */
-"UID" = "UID";
-/* No comment provided by engineer. */
-"Password" = "密码";
 /* No comment provided by engineer. */
 "Done" = "完成";
+
+
 /* No comment provided by engineer. */
-"Camera Name can not be empty" = "摄像机名称不能为空";
+"Duration must between 15 to 900" = "报警时长为15至900毫秒";
+
+"Duration must between 15 to 600" = "报警时长为15至600毫秒";
+
 /* No comment provided by engineer. */
-"Camera Account can not be empty" = "摄像机用户名不能为空";
-/* No comment provided by engineer. */
-"Camera UID can not be empty" = "摄像机UID不能为空";
-/* No comment provided by engineer. */
-"Camera Password can not be empty" = "摄像机密码不能为空";
-/* No comment provided by engineer. */
-"admin" = "admin";
-/* No comment provided by engineer. */
-"Camera UID" = "摄像机UID";
-/* No comment provided by engineer. */
-"Camera Password" = "摄像机密码";
-/* No comment provided by engineer. */
-"Search camera UID from LAN" = "搜索局域网中摄像机UID";
-/* No comment provided by engineer. */
-"WiFi Search" = "WiFi一键设置";
-/* No comment provided by engineer. */
-"Scan" = "二维码扫描";
-/* No comment provided by engineer. */
-"Set" = "设置";
-/* No comment provided by engineer. */
-"Camera Name" = "摄像机名";
+"Eastern Time(USA or Canada);" = "东部时间(美国和加拿大);波哥大;利马;";
 
 
 
+/* No comment provided by engineer. */
+"Edit Succeed" = "修改密码";
 
-//CameraListViewController
 /* No comment provided by engineer. */
-"Camera List" = "摄像机列表";
-/* No comment provided by engineer. */
-"Device on LAN:" = "局域网中的设备：";
-/* No comment provided by engineer. */
-"This device is already exists" = "该设备已存在";
 
 
 
-/* WifiSetViewController */
+"waiting test" = "等待测试";
+
 /* No comment provided by engineer. */
-"Do you hear the sound from Device?" = "听到设备发出声音了吗？";
+"Failed to save photo to camera roll" = "保存到相册失败.";
+
 /* No comment provided by engineer. */
-"Please wait for connect" = "请耐心等待连接";
+"First Stream" = "第一码流";
+
+/* No comment provided by engineer. */
+"Focus in" = "聚焦减";
+
+/* No comment provided by engineer. */
+"Focus out" = "聚焦加";
 
 
 
-//SettingViewController
 /* No comment provided by engineer. */
-"Camera Settings" = "摄像机设置";
-/* No comment provided by engineer. */
-"EditPassword" = "修改密码";
+"Format Succeed" = "格式化成功";
 
 
-/* EditPasswordViewController */
-/* No comment provided by engineer. */
-"Old Password" = "原密码";
-/* No comment provided by engineer. */
-"New Password" = "新密码";
-/* No comment provided by engineer. */
-"Confirm Password" = "确认密码";
-/* No comment provided by engineer. */
-"Old password is wrong" = "旧密码错误";
-/* No comment provided by engineer. */
-"Enter the Same Password" = "请输入相同密码";
-/* No comment provided by engineer. */
-"Save Failed" = "保存失败";
 
-/* AlarmSettingViewController */
 /* No comment provided by engineer. */
-"Motion" = "移动侦测";
+"FTP Server Address" = "FTP服务器地址";
+
+
 /* No comment provided by engineer. */
-"Enable Motion Detect" = "开启移动侦测";
+"Full-time Recording" = "全时录像";
+
+
 /* No comment provided by engineer. */
-"Motion Detect Sensitivity" = "移动侦测灵敏度";
+"Guam;Melbourne;Sydney;" = "关岛;墨尔本;悉尼;";
+
 /* No comment provided by engineer. */
-"Low" = "低";
-/* No comment provided by engineer. */
-"Medium" = "中";
+"Hawaii;" = "夏威夷;";
+
 /* No comment provided by engineer. */
 "High" = "高";
 
-
-/* AlarmLinkViewController */
 /* No comment provided by engineer. */
-"AlarmLink" = "报警联动";
+//"High" = "高清";
+
+
+/* No comment provided by engineer. */
+"Information" = "提示";
+
+
+
+/* No comment provided by engineer. */
+"IO Alarm" = "IO报警";
+
+
+/* No comment provided by engineer. */
+"Key" = "密码";
+
+/* No comment provided by engineer. */
+"LAN" = "有线";
+
+
+/* No comment provided by engineer. */
+"Loading" = "加载中";
+
+/* No comment provided by engineer. */
+"London;Iceland;Lisbon;" = "格林威治标准时间：伦敦;里斯本;卡萨布兰卡;";
+
+/* No comment provided by engineer. */
+"Low" = "低";
+
+/* No comment provided by engineer. */
+//"Low" = "流畅";
+
+/* No comment provided by engineer. */
+"Magadan;New Caledonia;Solomon Islands;  " = "所罗门群岛;新喀里多尼亚;马加丹";
+
+/* No comment provided by engineer. */
+"sender email address" = "邮箱账户";
+
+
+/* No comment provided by engineer. */
+"Medium" = "中";
+
+
+/* No comment provided by engineer. */
+"MID" = "中";
+
+/* No comment provided by engineer. */
+"Mid-Atlantic;" = "中大西洋;";
+
+/* No comment provided by engineer. */
+"Midway Islands;Samoa;" = "中途岛;萨摩亚群岛;";
+
+/* No comment provided by engineer. */
+"Moscow;Nairobi;Riyadh;" = "莫斯科;内罗比;利雅得";
+
+
+
+/* No comment provided by engineer. */
+"Mountain Time(USA or Canada);" = "山地时间(美国和加拿大);";
+
+
+
+
+/* No comment provided by engineer. */
+"New" = "新密码";
+
+/* No comment provided by engineer. */
+"New Delhi;Islamabad;" = "新德里;伊斯兰堡;卡拉奇;";
+
+/* No comment provided by engineer. */
+"New Password" = "新密码";
+
+/* No comment provided by engineer. */
+"No" = "否";
+
+/* No comment provided by engineer. */
+"No Device on LAN" = "网络上没有摄像机";
+
+/* No comment provided by engineer. */
+"No Photo Available" = "没有快照";
+
+/* No comment provided by engineer. */
+"No Result Found" = "查无结果";
+
+/* No comment provided by engineer. */
+"No Video Recording" = "没有录像文件";
+
+/* No comment provided by engineer. */
+"None" = "None";
+
+/* No comment provided by engineer. */
+"OK" = "是";
+
+/* No comment provided by engineer. */
+"Old" = "旧密码";
+
+/* No comment provided by engineer. */
+"Old Password" = "旧密码";
+
+/* No comment provided by engineer. */
+"Online" = "在线";
+
+
+/* No comment provided by engineer. */
+"out of range" = "超出范围";
+
+
+/* No comment provided by engineer. */
+"Pacific Time(USA or Canada);" = "太平洋时间(美国和加拿大);";
+
+/* No comment provided by engineer. */
+"Paris;Rome;Berlin;Madrid;" = "巴黎;柏林;罗马;马德里;";
+
+"Israel;Athens;Cairo;Jerusalem;" = "雅典;耶路撒冷;开罗;赫尔辛基;";
+
+
+
+/* No comment provided by engineer. */
+"Password" = "密码";
+
+/* No comment provided by engineer. */
+"Password" = "密码";
+
+/* No comment provided by engineer. */
+"Password can not be empty" = "密码不能为空";
+
+/* No comment provided by engineer. */
+"Path" = "路径";
+
+
+
+
+/* No comment provided by engineer. */
+"Please connect Wi-Fi" = "请先连接Wifi";
+
+/* No comment provided by engineer. */
+"Please input the password" = "请输入密码";
+
+/* No comment provided by engineer. */
+"Please press and hold the reset button for 10 seconds" = "请长按设备reset键10秒初始化设备";
+
+
+/* No comment provided by engineer. */
+"Wait for connecting" = "请耐心等待链接";
+
+
+
+
+
+
+
+/* No comment provided by engineer. */
+"Save Photo" = "保存照片";
+
+
+
+
+
+
+
+
+/* No comment provided by engineer. */
+"SD Card Failed" = "无效SD卡";
+
+/* No comment provided by engineer. */
+"SDK Version" = "SDK版本";
+
+/* No comment provided by engineer. */
+"Second Stream" = "第二码流";
+
+
+/* No comment provided by engineer. */
+"receiver email address" = "收件地址";
+
+
+
+/* No comment provided by engineer. */
+"server port" = "端口";
+
+
+/* No comment provided by engineer. */
+"Set" = "设置";
+
+/* No comment provided by engineer. */
+"Set Device Time Zone Successfully" = "设置时区成功";
+
+
+/* No comment provided by engineer. */
+"Set Device Time Successfully" = "设置设备时间成功";
+
+/* No comment provided by engineer. */
+"Set Succeed" = "设置成功";
+
+
+/* No comment provided by engineer. */
+"signal" = "信号强度";
+
+
+/* No comment provided by engineer. */
+"Snapshot" = "快照";
+
+/* No comment provided by engineer. */
+"Soft Version" = "软件版本";
+
+
+/* No comment provided by engineer. */
+"SSID" = "SSID";
+
+/* No comment provided by engineer. */
+"SSID can not be empty" = "SSID不能为空";
+
+/* No comment provided by engineer. */
+"SSL" = "SSL";
+
+/* No comment provided by engineer. */
+"STARTTLS" = "STARTTLS";
+
+
+
+/* No comment provided by engineer. */
+"Save Succeed" = "成功保存图片到相册";
+
+
+
+
+/* No comment provided by engineer. */
+"Test Failed" = "测试......失败!";
+
+/* No comment provided by engineer. */
+"Test Succeed" = "测试......成功!";
+
+/* No comment provided by engineer. */
+"Are you sure to reboot camera?" = "确定重启设备?";
+
+/* No comment provided by engineer. */
+"The Name/UID/Password can not be empty" = "名称,UID,密码不能为空";
+
+
+
+/* No comment provided by engineer. */
+"This camera already existed" = "设备已存在";
+
+
+/* No comment provided by engineer. */
+"TLS" = "TLS";
+
+/* No comment provided by engineer. */
+"Tokyo;Seoul;Yakutsk;" = "首尔;雅库茨克;东京;";
+
+
+/* No comment provided by engineer. */
+"UID" = "UID";
+
+/* No comment provided by engineer. */
+"Unknown" = "未知的";
+
+/* No comment provided by engineer. */
+"Unknown Device" = "未知设备";
+
+/* No comment provided by engineer. */
+"User name" = "用户名";
+
+
+/* No comment provided by engineer. */
+"Version" = "版本";
+
+
+/* No comment provided by engineer. */
+"Video Lost" = "录像缺失";
+
+/* No comment provided by engineer. */
+"Video Resume" = "录像暂停";
+
+
+/* No comment provided by engineer. */
+"Warning" = "警告";
+
+/* No comment provided by engineer. */
+"Wellington;Auckland;fiji" = "惠灵顿;斐济;奥克兰";
+
+
+/* No comment provided by engineer. */
+"Wi-Fi Setting" = "Wifi设置";
+
+
+
+/* No comment provided by engineer. */
+"WLAN" = "无线";
+
+/* No comment provided by engineer. */
+"Wrong Password" = "密码错误";
+
+/* No comment provided by engineer. */
+"Yes" = "是";
+
+/* No comment provided by engineer. */
+"You must input numbers" = "请输入正确数字";
+
+/* No comment provided by engineer. */
+"Your email account is disabled or removed, please check." = "你邮箱账户错误,请检查邮箱账户.";
+
+/* No comment provided by engineer. */
+"Zoom in" = "拉近";
+
+/* No comment provided by engineer. */
+"Zoom out" = "拉远";
+
+/* No comment provided by engineer. */
+"Exit" = "退出";
+
+/* No comment provided by engineer. */
+"Mirror" = "镜像";
+
+/* No comment provided by engineer. */
+"Flip" = "翻转";
+
+
+/* No comment provided by engineer. */
+"Snapshot Saved" = "快照已保存";
+/* No comment provided by engineer. */
+"REC" = "录像";
+
+/* No comment provided by engineer. */
+"Turn on Alarm Push" = "打开报警推送";
+/* No comment provided by engineer. */
+"Turn off Alarm Push" = "关闭报警推送";
+/* No comment provided by engineer. */
+"Successful" = "成功";
+/* No comment provided by engineer. */
+"Failed" = "失败";
+/* No comment provided by engineer. */
+"Downloading" = "下载中";
+/* No comment provided by engineer. */
+"Download Finished" = "下载完成";
+/* No comment provided by engineer. */
+"Press and hold to download" = "长按下载";
+
+"Test" = "测试";
+
+
+// "HXTabBarController.m"
+"Camera" = "摄像机";
+"camera" = "摄像机";
+"Picture" = "照片";
+"Local Picture" = "本地照片";
+"Video" = "录像";
+"Video Viewing" = "录像观看";
+"about" = "关于";
+"About" = "关于";
+"Command Error!" = "未知错误";
+
+"local" = "本地";
+"online" = "远程";
+"Search Video" = "搜索录像";
+"From" = "从";
+"To" = "至";
+
+//     CameraViewController
+/* No comment provided by engineer. */
+"Offline" = "离线";
+
+"Add Camera" = "点击添加摄像机";
+"Add Camera" = "增加摄像机";
+"Edit" = "编辑";
+"Done" = "完成";
+
+
+// Add Camera
+/* No comment provided by engineer. */
+"Name" = "名称";
+/* No comment provided by engineer. */
+"User Name" = "用户名";
+/* No comment provided by engineer. */
+"Scan QR Code" = "扫描条码";
+/* No comment provided by engineer. */
+"Wireless Installation" = "Wifi一键设置";
+/* No comment provided by engineer. */
+"Search Camera from LAN" = "局域网搜索UID";
+/* No comment provided by engineer. */
+"Camera List" = "摄像机列表";
+
+
+
+// LiveViewController
+
+
+
+
+
+// SettingViewController
+/* No comment provided by engineer. */
+"Camera Setting" = "摄像机设置";
+/* No comment provided by engineer. */
+"Edit Password" = "修改密码";
+/* No comment provided by engineer. */
+"Alarm Setting" = "报警移动侦测";
+/* No comment provided by engineer. */
+"Action with Alarm" = "报警联动";
+/* No comment provided by engineer. */
+"Timing Record" = "定时录像";
+/* No comment provided by engineer. */
+"Audio Setting" = "音频设置";
+/* No comment provided by engineer. */
+"Video Setting" = "视频设置";
+/* No comment provided by engineer. */
+"Wi-Fi Setting" = "加入Wifi";
+/* No comment provided by engineer. */
+"SD Card Setting" = "SD卡设置";
+/* No comment provided by engineer. */
+"Time Setting" = "设备时钟设置";
+/* No comment provided by engineer. */
+"Email Setting" = "邮件设置";
+/* No comment provided by engineer. */
+"FTP Setting" = "FTP设置";
+/* No comment provided by engineer. */
+"System Setting" = "系统设置";
+/* No comment provided by engineer. */
+"Device Information" = "设备信息";
+
+
+
+
+// EditPasswordViewController
+/* No comment provided by engineer. */
+"Old password incorrect" = "旧密码错误";
+/* No comment provided by engineer. */
+"New password and confirm password do not match" = "新密码和确认密码输入不一致";
+
+
+
+
+
+// AlarmSettingViewController
+/* No comment provided by engineer. */
+"Motion Detection" = "开启移动侦测";
+/* No comment provided by engineer. */
+"Level" = "移动侦测灵敏度";
+
+
+// AlarmLinkViewController
 /* No comment provided by engineer. */
 "Alarm Notifications" = "报警推送";
 /* No comment provided by engineer. */
-"Alarm SD Rec" = "报警SD卡录像";
+"Alarm SD REC" = "报警SD卡录像";
 /* No comment provided by engineer. */
-"E-mail Alarm Pictures" = "报警发送邮件图片";
+"E-mail Alarm with Pictures" = "E-mail报警并发送图片";
 /* No comment provided by engineer. */
-"Save Pictures to FTP Server" = "保存图片到FTP服务器";
+"Save Snapshots on FTP Server" = "保存图片至FTP服务器";
 /* No comment provided by engineer. */
-"Save Recordings to FTP Server" = "保存录像到FTP服务器";
+"Save Video on FTP Server" = "保存录像至FTP服务器";
 /* No comment provided by engineer. */
-"Snapshot Number" = "抓拍图片张数";
+"Snap Number" = "图片抓拍张数";
 /* No comment provided by engineer. */
-"Turn on failed" = "开启失败";
+"Turn on failed" = "打开失败";
 /* No comment provided by engineer. */
-"Turn on success" = "开启成功";
-/* No comment provided by engineer. */
-"Turn off success" = "关闭成功";
+"Turn on success" = "打开成功";
 /* No comment provided by engineer. */
 "Turn off failed" = "关闭失败";
+/* No comment provided by engineer. */
+"Turn off success" = "关闭成功";
 
 
 
+// TimeRecordViewController
+/* No comment provided by engineer. */
+"Duration" = "录像文件时长";
+/* No comment provided by engineer. */
+"Enable Record" = "是否开启录像";
+/* No comment provided by engineer. */
+"Record Timer" = "录像时间";
+/* No comment provided by engineer. */
+"All Day" = "全天";
+/* No comment provided by engineer. */
+"15 - 900 seconds" = "15 - 900 秒";
+/* No comment provided by engineer. */
+"15 - 600 seconds" = "15 - 600 秒";
 
-/* TimeRecordViewController */
-/* No comment provided by engineer. */
-"TimeRecord" = "定时录像";
-/* No comment provided by engineer. */
-"Record Seconds" = "录像时长";
-/* No comment provided by engineer. */
-"Record Time" = "录像时间";
-/* No comment provided by engineer. */
-"Enable Record" = "开启录像";
-/* No comment provided by engineer. */
-"None" = "None";
-/* No comment provided by engineer. */
-"Day" = "全天";
 
-
-/* AudioViewController */
+// AudioViewController
 /* No comment provided by engineer. */
-"Audio" = "音频";
+"Input Type" = "输入类型";
 /* No comment provided by engineer. */
 "Input Volume" = "输入音量";
 /* No comment provided by engineer. */
 "Output Volume" = "输出音量";
 /* No comment provided by engineer. */
-"Input Type" = "输入类型";
+"Line In" = "线性输入";
 /* No comment provided by engineer. */
-"Line" = "线性输入";
-/* No comment provided by engineer. */
-"Mic" = "麦克风输入";
+"Mic" = "麦克输入";
 
 
-
-/* VideoSetViewController.h */
+// VideoSetViewController
 /* No comment provided by engineer. */
 "Bit Rate" = "码率";
 /* No comment provided by engineer. */
-"Frame Rate" = "帧率";
+"Frame rate" = "帧率";
 /* No comment provided by engineer. */
 "Quality" = "编码等级";
 /* No comment provided by engineer. */
-"Video Format" = "视频制式";
+"Frequency" = "视频制式";
+/* No comment provided by engineer. */
+"1-25 fps" = "1-25 fps";
+/* No comment provided by engineer. */
+"1-30 fps" = "1-30 fps";
+/* No comment provided by engineer. */
+"1-6" = "1-6";
+/* No comment provided by engineer. */
+"32-6144 kbps" = "32-6144 kbps";
 /* No comment provided by engineer. */
 "50Hz" = "50赫兹";
 /* No comment provided by engineer. */
 "60Hz" = "60赫兹";
 /* No comment provided by engineer. */
-"Please input number!" = "请输入数字！";
+"Please input number!" = "请输入数字";
 /* No comment provided by engineer. */
-"Input First Bit Rate between 30 and 6144" = "主码流码率范围30-6144";
+"Input First Bit Rate between 30 and 6144" = "第一码流码率范围30-6144";
 /* No comment provided by engineer. */
-"Input First Frame Rate between 1 and 25" = "主码流帧率范围1-25";
+"Input First Frame Rate between 1 and 25" = "第一码流帧率范围1-25";
 /* No comment provided by engineer. */
-"Input First Frame Rate between 1 and 30" = "主码流帧率范围1-30";
+"Input First Frame Rate between 1 and 30" = "第一码流帧率范围1-30";
 /* No comment provided by engineer. */
-"Input First Quality between 1 and 6" = "主码流编码等级范围1-6";
+"Input First Quality between 1 and 6" = "第一码流编码等级1-6";
 /* No comment provided by engineer. */
-"Input Second Bit Rate between 32 and 2048" = "次码流码率范围32-2048";
+"Input Second Bit Rate between 32 and 2048" = "第二码流码率范围32-2048";
 /* No comment provided by engineer. */
-"Input Second Bit Rate between 32 and 6144" = "次码流码率范围32-6144";
+"Input Second Bit Rate between 32 and 6144" = "第二码流码率范围32-6144";
 /* No comment provided by engineer. */
-"Input Second Frame Rate between 1 and 25" = "次码流帧率范围1-25";
+"Input Second Frame Rate between 1 and 25" = "第二码流帧率范围1-25";
 /* No comment provided by engineer. */
-"Input Second Frame Rate between 1 and 30" = "次码流帧率范围1-30";
+"Input Second Frame Rate between 1 and 30" = "第二码流帧率范围1-30";
 /* No comment provided by engineer. */
-"Input Second Quality between 1 and 6" = "次码流编码等级范围1-6";
+"Input Second Quality between 1 and 6" = "第一码流编码等级1-6";
 
 
 
-/* WifiViewController */
+
+// WifiViewController
 /* No comment provided by engineer. */
-"Current Wifi" = "当前wifi";
+"Current Wi-Fi" = "当前Wifi";
 /* No comment provided by engineer. */
-"Press To Join" = "点击加入";
+"Choose a Network" = "点击加入";
 /* No comment provided by engineer. */
-"Join Wifi" = "加入wifi";
+"Save" = "存储";
 /* No comment provided by engineer. */
-"Save" = "保存";
+"Save Success" = "存储";
 /* No comment provided by engineer. */
-"Set Success" = "设置成功";
-/* No comment provided by engineer. */
-"Set Failed" = "设置失败";
+"Save Failed" = "存储";
 
 
-/* SDCardViewController */
+// SDCardViewController
 /* No comment provided by engineer. */
 "Total Size" = "存储空间大小";
 /* No comment provided by engineer. */
-"Available Size" = "可用空间大小";
+"Free size" = "可用空间大小";
 /* No comment provided by engineer. */
-"Format SDCard" = "格式化SD卡";
+"Format SD Card" = "格式化SD卡";
 /* No comment provided by engineer. */
-"Format SDCard will lost all data" = "格式化SD卡将会删除所有数据";
-/* No comment provided by engineer. */
-"SDCard" = "SD卡";
+"Format command will ERASE all data of SDCard" = "格式化将删除SD卡里的所有数据";
 
 
 
 
-/* DeviceTimeViewController */
-/* No comment provided by engineer. */
-"DeviceTime" = "设备时间";
-/* No comment provided by engineer. */
-"Device time" = "设备时间";
-/* No comment provided by engineer. */
-"Sync with phone time" = "同步手机时间至设备";
-/* No comment provided by engineer. */
-"Device time zone" = "设备时区";
-/* No comment provided by engineer. */
-"Phone time zone" = "手机时区";
-/* No comment provided by engineer. */
-"Set device time zone" = "设置设备时区";
-/* No comment provided by engineer. */
-"Set device time zone will reboot device" = "设置时区将会重启摄像机";
 
 
-/* TimeZoneViewController */
+// DeviceTimeViewController
 /* No comment provided by engineer. */
-"Zones" = "时区";
+"Device Time" = "设备时间";
 /* No comment provided by engineer. */
-"DayLight Saving Time" = "夏令时";
+"Sync with Phone Time" = "同步手机时间至设备";
 /* No comment provided by engineer. */
-"Guam;Melbourne;Sydney;" = "关岛;墨尔本;悉尼;";
+"Device Time Zone" = "设备时区";
 /* No comment provided by engineer. */
-"Hawaii;" = "夏威夷;";
+"Phone Time Zone" = "手机时区";
 /* No comment provided by engineer. */
-"Dakar;Alma Ata;Novosibirsk;Astana;" = "达喀尔;阿拉木图;新西伯利亚;阿斯塔纳;";
+"Saving Time Zone For Device" = "设置设备时区";
 /* No comment provided by engineer. */
-"Central Time(USA or Canada);" = "中部时间(美国和加拿大);";
-/* No comment provided by engineer. */
-"Baku;Tbilisi;Abu Dhabi;Mascot;" = "巴库;第比利斯;阿布扎比;马斯喀特;";
-/* No comment provided by engineer. */
-"Bangkok;Hanoi;Jakarta;" = "曼谷;河内;雅加达;";
-/* No comment provided by engineer. */
-"Beijing;Singapore;Hongkong;Taipei;" = "北京;新加坡;香港;台北;";
-/* No comment provided by engineer. */
-"Azores;Cape Verde;" = "亚速尔群岛;佛得角群岛;";
-/* No comment provided by engineer. */
-"Atlantic Time(Canada);" = "大西洋时间(加拿大);圣地亚哥;拉巴斯;";
-/* No comment provided by engineer. */
-"Alaska;" = "阿拉斯加;";
-/* No comment provided by engineer. */
-"Eastern Time(USA or Canada);" = "东部时间(美国和加拿大);波哥大;利马;";
-/* No comment provided by engineer. */
-"London;Iceland;Lisbon;" = "格林威治标准时间：伦敦;里斯本;卡萨布兰卡;";
-/* No comment provided by engineer. */
-"Magadan;New Caledonia;Solomon Islands;  " = "所罗门群岛;新喀里多尼亚;马加丹";
-/* No comment provided by engineer. */
-"Mid-Atlantic;" = "中大西洋;";
-/* No comment provided by engineer. */
-"Midway Islands;Samoa;" = "中途岛;萨摩亚群岛;";
-/* No comment provided by engineer. */
-"Moscow;Nairobi;Riyadh;" = "莫斯科;内罗比;利雅得";
-/* No comment provided by engineer. */
-"Mountain Time(USA or Canada);" = "山地时间(美国和加拿大);";
-/* No comment provided by engineer. */
-"New Delhi;Islamabad;" = "新德里;伊斯兰堡;卡拉奇;";
-/* No comment provided by engineer. */
-"Pacific Time(USA or Canada);" = "太平洋时间(美国和加拿大);";
-/* No comment provided by engineer. */
-"Paris;Rome;Berlin;Madrid;" = "巴黎;柏林;罗马;马德里;";
-/* No comment provided by engineer. */
-"Tokyo;Seoul;Yakutsk;" = "首尔;雅库茨克;东京;";
-/* No comment provided by engineer. */
-"Wellington;Auckland;fiji" = "惠灵顿;斐济;奥克兰";
+"Set Device Time Zone will REBOOT device" = "设置时区将会重启摄像机";
 
 
-/* EmailViewController */
+
+
+
+// TimeZoneViewController
 /* No comment provided by engineer. */
-"Email" = "邮件";
+"Daylight Saving Time" = "夏令时";
+
+
+// EmailViewController
 /* No comment provided by engineer. */
-"SMTP Server" = "SMPT服务器";
+"SMTP Server" = "SMTP服务器";
 /* No comment provided by engineer. */
-"Port" = "端口";
+"Server Port" = "端口";
 /* No comment provided by engineer. */
-"Secure Connection" = "安全连接";
+"Encrypt Type" = "安全连接";
 /* No comment provided by engineer. */
 "Authentication" = "验证";
 /* No comment provided by engineer. */
-"Receiver" = "收件地址";
+"Send To" = "收件地址";
 /* No comment provided by engineer. */
 "Sender" = "发件地址";
 /* No comment provided by engineer. */
 "Subject" = "主题";
 /* No comment provided by engineer. */
 "Message" = "内容";
-/* No comment provided by engineer. */
-"Test" = "测试";
-/* No comment provided by engineer. */
-"Test Successful" = "测试成功";
-/* No comment provided by engineer. */
-"Test Failed" = "测试失败 ";
-/* No comment provided by engineer. */
-"SMTP server address" = "SMTP服务器地址";
-/* No comment provided by engineer. */
-"Server Port" = "服务器端口";
-/* No comment provided by engineer. */
-"Email Account" = "邮箱账户";
 
-/* FTPViewController */
+
+// FTPViewController
 /* No comment provided by engineer. */
-"FTPServer" = "FTP服务器";
+"Server Addr." = "服务器地址";
 /* No comment provided by engineer. */
-"Server Address" = "服务器地址";
-/* No comment provided by engineer. */
-"Passiveness Mode" = "被动模式";
+"Passive Mode" = "被动模式";
 /* No comment provided by engineer. */
 "Path" = "路径";
 /* No comment provided by engineer. */
-"Test FTP server settings" = "测试FTP服务器设置";
+"Test FTP Settings" = "测试FTP设置";
 
 
-/* SystemViewController */
+// SystemViewController
 /* No comment provided by engineer. */
-"System" = "系统";
+"Reboot Camera" = "重新启动摄像机";
 /* No comment provided by engineer. */
-"Reboot Camera" = "重启摄像机";
+"Reset Camera" = "恢复出厂设置";
 /* No comment provided by engineer. */
-"Restore Factory Settings" = "恢复出厂设置";
+"Check update" = "检查更新";
 /* No comment provided by engineer. */
-"Check Update" = "检查更新";
+"Setup data will be initialized. Are you sure to reset?" = "恢复出厂设置将会导致所有设置都初始化,确定恢复出厂设置?";
 /* No comment provided by engineer. */
-"Are you sure to reboot camera?" = "是否重启摄像机?";
+"It is the latest version already" = "你的摄像机已经是最新版本";
 /* No comment provided by engineer. */
-"Are you sure to restore factory settings?" = "是否恢复出厂设置?";
-/* No comment provided by engineer. */
-"No new version" = "无新版本";
-/* No comment provided by engineer. */
-"A new version is available, do you want to update?" = "发现新版本，是否更新?";
+"new firmware is available, update?" = "检测到新版本,是否升级?";
+///* No comment provided by engineer. */
+//"The camera is upgading, please do not power off and keep the network available." = "摄像机正在升级,升级过程中请勿断电,并保持网络良好.";
 
 
 
-/* DeviceInfoViewController */
+
+
+
+
+// DeviceInfoViewController
 /* No comment provided by engineer. */
-"DeviceInformation" = "设备信息";
+"Device ID" = "设备名称";
 /* No comment provided by engineer. */
-"Device Name" = "设备名称";
+"Network" = "网络类型";
 /* No comment provided by engineer. */
-"Network Type" = "网络类型";
-/* No comment provided by engineer. */
-"Current Connections" = "当前连接数";
+"Current Users" = "当前连接数";
 /* No comment provided by engineer. */
 "Soft Version" = "软件版本";
 /* No comment provided by engineer. */
@@ -415,50 +840,55 @@
 "DNS" = "DNS";
 
 
-
-/* VideoViewController */
-/* No comment provided by engineer. */
-"local" = "本地";
-/* No comment provided by engineer. */
-"online" = "远程";
-/* No comment provided by engineer. */
-"Video List" = "录像列表";
-/* No comment provided by engineer. */
-"Offline" = "离线";
-/* No comment provided by engineer. */
-"No Recording" = "没有录像";
-
-
-/* SearchViewController */
-/* No comment provided by engineer. */
-"With in an hour" = "搜索一小时";
-/* No comment provided by engineer. */
-"With in a half day" = "搜索半天";
-/* No comment provided by engineer. */
-"With in a day" = "搜索一天";
-/* No comment provided by engineer. */
-"With in a week" = "搜索一周";
-/* No comment provided by engineer. */
-"Custom" = "自定义";
-/* No comment provided by engineer. */
-"Dismiss" = "取消";
-/* No comment provided by engineer. */
-"From" = "从";
-/* No comment provided by engineer. */
-"To" = "至";
-/* No comment provided by engineer. */
-"Search Video" = "搜索录像";
-
-
-/* AboutViewController */
-/* No comment provided by engineer. */
-"Version" = "版本";
-/* No comment provided by engineer. */
-"SDK Version" = "SDK版本";
-
-
-/* PhotoViewController */
-/* No comment provided by engineer. */
-"Delete" = "删除";
+// PhotoViewController
 /* No comment provided by engineer. */
 "No Picture" = "未保存图片";
+/* No comment provided by engineer. */
+"Email Photo" = "邮件照片";
+/* No comment provided by engineer. */
+"Please select photos to delete." = "选择要删除的快照.";
+
+
+
+
+// VideoViewController
+/* No comment provided by engineer. */
+"No Recording" = "未保存录像";
+/* No comment provided by engineer. */
+"Recordings" = "录像列表";
+/* No comment provided by engineer. */
+"Plan Recording" = "计划录像";
+/* No comment provided by engineer. */
+"Alarm Recording" = "报警录像";
+/* No comment provided by engineer. */
+"All Recordings" = "所有录像";
+/* No comment provided by engineer. */
+"Manual Recording" = "手动录像";
+
+/* No comment provided by engineer. */
+"Within a day" = "搜索一天";
+/* No comment provided by engineer. */
+"Within a week" = "搜索一周";
+/* No comment provided by engineer. */
+"Within an hour" = "搜索一小时";
+/* No comment provided by engineer. */
+"Within half day" = "搜索半天";
+
+
+
+
+// AboutViewController
+/* No comment provided by engineer. */
+"Copyright 2016 All Rights Reserved" = "2016年版权所有";
+
+
+
+
+
+/* No comment provided by engineer. */
+"SMTP server address" = "SMTP服务器地址";
+"Time Setting" = "设备时间设置";
+"Local Video" = "本地录像";
+"Configure Wi-Fi Successfully" = "设置WiFi后请返回主界面重连摄像机";
+
+

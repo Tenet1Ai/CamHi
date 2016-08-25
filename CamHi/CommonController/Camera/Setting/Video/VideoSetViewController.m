@@ -249,7 +249,7 @@ typedef NS_ENUM(NSInteger, TField) {
     
     
     if (section == 2) {
-        cell.labTitle.text = INTERSTR(@"Video Format");
+        cell.labTitle.text = INTERSTR(@"Frequency");
         [cell.tfieldDetail removeFromSuperview];
         [cell.contentView addSubview:self.tsegment];
         self.tsegment.selectedSegmentIndex = _videoCode.u32Frequency == 50 ? 0 : 1;
@@ -274,7 +274,7 @@ typedef NS_ENUM(NSInteger, TField) {
 
 - (NSArray *)titles {
     if (!_titles) {
-        _titles = @[INTERSTR(@"Bit Rate"), INTERSTR(@"Frame Rate"), INTERSTR(@"Quality")];
+        _titles = @[INTERSTR(@"Bit Rate"), INTERSTR(@"Frame rate"), INTERSTR(@"Quality")];
     }
     return _titles;
 }

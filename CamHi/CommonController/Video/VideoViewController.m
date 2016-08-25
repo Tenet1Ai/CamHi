@@ -114,7 +114,7 @@
         
         LocalRecordingViewController *localRecording = [[LocalRecordingViewController alloc] init];
         localRecording.camera = mycam;
-        localRecording.title = INTERSTR(@"Video List");
+        localRecording.title = INTERSTR(@"Recordings");
         [self .navigationController pushViewController:localRecording animated:YES];
 
     }
@@ -133,7 +133,7 @@
         
         RecordingViewController *recording = [[RecordingViewController alloc] init];
         recording.camera = mycam;
-        recording.title = INTERSTR(@"Video List");
+        recording.title = INTERSTR(@"Recordings");
         [self.navigationController pushViewController:recording animated:YES];
     }
 }

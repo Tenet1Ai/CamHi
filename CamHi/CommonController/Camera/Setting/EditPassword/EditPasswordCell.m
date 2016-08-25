@@ -46,6 +46,7 @@
         self.tlabelTitle = [[UILabel alloc] initWithFrame:CGRectMake(tx, ty, tw, th)];
 //        self.tlabelTitle.backgroundColor = [UIColor redColor];
         self.tlabelTitle.font = [UIFont systemFontOfSize:14];
+        self.tlabelTitle.adjustsFontSizeToFitWidth = YES;
         [self.tbgView addSubview:self.tlabelTitle];
         
         

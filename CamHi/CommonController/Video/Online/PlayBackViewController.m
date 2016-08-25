@@ -30,8 +30,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setup];
+    //[self setup];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setup];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -174,18 +179,18 @@
         
         if (type == 1) {
             
-            //[wself.camera stopPlayback];
+            [wself.camera stopPlayback];
             
-            HI_P2P_S_PB_PLAY_REQ* req = (HI_P2P_S_PB_PLAY_REQ*)malloc(sizeof(HI_P2P_S_PB_PLAY_REQ));
-            memset(req, 0, sizeof(HI_P2P_S_PB_PLAY_REQ));
-            req->command = HI_P2P_PB_STOP;
-            req->u32Chn = 0;
-            STimeDay st = [VideoInfo getTimeDay:wself.video.startTime];
-            memcpy(&req->sStartTime, &st, sizeof(STimeDay));
-            
-            [wself.camera sendIOCtrl:HI_P2P_PB_PLAY_CONTROL Data:(char *)req Size:sizeof(HI_P2P_S_PB_PLAY_REQ)];
-            
-            free(req);
+//            HI_P2P_S_PB_PLAY_REQ* req = (HI_P2P_S_PB_PLAY_REQ*)malloc(sizeof(HI_P2P_S_PB_PLAY_REQ));
+//            memset(req, 0, sizeof(HI_P2P_S_PB_PLAY_REQ));
+//            req->command = HI_P2P_PB_STOP;
+//            req->u32Chn = 0;
+//            STimeDay st = [VideoInfo getTimeDay:wself.video.startTime];
+//            memcpy(&req->sStartTime, &st, sizeof(STimeDay));
+//            
+//            [wself.camera sendIOCtrl:HI_P2P_PB_PLAY_CONTROL Data:(char *)req Size:sizeof(HI_P2P_S_PB_PLAY_REQ)];
+//            
+//            free(req);
 
             
             [wself.navigationController popViewControllerAnimated:YES];
@@ -225,6 +230,8 @@
         
         _monitor = [[HiGLMonitor alloc] initWithFrame:CGRectMake(0, 0, WIDTH, h)];
         _monitor.center = CGPointMake(WIDTH/2, h/2);
+        
+        NSLog(@"_monitor:%p", _monitor);
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
         [_monitor addGestureRecognizer:tap];

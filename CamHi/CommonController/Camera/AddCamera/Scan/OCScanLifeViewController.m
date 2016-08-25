@@ -158,7 +158,7 @@
     
     _messageLable = [[UILabel alloc] init];
     _messageLable.frame = CGRectMake(20, self.boxView.frame.origin.y+50+boxH, screenW-40, 150);
-    _messageLable.text = @"Please put the QR Code within the frame.";
+    //_messageLable.text = @"Please put the QR Code within the frame.";
     _messageLable.numberOfLines = 0;
     _messageLable.textColor = [UIColor whiteColor];
     _messageLable.textAlignment = NSTextAlignmentCenter;

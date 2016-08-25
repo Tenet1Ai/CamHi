@@ -28,6 +28,9 @@
     if (self = [super initWithUid:uid_ Username:username_ Password:password_]) {
         self.name = name_;
         self.isAlarm = NO;
+        
+        
+        //haisi不变。goke由实时画面取图
         self.image = [UIImage imageNamed:@"videoClip"];
         [self registerIOSessionDelegate:self];
         
@@ -54,19 +57,25 @@
     if(status == CAMERA_CONNECTION_STATE_LOGIN) {
         
         
-        if (!isSnapshot) {
-            isSnapshot = YES;
+        //goke去实时画面取图
+        if (![self isGoke]) {
             
-            [self sendIOCtrl:HI_P2P_GET_FUNCTION Data:(char *)nil Size:0];
-            
-            
-            HI_P2P_S_SNAP_REQ* snap_req = (HI_P2P_S_SNAP_REQ*)malloc(sizeof(HI_P2P_S_SNAP_REQ));
-            snap_req->u32Channel = 0;
-            snap_req->u32Stream = HI_P2P_STREAM_2;
-            
-            [self sendIOCtrl:HI_P2P_GET_SNAP Data:(char *)snap_req Size:sizeof(HI_P2P_S_SNAP_REQ)];
-            
+            if (!isSnapshot) {
+                isSnapshot = YES;
+                
+                [self sendIOCtrl:HI_P2P_GET_FUNCTION Data:(char *)nil Size:0];
+                
+                
+                HI_P2P_S_SNAP_REQ* snap_req = (HI_P2P_S_SNAP_REQ*)malloc(sizeof(HI_P2P_S_SNAP_REQ));
+                snap_req->u32Channel = 0;
+                snap_req->u32Stream = HI_P2P_STREAM_2;
+                
+                [self sendIOCtrl:HI_P2P_GET_SNAP Data:(char *)snap_req Size:sizeof(HI_P2P_S_SNAP_REQ)];
+                
+            }
+
         }
+        
         
 //        ListReq *listReq = [[ListReq alloc] init];
 //        [self request:HI_P2P_PB_QUERY_START dson:[self dic:listReq]];
@@ -1015,7 +1024,7 @@
 - (NSString *)state {
     
     if ([self getConnectState] == CAMERA_CONNECTION_STATE_LOGIN) {
-        return NSLocalizedString(@"Login", nil);
+        return NSLocalizedString(@"Online", nil);
     }
     
 //    if ([self getConnectState] == CAMERA_CONNECTION_STATE_CONNECTED) {
@@ -1023,7 +1032,7 @@
 //    }
     
     if ([self getConnectState] == CAMERA_CONNECTION_STATE_CONNECTING) {
-        return NSLocalizedString(@"Connecting", nil);
+        return NSLocalizedString(@"Connecting...", nil);
     }
     
     if ([self getConnectState] == CAMERA_CONNECTION_STATE_DISCONNECTED) {

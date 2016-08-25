@@ -111,13 +111,13 @@
     if (section == 0) {
         
         if (row == 0) {
-            cell.textLabel.text = INTERSTR(@"Device time");
+            cell.textLabel.text = INTERSTR(@"Device Time");
             cell.detailTextLabel.text = INTERSTR(@"Loading");
             cell.detailTextLabel.text = [_timeParam time];
         }
         
         if (row == 1) {
-            cell.textLabel.text = INTERSTR(@"Sync with phone time");
+            cell.textLabel.text = INTERSTR(@"Sync with Phone Time");
             cell.textLabel.textColor = [UIColor blueColor];
         }
         
@@ -126,7 +126,7 @@
     if (section == 1) {
         
         if (row == 0) {
-            cell.textLabel.text = INTERSTR(@"Device time zone");
+            cell.textLabel.text = INTERSTR(@"Device Time Zone");
             cell.detailTextLabel.text = INTERSTR(@"Loading");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             
@@ -140,14 +140,14 @@
         }
         
         if (row == 1) {
-            cell.textLabel.text = INTERSTR(@"Phone time zone");
+            cell.textLabel.text = INTERSTR(@"Phone Time Zone");
             
             NSTimeZone *czone = [NSTimeZone systemTimeZone];
             cell.detailTextLabel.text = czone.abbreviation;
         }
         
         if (row == 2) {
-            cell.textLabel.text = INTERSTR(@"Set device time zone");
+            cell.textLabel.text = INTERSTR(@"Saving Time Zone For Device");
             cell.textLabel.textColor = [UIColor blueColor];
         }
 
@@ -193,7 +193,7 @@
             if (SystemVersion >= 8.0) {
                 
                 
-                [self presentAlertTitle:nil message:INTERSTR(@"Set device time zone will reboot device") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
+                [self presentAlertTitle:nil message:INTERSTR(@"Set Device Time Zone will REBOOT device") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
                     
                     [weakSelf.camera request:HI_P2P_SET_TIME_ZONE dson:[weakSelf.camera dic:_timeZone]];
                     

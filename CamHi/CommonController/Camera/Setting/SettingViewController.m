@@ -35,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = NSLocalizedString(@"Camera Settings", nil);
+    self.title = NSLocalizedString(@"Camera Setting", nil);
     
     [self setupDataArray];
     [self.view addSubview:self.tableView];
@@ -138,63 +138,63 @@
         
         
         [self.dataArray addObject:@"EditPasswordViewController"];
-        [self.titleArr addObject:NSLocalizedString(@"EditPassword", nil)];
+        [self.titleArr addObject:NSLocalizedString(@"Edit Password", nil)];
         
         
         //AlarmSettingViewController
         [self.dataArray addObject:@"AlarmSettingViewController"];
-        [self.titleArr addObject:NSLocalizedString(@"Motion", nil)];
+        [self.titleArr addObject:NSLocalizedString(@"Alarm Setting", nil)];
 
         
         //AlarmLinkViewController
         [self.dataArray addObject:@"AlarmLinkViewController"];
-        [self.titleArr addObject:NSLocalizedString(@"AlarmLink", nil)];
+        [self.titleArr addObject:NSLocalizedString(@"Action with Alarm", nil)];
 
         //TimeRecordViewController
         if ([self.camera getCommandFunction:HI_P2P_GET_REC_AUTO_SCHEDULE] && [self.camera getCommandFunction:HI_P2P_GET_REC_AUTO_PARAM]) {
             [self.dataArray addObject:@"TimeRecordViewController"];
-            [self.titleArr addObject:NSLocalizedString(@"TimeRecord", nil)];
+            [self.titleArr addObject:NSLocalizedString(@"Timing Record", nil)];
         }
 
         //AudioViewController
         if ([self.camera getCommandFunction:HI_P2P_GET_AUDIO_ATTR]) {
             [self.dataArray addObject:@"AudioViewController"];
-            [self.titleArr addObject:NSLocalizedString(@"Audio", nil)];
+            [self.titleArr addObject:NSLocalizedString(@"Audio Setting", nil)];
         }
 
         //VideoSetViewController
         if ([self.camera getCommandFunction:HI_P2P_GET_VIDEO_PARAM] &&[self.camera getCommandFunction:HI_P2P_GET_VIDEO_CODE]) {
             [self.dataArray addObject:@"VideoSetViewController"];
-            [self.titleArr addObject:NSLocalizedString(@"Video", nil)];
+            [self.titleArr addObject:NSLocalizedString(@"Video Setting", nil)];
         }
         
         
         //WifiViewController
         [self.dataArray addObject:@"WifiViewController"];
-        [self.titleArr addObject:NSLocalizedString(@"Wifi", nil)];
+        [self.titleArr addObject:NSLocalizedString(@"Wi-Fi Setting", nil)];
         
         
         //SDCardViewController
         [self.dataArray addObject:@"SDCardViewController"];
-        [self.titleArr addObject:NSLocalizedString(@"SDCard", nil)];
+        [self.titleArr addObject:NSLocalizedString(@"SD Card Setting", nil)];
 
         
         //DeviceTimeViewController
         [self.dataArray addObject:@"DeviceTimeViewController"];
-        [self.titleArr addObject:NSLocalizedString(@"DeviceTime", nil)];
+        [self.titleArr addObject:NSLocalizedString(@"Time Setting", nil)];
         
         
         //EmailViewController
         if ([self.camera getCommandFunction:HI_P2P_SET_EMAIL_PARAM_EXT]) {
             [self.dataArray addObject:@"EmailViewController"];
-            [self.titleArr addObject:NSLocalizedString(@"Email", nil)];
+            [self.titleArr addObject:NSLocalizedString(@"Email Setting", nil)];
         }
 
         
         //FTPViewController
         if ([self.camera getCommandFunction:HI_P2P_GET_FTP_PARAM_EXT]) {
             [self.dataArray addObject:@"FTPViewController"];
-            [self.titleArr addObject:NSLocalizedString(@"FTPServer", nil)];
+            [self.titleArr addObject:NSLocalizedString(@"FTP Setting", nil)];
         }
         
         
@@ -202,13 +202,13 @@
         //FTPViewController
         if ([self.camera getCommandFunction:HI_P2P_SET_RESET] || [self.camera getCommandFunction:HI_P2P_SET_REBOOT]) {
             [self.dataArray addObject:@"SystemViewController"];
-            [self.titleArr addObject:NSLocalizedString(@"System", nil)];
+            [self.titleArr addObject:NSLocalizedString(@"System Setting", nil)];
         }
 
 
         //DeviceInfoViewController
         [self.dataArray addObject:@"DeviceInfoViewController"];
-        [self.titleArr addObject:NSLocalizedString(@"DeviceInformation", nil)];
+        [self.titleArr addObject:NSLocalizedString(@"Device Information", nil)];
 
         
         

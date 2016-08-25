@@ -1,0 +1,791 @@
+/*
+ Localizable.strings
+ CamHi
+ 
+ Created by HXjiang on 16/7/11.
+ Copyright © 2016年 JiangLin. All rights reserved.
+ */
+
+
+
+
+
+
+
+/* No comment provided by engineer. */
+"1-25 fps" = "1-25 fps";
+
+/* No comment provided by engineer. */
+"1-30 fps" = "1-30 fps";
+
+/* No comment provided by engineer. */
+"1-6" = "1-6";
+
+/* No comment provided by engineer. */
+"15 - 900 seconds" = "15 - 900 sekunden";
+
+/* No comment provided by engineer. */
+"15 - 600 seconds" = "15 - 600 sekunden";
+
+/* No comment provided by engineer. */
+"32-6144 kbps" = "32-6144 kbps";
+
+/* No comment provided by engineer. */
+"50Hz" = "50Hz";
+
+/* No comment provided by engineer. */
+"60Hz" = "60Hz";
+
+
+/* No comment provided by engineer. */
+"admin" = "admin";
+
+
+/* No comment provided by engineer. */
+"Alarm Recording" = "Die Alarmaufzeichnung";
+
+/* No comment provided by engineer. */
+"Alarm Setting" = "Alarm-Einstellung";
+
+/* No comment provided by engineer. */
+"Alaska;" = "Alaska;";
+
+/* No comment provided by engineer. */
+"All Day" = "Gesamter Tag";
+
+/* No comment provided by engineer. */
+"All Recordings" = "Alle Aufnahmen";
+
+/* No comment provided by engineer. */
+"Atlantic Time(Canada);" = "Atlantic Time(Canada);";
+
+/* No comment provided by engineer. */
+"Audio Setting" = "Audio-Einstellung";
+
+/* No comment provided by engineer. */
+"Authentication" = "Authentifizierung";
+
+/* No comment provided by engineer. */
+"Azores;Cape Verde;" = "Azores;Cape Verde;";
+
+/* No comment provided by engineer. */
+"Back" = "Zurück";
+
+/* No comment provided by engineer. */
+"Baku;Tbilisi;Abu Dhabi;Mascot;" = "Baku;Tbilisi;Abu Dhabi;Muscat;";
+
+/* No comment provided by engineer. */
+"Bangkok;Hanoi;Jakarta;" = "Bangkok;Hanoi;Jakarta;";
+
+/* No comment provided by engineer. */
+"Beijing;Singapore;Hongkong;Taipei;" = "Beijing;Singapore;Hongkong;Taipei;";
+
+/* No comment provided by engineer. */
+"Bit Rate" = "Bitrate";
+
+/* No comment provided by engineer. */
+"Call" = "Anruf";
+
+
+/* No comment provided by engineer. */
+"Camera Account can not be empty" = "Kamera-Konto darf nicht leer sein";
+
+/* No comment provided by engineer. */
+"Camera Name" = "Kamera Name";
+
+/* No comment provided by engineer. */
+"Camera Name can not be empty" = "Das Namenfeld darf nicht leer sein.";
+
+/* No comment provided by engineer. */
+"Camera Password" = "Kamera-Passwort";
+
+/* No comment provided by engineer. */
+"Camera Password can not be empty" = "Kamera-Passwort darf nicht leer sein";
+
+/* No comment provided by engineer. */
+"Camera UID" = "Kamera-UID";
+
+/* No comment provided by engineer. */
+"Camera UID can not be empty" = "Kamera-UID darf nicht leer sein";
+
+/* No comment provided by engineer. */
+"Can't change quality while Speaking" = "Qualität kann während dem Sprechen nicht geändert werden";
+
+/* No comment provided by engineer. */
+"Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Central Time(USA or Canada);" = "Central Time(USA or Canada);";
+
+/* No comment provided by engineer. */
+"Confirm" = "Bestätigen";
+
+/* No comment provided by engineer. */
+"Confirm Password" = "Passwort bestätigen";
+
+/* No comment provided by engineer. */
+"Connect Failed" = "Verbindung fehlgeschlagen";
+
+/* No comment provided by engineer. */
+"Connect Timeout" = "Verbindungszeit Abgelaufen";
+
+/* No comment provided by engineer. */
+"Connecting..." = "Verbinden...";
+
+/* No comment provided by engineer. */
+"Current Users" = "Aktuelle Benutzer";
+
+/* No comment provided by engineer. */
+"Current Wi-Fi" = "Aktuelles WLAN";
+
+/* No comment provided by engineer. */
+"Custom" = "Benutzerdefiniert";
+
+/* No comment provided by engineer. */
+"Dakar;Alma Ata;Novosibirsk;Astana;" = "Dakar;Alma Ata;Novosibirsk;Astana;";
+
+/* No comment provided by engineer. */
+"Daylight Saving Time" = "Sommer-/Winterzeitumstellung";
+
+/* No comment provided by engineer. */
+"Delete" = "Löschen";
+
+/* No comment provided by engineer. */
+"Delete Photo" = "Foto löschen";
+
+/* No comment provided by engineer. */
+"Delete?" = "Löschen";
+
+/* No comment provided by engineer. */
+"Device ID" = "Geräte-ID";
+
+/* No comment provided by engineer. */
+"Device Information" = "Gerätedaten";
+
+/* No comment provided by engineer. */
+"Device on LAN:" = "Gerät im LAN:";
+
+
+
+/* No comment provided by engineer. */
+"Device Time Zone" = "Zeitzoneneinstellung für das Gerät";
+
+/* No comment provided by engineer. */
+"Device Time" = "Gerätezeit";
+
+/* No comment provided by engineer. */
+"Disconnected" = "Getrennt";
+
+/* No comment provided by engineer. */
+"Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"DNS" = "DNS";
+
+/* No comment provided by engineer. */
+"Do you hear the sound from camera?" = "Hören Sie den Ton von der Kamera?";
+
+/* No comment provided by engineer. */
+"Done" = "Fertig";
+
+/* No comment provided by engineer. */
+"Duration" = "Dauer";
+
+/* No comment provided by engineer. */
+"Duration must between 15 to 900" = "Dauer muss zwischen 15 - 900 sein";
+
+"Duration must between 15 to 600" = "Dauer Mastes zwischen 15 bis 600";
+
+/* No comment provided by engineer. */
+"Eastern Time(USA or Canada);" = "Eastern Time(USA or Canada);";
+
+
+/* No comment provided by engineer. */
+"Edit Password" = "Passwort bearbeiten";
+
+/* No comment provided by engineer. */
+"Edit Succeed" = "Bearbeiten erfolgreich";
+
+/* No comment provided by engineer. */
+
+
+/* No comment provided by engineer. */
+"Email Photo" = "Foto per Email versenden";
+
+/* No comment provided by engineer. */
+"Email Setting" = "E-Mail-Einstellung";
+
+/* No comment provided by engineer. */
+"Failed to save photo to camera roll" = "Fehler beim Speichern des Fotos auf Kamerarolle.";
+
+/* No comment provided by engineer. */
+"First Stream" = "1. Videokanal (Stream)";
+
+/* No comment provided by engineer. */
+"Focus in" = "konzentrieren +";
+
+/* No comment provided by engineer. */
+"Focus out" = "konzentrieren -";
+
+/* No comment provided by engineer. */
+"Format command will ERASE all data of SDCard" = "Beim Formatieren werden alle Daten auf der SD-Karte GELÖSCHT.";
+
+/* No comment provided by engineer. */
+"Format SD Card" = "SD-Karte formatieren";
+
+/* No comment provided by engineer. */
+"Format Succeed" = "SD-Karte erfolgreich formatiert.";
+
+/* No comment provided by engineer. */
+"Frame rate" = "Bildwiederholrate";
+
+/* No comment provided by engineer. */
+"Free size" = "Freier Speicherplatz";
+
+/* No comment provided by engineer. */
+"FTP Server Address" = "FTP-Server";
+
+/* No comment provided by engineer. */
+"FTP Setting" = "FTP";
+
+/* No comment provided by engineer. */
+"Full-time Recording" = "Vollzeit-Aufnahme";
+
+/* No comment provided by engineer. */
+"Gateway" = "Gateway";
+
+/* No comment provided by engineer. */
+"Guam;Melbourne;Sydney;" = "Guam;Melbourne;Sydney;";
+
+/* No comment provided by engineer. */
+"Hawaii;" = "Hawaii;";
+
+/* No comment provided by engineer. */
+"High" = "Hoch";
+
+/* No comment provided by engineer. */
+//"High" = "hoch";
+
+/* No comment provided by engineer. */
+"Snap Number" = "Schnappschuss-Nummer";
+
+/* No comment provided by engineer. */
+"Information" = "Information";
+
+/* No comment provided by engineer. */
+"Input Type" = "Eingabetyp";
+
+/* No comment provided by engineer. */
+"Input Volume" = "Eingangslautstärke";
+
+/* No comment provided by engineer. */
+"IO Alarm" = "E/A-Alarm";
+
+/* No comment provided by engineer. */
+"IP Address" = "IP-Adresse";
+
+/* No comment provided by engineer. */
+"Key" = "Passwort";
+
+/* No comment provided by engineer. */
+"LAN" = "LAN";
+
+/* No comment provided by engineer. */
+"Line In" = "Line-in";
+
+/* No comment provided by engineer. */
+"Loading" = "Laden";
+
+/* No comment provided by engineer. */
+"London;Iceland;Lisbon;" = "London;Iceland;Lissabon;";
+
+/* No comment provided by engineer. */
+"Low" = "Niedrig";
+
+/* No comment provided by engineer. */
+//"Low" = "niedrig";
+
+/* No comment provided by engineer. */
+"Magadan;New Caledonia;Solomon Islands;  " = "Magadan;New Caledonia;Solomon Islands;  ";
+
+/* No comment provided by engineer. */
+"sender email address" = "Mail Access";
+
+/* No comment provided by engineer. */
+"Manual Recording" = "Die Aufnahme manuell starten";
+
+/* No comment provided by engineer. */
+"Medium" = "Mittel";
+
+/* No comment provided by engineer. */
+"Mic" = "Mikrofon";
+
+/* No comment provided by engineer. */
+"MID" = "MID";
+
+/* No comment provided by engineer. */
+"Mid-Atlantic;" = "Mittlerer-Atlantik;";
+
+/* No comment provided by engineer. */
+"Midway Islands;Samoa;" = "Midway Islands;Samoa;";
+
+/* No comment provided by engineer. */
+"Moscow;Nairobi;Riyadh;" = "Moskau;Nairobi;Riyadh;";
+
+/* No comment provided by engineer. */
+"Motion Detection" = "Bewegungserkennung";
+
+/* No comment provided by engineer. */
+"Level" = "Ebene";
+
+/* No comment provided by engineer. */
+"Mountain Time(USA or Canada);" = "Mountain Time(USA or Canada);";
+
+
+
+/* No comment provided by engineer. */
+"Network" = "Netzwerk";
+
+/* No comment provided by engineer. */
+"New" = "Neu";
+
+/* No comment provided by engineer. */
+"New Delhi;Islamabad;" = "New Delhi;Islamabad;";
+
+/* No comment provided by engineer. */
+"New Password" = "Neues Passwort";
+
+/* No comment provided by engineer. */
+"NO" = "Kein";
+
+/* No comment provided by engineer. */
+"No Device on LAN" = "Kein Gerät im LAN";
+
+/* No comment provided by engineer. */
+"No Photo Available" = "Kein Foto verfügbar";
+
+/* No comment provided by engineer. */
+"No Result Found" = "Kein Ergebnis gefunden";
+
+/* No comment provided by engineer. */
+"No Video Recording" = "Keine Videoaufnahme";
+
+/* No comment provided by engineer. */
+"None" = "Keine";
+
+/* No comment provided by engineer. */
+"OK" = "OK";
+
+/* No comment provided by engineer. */
+"Old" = "Alt";
+
+/* No comment provided by engineer. */
+"Old Password" = "Altes Passwort";
+
+/* No comment provided by engineer. */
+"Online" = "Online";
+
+
+/* No comment provided by engineer. */
+"out of range" = "außer Reichweite";
+
+/* No comment provided by engineer. */
+"Output Volume" = "Ausgangslautstärke";
+
+/* No comment provided by engineer. */
+"Pacific Time(USA or Canada);" = "Pacific Time(USA or Canada);";
+
+/* No comment provided by engineer. */
+"Paris;Rome;Berlin;Madrid;" = "Paris;Rom;Berlin;Madrid;";
+
+"Israel;Athens;Cairo;Jerusalem;" = "Israel;Athens;Cairo;Jerusalem;";
+
+/* No comment provided by engineer. */
+"Passive Mode" = "Passiv-Modus";
+
+/* No comment provided by engineer. */
+"Password" = "Passwort";
+
+/* No comment provided by engineer. */
+"Password" = "Passwort";
+
+/* No comment provided by engineer. */
+"Password can not be empty" = "Das Passwortfeld darf nicht leer sein.";
+
+/* No comment provided by engineer. */
+"Path" = "pfad";
+
+/* No comment provided by engineer. */
+"Path" = "Pfad";
+
+/* No comment provided by engineer. */
+"Phone Time Zone" = "Zeitzone Telefon";
+
+/* No comment provided by engineer. */
+"Plan Recording" = "Aufnahme planen";
+
+/* No comment provided by engineer. */
+"Please connect Wi-Fi" = "Bitte verbinden WIFI";
+
+/* No comment provided by engineer. */
+"Please input the password" = "Bitte geben Sie das Passwort ein.";
+
+/* No comment provided by engineer. */
+"Please press and hold the reset button for 10 seconds" = "Bitte halten Sie die Reset-Taste für 10 Sekunden gedrückt";
+
+/* No comment provided by engineer. */
+"Please select photos to delete." = "Bitte wählen Sie Fotos zu löschen.";
+
+/* No comment provided by engineer. */
+"Wait for connecting" = "Bitte warten Sie auf connect";
+
+/* No comment provided by engineer. */
+"Choose a Network" = "Ein Netzwerk auswählen";
+
+/* No comment provided by engineer. */
+"Quality" = "Qualität";
+
+
+/* No comment provided by engineer. */
+"Record Timer" = "Zeitgesteuerte Aufnahme";
+
+
+/* No comment provided by engineer. */
+"Encrypt Type" = "Verschlüsselungstyp";
+
+/* No comment provided by engineer. */
+"Save Photo" = "Foto speichern";
+
+/* No comment provided by engineer. */
+"Save Snapshots on FTP Server" = "Alarm, um Bilder für den FTP-Server zu erfassen";
+
+
+
+/* No comment provided by engineer. */
+"Save Video on FTP Server" = "Video auf dem FTP-Server speichern";
+
+/* No comment provided by engineer. */
+"Saving Time Zone For Device" = "Zeitzone für Gerät speichern";
+
+
+/* No comment provided by engineer. */
+"SD Card Setting" = "SD Karteneinstellung";
+
+/* No comment provided by engineer. */
+"SD Card Failed" = "Fehler SD-Karte";
+
+/* No comment provided by engineer. */
+"SDK Version" = "SDK-Version";
+
+/* No comment provided by engineer. */
+"Second Stream" = "2. Videokanal (Stream)";
+
+/* No comment provided by engineer. */
+"Send To" = "Die E-Mail senden an";
+
+/* No comment provided by engineer. */
+"receiver email address" = "E-Mail-Adresse des Empfängers";
+
+/* No comment provided by engineer. */
+"Sender" = "Sender-Email";
+
+/* No comment provided by engineer. */
+"Server Addr." = "Serveradresse";
+
+/* No comment provided by engineer. */
+"server port" = "Server-Port";
+
+/* No comment provided by engineer. */
+"Server Port" = "Server Port";
+
+/* No comment provided by engineer. */
+"Set" = "Set";
+
+/* No comment provided by engineer. */
+"Set Device Time Zone Successfully" = "Einstellen der Gerätezeitzone erfolgreich";
+
+/* No comment provided by engineer. */
+"Set Device Time Zone will REBOOT device" = "Gerätezeitzone einstellen wird Gerät neu starten";
+
+/* No comment provided by engineer. */
+"Set Device Time Successfully" = "Einstellen der Gerätezeit erfolgreich";
+
+/* No comment provided by engineer. */
+"Set Succeed" = "Einstellen Erfolg";
+
+/* No comment provided by engineer. */
+"Setup data will be initialized. Are you sure to reset?" = "Setup-Daten werden initialisiert. Sind Sie sicher, dass Sie zurücksetzen wollen?";
+
+/* No comment provided by engineer. */
+"signal" = "signal";
+
+/* No comment provided by engineer. */
+"SMTP Server" = "SMTP-Server";
+
+/* No comment provided by engineer. */
+"SMTP server address" = "SMTP-Server-Adresse";
+
+/* No comment provided by engineer. */
+"Snapshot" = "Schnappschuss";
+
+/* No comment provided by engineer. */
+"Soft Version" = "Softwareversion";
+
+/* No comment provided by engineer. */
+"Soft Version" = "Softwareversion";
+
+/* No comment provided by engineer. */
+"SSID" = "SSID";
+
+/* No comment provided by engineer. */
+"SSID can not be empty" = "SSID kann nicht leer sein";
+
+/* No comment provided by engineer. */
+"SSL" = "SSL";
+
+/* No comment provided by engineer. */
+"STARTTLS" = "STARTTLS";
+
+/* No comment provided by engineer. */
+"Subject" = "Betreff";
+
+/* No comment provided by engineer. */
+"Subnet Mask" = "Subnetzmaske";
+
+/* No comment provided by engineer. */
+"Save Succeed" = "Speichern erfolgreich";
+
+/* No comment provided by engineer. */
+"Sync with Phone Time" = "Synchronisierung mit Telefonzeit";
+
+/* No comment provided by engineer. */
+"System Setting" = "Systemeinstellungen";
+
+/* No comment provided by engineer. */
+"Test FTP Settings" = "Test-FTP-Einstellungen";
+
+/* No comment provided by engineer. */
+"Test Failed" = "Test......Fehlerhaft!";
+
+/* No comment provided by engineer. */
+"Test Succeed" = "Test......Erfolgreich!";
+
+/* No comment provided by engineer. */
+"Are you sure to reboot camera?" = "Sind Sie sicher, dass Sie die Kamera neu starten wollen?";
+
+/* No comment provided by engineer. */
+"The Name/UID/Password can not be empty" = "Name/UID/Passwort darf nicht leer sein";
+
+/* No comment provided by engineer. */
+"New password and confirm password do not match" = "Das neue Passwort stimmt nicht mit dem Bestätigungspasswort überein.";
+
+/* No comment provided by engineer. */
+"Old password incorrect" = "Das alte Passwort ist falsch";
+
+/* No comment provided by engineer. */
+"This camera already existed" = "Dieses Gerät existiert bereits.";
+
+
+/* No comment provided by engineer. */
+"TLS" = "TLS";
+
+/* No comment provided by engineer. */
+"Tokyo;Seoul;Yakutsk;" = "Tokyo;Seoul;Yakutsk;";
+
+/* No comment provided by engineer. */
+"Total Size" = "Gesamtspeicherkapazität";
+
+/* No comment provided by engineer. */
+"UID" = "UID";
+
+/* No comment provided by engineer. */
+"Unknown" = "Unbekannt";
+
+/* No comment provided by engineer. */
+"Unknown Device" = "Unbekanntes Gerät";
+
+/* No comment provided by engineer. */
+"User name" = "Benutzername";
+
+
+/* No comment provided by engineer. */
+"Version" = "Version";
+
+/* No comment provided by engineer. */
+"Frequency" = "Frequenz";
+
+/* No comment provided by engineer. */
+"Video Lost" = "Video verloren";
+
+/* No comment provided by engineer. */
+"Video Resume" = "Video fortsetzen";
+
+/* No comment provided by engineer. */
+"Video Setting" = "Video-Einstellungen";
+
+/* No comment provided by engineer. */
+"Warning" = "Warnung";
+
+/* No comment provided by engineer. */
+"Wellington;Auckland;fiji" = "Wellington;Auckland;fiji";
+
+
+/* No comment provided by engineer. */
+"Wi-Fi Setting" = "Wifi Einstellung";
+
+
+/* No comment provided by engineer. */
+"Within a day" = "Innerhalb eines Tages";
+
+/* No comment provided by engineer. */
+"Within a week" = "Innerhalb einer Woche";
+
+/* No comment provided by engineer. */
+"Within an hour" = "Innerhalb einer Stunde";
+
+/* No comment provided by engineer. */
+"Within half day" = "Innerhalb eines halben Tages";
+
+/* No comment provided by engineer. */
+"WLAN" = "WLAN";
+
+/* No comment provided by engineer. */
+"Wrong Password" = "Falsches Passwort";
+
+/* No comment provided by engineer. */
+"YES" = "Ja";
+
+/* No comment provided by engineer. */
+"You must input numbers" = "Sie müssen Zahlen eingeben";
+
+/* No comment provided by engineer. */
+"Your email account is disabled or removed, please check." = "Ihr E-Mail-Konto wurde deaktiviert oder entfernt, überprüfen Sie bitte Ihr E-Mail-Konto.";
+
+/* No comment provided by engineer. */
+"Zoom in" = "Hineinzoomen";
+
+/* No comment provided by engineer. */
+"Zoom out" = "Herauszoomen";
+
+/* No comment provided by engineer. */
+"Exit" = "E-Mail-Einstellungen";
+
+/* No comment provided by engineer. */
+"Mirror" = "Spiegeln";
+
+/* No comment provided by engineer. */
+"Flip" = "Umkehren";
+
+/* No comment provided by engineer. */
+"Message" = "Nachricht";
+
+/* No comment provided by engineer. */
+"Snapshot Saved" = "Gespeichert";
+
+
+
+/* No comment provided by engineer. */
+"REC" = "REC";
+/* No comment provided by engineer. */
+"Turn on Alarm Push" = "Turn on Alarm Push";
+/* No comment provided by engineer. */
+"Turn off Alarm Push" = "Schalten Sie Alarm drücken";
+/* No comment provided by engineer. */
+"Successful" = "Erfolgreich";
+/* No comment provided by engineer. */
+"Failed" = "Fehlerhaft";
+/* No comment provided by engineer. */
+"Downloading" = "Herunterladen";
+/* No comment provided by engineer. */
+"Download Finished" = "Download abgeschlossen";
+/* No comment provided by engineer. */
+"Press and hold to download" = "Gedrückt halten, um herunterzuladen";
+/* No comment provided by engineer. */
+"It is the latest version already" = "Sie haben bereits die neueste Version.";
+/* No comment provided by engineer. */
+"new firmware is available, update?" = "Eine neue Firmware ist verfügbar, möchten Sie aktualisieren?";
+/* No comment provided by engineer. */
+"The camera is upgading, please do not power off and keep the network available." = "Die Kamera wird aktualisiert, bitte nicht abschalten und das Netzwerk verfügbar halten.";
+/* No comment provided by engineer. */
+"Check update" = "Auf Updates prüfen";
+/* No comment provided by engineer. */
+"Test" = "Test";
+
+
+// "HXTabBarController.m"
+/* No comment provided by engineer. */
+"Camera" = "Kamera";
+/* No comment provided by engineer. */
+"camera" = "kamera";
+/* No comment provided by engineer. */
+"picture" = "bild";
+/* No comment provided by engineer. */
+"Local Picture" = "Lokale Bild";
+/* No comment provided by engineer. */
+"video" = "Video";
+/* No comment provided by engineer. */
+"Video Viewing" = "Video-Anzeigen";
+/* No comment provided by engineer. */
+"about" = "Über";
+/* No comment provided by engineer. */
+"About" = "Über";
+/* No comment provided by engineer. */
+"local" = "Lokaler";
+/* No comment provided by engineer. */
+"online" = "online";
+
+
+//     CameraViewController
+/* No comment provided by engineer. */
+"Add Camera" = "Kamera hinzufügen drücken";
+/* No comment provided by engineer. */
+"Add Camera" = "Kamera hinzufügen";
+/* No comment provided by engineer. */
+"Edit" = "Bearbeiten";
+/* No comment provided by engineer. */
+"Done" = "fertig";
+
+
+// Add Camera
+/* No comment provided by engineer. */
+"Name" = "Name";
+/* No comment provided by engineer. */
+"User Name" = "Benutzername";
+/* No comment provided by engineer. */
+"Scan QR Code" = "Scan QR Code";
+/* No comment provided by engineer. */
+"Wireless Installation" = "WIFI Suche";
+/* No comment provided by engineer. */
+"Search Camera from LAN" = "Suche Kamera-UID von LAN";
+/* No comment provided by engineer. */
+"Camera List" = "Kameraliste";
+
+// Camera Setting
+/* No comment provided by engineer. */
+"Camera Setting" = "Einstellungen";
+/* No comment provided by engineer. */
+"Action with Alarm" = "Vorgang bei Alarm";
+/* No comment provided by engineer. */
+"Alarm Notifications" = "Alarmbenachrichtigungen";
+/* No comment provided by engineer. */
+"Alarm SD REC" = "Alarm SD-Aufnahme";
+/* No comment provided by engineer. */
+"E-mail Alarm with Pictures" = "E-Mail-Alarm mit Bildern";
+/* No comment provided by engineer. */
+"Timing Record" = "Zeitgesteuerte Aufnahme";
+/* No comment provided by engineer. */
+"Time Setting" = "Gerätezeiteinstellung";
+/* No comment provided by engineer. */
+"Time Setting" = "Zeiteinstellung";
+/* No comment provided by engineer. */
+"Enable Record" = "Aufnahme aktivieren";
+/* No comment provided by engineer. */
+"Reboot Camera" = "Kamera neu starten";
+/* No comment provided by engineer. */
+"Reset Camera" = "Kamera zurücksetzen";
+/* No comment provided by engineer. */
+"Local Video" = "Lokale Video";
+/* No comment provided by engineer. */
+"Wi-Fi Setting" = "WLAN-Einstellung";
+/* No comment provided by engineer. */
+"Copyright 2016 All Rights Reserved" = "Copyright 2016 All Rights Reserved";

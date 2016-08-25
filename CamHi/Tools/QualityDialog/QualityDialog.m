@@ -39,7 +39,7 @@
         
         _btnHigh = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnHigh.frame = CGRectMake(10,5,80,30);
-        [_btnHigh setTitle:NSLocalizedString(@"high", @"") forState:UIControlStateNormal];
+        [_btnHigh setTitle:NSLocalizedString(@"High", @"") forState:UIControlStateNormal];
         [_btnHigh setBackgroundImage:nil forState:UIControlStateNormal];
         [_btnHigh setBackgroundImage:_imgbg forState:UIControlStateSelected];
         [_btnHigh addTarget:self action:@selector(onClickHigh:) forControlEvents:UIControlEventTouchUpInside];
@@ -52,7 +52,7 @@
         
         _btnLow = [UIButton buttonWithType:UIButtonTypeCustom];
         _btnLow.frame = CGRectMake(10,45,80,30);
-        [_btnLow setTitle:NSLocalizedString(@"low", @"") forState:UIControlStateNormal];
+        [_btnLow setTitle:NSLocalizedString(@"Low", @"") forState:UIControlStateNormal];
         [_btnLow setBackgroundImage:nil forState:UIControlStateNormal];
         [_btnLow setBackgroundImage:_imgbg forState:UIControlStateSelected];
         [_btnLow addTarget:self action:@selector(onClickLow:) forControlEvents:UIControlEventTouchUpInside];

@@ -136,14 +136,14 @@ typedef NS_ENUM(NSInteger, FTPTextField) {
         switch (row) {
             case 0:
                 
-                cell.tfieldDetail.placeholder = INTERSTR(@"Server Address");
+                cell.tfieldDetail.placeholder = INTERSTR(@"Server Addr.");
                 cell.tfieldDetail.text = _ftpParam.strSvr;
                 cell.tfieldDetail.tag = FTPTextFieldServer;
                 
                 break;
             case 1:
                 
-                cell.tfieldDetail.placeholder = INTERSTR(@"Port");
+                cell.tfieldDetail.placeholder = INTERSTR(@"Server Port");
                 cell.tfieldDetail.text = [NSString stringWithFormat:@"%d", _ftpParam.u32Port];
                 cell.tfieldDetail.tag = FTPTextFieldPort;
                 
@@ -198,7 +198,7 @@ typedef NS_ENUM(NSInteger, FTPTextField) {
         }
         
         
-        cell.textLabel.text = INTERSTR(@"Test FTP server settings");
+        cell.textLabel.text = INTERSTR(@"Test FTP Settings");
         cell.textLabel.textColor = [UIColor blueColor];
         
         cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -269,8 +269,8 @@ typedef NS_ENUM(NSInteger, FTPTextField) {
 
 - (NSArray *)titles {
     if (!_titles) {
-        _titles = @[INTERSTR(@"Server Address"), INTERSTR(@"Port"),INTERSTR(@"User Name"),
-                    INTERSTR(@"Password"), INTERSTR(@"Passiveness Mode"), INTERSTR(@"Path")];
+        _titles = @[INTERSTR(@"Server Addr."), INTERSTR(@"Server Port"),INTERSTR(@"User Name"),
+                    INTERSTR(@"Password"), INTERSTR(@"Passive Mode"), INTERSTR(@"Path")];
     }
     return _titles;
 }

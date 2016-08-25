@@ -10,4 +10,7 @@
 
 @interface LiveViewController : ViewController
 
+//@property (nonatomic, copy) void(^gokeGetSnapBlock)(BOOL success);
+
+
 @end

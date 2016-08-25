@@ -359,7 +359,7 @@
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                              delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil
                                                     otherButtonTitles: NSLocalizedString(@"Delete",nil),
-                                  NSLocalizedString(@"Email",nil),
+                                  NSLocalizedString(@"Email Photo",nil),
                                   NSLocalizedString(@"Save", nil),
                                   NSLocalizedString(@"Cancel",nil), nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
@@ -379,7 +379,7 @@
         [self deletePicture];
     }];
     
-    UIAlertAction *actionEmail = [UIAlertAction actionWithTitle:INTERSTR(@"Email") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *actionEmail = [UIAlertAction actionWithTitle:INTERSTR(@"Email Photo") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
         [self emailPhoto];
     }];

@@ -15,19 +15,19 @@
     NSMutableString *result = [NSMutableString string];
     switch (eventType) {
         case EVENT_ALL:
-            [result appendString:NSLocalizedString(@"All recording", @"")];
+            [result appendString:NSLocalizedString(@"All Recording", @"")];
 
             break;
         case EVENT_MANUAL:
-            [result appendString:NSLocalizedString(@"Manual recording", @"")];
+            [result appendString:NSLocalizedString(@"Manual Recording", @"")];
 
             break;
         case EVENT_ALARM:
-            [result appendString:NSLocalizedString(@"Alarm recording", @"")];
+            [result appendString:NSLocalizedString(@"Alarm Recording", @"")];
 
             break;
         case EVEN_PLAN:
-            [result appendString:NSLocalizedString(@"Plan recording", @"")];
+            [result appendString:NSLocalizedString(@"Plan Recording", @"")];
 
             break;
     }
