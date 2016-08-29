@@ -129,7 +129,7 @@ typedef NS_ENUM(NSInteger, FTPTextField) {
         
         
         
-        cell.textLabel.text = self.titles[row];
+        cell.labTitle.text = self.titles[row];
         //cell.labTitle.text = self.titles[row];
         cell.tfieldDetail.delegate = self;
         
@@ -158,6 +158,7 @@ typedef NS_ENUM(NSInteger, FTPTextField) {
             case 3:
                 
                 cell.tfieldDetail.placeholder = INTERSTR(@"Password");
+                cell.tfieldDetail.secureTextEntry = YES;
                 cell.tfieldDetail.text = _ftpParam.strPasswd;
                 cell.tfieldDetail.tag = FTPTextFieldPassword;
 

@@ -221,7 +221,7 @@
 }
 
 
-
+//保存录像
 + (BOOL)saveRecordingForCamera:(Camera *)mycam {
   
     GBase *base = [GBase sharedBase];
@@ -242,6 +242,34 @@
     
     return YES;
 }
+
+//删除录像
++ (void)deleteRecording:(NSString *)recordingPath camera:(Camera *)mycam {
+    
+    GBase *base = [GBase sharedBase];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];//去处需要的路径
+    
+    NSString *strPath = [documentsDirectory stringByAppendingPathComponent:mycam.uid];
+    
+    //更改到待操作的目录下
+    [fileManager changeCurrentDirectoryPath: strPath];
+    //删除
+    [fileManager removeItemAtPath:[ NSString stringWithFormat:@"%@.mp4", recordingPath] error:nil];
+    
+    
+    
+    if (base.db != NULL) {
+        if (![base.db executeUpdate:@"DELETE FROM video where file_path=?", recordingPath]){
+            NSLog(@"Fail to remove device from database.");
+        }
+    }
+
+}
+
 
 
 - (NSString *)recordingFileName:(Camera *)mycam {

@@ -40,6 +40,15 @@ typedef NS_ENUM(NSInteger, CommandType) {
     self.tableView.backgroundColor = RGBA_COLOR(220, 220, 220, 0.5);
 }
 
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [self.camera setReconnectTimes:3];
+    [HXProgress dismiss];
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -109,10 +118,26 @@ typedef NS_ENUM(NSInteger, CommandType) {
         
         LOG(@">>> connection:%@", connection);
         if (state == CAMERA_CONNECTION_STATE_DISCONNECTED) {
-            [weakSelf.camera connect];
+            //[HXProgress dismiss];
+            //[weakSelf.camera connect];
         }
         
+        
+        
+        /*
+         *  重启或者恢复出厂设置时都会增加重连次数以保证能成功连接
+         *  连接成功或者密码错误时需将连接次数恢复至默认值(3次)后返回主界面
+         */
         if (state == CAMERA_CONNECTION_STATE_LOGIN) {
+            
+            [weakSelf.camera setReconnectTimes:3];
+            [HXProgress dismiss];
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }
+        
+        if (state == CAMERA_CONNECTION_STATE_WRONG_PASSWORD) {
+         
+            [weakSelf.camera setReconnectTimes:3];
             [HXProgress dismiss];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }
@@ -184,7 +209,14 @@ typedef NS_ENUM(NSInteger, CommandType) {
     
     if (buttonIndex == 1) {
         
+        /*
+         *  重启或者恢复出厂设置或者远程升级时增加重连次数以保证能连接成功
+         *  连接成功后需修改为默认的3次
+         */
+
         if (alertView.tag == 0) {
+            
+            [self.camera setReconnectTimes:10];
             [self.camera request:HI_P2P_SET_REBOOT dson:nil];
             self.commandType = CommandTypeReboot;
         }
@@ -192,12 +224,14 @@ typedef NS_ENUM(NSInteger, CommandType) {
         
         if (alertView.tag == 1) {
          
+            [self.camera setReconnectTimes:10];
             [self.camera request:HI_P2P_SET_RESET dson:nil];
             self.commandType = CommandTypeReset;
         }
         
         if (alertView.tag == 1) {
             
+            [self.camera setReconnectTimes:20];
             [self.camera request:HI_P2P_SET_DOWNLOAD dson:[self.camera dic:_download]];
         }
 
@@ -217,6 +251,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
         
         [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"Are you sure to reboot camera?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
             
+            [self.camera setReconnectTimes:10];
             [weakSelf.camera request:HI_P2P_SET_REBOOT dson:nil];
             weakSelf.commandType = CommandTypeReboot;
 
@@ -238,6 +273,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
         
         [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"Setup data will be initialized. Are you sure to reset?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
             
+            [self.camera setReconnectTimes:10];
             [weakSelf.camera request:HI_P2P_SET_RESET dson:nil];
             weakSelf.commandType = CommandTypeReset;
 
@@ -415,6 +451,8 @@ typedef NS_ENUM(NSInteger, CommandType) {
         
         [self presentAlertTitle:INTERSTR(@"Warning") message:INTERSTR(@"new firmware is available, update?") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
             
+            
+            [self.camera setReconnectTimes:20];
             [self.camera request:HI_P2P_SET_DOWNLOAD dson:[self.camera dic:_download]];
             
         } actionCancelTitle:INTERSTR(@"No") actionCancelBlock:^{

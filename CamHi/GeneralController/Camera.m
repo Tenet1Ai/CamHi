@@ -15,6 +15,7 @@
     BOOL isSnapshot;
 }
 
+@property (nonatomic, copy) NSString *imagePath;
 @property (nonatomic, strong) NSUserDefaults *camDefaults;
 @property (nonatomic, copy) NSString *xingePushKey;
 
@@ -29,16 +30,57 @@
         self.name = name_;
         self.isAlarm = NO;
         
-        
-        //haisi不变。goke由实时画面取图
-        self.image = [UIImage imageNamed:@"videoClip"];
         [self registerIOSessionDelegate:self];
-        
-    
     }
     
     return self;
 }
+
+
+
+//获取截图
+- (UIImage *)image {
+    
+    if ([self fileExistsAtPath:self.imagePath]) {
+        return [UIImage imageWithContentsOfFile:self.imagePath];
+    }
+    else {
+        return [UIImage imageNamed:@"videoClip"];
+    }
+}
+
+
+//保存截图至沙盒
+- (void)saveImage:(UIImage *)image {
+    //[UIImagePNGRepresentation(image) writeToFile:filePath atomically:YES];
+    [UIImageJPEGRepresentation(image, 1) writeToFile:self.imagePath atomically:YES];
+}
+
+//判断一个文件是否存在
+- (BOOL)fileExistsAtPath:(NSString *)filePath {
+    NSFileManager *tFileManager = [NSFileManager defaultManager];
+    return [tFileManager fileExistsAtPath:filePath];
+}
+
+
+//保存图片沙盒路径
+- (NSString *)imagePath {
+    NSString *fileName = [NSString stringWithFormat:@"%@.jpg", self.uid];
+    NSString *filePath = [[self documents] stringByAppendingPathComponent:fileName];
+    return filePath;
+}
+
+//Documents
+- (NSString *)documents {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+}
+
+
+
+
+
+
+
 
 
 
@@ -73,7 +115,6 @@
                 [self sendIOCtrl:HI_P2P_GET_SNAP Data:(char *)snap_req Size:sizeof(HI_P2P_S_SNAP_REQ)];
                 
             }
-
         }
         
         
@@ -102,6 +143,15 @@
 }
 
 
+- (void)receivePlayState:(HiCamera *)camera State:(int)state Width:(int)width Height:(int)height {
+
+    LOG(@">>> uid:%@,  receivePlayState:%d", camera.uid, state);
+    
+    if (_playStateBlock) {
+        _playStateBlock((NSInteger)state);
+    }
+
+}
 
 
 
@@ -480,10 +530,10 @@
 - (void)receiveIOCtrl:(HiCamera *)camera Type:(int)type Data:(char*)data Size:(int)size Status:(int)status {
     LOG(@">>> uid:%@,  receiveIOCtrl type:%d size:%d",camera.uid, type, size);
     
+    
+    //获取截图并保存至沙盒
     if (type == HI_P2P_GET_SNAP) {
         
-        
-        //        dispatch_async(dispatch_get_main_queue(), ^{
         
         HI_P2P_S_SNAP_RESP* snap_resp =(HI_P2P_S_SNAP_RESP*)data;
         
@@ -491,7 +541,6 @@
             snapData = (char*)malloc(snap_resp->u32SnapLen);
             snapPos = 0;
             
-            //                NSLog(@"---- malloc snapData----- ");
         }
         
         if (snap_resp->u32SendLen <=0) {
@@ -500,20 +549,16 @@
         if(size<=0) {
             return;
         }
-        //            NSLog(@"start memcpy--%d",indexxxx);
+        
+        
         memcpy((snapData + snapPos), snap_resp->pSnapBuf, snap_resp->u32SendLen);
         snapPos += snap_resp->u32SendLen;
         if (snapData && snap_resp->u16Flag == 1) {
             
-            NSLog(@"save image----");
-            NSString *imgName = [NSString stringWithFormat:@"%@.jpg", camera.uid];
             NSData *nsdata = [NSData dataWithBytes:snapData   length:snapPos];
             UIImage *image=[[UIImage alloc]initWithData:nsdata];
             
-            self.image = image;
-            
-            
-            [self saveImageToFile:image :imgName];
+            [self saveImage:image];
             
             [self getCMD:type object:nil success:YES];
             
@@ -521,8 +566,7 @@
             snapData = NULL;
         }
     }
-        //        });
-        
+    
     
     
 
@@ -988,36 +1032,12 @@
 
 
 
-- (void)receivePlayState:(HiCamera *)camera State:(int)state Width:(int)width Height:(int)height {
-    LOG(@">>> uid:%@,  receivePlayState:%x", camera.uid, state);
-}
 
 
 
 
 
 
-
-//save snopshot of homepage
-- (NSString *) pathForDocumentsResource:(NSString *) relativePath {
-    
-    static NSString* documentsPath = nil;
-    
-    if (nil == documentsPath) {
-        
-        NSArray* dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        documentsPath = [dirs objectAtIndex:0];
-    }
-    
-    return [documentsPath stringByAppendingPathComponent:relativePath];
-}
-- (void)saveImageToFile:(UIImage *)image :(NSString *)fileName {
-    
-    NSData *imgData = UIImageJPEGRepresentation(image, 1.0f);
-    NSString *imgFullName = [self pathForDocumentsResource:fileName];
-    
-    [imgData writeToFile:imgFullName atomically:YES];
-}
 
 
 #pragma mark - 懒加载
@@ -1182,9 +1202,11 @@
     
     HI_P2P_S_PTZ_PRESET* ptz = (HI_P2P_S_PTZ_PRESET*)malloc(sizeof(HI_P2P_S_PTZ_PRESET));
     ptz->u32Channel = 0;
-    ptz->u32Number = (int)index;
-    ptz->u32Action = (int)action;
+    ptz->u32Number = (HI_U32)number;
+    ptz->u32Action = (HI_U32)action;
 
+    LOG(@"ptz->u32Number:%d, ptz->u32Action:%d", ptz->u32Number, ptz->u32Action)
+    
     [self sendIOCtrl:HI_P2P_SET_PTZ_PRESET Data:(char *)ptz Size:sizeof(HI_P2P_S_PTZ_PRESET)];
     free(ptz);
 }

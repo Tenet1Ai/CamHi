@@ -38,9 +38,12 @@
     t_model->u32Enable      = _u32Enable;
     t_model->Mode           = _Mode.charValue;
     t_model->EncType        = _EncType.charValue;
-    memcpy(t_model->strSSID, [_strSSID cStringUsingEncoding:NSUTF8StringEncoding], 2*_strSSID.length);
-    memcpy(t_model->strKey, [_strKey cStringUsingEncoding:NSUTF8StringEncoding], 2*_strKey.length);
+    memcpy(t_model->strSSID, [_strSSID cStringUsingEncoding:NSUTF8StringEncoding], 32);
+    memcpy(t_model->strKey, [_strKey cStringUsingEncoding:NSUTF8StringEncoding], HI_P2P_NET_LEN);
 
+    //strncpy(t_model->strSSID, [_strSSID cStringUsingEncoding:NSUTF8StringEncoding], 32);
+    //strncpy(t_model->strKey, [_strKey cStringUsingEncoding:NSUTF8StringEncoding], HI_P2P_NET_LEN);
+    
     return t_model;
     
 }

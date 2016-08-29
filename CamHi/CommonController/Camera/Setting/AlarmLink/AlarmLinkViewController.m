@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UISegmentedControl *tsegment;
 @property (nonatomic, strong) __block AlarmLink *model;
 @property (nonatomic, strong) __block SnapAlarm *snapAlarm;
+@property (nonatomic, strong) UILabel *labSnapShot;
 
 @end
 
@@ -176,7 +177,8 @@
             ncell = [[HXCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
         }
 
-        ncell.textLabel.text = NSLocalizedString(@"Snap Number", nil);
+        //ncell.textLabel.text = NSLocalizedString(@"Snap Number", nil);
+        [ncell.contentView addSubview:self.labSnapShot];
         [ncell.contentView addSubview:self.tsegment];
         self.tsegment.selectedSegmentIndex = _snapAlarm.u32Number-1;
         return ncell;
@@ -225,7 +227,16 @@
 }
 
 
-
+- (UILabel *)labSnapShot {
+    if (!_labSnapShot) {
+        _labSnapShot = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 290, 44)];
+        _labSnapShot.text = NSLocalizedString(@"Snap Number", nil);
+        _labSnapShot.font = [UIFont systemFontOfSize:14];
+        _labSnapShot.adjustsFontSizeToFitWidth = YES;
+    }
+    
+    return _labSnapShot;
+}
 
 #pragma mark - lazy load
 - (NSArray *)titles {
@@ -247,7 +258,7 @@
                            NSLocalizedString(@"3", nil)];
         _tsegment = [[UISegmentedControl alloc] initWithItems:items];
         _tsegment.frame = CGRectMake(0, 0, self.view.frame.size.width/2, 30);
-        _tsegment.center = CGPointMake(self.view.frame.size.width/4*3-10, 44);
+        _tsegment.center = CGPointMake(self.view.frame.size.width/2, 44+44/2);
         //        _tsegment.backgroundColor = [UIColor whiteColor];
         _tsegment.tintColor = [UIColor grayColor];
         [_tsegment addTarget:self action:@selector(tsegmentAction:) forControlEvents:UIControlEventValueChanged];

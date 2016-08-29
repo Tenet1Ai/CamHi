@@ -10,7 +10,7 @@
 
 @protocol CameraListDelegate <NSObject>
 
-@optional
+//@optional
 - (void)didSelectCamera:(NSString *)uid;
 
 

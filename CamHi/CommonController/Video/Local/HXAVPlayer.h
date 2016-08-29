@@ -52,7 +52,7 @@
 - (void)fastBack;
 
 /*
- *  快进活快退 
+ *  快进或快退 
  */
 - (void)moveProfress:(CGFloat)progress;
 

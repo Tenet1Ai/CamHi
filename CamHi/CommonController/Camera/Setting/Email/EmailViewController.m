@@ -143,14 +143,14 @@ typedef NS_ENUM(NSInteger, EmailTextField) {
 
         
         
-        cell.textLabel.text = self.titles[row];
-        //cell.labTitle.text = self.titles[row];
+        //cell.textLabel.text = self.titles[row];
+        cell.labTitle.text = self.titles[row];
         cell.tfieldDetail.delegate = self;
         
         switch (row) {
             case 0:
                 
-                cell.tfieldDetail.placeholder = INTERSTR(@"SMTP server address");
+                cell.tfieldDetail.placeholder = INTERSTR(@"SMTP Server");
                 cell.tfieldDetail.text = _emailParam.strSvr;
                 cell.tfieldDetail.tag = EmailTextFieldSMTPServer;
                 
@@ -186,6 +186,7 @@ typedef NS_ENUM(NSInteger, EmailTextField) {
             case 5:
                 
                 cell.tfieldDetail.placeholder = INTERSTR(@"Password");
+                cell.tfieldDetail.secureTextEntry = YES;
                 cell.tfieldDetail.text = _emailParam.strPasswd;
                 cell.tfieldDetail.tag = EmailTextFieldPassword;
 

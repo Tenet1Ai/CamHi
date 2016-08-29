@@ -159,6 +159,8 @@
     if (!_tsliderInput) {
         _tsliderInput = [self setupSlider];
         _tsliderInput.tag = TSLIDERINPUT;
+        //goke最高输入为16
+        _tsliderInput.maximumValue = [self.camera isGoke] ? 16 : 100;
     }
     return _tsliderInput;
 }
@@ -167,6 +169,8 @@
     if (!_tsliderOutput) {
         _tsliderOutput = [self setupSlider];
         _tsliderOutput.tag = TSLIDEROUTPUT;
+        //goke的最高输入为13
+        _tsliderOutput.maximumValue = [self.camera isGoke] ? 13 : 100;
     }
     return _tsliderOutput;
 }
@@ -178,8 +182,8 @@
     CGFloat y = 44/2;
     UISlider *tslider = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, w, h)];
     tslider.center = CGPointMake(x, y);
-    tslider.minimumValue = 1.0f;
-    tslider.maximumValue = 100.0f;
+    tslider.minimumValue = 0.0f;
+    //tslider.maximumValue = 100.0f;
     [tslider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
     [tslider addTarget:self action:@selector(sliderEnd:) forControlEvents:UIControlEventTouchUpInside];
 

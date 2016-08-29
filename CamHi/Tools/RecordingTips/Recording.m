@@ -54,7 +54,7 @@
 - (UILabel *)labREC {
     if (!_labREC) {
         _labREC = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 40, 20)];
-        _labREC.text = @"REC";
+        _labREC.text = NSLocalizedString(@"REC", nil);
         _labREC.textAlignment = NSTextAlignmentCenter;
         _labREC.textColor = [UIColor redColor];
         _labREC.adjustsFontSizeToFitWidth = YES;

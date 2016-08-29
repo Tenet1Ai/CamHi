@@ -316,6 +316,15 @@ typedef NS_ENUM(NSInteger, TField) {
     return YES;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSInteger tag = textField.tag;
+    
+    if (tag == TFieldSecondFrame || tag == TFieldSecondQuality) {
+        [self offViewWithHeight:(tag+2)*44+64];
+    }
+}
+
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
     if (![self isPureInt:textField.text]) {
@@ -353,6 +362,7 @@ typedef NS_ENUM(NSInteger, TField) {
         _videoParam2.u32Quality = number;
     }
     
+    [self resetView];
 }
 
 

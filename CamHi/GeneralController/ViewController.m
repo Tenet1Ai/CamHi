@@ -171,7 +171,7 @@
         timaZoneInfo = [[TimeZoneInfo alloc]initWithTimeZone:1 DstMode:1 Abbreviation:@"GMT+1" Detail:NSLocalizedString(@"Paris;Rome;Berlin;Madrid;", @"")];
         [_timeZones addObject:timaZoneInfo];
         
-        timaZoneInfo = [[TimeZoneInfo alloc]initWithTimeZone:2 DstMode:2 Abbreviation:@"GMT+2" Detail:NSLocalizedString(@"Paris;Rome;Berlin;Madrid;", @"")];
+        timaZoneInfo = [[TimeZoneInfo alloc]initWithTimeZone:2 DstMode:2 Abbreviation:@"GMT+2" Detail:NSLocalizedString(@"Israel;Athens;Cairo;Jerusalem;", @"")];
         [_timeZones addObject:timaZoneInfo];
         
         timaZoneInfo = [[TimeZoneInfo alloc]initWithTimeZone:3 DstMode:0 Abbreviation:@"GMT+3" Detail:NSLocalizedString(@"Moscow;Nairobi;Riyadh;", @"")];

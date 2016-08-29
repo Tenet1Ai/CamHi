@@ -36,6 +36,9 @@
     [self setup];
 
     [self setupNotifications];
+    
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -91,19 +94,22 @@
             
             
             //连接完成，刷新显示
-            if (state == CAMERA_CONNECTION_STATE_LOGIN) {
-                [weakSelf.tableView reloadData];
-            }
+//            if (state == CAMERA_CONNECTION_STATE_LOGIN) {
+//                [weakSelf.tableView reloadData];
+//            }
+            
+            //刷新显示连接状态
+            [weakSelf.tableView reloadData];
         };
         
         
         //报警状态
         mycam.alarmBlock = ^(BOOL isAlarm, NSInteger type) {
           
+            //触发报警时，刷新显示
             if (isAlarm) {
                 [weakSelf.tableView reloadData];
             }
-            
         };
         
     }
@@ -234,7 +240,7 @@
             cell = [[CameraCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
         }
         
-        cell.snapImgView.image = mycam.image;
+        cell.snapImgView.image = [mycam image];
         cell.labName.text = mycam.name;
         cell.labState.text = mycam.state;
         cell.labUid.text = mycam.uid;
@@ -331,6 +337,7 @@
     
     if (!mycam.online) {
         [HXProgress showText:NSLocalizedString(@"Offline", nil)];
+        [mycam connect];
         return;
     }
 
@@ -353,8 +360,12 @@
     
     if (!mycam.online) {
         [HXProgress showText:NSLocalizedString(@"Offline", nil)];
+        [mycam connect];
         return;
     }
+    
+    //进入实时画面后隐藏掉报警提示
+    mycam.isAlarm = NO;
     
     LiveViewController *liveView = [[LiveViewController alloc] init];
     liveView.camera = mycam;

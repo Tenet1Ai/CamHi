@@ -13,6 +13,8 @@
 #import "HiSmartLink.h"
 #import "SinVoiceData.h"
 
+#import "SinProgressView.h"
+
 @interface WifiSetViewController ()
 <GUAAlertViewDelegate>
 {
@@ -180,7 +182,7 @@
 #pragma mark - UIAlertViewDelegate
 - (void)presentAlertViewBeforeIOS8 {
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:INTERSTR(@"Warning") message:INTERSTR(@"Do you hear the sound from Device?") delegate:self cancelButtonTitle:INTERSTR(@"No") otherButtonTitles:INTERSTR(@"Yes"), nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:INTERSTR(@"Warning") message:INTERSTR(@"Do you hear the sound from camera?") delegate:self cancelButtonTitle:INTERSTR(@"No") otherButtonTitles:INTERSTR(@"Yes"), nil];
     
     [alertView show];
 }
@@ -204,22 +206,33 @@
 - (void) showSinVoiceAlertView {
     //    isSmart = 1;
     
-    _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+//    _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+//    
+//    
+//    _progerssAlertView = [GUAAlertView alertViewWithTitle:NSLocalizedString(@"Please wait for connect", @"")  view:_progressView
+//                                             buttonTitle:NSLocalizedString(@"Cancel", @"")
+//                                     buttonTouchedAction:^{
+//                                         NSLog(@"button touched");
+//                                     } dismissAction:^{
+//                                         
+//                                         NSLog(@"dismiss");
+//                                         
+//                                     }];
+//    [_progerssAlertView show];
+//    //    [progerssAlertView setTag:0];
+//    _progerssAlertView.clickeddelegate = self;
     
     
-    _progerssAlertView = [GUAAlertView alertViewWithTitle:NSLocalizedString(@"Please wait for connect", @"")  view:_progressView
-                                             buttonTitle:NSLocalizedString(@"Cancel", @"")
-                                     buttonTouchedAction:^{
-                                         NSLog(@"button touched");
-                                     } dismissAction:^{
-                                         
-                                         NSLog(@"dismiss");
-                                         
-                                     }];
-    [_progerssAlertView show];
-    //    [progerssAlertView setTag:0];
-    _progerssAlertView.clickeddelegate = self;
-    
+    __weak typeof(self) wself = self;
+    //
+    [SinProgressView show];
+    [SinProgressView sharedProgress].cancelBlock = ^(BOOL success, NSInteger type) {
+      
+        [pTimer invalidate];
+        [wself stopSinVoice];
+        [wself stopSmartConfig];
+    };
+
     pTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(progressMethod:) userInfo:nil repeats:YES];
 }
 
@@ -228,26 +241,49 @@
     
     NSLog(@"progressMethod");
     
-    _progressView.progress += 1.0f/SMART_WIFI_TIME;
+    [SinProgressView sharedProgress].proSin.progress += 1.0f/SMART_WIFI_TIME;
     
-    if (_progressView.progress >= 1) {
-
-    //if (_progressView.progress >= 1 || !isSinVioce) {
-        [pTimer invalidate];
+    if ([SinProgressView sharedProgress].proSin.progress >= 1) {
         
+        //if (_progressView.progress >= 1 || !isSinVioce) {
+        [pTimer invalidate];
+        [self stopSinVoice];
+        [self stopSmartConfig];
         [self.navigationController popViewControllerAnimated:YES];
-
-        if (_progressView.progress >= 1 ) {
-            [_progerssAlertView dismiss];
+        
+        if ([SinProgressView sharedProgress].proSin.progress >= 1 ) {
+            
+            [SinProgressView dismiss];
             
             if (_setwifiBlock) {
                 _setwifiBlock(YES, 0);
             }
-            
-            //[self.delegate WifiInfo:nil password:nil];
-            
         }
     }
+
+    
+//    NSLog(@"progressMethod");
+//    
+//    _progressView.progress += 1.0f/SMART_WIFI_TIME;
+//    
+//    if (_progressView.progress >= 1) {
+//
+//    //if (_progressView.progress >= 1 || !isSinVioce) {
+//        [pTimer invalidate];
+//        
+//        [self.navigationController popViewControllerAnimated:YES];
+//
+//        if (_progressView.progress >= 1 ) {
+//            [_progerssAlertView dismiss];
+//            
+//            if (_setwifiBlock) {
+//                _setwifiBlock(YES, 0);
+//            }
+//            
+//            //[self.delegate WifiInfo:nil password:nil];
+//            
+//        }
+//    }
 }
 
 

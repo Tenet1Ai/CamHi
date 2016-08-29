@@ -11,6 +11,7 @@
 #import "SearchViewController.h"
 
 @interface RecordingViewController ()
+<UIActionSheetDelegate>
 
 @property (nonatomic, strong) NSMutableArray *recordings;
 @property (nonatomic, strong) ListReq *listReq;
@@ -27,7 +28,6 @@
     [self setup];
     [self.view addSubview:self.tableView];
 
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,28 +77,20 @@
     };
     
     
-    
+    //
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(btnItemAction:)];
 }
 
 
+
 - (void)btnItemAction:(id)sender {
     
-//    UIActionSheet *action = [[UIActionSheet alloc]
-//                             initWithTitle:nil
-//                             delegate:self
-//                             cancelButtonTitle:NSLocalizedString(@"Dismiss", @"")
-//                             destructiveButtonTitle:nil
-//                             otherButtonTitles:NSLocalizedString(@"Within an hour", @""),
-//                             NSLocalizedString(@"Within half a day", @""),
-//                             NSLocalizedString(@"Within a day", @""),
-//                             NSLocalizedString(@"Within a week", @""),
-//                             NSLocalizedString(@"Custom", @""),
-//                             nil];
-//    
-//    [action showInView:self.view];
 
-    
+    if (SystemVersion < 8.0) {
+        [self presentActionSheetBeforeIOS8];
+        return;
+    }
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:INTERSTR(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -107,52 +99,27 @@
     
     UIAlertAction *actionhour = [UIAlertAction actionWithTitle:INTERSTR(@"Within an hour") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60)] timeIntervalSince1970];
-        self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
-        self.listReq.isSerach = YES;
-        [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
-
+        [self searchWithInAnHour];
     }];
     
     UIAlertAction *actionhalfDay = [UIAlertAction actionWithTitle:INTERSTR(@"Within half day") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*12)] timeIntervalSince1970];
-        self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
-        self.listReq.isSerach = YES;
-        [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
-
+        [self searchWithInAHalfDay];
     }];
     
     UIAlertAction *actionday = [UIAlertAction actionWithTitle:INTERSTR(@"Within a day") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*24)] timeIntervalSince1970];
-        self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
-        self.listReq.isSerach = YES;
-        [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
-
+        [self searchWithInADay];
     }];
     
     UIAlertAction *actionweek = [UIAlertAction actionWithTitle:INTERSTR(@"Within a week") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*24*7)] timeIntervalSince1970];
-        self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
-        self.listReq.isSerach = YES;
-        [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
-
+        [self searchWithInAWeek];
     }];
     
     UIAlertAction *actioncustom = [UIAlertAction actionWithTitle:INTERSTR(@"Custom") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-        SearchViewController *search = [[SearchViewController alloc] init];
-        search.searchBlock = ^(NSTimeInterval startTime, NSTimeInterval stopTime) {
-          
-            self.listReq.startTime = startTime;
-            self.listReq.stopTime = stopTime;
-            self.listReq.isSerach = YES;
-            [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
-        };
-        
-        [self.navigationController pushViewController:search animated:YES];
+        [self searchWithCustom];
     }];
 
     [alert addAction:actionCancel];
@@ -166,6 +133,102 @@
         
     }];
 }
+
+
+//搜索一小时
+- (void)searchWithInAnHour {
+    
+    self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60)] timeIntervalSince1970];
+    self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
+    self.listReq.isSerach = YES;
+    [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
+}
+
+//搜索半天
+- (void)searchWithInAHalfDay {
+    self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*12)] timeIntervalSince1970];
+    self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
+    self.listReq.isSerach = YES;
+    [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
+}
+
+
+//搜索一天
+- (void)searchWithInADay {
+    self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*24)] timeIntervalSince1970];
+    self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
+    self.listReq.isSerach = YES;
+    [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
+}
+
+
+//搜索一周
+- (void)searchWithInAWeek {
+    self.listReq.startTime = [[NSDate dateWithTimeIntervalSinceNow:- (60*60*24*7)] timeIntervalSince1970];
+    self.listReq.stopTime = [[NSDate date] timeIntervalSince1970];
+    self.listReq.isSerach = YES;
+    [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
+}
+
+
+//自定义
+- (void)searchWithCustom {
+    SearchViewController *search = [[SearchViewController alloc] init];
+    search.searchBlock = ^(NSTimeInterval startTime, NSTimeInterval stopTime) {
+        
+        self.listReq.startTime = startTime;
+        self.listReq.stopTime = stopTime;
+        self.listReq.isSerach = YES;
+        [self.camera request:HI_P2P_PB_QUERY_START dson:[self.camera dic:self.listReq]];
+    };
+    
+    [self.navigationController pushViewController:search animated:YES];
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSLog(@"buttonIndex:%ld", buttonIndex);
+    if (buttonIndex == 0) {
+        [self searchWithInAnHour];
+    }
+    
+    if (buttonIndex == 1) {
+        [self searchWithInAHalfDay];
+    }
+    
+    if (buttonIndex == 2) {
+        [self searchWithInADay];
+    }
+    
+    if (buttonIndex == 3) {
+        [self searchWithInAWeek];
+    }
+    
+    if (buttonIndex == 4) {
+        [self searchWithCustom];
+    }
+}
+
+- (void)presentActionSheetBeforeIOS8 {
+    
+    UIActionSheet *action = [[UIActionSheet alloc]
+                             initWithTitle:nil
+                             delegate:self
+                             cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+                             destructiveButtonTitle:nil
+                             otherButtonTitles:NSLocalizedString(@"Within an hour", @""),
+                             NSLocalizedString(@"Within half day", @""),
+                             NSLocalizedString(@"Within a day", @""),
+                             NSLocalizedString(@"Within a week", @""),
+                             NSLocalizedString(@"Custom", @""),
+                             nil];
+    
+    [action showInView:self.view];
+}
+
+
 
 
 

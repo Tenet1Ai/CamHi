@@ -86,5 +86,7 @@
 
 
 -(int) getConnectState;
+-(void) setReconnectTimes:(int) times;
+
 
 @end

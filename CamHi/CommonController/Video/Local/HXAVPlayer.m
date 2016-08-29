@@ -68,6 +68,15 @@
     
     _playerItem = [[AVPlayerItem alloc] initWithURL:url];
 
+    
+    
+    /*
+     *  监听loadedTimeRanges属性
+     *  该属性代表已经缓冲的进度，监听此属性可以在UI中更新缓冲进度
+     */
+    [_playerItem addObserver:self forKeyPath:TIMERANGES options:NSKeyValueObservingOptionNew context:nil];
+
+    
     /*
      *  监听status属性三种状态
      *  AVPlayerStatusFailed
@@ -77,11 +86,6 @@
     [_playerItem addObserver:self forKeyPath:STATUS options:NSKeyValueObservingOptionNew context:nil];
     
     
-    /*
-     *  监听loadedTimeRanges属性
-     *  该属性代表已经缓冲的进度，监听此属性可以在UI中更新缓冲进度
-     */
-    [_playerItem addObserver:self forKeyPath:TIMERANGES options:NSKeyValueObservingOptionNew context:nil];
     
     
     /**/
@@ -144,7 +148,11 @@
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
 {
-    NSLog(@"keyPath:%@", keyPath);
+    
+    NSLog(@"keyPath:%@ %@ %@ %@", keyPath, object, change, context);
+    
+    
+    
     AVPlayerItem *playerItem = (AVPlayerItem *)object;
 
     if ([keyPath isEqualToString:STATUS]) {
@@ -173,7 +181,7 @@
             //失败后移除status观察
             [_playerItem removeObserver:self forKeyPath:STATUS context:nil];
             //失败后移除loadedTimeRanges观察
-            [_playerItem removeObserver:self forKeyPath:TIMERANGES context:nil];
+            //[_playerItem removeObserver:self forKeyPath:TIMERANGES context:nil];
 
             
         }
@@ -288,13 +296,6 @@
 }
 
 
-- (NSDateFormatter *)tFormatter {
-    if (!_tFormatter) {
-        _tFormatter = [[NSDateFormatter alloc] init];
-        _tFormatter.dateFormat = @"HH:mm:ss";
-    }
-    return _tFormatter;
-}
 
 //转换时间
 - (NSString *)convertTime:(CGFloat)second
@@ -312,6 +313,15 @@
     return showtimeNew;
 }
 
+- (NSDateFormatter *)tFormatter {
+    if (!_tFormatter) {
+        _tFormatter = [[NSDateFormatter alloc] init];
+        _tFormatter.dateFormat = @"HH:mm:ss";
+    }
+    return _tFormatter;
+}
+
+//转换时间
 - (NSString *)convertSeconds:(CGFloat)seconds byDateFormatter:(NSDateFormatter *)formatter {
     //大于 1H
     seconds/3600 >= 1 ? [formatter setDateFormat:@"HH:mm:ss"] : [formatter setDateFormat:@"mm:ss"];

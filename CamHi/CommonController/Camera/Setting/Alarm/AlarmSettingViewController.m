@@ -131,7 +131,7 @@
                            NSLocalizedString(@"Medium", nil),
                            NSLocalizedString(@"High", nil)];
         _tsegment = [[UISegmentedControl alloc] initWithItems:items];
-        _tsegment.frame = CGRectMake(0, 0, 150, 30);
+        _tsegment.frame = CGRectMake(0, 0, 200, 30);
         _tsegment.center = CGPointMake(self.view.frame.size.width/2, 66);
 //        _tsegment.backgroundColor = [UIColor whiteColor];
         _tsegment.tintColor = [UIColor grayColor];

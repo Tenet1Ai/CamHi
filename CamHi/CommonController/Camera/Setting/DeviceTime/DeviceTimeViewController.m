@@ -222,7 +222,7 @@
 #pragma mark - UIAlertViewDelegate
 - (void)presentAlertViewBeforeIOS8 {
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:INTERSTR(@"Set device time zone will reboot device") delegate:self cancelButtonTitle:INTERSTR(@"No") otherButtonTitles:INTERSTR(@"Yes"), nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:INTERSTR(@"Set Device Time Zone will REBOOT device") delegate:self cancelButtonTitle:INTERSTR(@"No") otherButtonTitles:INTERSTR(@"Yes"), nil];
     
     [alertView show];
 }

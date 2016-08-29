@@ -148,7 +148,9 @@
             }
         }//@for
 
-        [self.delegate didSelectCamera:result.uid];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectCamera:)]) {
+            [self.delegate didSelectCamera:result.uid];
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

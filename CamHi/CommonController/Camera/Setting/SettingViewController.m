@@ -111,7 +111,7 @@
         
         //UIImage *image = [UIImage imageWithColor:RGBA_COLOR(1, 0, 0, 1) wihtSize:CGSizeMake(80, 60)];
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 5, 80, 60)];
-        imgView.image = self.camera.image;
+        imgView.image = [self.camera image];
         [self.headerView addSubview:imgView];
         
         CGFloat x = CGRectGetMaxX(imgView.frame)+5;

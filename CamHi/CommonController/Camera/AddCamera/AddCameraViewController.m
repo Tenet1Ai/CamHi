@@ -15,11 +15,6 @@
 
 @property (nonatomic, strong) NSArray *titleArr;
 
-@property (nonatomic, strong) UITextField *tfieldName;
-@property (nonatomic, strong) UITextField *tfieldUser;
-@property (nonatomic, strong) UITextField *tfieldUID;
-@property (nonatomic, strong) UITextField *tfieldPwd;
-
 @end
 
 @implementation AddCameraViewController
@@ -32,8 +27,18 @@
     self.titleArr = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Name", nil), NSLocalizedString(@"User Name", nil), NSLocalizedString(@"UID", nil), NSLocalizedString(@"Password", nil), nil];
     [self setupBarButtonItem];
     
+    
+    
+    //初始化一个摄像机模型用于存储输入数据
+    self.camera = [[Camera alloc] initWithUid:nil Name:INTERSTR(@"Camera") Username:INTERSTR(@"admin") Password:nil];
+    
     [self.view addSubview:self.tableView];
     self.tableView.backgroundColor = RGBA_COLOR(220, 220, 220, 0.5);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,10 +59,14 @@
     //close keyboard
     [self.view endEditing:YES];
     
-    NSString *tname = self.tfieldName.text;
-    NSString *tuser = self.tfieldUser.text;
-    NSString *tuid  = self.tfieldUID.text;
-    NSString *tpwd  = self.tfieldPwd.text;
+    
+    NSString *tname = self.camera.name;
+    NSString *tuser = self.camera.username;
+    NSString *tuid  = self.camera.uid;
+    NSString *tpwd  = self.camera.password;
+
+    NSLog(@"self.camera.password:%@", self.camera.password);
+    NSLog(@"tpwd:%@", tpwd);
     
     tname = [tname stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     tuser = [tuser stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -139,59 +148,56 @@
     
     if (indexPath.section == 0) {
         static NSString *cellID = @"AddCameraCellID";
-        HXCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+        VideoSetCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
         if (cell == nil) {
-            cell = [[HXCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+            cell = [[VideoSetCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         if (self.titleArr.count != 0) {
-            cell.textLabel.text = [self.titleArr objectAtIndex:indexPath.row];
+            cell.labTitle.text = [self.titleArr objectAtIndex:indexPath.row];
         }
         
+        NSLog(@"cell.labTitle.text:%@", cell.labTitle.text);
         
+        cell.tfieldDetail.delegate = self;
         
         if (indexPath.row == 0) {
-            if (self.tfieldName == nil) {
-                self.tfieldName = [self setupTextField];
-            }
-            self.tfieldName.tag = 0;
-            self.tfieldName.text = NSLocalizedString(@"Camera", nil);
-            [cell.contentView addSubview:self.tfieldName];
+            
+            cell.tfieldDetail.tag = 0;
+            cell.tfieldDetail.text = self.camera.name;
+
         
         }//@row == 0
         
         
         if (indexPath.row == 1) {
-            if (self.tfieldUser == nil) {
-                self.tfieldUser = [self setupTextField];
-            }
-            self.tfieldUser.tag = 1;
-            self.tfieldUser.text = NSLocalizedString(@"admin", nil);
-            [cell.contentView addSubview:self.tfieldUser];
+            
+            cell.tfieldDetail.tag = 1;
+            cell.tfieldDetail.text = self.camera.username;
+
         
         }//@row == 1
 
         
         if (indexPath.row == 2) {
-            if (self.tfieldUID == nil) {
-                self.tfieldUID = [self setupTextField];
-            }
-            self.tfieldUID.tag = 2;
-            self.tfieldUID.placeholder = NSLocalizedString(@"Camera UID", nil);
-            [cell.contentView addSubview:self.tfieldUID];
+            
+            cell.tfieldDetail.tag = 2;
+            cell.tfieldDetail.placeholder = NSLocalizedString(@"Camera UID", nil);
+            cell.tfieldDetail.text = self.camera.uid;
+
+
             
         }//@row == 1
 
         
         if (indexPath.row == 3) {
-            if (self.tfieldPwd == nil) {
-                self.tfieldPwd = [self setupTextField];
-            }
-            self.tfieldPwd.tag = 1;
-            self.tfieldPwd.secureTextEntry = YES;
-            self.tfieldPwd.placeholder = NSLocalizedString(@"Camera Password", nil);
-            [cell.contentView addSubview:self.tfieldPwd];
+            
+            cell.tfieldDetail.tag = 3;
+            cell.tfieldDetail.secureTextEntry = YES;
+            cell.tfieldDetail.placeholder = NSLocalizedString(@"Camera Password", nil);
+            cell.tfieldDetail.text = self.camera.password;
+
             
         }//@row == 1
 
@@ -251,9 +257,13 @@
         
         wifiSet.setwifiBlock = ^(BOOL success, NSInteger type) {
             if (success) {
-                CameraListViewController *cameraList = [[CameraListViewController alloc] init];
-                cameraList.delegate = self;
-                [self.navigationController pushViewController:cameraList animated:YES];
+                
+                //延迟1s跳转，主要针对4s系列手机性能不足
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    CameraListViewController *cameraList = [[CameraListViewController alloc] init];
+                    cameraList.delegate = self;
+                    [self.navigationController pushViewController:cameraList animated:YES];
+                });
             }
         };
         
@@ -291,14 +301,40 @@
     return YES;
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    
+    NSLog(@"textField.text:%@", textField.text);
+    
+    NSString *text = textField.text;
+    NSInteger tag = textField.tag;
+    
+    if (tag == 0) {
+        self.camera.name = text;
+    }
+    
+    if (tag == 1) {
+        self.camera.username = text;
+
+    }
+
+    if (tag == 2) {
+        self.camera.uid = text;
+
+    }
+
+    
+    if (tag == 3) {
+        self.camera.password = text;
+
+    }
+
+}
+
 
 #pragma mark - CameraListDelegate
 - (void)didSelectCamera:(NSString *)uid {
     
-    if (self.tfieldUID) {
-        self.tfieldUID.text = uid;
-    }
-    
+    self.camera.uid = uid;
     [self.tableView reloadData];
 }
 
@@ -306,10 +342,7 @@
 #pragma mark - OCScanLifeViewControllerDelegate
 - (void)scanResult:(NSString *)result {
     
-    if (self.tfieldUID) {
-        self.tfieldUID.text = result;
-    }
-    
+    self.camera.uid = result;
     [self.tableView reloadData];
 
 }

@@ -32,6 +32,8 @@
         _tfieldDetail = [[UITextField alloc] init];
         _tfieldDetail.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         _tfieldDetail.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _tfieldDetail.adjustsFontSizeToFitWidth = YES;
+        _tfieldDetail.font = [UIFont systemFontOfSize:14];
     }
     return _tfieldDetail;
 }
@@ -44,7 +46,8 @@
     self.labTitle.frame     = [self frameForTitle:self.labTitle.text font:self.labTitle.font];
     self.tfieldDetail.frame = [self frameForText:_labTitle.text font:_labTitle.font];
     
-    [self.labTitle setAdjustsFontSizeToFitWidth:YES];
+    self.labTitle.font = [UIFont systemFontOfSize:14];
+    self.labTitle.adjustsFontSizeToFitWidth = YES;
     //self.labTitle.font = [UIFont systemFontOfSize:16];
 }
 

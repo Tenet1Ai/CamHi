@@ -12,33 +12,61 @@
 /* No comment provided by engineer. */
 "admin" = "admin";
 /* No comment provided by engineer. */
-"Alaska;" = "阿拉斯加;";
-
-
-
-/* No comment provided by engineer. */
-"Atlantic Time(Canada);" = "大西洋时间(加拿大);圣地亚哥;拉巴斯;";
-
-
-
-/* No comment provided by engineer. */
-"Azores;Cape Verde;" = "亚速尔群岛;佛得角群岛;";
-
-/* No comment provided by engineer. */
 "Back" = "返回";
-
-/* No comment provided by engineer. */
-"Baku;Tbilisi;Abu Dhabi;Mascot;" = "巴库;第比利斯;阿布扎比;马斯喀特;";
-
-/* No comment provided by engineer. */
-"Bangkok;Hanoi;Jakarta;" = "曼谷;河内;雅加达;";
-
-/* No comment provided by engineer. */
-"Beijing;Singapore;Hongkong;Taipei;" = "北京;新加坡;香港;台北;";
-
-
 /* No comment provided by engineer. */
 "Call" = "调用";
+
+
+//zones
+
+/* No comment provided by engineer. */
+"Alaska;" = "阿拉斯加;";
+/* No comment provided by engineer. */
+"Atlantic Time(Canada);" = "大西洋时间(加拿大);圣地亚哥;拉巴斯;";
+/* No comment provided by engineer. */
+"Azores;Cape Verde;" = "亚速尔群岛;佛得角群岛;";
+/* No comment provided by engineer. */
+"Baku;Tbilisi;Abu Dhabi;Mascot;" = "巴库;第比利斯;阿布扎比;马斯喀特;";
+/* No comment provided by engineer. */
+"Bangkok;Hanoi;Jakarta;" = "曼谷;河内;雅加达;";
+/* No comment provided by engineer. */
+"Beijing;Singapore;Hongkong;Taipei;" = "北京;新加坡;香港;台北;";
+/* No comment provided by engineer. */
+"Central Time(USA or Canada);" = "中部时间(美国和加拿大);";
+/* No comment provided by engineer. */
+"Dakar;Alma Ata;Novosibirsk;Astana;" = "达喀尔;阿拉木图;新西伯利亚;阿斯塔纳;";
+/* No comment provided by engineer. */
+"Eastern Time(USA or Canada);" = "东部时间(美国和加拿大);波哥大;利马;";
+/* No comment provided by engineer. */
+"Guam;Melbourne;Sydney;" = "关岛;墨尔本;悉尼;";
+/* No comment provided by engineer. */
+"Hawaii;" = "夏威夷;";
+/* No comment provided by engineer. */
+"London;Iceland;Lisbon;" = "格林威治标准时间：伦敦;里斯本;卡萨布兰卡;";
+/* No comment provided by engineer. */
+"Magadan;New Caledonia;Solomon Islands;  " = "所罗门群岛;新喀里多尼亚;马加丹";
+/* No comment provided by engineer. */
+"Mid-Atlantic;" = "中大西洋;";
+/* No comment provided by engineer. */
+"Midway Islands;Samoa;" = "中途岛;萨摩亚群岛;";
+/* No comment provided by engineer. */
+"Moscow;Nairobi;Riyadh;" = "莫斯科;内罗比;利雅得";
+/* No comment provided by engineer. */
+"Mountain Time(USA or Canada);" = "山地时间(美国和加拿大);";
+/* No comment provided by engineer. */
+"New Delhi;Islamabad;" = "新德里;伊斯兰堡;卡拉奇;";
+/* No comment provided by engineer. */
+"Pacific Time(USA or Canada);" = "太平洋时间(美国和加拿大);";
+/* No comment provided by engineer. */
+"Paris;Rome;Berlin;Madrid;" = "巴黎;柏林;罗马;马德里;";
+/* No comment provided by engineer. */
+"Israel;Athens;Cairo;Jerusalem;" = "雅典;耶路撒冷;开罗;赫尔辛基;";
+/* No comment provided by engineer. */
+"Tokyo;Seoul;Yakutsk;" = "首尔;雅库茨克;东京;";
+/* No comment provided by engineer. */
+"Wellington;Auckland;fiji" = "惠灵顿;斐济;奥克兰";
+
+
 
 
 /* No comment provided by engineer. */
@@ -62,14 +90,10 @@
 /* No comment provided by engineer. */
 "Camera UID can not be empty" = "UID不能为空";
 
-/* No comment provided by engineer. */
-"Can't change quality while Speaking" = "对讲时候不能切换清晰度";
 
 /* No comment provided by engineer. */
 "Cancel" = "取消";
 
-/* No comment provided by engineer. */
-"Central Time(USA or Canada);" = "中部时间(美国和加拿大);";
 
 /* No comment provided by engineer. */
 "Confirm" = "确认";
@@ -91,8 +115,6 @@
 /* No comment provided by engineer. */
 "Custom" = "自定义";
 
-/* No comment provided by engineer. */
-"Dakar;Alma Ata;Novosibirsk;Astana;" = "达喀尔;阿拉木图;新西伯利亚;阿斯塔纳;";
 
 
 /* No comment provided by engineer. */
@@ -132,8 +154,6 @@
 
 "Duration must between 15 to 600" = "报警时长为15至600毫秒";
 
-/* No comment provided by engineer. */
-"Eastern Time(USA or Canada);" = "东部时间(美国和加拿大);波哥大;利马;";
 
 
 
@@ -173,11 +193,6 @@
 "Full-time Recording" = "全时录像";
 
 
-/* No comment provided by engineer. */
-"Guam;Melbourne;Sydney;" = "关岛;墨尔本;悉尼;";
-
-/* No comment provided by engineer. */
-"Hawaii;" = "夏威夷;";
 
 /* No comment provided by engineer. */
 "High" = "高";
@@ -205,8 +220,6 @@
 /* No comment provided by engineer. */
 "Loading" = "加载中";
 
-/* No comment provided by engineer. */
-"London;Iceland;Lisbon;" = "格林威治标准时间：伦敦;里斯本;卡萨布兰卡;";
 
 /* No comment provided by engineer. */
 "Low" = "低";
@@ -214,8 +227,6 @@
 /* No comment provided by engineer. */
 //"Low" = "流畅";
 
-/* No comment provided by engineer. */
-"Magadan;New Caledonia;Solomon Islands;  " = "所罗门群岛;新喀里多尼亚;马加丹";
 
 /* No comment provided by engineer. */
 "sender email address" = "邮箱账户";
@@ -228,19 +239,6 @@
 /* No comment provided by engineer. */
 "MID" = "中";
 
-/* No comment provided by engineer. */
-"Mid-Atlantic;" = "中大西洋;";
-
-/* No comment provided by engineer. */
-"Midway Islands;Samoa;" = "中途岛;萨摩亚群岛;";
-
-/* No comment provided by engineer. */
-"Moscow;Nairobi;Riyadh;" = "莫斯科;内罗比;利雅得";
-
-
-
-/* No comment provided by engineer. */
-"Mountain Time(USA or Canada);" = "山地时间(美国和加拿大);";
 
 
 
@@ -248,8 +246,6 @@
 /* No comment provided by engineer. */
 "New" = "新密码";
 
-/* No comment provided by engineer. */
-"New Delhi;Islamabad;" = "新德里;伊斯兰堡;卡拉奇;";
 
 /* No comment provided by engineer. */
 "New Password" = "新密码";
@@ -269,8 +265,6 @@
 /* No comment provided by engineer. */
 "No Video Recording" = "没有录像文件";
 
-/* No comment provided by engineer. */
-"None" = "None";
 
 /* No comment provided by engineer. */
 "OK" = "是";
@@ -289,13 +283,6 @@
 "out of range" = "超出范围";
 
 
-/* No comment provided by engineer. */
-"Pacific Time(USA or Canada);" = "太平洋时间(美国和加拿大);";
-
-/* No comment provided by engineer. */
-"Paris;Rome;Berlin;Madrid;" = "巴黎;柏林;罗马;马德里;";
-
-"Israel;Athens;Cairo;Jerusalem;" = "雅典;耶路撒冷;开罗;赫尔辛基;";
 
 
 
@@ -324,8 +311,6 @@
 "Please press and hold the reset button for 10 seconds" = "请长按设备reset键10秒初始化设备";
 
 
-/* No comment provided by engineer. */
-"Wait for connecting" = "请耐心等待链接";
 
 
 
@@ -428,8 +413,6 @@
 /* No comment provided by engineer. */
 "TLS" = "TLS";
 
-/* No comment provided by engineer. */
-"Tokyo;Seoul;Yakutsk;" = "首尔;雅库茨克;东京;";
 
 
 /* No comment provided by engineer. */
@@ -459,8 +442,6 @@
 /* No comment provided by engineer. */
 "Warning" = "警告";
 
-/* No comment provided by engineer. */
-"Wellington;Auckland;fiji" = "惠灵顿;斐济;奥克兰";
 
 
 /* No comment provided by engineer. */
@@ -499,10 +480,6 @@
 "Flip" = "翻转";
 
 
-/* No comment provided by engineer. */
-"Snapshot Saved" = "快照已保存";
-/* No comment provided by engineer. */
-"REC" = "录像";
 
 /* No comment provided by engineer. */
 "Turn on Alarm Push" = "打开报警推送";
@@ -523,21 +500,25 @@
 
 
 // "HXTabBarController.m"
+/* No comment provided by engineer. */
 "Camera" = "摄像机";
+/* No comment provided by engineer. */
 "camera" = "摄像机";
+/* No comment provided by engineer. */
 "Picture" = "照片";
+/* No comment provided by engineer. */
 "Local Picture" = "本地照片";
+/* No comment provided by engineer. */
 "Video" = "录像";
+/* No comment provided by engineer. */
 "Video Viewing" = "录像观看";
+/* No comment provided by engineer. */
 "about" = "关于";
+/* No comment provided by engineer. */
 "About" = "关于";
+/* No comment provided by engineer. */
 "Command Error!" = "未知错误";
 
-"local" = "本地";
-"online" = "远程";
-"Search Video" = "搜索录像";
-"From" = "从";
-"To" = "至";
 
 //     CameraViewController
 /* No comment provided by engineer. */
@@ -562,10 +543,18 @@
 "Search Camera from LAN" = "局域网搜索UID";
 /* No comment provided by engineer. */
 "Camera List" = "摄像机列表";
+/* No comment provided by engineer. */
+"Wait for connecting" = "请耐心等待链接";
 
 
 
 // LiveViewController
+/* No comment provided by engineer. */
+"Can't change quality while Speaking" = "对讲时候不能切换清晰度";
+/* No comment provided by engineer. */
+"REC" = "录像";
+/* No comment provided by engineer. */
+"Snapshot Saved" = "快照已保存";
 
 
 
@@ -587,7 +576,7 @@
 /* No comment provided by engineer. */
 "Video Setting" = "视频设置";
 /* No comment provided by engineer. */
-"Wi-Fi Setting" = "加入Wifi";
+"Wi-Fi Setting" = "Wifi设置";
 /* No comment provided by engineer. */
 "SD Card Setting" = "SD卡设置";
 /* No comment provided by engineer. */
@@ -655,9 +644,11 @@
 /* No comment provided by engineer. */
 "All Day" = "全天";
 /* No comment provided by engineer. */
-"15 - 900 seconds" = "15 - 900 秒";
+"None" = "无";
 /* No comment provided by engineer. */
-"15 - 600 seconds" = "15 - 600 秒";
+"15 - 900 s" = "15 - 900 秒";
+/* No comment provided by engineer. */
+"15 - 600 s" = "15 - 600 秒";
 
 
 // AudioViewController
@@ -873,6 +864,16 @@
 "Within an hour" = "搜索一小时";
 /* No comment provided by engineer. */
 "Within half day" = "搜索半天";
+/* No comment provided by engineer. */
+"local" = "本地";
+/* No comment provided by engineer. */
+"online" = "远程";
+/* No comment provided by engineer. */
+"Search Video" = "搜索录像";
+/* No comment provided by engineer. */
+"From" = "从";
+/* No comment provided by engineer. */
+"To" = "至";
 
 
 

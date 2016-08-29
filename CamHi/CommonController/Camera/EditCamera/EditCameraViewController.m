@@ -57,31 +57,33 @@
     NSInteger row = indexPath.row;
     
     static NSString *cellID = @"EditPasswordCellID";
-    EditCameraCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    VideoSetCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     if (cell == nil) {
-        cell = [[EditCameraCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
+        cell = [[VideoSetCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
-    cell.tlabel.text = [_titles objectAtIndex:indexPath.row];
-    cell.tfieldIn.tag = row;
-    cell.tfieldIn.delegate = self;
+    
+    
+    cell.labTitle.text = [_titles objectAtIndex:indexPath.row];
+    cell.tfieldDetail.tag = row;
+    cell.tfieldDetail.delegate = self;
     
     if (row == 0) {
-        cell.tfieldIn.text = self.camera.name;
+        cell.tfieldDetail.text = self.camera.name;
     }
     
     if (row == 1) {
-        cell.tfieldIn.text = self.camera.username;
+        cell.tfieldDetail.text = self.camera.username;
     }
 
     
     if (row == 2) {
-        cell.tfieldIn.text = self.camera.uid;
+        cell.tfieldDetail.text = self.camera.uid;
     }
 
     
     if (row == 3) {
-        cell.tfieldIn.secureTextEntry = YES;
-        cell.tfieldIn.text = self.camera.password;
+        cell.tfieldDetail.secureTextEntry = YES;
+        cell.tfieldDetail.text = self.camera.password;
     }
 
     

@@ -26,5 +26,6 @@
 + (NSMutableArray *)picturesForCamera:(Camera *)mycam;
 + (NSMutableArray *)recordingsForCamera:(Camera *)mycam;
 + (void)deletePicture:(NSString *)pictureName;
++ (void)deleteRecording:(NSString *)recordingPath camera:(Camera *)mycam;
 
 @end

@@ -22,7 +22,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _recordings = [GBase recordingsForCamera:self.camera];
     
     [self.view addSubview:self.tableView];
 
@@ -44,13 +43,18 @@
     return NO;
 }
 
+- (NSMutableArray *)recordings {
+    _recordings = [GBase recordingsForCamera:self.camera];
+    return _recordings;
+}
+
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _recordings.count;
+    return self.recordings.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,7 +67,7 @@
         cell = [[HXCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellID];
     }
     
-    LocalVideoInfo* vi = [_recordings objectAtIndex:row];
+    LocalVideoInfo* vi = self.recordings[row];
     
     NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:vi.time];
     //    NSDate *date1 = [[NSDate alloc] initWithTimeIntervalSince1970:evt.endTime];
@@ -84,17 +88,11 @@
     return cell;
 }
 
-- (NSDateFormatter *)tFormatter {
-    if (!_tFormatter) {
-        _tFormatter = [[NSDateFormatter alloc] init];
-        _tFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-    }
-    return _tFormatter;
-}
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    LocalVideoInfo* vi = [_recordings objectAtIndex:indexPath.row];
+    LocalVideoInfo* vi = self.recordings[indexPath.row];
 
     HXAVPlayerViewController *avPlayer = [[HXAVPlayerViewController alloc] init];
     avPlayer.camera = self.camera;
@@ -102,6 +100,34 @@
     [self.navigationController pushViewController:avPlayer animated:YES];
 }
 
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        LocalVideoInfo* vi = self.recordings[indexPath.row];
+        [GBase deleteRecording:vi.path camera:self.camera];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+
+
+#pragma mark - NSDateFormatter
+- (NSDateFormatter *)tFormatter {
+    if (!_tFormatter) {
+        _tFormatter = [[NSDateFormatter alloc] init];
+        _tFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    return _tFormatter;
+}
 
 /*
 #pragma mark - Navigation

@@ -50,6 +50,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     QualityType qualityType;
 }
 
+@property (nonatomic, assign) BOOL isShowing;
 @property (nonatomic, strong) __block Display *display;
 
 @property (nonatomic, strong) UIScrollView *smonitor;
@@ -142,6 +143,8 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     
     qualityType = QualityTypeNone;
     
+    
+    //连接状态
     self.camera.connectBlock = ^(NSInteger state, NSString *connection) {
       
         if (state == CAMERA_CONNECTION_STATE_LOGIN) {
@@ -158,6 +161,16 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
                 [weakSelf.camera startLiveShow:1 Monitor:weakSelf.monitor];
             }
 
+        }
+    };
+    
+    
+    _isShowing = NO;
+    //画面显示状态
+    self.camera.playStateBlock = ^(NSInteger state) {
+        
+        if (state == 0) {
+            weakSelf.isShowing = YES;
         }
     };
     
@@ -518,8 +531,12 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         [self.mirror removeFromSuperview];
     }
     
+    
+    //Goke版本的摄像机每次退出实时界面时更换显示画面
     if ([self.camera isGoke]) {
-        self.camera.image = [self.camera getSnapshot];
+        if (self.isShowing) {
+            [self.camera saveImage:[self.camera getSnapshot]];
+        }
     }
     
     
@@ -716,8 +733,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 }
 
 
-#pragma mark -- PresetDialog
-//预置位
+#pragma mark -- PresetDialog/预置位
 - (PresetDialog *)preset {
     if (!_preset) {
         
@@ -731,7 +747,8 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
             if (type == PresetTypeCall) {
                 [weakSelf.camera presetWithNumber:index action:HI_P2P_PTZ_PRESET_ACT_CALL];
             }
-            else if(type == PresetTypeSet) {
+            
+            if(type == PresetTypeSet) {
                 [weakSelf.camera presetWithNumber:index action:HI_P2P_PTZ_PRESET_ACT_SET];
             }
         };
@@ -771,8 +788,8 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         _bottomToolBar.delegate = self;
         //    self.bottomToolBar.frame = CGRectMake(x, y, w, h);
         
-        [_bottomToolBar setImage:[UIImage imageNamed:@"speaker_off"] atIndex:0 forState:UIControlStateNormal];
-        [_bottomToolBar setImage:[UIImage imageNamed:@"speaker_on"] atIndex:0 forState:UIControlStateSelected];
+        [_bottomToolBar setImage:[UIImage imageNamed:@"speaker_on"] atIndex:0 forState:UIControlStateNormal];
+        [_bottomToolBar setImage:[UIImage imageNamed:@"speaker_off"] atIndex:0 forState:UIControlStateSelected];
         [_bottomToolBar setImage:[UIImage imageNamed:@"snopshot"] atIndex:1 forState:UIControlStateNormal];
         [_bottomToolBar setImage:[UIImage imageNamed:@"record_white"] atIndex:2 forState:UIControlStateNormal];
         [_bottomToolBar setImage:[UIImage imageNamed:@"record_red"] atIndex:2 forState:UIControlStateSelected];
@@ -797,7 +814,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 }
 
 
-#pragma mark -- Microphone
+#pragma mark -- Microphone/麦克风按钮
 - (Microphone *)microphone {
     
     if (!_microphone) {
@@ -887,7 +904,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         NSMutableArray *pictures = [GBase picturesForCamera:self.camera];
         LOG(@"pictures.count:%ld", pictures.count)
         
-        [self presentMessage:INTERSTR(@"Snapshot saved") atDeviceOrientation:deviceOrientation];
+        [self presentMessage:INTERSTR(@"Snapshot Saved") atDeviceOrientation:deviceOrientation];
     }
     else {
         
@@ -933,7 +950,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 }
 
 
-#pragma mark -- Recording
+#pragma mark -- Recording/录像
 - (Recording *)record {
     if (!_record) {
         

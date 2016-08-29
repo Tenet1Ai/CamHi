@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UITextField *tfieldDuration;
 @property (nonatomic, strong) UISwitch *tswitch;
 @property (nonatomic, strong) UISegmentedControl *tsegment;
+@property (nonatomic, strong) UILabel *labRedTime;
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) __block RecAutoParam *recAutoParam;
 @property (nonatomic, strong) __block QuantumTime *quantumTime;
@@ -124,7 +125,7 @@
     if (row == 0) {
         
         [cell.contentView addSubview:self.tfieldDuration];
-        self.tfieldDuration.placeholder = [self.camera isGoke] ? INTERSTR(@"15 - 900 seconds") : INTERSTR(@"15 - 600 seconds");
+        self.tfieldDuration.placeholder = ![self.camera isGoke] ? INTERSTR(@"15 - 900 s") : INTERSTR(@"15 - 600 s");
         self.tfieldDuration.text = [NSString stringWithFormat:@"%d", _recAutoParam.u32FileLen];
     }
     
@@ -137,19 +138,26 @@
     if (row == 2) {
         [cell.contentView addSubview:self.tsegment];
         self.tsegment.selectedSegmentIndex = _quantumTime.recordTime == 0 ? 0 : 1;
+        
+        [cell.contentView addSubview:self.labRedTime];
+        self.labRedTime.text = cell.textLabel.text;
+        cell.textLabel.text = nil;
     }
     
     return cell;
 }
 
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.row == self.titles.count-1 ? 88.0f : 44.0f;
+}
 
 
 #pragma mark - UITextFieldDelegate
 - (UITextField *)tfieldDuration {
     if (!_tfieldDuration) {
         
-        CGFloat w = 150.0f;
+        CGFloat w = 90.0f;
         CGFloat h = 30.0f;
         CGFloat x = self.view.frame.size.width-w/2-20;
         CGFloat y = 44/2;
@@ -161,6 +169,7 @@
         _tfieldDuration.clearsOnBeginEditing = YES;
         _tfieldDuration.clearButtonMode = UITextFieldViewModeWhileEditing;
         _tfieldDuration.background = [UIImage imageWithColor:RGBA_COLOR(220, 220, 220, 0.5) wihtSize:CGSizeMake(w, h)];
+        _tfieldDuration.adjustsFontSizeToFitWidth = YES;
     }
     return _tfieldDuration;
 }
@@ -190,15 +199,30 @@
 
 }
 
+
+- (UILabel *)labRedTime {
+    if (!_labRedTime) {
+        
+        CGFloat tx = 15.0f;
+        CGFloat tw = [UIScreen mainScreen].bounds.size.width-2*tx;
+        CGFloat th = 44.0f;
+        
+        _labRedTime = [[UILabel alloc] initWithFrame:CGRectMake(tx, 0, tw, th)];
+        _labRedTime.font = [UIFont systemFontOfSize:14];
+        _labRedTime.adjustsFontSizeToFitWidth = YES;
+    }
+    return _labRedTime;
+}
+
 - (UISegmentedControl *)tsegment {
     if (!_tsegment) {
         
         NSArray *items = @[INTERSTR(@"None"), INTERSTR(@"All Day")];
         
-        CGFloat w = 100.0f;
+        CGFloat w = 220.0f;
         CGFloat h = 30.0f;
-        CGFloat x = self.view.frame.size.width-w/2-20;
-        CGFloat y = 44/2;
+        CGFloat x = self.view.frame.size.width/2;
+        CGFloat y = 44+44/2;
         _tsegment = [[UISegmentedControl alloc] initWithItems:items];
         _tsegment.frame = CGRectMake(0, 0, w, h);
         _tsegment.center = CGPointMake(x, y);

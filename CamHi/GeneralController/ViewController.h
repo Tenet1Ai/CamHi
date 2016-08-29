@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CameraIOSessionProtocol.h"
 #import "HXCell.h"
+#import "VideoSetCell.h"
 #import "TimeZoneInfo.h"
 
 

@@ -148,6 +148,8 @@
 		EEA265521D5DC0FA00A6F8FA /* FTPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA265511D5DC0FA00A6F8FA /* FTPViewController.m */; };
 		EEA265561D5DC5BE00A6F8FA /* FTPParam.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA265551D5DC5BE00A6F8FA /* FTPParam.m */; };
 		EEA2655A1D5DD6F100A6F8FA /* SystemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA265591D5DD6F100A6F8FA /* SystemViewController.m */; };
+		EEA314E61D6FCAF600A5CA95 /* SinProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA314E51D6FCAF600A5CA95 /* SinProgressView.m */; };
+		EEA314E91D7032D200A5CA95 /* GPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA314E81D7032D200A5CA95 /* GPlayer.m */; };
 		EEA9B3351D658AA00015A513 /* LocalRecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA9B3341D658AA00015A513 /* LocalRecordingViewController.m */; };
 		EEA9B3381D658ABA0015A513 /* LocalVideoInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA9B3371D658ABA0015A513 /* LocalVideoInfo.m */; };
 		EEA9B33D1D658D670015A513 /* HXAVPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA9B33A1D658D670015A513 /* HXAVPlayer.m */; };
@@ -441,6 +443,10 @@
 		EEA265551D5DC5BE00A6F8FA /* FTPParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPParam.m; sourceTree = "<group>"; };
 		EEA265581D5DD6F100A6F8FA /* SystemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemViewController.h; sourceTree = "<group>"; };
 		EEA265591D5DD6F100A6F8FA /* SystemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemViewController.m; sourceTree = "<group>"; };
+		EEA314E41D6FCAF600A5CA95 /* SinProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SinProgressView.h; sourceTree = "<group>"; };
+		EEA314E51D6FCAF600A5CA95 /* SinProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SinProgressView.m; sourceTree = "<group>"; };
+		EEA314E71D7032D200A5CA95 /* GPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPlayer.h; sourceTree = "<group>"; };
+		EEA314E81D7032D200A5CA95 /* GPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPlayer.m; sourceTree = "<group>"; };
 		EEA9B3331D658AA00015A513 /* LocalRecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalRecordingViewController.h; sourceTree = "<group>"; };
 		EEA9B3341D658AA00015A513 /* LocalRecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalRecordingViewController.m; sourceTree = "<group>"; };
 		EEA9B3361D658ABA0015A513 /* LocalVideoInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalVideoInfo.h; sourceTree = "<group>"; };
@@ -568,6 +574,8 @@
 			children = (
 				EE0BB29F1D66FBCF00F487F9 /* WifiSetViewController.h */,
 				EE0BB2A01D66FBCF00F487F9 /* WifiSetViewController.m */,
+				EEA314E41D6FCAF600A5CA95 /* SinProgressView.h */,
+				EEA314E51D6FCAF600A5CA95 /* SinProgressView.m */,
 			);
 			path = WifiSet;
 			sourceTree = "<group>";
@@ -612,6 +620,8 @@
 				EEA9B33A1D658D670015A513 /* HXAVPlayer.m */,
 				EEA9B33B1D658D670015A513 /* HXAVPlayerViewController.h */,
 				EEA9B33C1D658D670015A513 /* HXAVPlayerViewController.m */,
+				EEA314E71D7032D200A5CA95 /* GPlayer.h */,
+				EEA314E81D7032D200A5CA95 /* GPlayer.m */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -1544,6 +1554,7 @@
 				EE8455A61D5C1D3B0075EFA8 /* AlarmLinkCell.m in Sources */,
 				EE8455B11D5C1D3B0075EFA8 /* VideoSetCell.m in Sources */,
 				EE8455B41D5C1D3B0075EFA8 /* WifiViewController.m in Sources */,
+				EEA314E61D6FCAF600A5CA95 /* SinProgressView.m in Sources */,
 				EE55EACB1D33474D003B9D89 /* HXNavigationController.m in Sources */,
 				EE369D911D59E17200AD7DEB /* TimeParam.m in Sources */,
 				EE55EACF1D334778003B9D89 /* HXViewController.m in Sources */,
@@ -1595,6 +1606,7 @@
 				EE0BB29D1D66F1B400F487F9 /* SearchViewController.m in Sources */,
 				EECBDDD71D630C9800849DCB /* QualityDialog.m in Sources */,
 				EE55EAD21D33480E003B9D89 /* AboutViewController.m in Sources */,
+				EEA314E91D7032D200A5CA95 /* GPlayer.m in Sources */,
 				EE55EAC11D3345FB003B9D89 /* FMDatabaseQueue.m in Sources */,
 				EE2564491D61A15E00B6C589 /* MirrorView.m in Sources */,
 				EE0466731D372EDC00B679FA /* CameraCell.m in Sources */,

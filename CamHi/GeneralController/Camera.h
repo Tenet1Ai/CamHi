@@ -47,12 +47,13 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *state;
 @property (nonatomic, assign) BOOL online;
-@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) id<CameraIOSessionProtocol> delegate;
 @property (nonatomic, strong) NSMutableArray *onlineRecordings;
 
 - (id)initWithUid:(NSString *)uid_ Name:(NSString *)name_ Username:(NSString *)username_ Password:(NSString *)password_;
 - (BOOL)isGoke;
+- (UIImage *)image;
+- (void)saveImage:(UIImage *)image;
 
 
 //return block
@@ -66,6 +67,7 @@
 @property (nonatomic, copy) void(^connectBlock)(NSInteger state, NSString *connection);
 @property (nonatomic, copy) void(^playBackBlock)(NSInteger cmd, int seconds);
 @property (nonatomic, copy) void(^alarmBlock)(BOOL isAlarm, NSInteger type);
+@property (nonatomic, copy) void(^playStateBlock)(NSInteger state);
 
 
 //转动摄像机
