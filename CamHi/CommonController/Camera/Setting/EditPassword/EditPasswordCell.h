@@ -8,7 +8,7 @@
 
 #import "HXCell.h"
 
-#define cellH   (60)
+#define EditCellH   (60)
 
 @interface EditPasswordCell : HXCell
 

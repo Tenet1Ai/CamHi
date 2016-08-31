@@ -10,7 +10,7 @@
 
 @protocol OCScanLifeViewControllerDelegate <NSObject>
 
-- (void)scanResult:(NSString *)result;
+- (void)scanResult:(NSString * _Nullable )result;
 
 @end
 

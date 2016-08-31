@@ -26,6 +26,9 @@
 
 @property FMDatabase *db;
 
+@property (nonatomic, strong) NSFileManager *gFileManager;
+@property (nonatomic, copy) NSString *Documents;
+
 @end
 
 @implementation GBase
@@ -197,24 +200,26 @@
 
 
 
-- (NSString *) pathForDocumentsResource:(NSString *) relativePath {
-    
-    static NSString* documentsPath = nil;
-    
-    if (nil == documentsPath) {
-        
-        NSArray* dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        documentsPath = [dirs objectAtIndex:0];
-    }
-    
-    return [documentsPath stringByAppendingPathComponent:relativePath];
-}
+//- (NSString *) pathForDocumentsResource:(NSString *) relativePath {
+//    
+//    static NSString* documentsPath = nil;
+//    
+//    if (nil == documentsPath) {
+//        
+//        NSArray* dirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        documentsPath = [dirs objectAtIndex:0];
+//    }
+//    
+//    return [documentsPath stringByAppendingPathComponent:relativePath];
+//}
 
 - (void)saveImageToFile:(UIImage *)image imageName:(NSString *)fileName {
     
     NSData *imgData = UIImageJPEGRepresentation(image, 1.0f);
-    NSString *imgFullName = [self pathForDocumentsResource:fileName];
     
+    //NSString *imgFullName = [self pathForDocumentsResource:fileName];
+    NSString *imgFullName = [self documentsWithFileName:fileName];
+
     //NSLog(@"imgFullName:%@", imgFullName);
     
     [imgData writeToFile:imgFullName atomically:YES];
@@ -279,10 +284,10 @@
     [formatter setDateFormat:@"yyyy-MM-dd_HH-mm-ss"];
     NSString* strDateTime = [formatter stringFromDate:date];
     
-    NSString *strFileName = [NSString stringWithFormat:@"%@_%@", mycam.uid, strDateTime];
+    NSString *strFileName = [NSString stringWithFormat:@"%@_%@.mp4", mycam.uid, strDateTime];
     
     NSLog(@"strFileName:%@",strFileName);
-    return [NSString stringWithFormat:@"%@.mp4",strFileName];
+    return strFileName;
 }
 
 - (NSString *)recordingFilePath:(Camera *)mycam fileName:(NSString *)fileName {
@@ -365,14 +370,18 @@
     if (base.db != NULL) {
         
         FMResultSet *rs = [base.db executeQuery:@"SELECT * FROM snapshot WHERE file_path=?", pictureName];
-        NSFileManager *fileManager = [NSFileManager defaultManager];
+        
         
         while([rs next]) {
             
             NSString *filePath = [rs stringForColumn:@"file_path"];
             
-            [fileManager removeItemAtPath:[base pathForDocumentsResource:filePath] error:NULL];
-            NSLog(@"camera(%@) snapshot removed", filePath);
+            
+            [base.gFileManager removeItemAtPath:[base documentsWithFileName:filePath] error:NULL];
+            
+            NSLog(@"delete -> pictureName:%@", pictureName);
+            //NSLog(@"delete -> picturePath:%@", [base documentsWithFileName:filePath]);
+
         }
         
         [rs close];
@@ -380,6 +389,21 @@
         [base.db executeUpdate:@"DELETE FROM snapshot WHERE file_path=?", pictureName];
     }
 
+}
+
+
+#pragma mark - NSFileManager
+- (NSFileManager *)gFileManager {
+    return [NSFileManager defaultManager];
+}
+
+- (NSString *)Documents {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+}
+
+
+- (NSString *)documentsWithFileName:(NSString *)fileName {
+    return [self.Documents stringByAppendingPathComponent:fileName];
 }
 
 

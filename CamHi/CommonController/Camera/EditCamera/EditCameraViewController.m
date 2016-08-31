@@ -21,10 +21,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _titles = @[NSLocalizedString(@"Camera Name", nil),
+    _titles = @[NSLocalizedString(@"Name", nil),
                 NSLocalizedString(@"User Name", nil),
-                NSLocalizedString(@"Camera UID", nil),
-                NSLocalizedString(@"Camera Password", nil)];
+                NSLocalizedString(@"UID", nil),
+                NSLocalizedString(@"Password", nil)];
     
     [self.view addSubview:self.tableView];
     

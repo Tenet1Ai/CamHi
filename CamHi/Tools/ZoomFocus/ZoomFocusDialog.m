@@ -30,7 +30,7 @@
         UIImage *imgHig = [UIImage imageWithColor:[UIColor grayColor] wihtSize:CGSizeMake(100, 30)];
 
         _buttons = [[NSMutableArray alloc] initWithCapacity:0];
-        NSArray *titles = @[INTERSTR(@"Zoom in"), INTERSTR(@"Zoom out"), INTERSTR(@"Focus in"), INTERSTR(@"Focus in")];
+        NSArray *titles = @[INTERSTR(@"Zoom in"), INTERSTR(@"Zoom out"), INTERSTR(@"Focus in"), INTERSTR(@"Focus out")];
         
         offx = 10.0f;
         btnw = 100.0f;

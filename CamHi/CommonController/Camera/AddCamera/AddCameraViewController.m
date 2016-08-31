@@ -90,7 +90,7 @@
     }
 
     if (tpwd == nil || tpwd.length == 0) {
-        [HXProgress showText:NSLocalizedString(@"Camera Password can not be empty", nil)];
+        [HXProgress showText:NSLocalizedString(@"Password can not be empty", nil)];
         return;
     }
     
@@ -183,7 +183,7 @@
         if (indexPath.row == 2) {
             
             cell.tfieldDetail.tag = 2;
-            cell.tfieldDetail.placeholder = NSLocalizedString(@"Camera UID", nil);
+            cell.tfieldDetail.placeholder = NSLocalizedString(@"UID", nil);
             cell.tfieldDetail.text = self.camera.uid;
 
 
@@ -195,7 +195,7 @@
             
             cell.tfieldDetail.tag = 3;
             cell.tfieldDetail.secureTextEntry = YES;
-            cell.tfieldDetail.placeholder = NSLocalizedString(@"Camera Password", nil);
+            cell.tfieldDetail.placeholder = NSLocalizedString(@"Password", nil);
             cell.tfieldDetail.text = self.camera.password;
 
             

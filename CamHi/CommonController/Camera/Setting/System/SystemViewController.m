@@ -467,60 +467,6 @@ typedef NS_ENUM(NSInteger, CommandType) {
 
 
 
-HI_S32 HI_Get_Host_Port(HI_CHAR * szSrc, HI_CHAR * szPath, HI_S32 * s32Port)
-{
-    HI_S32 s32Len = 0, i;
-    HI_CHAR *pPtr = NULL, *pCol = NULL, *pSrc = szSrc, szPort[32] = {0};
-    HI_CHAR *pHttp = NULL;
-    
-    pHttp = strstr(pSrc, "http://");
-    if(pHttp)
-        pSrc = pHttp + 7;
-    
-    pHttp = strstr(pSrc, "https://");
-    if(pHttp)
-        pSrc = pHttp + 8;
-    
-    pPtr = strstr(pSrc, "/");
-    if(NULL == pPtr)
-    {
-        printf("filepath hao no '/', error");
-        return HI_FAILURE;
-    }
-    s32Len = (HI_S32)(pPtr-pSrc);
-    if(s32Len > 64)
-    {
-        printf("filepath's len is too long\n");
-        return HI_FAILURE;
-    }
-    
-    pCol = strstr(pSrc, ":");
-    if(pCol != NULL && pCol < pPtr)
-    {
-        s32Len = (HI_S32)(pCol-pSrc);
-        memcpy(szPath, pSrc, s32Len);
-        szPath[s32Len] = '\0';
-        pCol++;
-        s32Len = (HI_S32)(pPtr-pCol);
-        memcpy(szPort, pCol, s32Len);
-        szPort[s32Len] = '\0';
-        for(i=0;i<s32Len;i++)
-            if(szPort[i] < 0 || szPort[i] > 9)
-            {
-                printf("port error(%s)\n", szPort);
-                return HI_FALSE;
-            }
-        *s32Port = atoi(szPort);
-    }
-    else
-    {
-        memcpy(szPath, pSrc, s32Len);
-        szPath[s32Len] = '\0';
-        *s32Port = 80;
-    }
-    
-    return HI_SUCCESS;
-}
 
 
 
@@ -695,6 +641,61 @@ HI_S32 HI_Get_Host_Port(HI_CHAR * szSrc, HI_CHAR * szPath, HI_S32 * s32Port)
     
 }
 
+
+HI_S32 HI_Get_Host_Port(HI_CHAR * szSrc, HI_CHAR * szPath, HI_S32 * s32Port)
+{
+    HI_S32 s32Len = 0, i;
+    HI_CHAR *pPtr = NULL, *pCol = NULL, *pSrc = szSrc, szPort[32] = {0};
+    HI_CHAR *pHttp = NULL;
+    
+    pHttp = strstr(pSrc, "http://");
+    if(pHttp)
+        pSrc = pHttp + 7;
+    
+    pHttp = strstr(pSrc, "https://");
+    if(pHttp)
+        pSrc = pHttp + 8;
+    
+    pPtr = strstr(pSrc, "/");
+    if(NULL == pPtr)
+    {
+        printf("filepath hao no '/', error");
+        return HI_FAILURE;
+    }
+    s32Len = (HI_S32)(pPtr-pSrc);
+    if(s32Len > 64)
+    {
+        printf("filepath's len is too long\n");
+        return HI_FAILURE;
+    }
+    
+    pCol = strstr(pSrc, ":");
+    if(pCol != NULL && pCol < pPtr)
+    {
+        s32Len = (HI_S32)(pCol-pSrc);
+        memcpy(szPath, pSrc, s32Len);
+        szPath[s32Len] = '\0';
+        pCol++;
+        s32Len = (HI_S32)(pPtr-pCol);
+        memcpy(szPort, pCol, s32Len);
+        szPort[s32Len] = '\0';
+        for(i=0;i<s32Len;i++)
+            if(szPort[i] < 0 || szPort[i] > 9)
+            {
+                printf("port error(%s)\n", szPort);
+                return HI_FALSE;
+            }
+        *s32Port = atoi(szPort);
+    }
+    else
+    {
+        memcpy(szPath, pSrc, s32Len);
+        szPath[s32Len] = '\0';
+        *s32Port = 80;
+    }
+    
+    return HI_SUCCESS;
+}
 
 
 

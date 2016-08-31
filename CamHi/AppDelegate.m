@@ -31,7 +31,7 @@
     //init camera
     [GBase initCameras];
     
-
+    //注册信鸽推送
     SystemVersion < 8 ? [self registerPush] : [self registerPushForIOS8];
     
 //    for (UIWindow *window in [UIApplication sharedApplication].windows) {
@@ -92,14 +92,11 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
 
-    LOG(@"didRegisterForRemoteNotificationsWithDeviceToken:%@", [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding]);
-    
+    //将注册信鸽推送返回的deviceToken转换为字符串
     NSString *token = [[[deviceToken.description stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
 
-    LOG(@"didRegisterForRemoteNotificationsWithDeviceToken:%@", token);
-    
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:token forKey:@"deviceToken"];
+    //将注册信鸽推送返回的deviceToken存入本地磁盘，用于信鸽推送的打开与关闭
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"xinge_push_deviceToken"];
 
 }
 

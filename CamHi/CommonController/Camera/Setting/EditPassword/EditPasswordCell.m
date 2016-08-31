@@ -24,7 +24,7 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
         w = [UIScreen mainScreen].bounds.size.width;
-        h = cellH;
+        h = EditCellH;
         
         
         CGFloat vx = 5.0f;

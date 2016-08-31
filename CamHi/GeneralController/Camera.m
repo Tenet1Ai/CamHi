@@ -528,7 +528,8 @@
 
 
 - (void)receiveIOCtrl:(HiCamera *)camera Type:(int)type Data:(char*)data Size:(int)size Status:(int)status {
-    LOG(@">>> uid:%@,  receiveIOCtrl type:%d size:%d",camera.uid, type, size);
+    
+    LOG(@">>> uid:%@ type:%x size:%d",camera.uid, type, size);
     
     
     //获取截图并保存至沙盒
@@ -1065,21 +1066,19 @@
     return nil;
 }
 
+//摄像机是否在线
 - (BOOL)online {
-    
-    if ([self getConnectState] == CAMERA_CONNECTION_STATE_LOGIN) {
-        return YES;
-    }
-    else {
-        return NO;
-    }
+    int cstate = [self getConnectState];
+    return cstate == CAMERA_CONNECTION_STATE_LOGIN ? YES : NO;
 }
+
 
 #pragma mark - OnPushResult/信鸽推送
 - (HiPushSDK *)pushSDK {
     if (!_pushSDK) {
         
-        NSString *token = [self.camDefaults objectForKey:@"deviceToken"];
+        //注册信鸽推送返回的deviceToken
+        NSString *token = [self.camDefaults objectForKey:@"xinge_push_deviceToken"];
         _pushSDK = [[HiPushSDK alloc] initWithXGToken:token Uid:self.uid Company:XINGECAMPANY Delegate:self];
     }
     return _pushSDK;
@@ -1184,16 +1183,10 @@
 - (NSInteger)direction:(CGPoint)translation {
     
     if (fabs(translation.x) > fabs(translation.y)) {
-        if (translation.x >0.0)
-            return HI_P2P_PTZ_CTRL_RIGHT;
-        else
-            return HI_P2P_PTZ_CTRL_LEFT;
+        return translation.x > 0.0 ? HI_P2P_PTZ_CTRL_RIGHT : HI_P2P_PTZ_CTRL_LEFT;
     }
     else {
-        if (translation.y >0.0)
-            return HI_P2P_PTZ_CTRL_DOWN;
-        else
-            return HI_P2P_PTZ_CTRL_UP;
+        return translation.y > 0.0 ? HI_P2P_PTZ_CTRL_DOWN : HI_P2P_PTZ_CTRL_UP;
     }
 }
 
