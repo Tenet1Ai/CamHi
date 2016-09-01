@@ -155,6 +155,16 @@
 
 
 
+#pragma mark - download/录像下载
+- (void)receiveDownloadState:(HiCamera*)camera Total:(int)total CurSize:(int)curSize State:(int)state Path:(NSString*)path {
+    
+    LOG(@"download:<%@ %d %d %d> %@", camera.uid, total, curSize, state, path);
+    
+    if (_downloadBlock) {
+        _downloadBlock((Camera *)camera, total, curSize, state, path);
+    }
+}
+
 
 
 
@@ -356,18 +366,35 @@
     
     
     //wifi设置界面
-    if (cmd == HI_P2P_GET_WIFI_PARAM || cmd == HI_P2P_SET_WIFI_PARAM) {
+    if (cmd == HI_P2P_GET_WIFI_PARAM || cmd == HI_P2P_SET_WIFI_PARAM || cmd == HI_P2P_SET_WIFI_CHECK) {
         
         if (cmd == HI_P2P_GET_WIFI_PARAM) {
             [self sendIOCtrl:cmd Data:(char *)nil Size:0];
         }
         
         if (cmd == HI_P2P_SET_WIFI_PARAM) {
-            LOG(@">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            
             WifiParam *wifiParam = [self object:dic];
+            
             HI_P2P_S_WIFI_PARAM *wifi_param = [wifiParam model];
+            
+            NSLog(@"wifi_param->strSSID:%s", wifi_param->strSSID);
+            NSLog(@"wifi_param->strKey:%s", wifi_param->strKey);
+
             [self sendIOCtrl:cmd Data:(char *)wifi_param Size:sizeof(HI_P2P_S_WIFI_PARAM)];
             free(wifi_param);
+            
+        }
+        
+        if (cmd == HI_P2P_SET_WIFI_CHECK) {
+            WifiParam *wifiParam = [self object:dic];
+            HI_P2P_S_WIFI_CHECK *wifi_check = [wifiParam modelCheck];
+           
+            NSLog(@"wifi_check->strSSID:%s", wifi_check->strSSID);
+            NSLog(@"wifi_check->strKey:%s", wifi_check->strKey);
+            
+            [self sendIOCtrl:cmd Data:(char *)wifi_check Size:sizeof(HI_P2P_S_WIFI_CHECK)];
+            free(wifi_check);
         }
         
     }//@HI_P2P_GET_WIFI_PARAM || HI_P2P_SET_WIFI_PARAM
@@ -391,7 +418,7 @@
             [self sendIOCtrl:cmd Data:(char *)nil Size:0];
         }
         
-    }//@HI_P2P_GET_SD_INFO || HI_P2P_SET_WIFI_PARAM
+    }//@HI_P2P_GET_SD_INFO || HI_P2P_SET_FORMAT_SD
 
     
     
@@ -760,7 +787,7 @@
     
     
     //wifi设置界面
-    if (type == HI_P2P_GET_WIFI_PARAM || type == HI_P2P_SET_WIFI_PARAM) {
+    if (type == HI_P2P_GET_WIFI_PARAM || type == HI_P2P_SET_WIFI_PARAM || type == HI_P2P_SET_WIFI_CHECK) {
         
         if (type == HI_P2P_GET_WIFI_PARAM) {
             
@@ -773,6 +800,10 @@
         }
         
         if (type == HI_P2P_SET_WIFI_PARAM) {
+            [self setCMD:type size:size];
+        }
+        
+        if (type == HI_P2P_SET_WIFI_CHECK) {
             [self setCMD:type size:size];
         }
         
@@ -967,6 +998,10 @@
         [self setCMD:type size:size];
     }
 
+    // 远程录像回放拖动
+    if (type == HI_P2P_PB_POS_SET) {
+        [self setCMD:type size:size];
+    }
 
 }
 

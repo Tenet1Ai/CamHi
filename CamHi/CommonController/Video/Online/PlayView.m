@@ -159,7 +159,13 @@
 
 
 - (void)sliderChangedAction:(id)sender {
-    
+  
+    UISlider *slider = (UISlider *)sender;
+
+    if (_playBlock) {
+        _playBlock(3, slider.value);
+    }
+
 }
 
 

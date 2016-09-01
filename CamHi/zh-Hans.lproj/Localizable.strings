@@ -86,6 +86,16 @@
 "From" = "从";
 /* No comment provided by engineer. */
 "To" = "至";
+/* No comment provided by engineer. */
+"Play" = "播放";
+/* No comment provided by engineer. */
+"Download" = "下载";
+/* No comment provided by engineer. */
+"Downloading" = "下载中";
+/* No comment provided by engineer. */
+"Waiting" = "等待中";
+/* No comment provided by engineer. */
+"Record" = "录像";
 
 
 
@@ -518,7 +528,8 @@
 "Wait for connecting" = "请耐心等待链接";
 /* No comment provided by engineer. */
 "Cancel" = "取消";
-
+/* No comment provided by engineer. */
+"SSID maximum length of 31" = "SSID最大长度为31位";
 
 
 

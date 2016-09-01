@@ -51,8 +51,12 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 }
 
 @property (nonatomic, assign) BOOL isShowing;
-@property (nonatomic, strong) __block Display *display;
 
+// model
+@property (nonatomic, strong) __block Display *display;
+@property (nonatomic, strong) __block TimeParam *timeParam;
+
+// view
 @property (nonatomic, strong) UIScrollView *smonitor;
 @property (nonatomic, strong) HiGLMonitor *monitor;
 
@@ -125,6 +129,11 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 #pragma mark - setup
 - (void)setup {
     
+    // 连接图像时，摄像机时间自动同步为手机时间
+    [self syncWithPhoneTime];
+
+    
+    
     [self.camera request:HI_P2P_GET_DISPLAY_PARAM dson:nil];
     
     __weak typeof(self) weakSelf = self;
@@ -178,6 +187,16 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryNotification:) name:DidEnterBackground object:nil];
   
 }
+
+
+- (void)syncWithPhoneTime {
+    
+    _timeParam = [[TimeParam alloc] init];
+    [_timeParam syncCurrentTime];
+    
+    [self.camera request:HI_P2P_SET_TIME_PARAM dson:[self.camera dic:_timeParam]];
+}
+
 
 
 - (void)didReceiveMemoryNotification:(NSNotification *)notification {

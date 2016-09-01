@@ -9,6 +9,7 @@
 #import "RecordingViewController.h"
 #import "PlayBackViewController.h"
 #import "SearchViewController.h"
+#import "DownloadView.h"
 
 @interface RecordingViewController ()
 <UIActionSheetDelegate>
@@ -16,6 +17,9 @@
 @property (nonatomic, strong) NSMutableArray *recordings;
 @property (nonatomic, strong) ListReq *listReq;
 @property (nonatomic, strong) NSDateFormatter *tFormatter;
+@property (nonatomic, strong) VideoInfo *selectedVideoInfo;
+@property (nonatomic, strong) DownloadView *downloadView;
+@property (nonatomic, copy) NSString *progress_char;
 
 @end
 
@@ -79,8 +83,100 @@
     
     //
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(btnItemAction:)];
+    
+    
+    
+    // download
+    
+    // 取消长按下载_20160901
+//    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
+//    longPress.minimumPressDuration = 1.0f;
+//    [self.tableView addGestureRecognizer:longPress];
+
+
+    
+    __block NSString *progress_char_per = @"\%";
+    
+    self.camera.downloadBlock = ^(Camera *mycam, int tsize, int csize, int state, NSString *recordingPath) {
+      
+        __block CGFloat totalsize = (CGFloat)tsize;
+        __block CGFloat currentsize = (CGFloat)csize;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (state == DOWNLOAD_STATE_START) {
+                
+                weakSelf.downloadView.labTitle.text = INTERSTR(@"Downloading");
+                [weakSelf.downloadView show];
+                
+                //Documents
+                NSRange range = [recordingPath rangeOfString:@"Download/"];
+                NSString *recordingName = [recordingPath substringFromIndex:NSMaxRange(range)];
+                NSLog(@"recordingName:%@", recordingName);
+                NSLog(@"recordingPath:%@", recordingPath);
+                
+                [GBase downloadRecordingForCamera:weakSelf.camera fileName:recordingName time:[NSNumber numberWithDouble:weakSelf.selectedVideoInfo.startTime]];
+
+            }
+            
+            if (state == DOWNLOAD_STATE_DOWNLOADING) {
+                
+                if (currentsize >= totalsize) {
+                    currentsize = totalsize-1;
+                }
+                
+                CGFloat progress = (CGFloat)currentsize/totalsize;
+                
+                NSLog(@"progress:%f", progress);
+                
+                weakSelf.downloadView.progrssView.progress = progress;
+                weakSelf.progress_char = [NSString stringWithFormat:@"%.1f%@", progress*100, progress_char_per];
+                
+                NSLog(@"progress_char:%@", weakSelf.progress_char);
+                weakSelf.downloadView.labProgress.text = weakSelf.progress_char;
+            }
+            
+            if (state == DOWNLOAD_STATE_END) {
+                
+                weakSelf.downloadView.labTitle.text = INTERSTR(@"Done");
+                [weakSelf.downloadView.btnCancel setTitle:INTERSTR(@"Ok") forState:UIControlStateNormal];
+            }
+
+        });//@dispatch_get_main_queue
+        
+        
+    };
+
+    
+    
+    
+    
+    // app进入后台通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryNotificaiton:) name:DidEnterBackground object:nil];
+    
+    
 }
 
+- (void)didReceiveMemoryNotificaiton:(NSNotification *)notification {
+    
+    NSLog(@"didReceiveMemoryNotificaiton:DidEnterBackground");
+    [self stopDownload];
+    //[self.downloadView dismiss];
+}
+
+
+- (DownloadView *)downloadView {
+    if (!_downloadView) {
+        _downloadView = [[DownloadView alloc] initWithTitle:INTERSTR(@"Waiting")];
+        
+        __weak typeof(self) weakSelf = self;
+        _downloadView.cancelBlock = ^(NSInteger type) {
+          
+            [weakSelf stopDownload];
+        };
+    }
+    return _downloadView;
+}
 
 
 - (void)btnItemAction:(id)sender {
@@ -184,6 +280,90 @@
     
     [self.navigationController pushViewController:search animated:YES];
 }
+
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"buttonIndex:%ld", buttonIndex);
+    
+    // play
+    if (buttonIndex == 1) {
+        [self playRecording];
+    }
+    
+    // download
+    if (buttonIndex == 2) {
+        
+        [self startDownload:self.selectedVideoInfo];
+    }
+    
+    // cancel
+    if (buttonIndex == 0) {
+        
+    }
+}
+
+
+#pragma mark - down/录像下载
+
+
+- (void)longPressAction:(UIGestureRecognizer *)recognizer {
+    
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        
+        CGPoint point = [recognizer locationInView:self.tableView];
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+        
+       // VideoInfo *evt = _recordings[indexPath.row];
+        
+        //[self startDownload:evt];
+        self.selectedVideoInfo = _recordings[indexPath.row];
+        
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:INTERSTR(@"Cancel") otherButtonTitles:INTERSTR(@"Play"), INTERSTR(@"Download"), nil];
+        [alertView show];
+        
+    }
+}
+
+
+- (void)startDownload:(VideoInfo *)evt {
+    
+    STimeDay downloadTimeDay = [VideoInfo getTimeDay:evt.startTime];
+    
+    
+
+//    NSString *dir = [[GBase sharedBase].Documents stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@/%@_", self.camera.uid, @"Download", self.camera.uid]];
+    
+    //AAAA-001460-FGWJN/Download/AAAA-001460-FGWJN_2016-09-01_04-43-19.mp4
+    //Documents/AAAA-001460-FGWJN/Download/AAAA-001460-FGWJN_2016-09-01_04-43-19.mp4
+    //Documents/AAAA-001460-FGWJN/Download/AAAA-001460-FGWJN/Download/AAAA-001460-FGWJN_2016-09-01_04-43-19.mp4
+    
+    // 传入的下载录像地址拼接前半段
+    NSString *file_name_before = [NSString stringWithFormat:@"%@_", self.camera.uid];
+    NSString *download_path = [[GBase sharedBase] downloadPathWithCamera:self.camera];
+    NSString *dir = [download_path stringByAppendingPathComponent:file_name_before];
+    
+    
+    // 传入的下载录像地址拼接后半段
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:evt.startTime];
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd_HH-mm-ss"];
+    NSString* strDateTime = [formatter stringFromDate:date];
+
+    NSLog(@"strDateTime:%@", strDateTime);
+
+
+    [self.camera startDownloadRecording:&downloadTimeDay Dir:dir File:strDateTime];
+    
+}
+
+- (void)stopDownload {
+    [self.camera stopDownloadRecording];
+}
+
+
 
 #pragma mark - UIActionSheetDelegate
 
@@ -296,15 +476,31 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    VideoInfo *evt = _recordings[indexPath.row];
+//    VideoInfo *evt = _recordings[indexPath.row];
+//
+//    PlayBackViewController *playBack = [[PlayBackViewController alloc] init];
+//    playBack.camera = self.camera;
+//    playBack.video = evt;
+//    
+//    [self.navigationController pushViewController:playBack animated:YES];
+    
+    self.selectedVideoInfo = _recordings[indexPath.row];
+    [self presentAlertView];
+}
 
+- (void)presentAlertView {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:INTERSTR(@"Cancel") otherButtonTitles:INTERSTR(@"Play"), INTERSTR(@"Download"), nil];
+    [alertView show];
+}
+
+- (void)playRecording {
+    
     PlayBackViewController *playBack = [[PlayBackViewController alloc] init];
     playBack.camera = self.camera;
-    playBack.video = evt;
+    playBack.video = self.selectedVideoInfo;
     
     [self.navigationController pushViewController:playBack animated:YES];
 }
-
 
 /*
 #pragma mark - Navigation

@@ -62,6 +62,25 @@
                 [HXProgress showText:INTERSTR(@"Save Failed")];
             }
         }
+        
+        // check wifi
+        if (cmd == HI_P2P_SET_WIFI_CHECK) {
+            
+            if (success) {
+                
+                [HXProgress showText:INTERSTR(@"Save Success")];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                });
+                
+            }
+            else {
+                LOG(@">>>>>> cmd:%ld", cmd)
+                
+                [HXProgress showText:INTERSTR(@"Save Failed")];
+            }
+
+        }
     };
 }
 
@@ -69,8 +88,14 @@
 - (void)rbtnItemAction:(id)sender {
     
     [self.view endEditing:YES];
+    _wifiParam.u32Check = 0;
     
-    [self.camera request:HI_P2P_SET_WIFI_PARAM dson:[self.camera dic:_wifiParam]];
+    if (_wifiParam.strSSID.length > 31) {
+        [HXProgress showText:INTERSTR(@"SSID maximum length of 31")];
+        return;
+    }
+    
+    [self.camera request:HI_P2P_SET_WIFI_CHECK dson:[self.camera dic:_wifiParam]];
 }
 
 

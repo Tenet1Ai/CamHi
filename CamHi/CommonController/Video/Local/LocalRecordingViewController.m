@@ -8,11 +8,13 @@
 
 #import "LocalRecordingViewController.h"
 #import "HXAVPlayerViewController.h"
+#import "LocalVideoInfo.h"
 
 @interface LocalRecordingViewController ()
 
 @property (nonatomic, strong) NSMutableArray *recordings;
 @property (nonatomic, strong) NSDateFormatter *tFormatter;
+@property (nonatomic, strong) UISegmentedControl *tsegmented;
 
 @end
 
@@ -23,7 +25,14 @@
     // Do any additional setup after loading the view.
     
     
+
+    [self setupRecordingsWithType:0];
+    
     [self.view addSubview:self.tableView];
+
+    self.navigationItem.title = nil;
+    self.navigationItem.titleView = self.tsegmented;
+    
 
 }
 
@@ -39,12 +48,50 @@
 }
 
 
+#pragma mark - 
+- (UISegmentedControl *)tsegmented {
+    if (!_tsegmented) {
+        
+        NSArray *segTitles = @[INTERSTR(@"Record"), INTERSTR(@"Download")];
+        
+        _tsegmented = [[UISegmentedControl alloc] initWithItems:segTitles];
+        _tsegmented.frame = CGRectMake(0, 0, 120, 30);
+        _tsegmented.selectedSegmentIndex = 0;
+        [_tsegmented addTarget:self action:@selector(tsegmentedAction:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _tsegmented;
+}
+
+- (void)tsegmentedAction:(id)sender {
+    
+    UISegmentedControl *ts = (UISegmentedControl *)sender;
+    
+    [self setupRecordingsWithType:ts.selectedSegmentIndex];
+    [self.tableView reloadData];
+}
+
 - (BOOL)prefersStatusBarHidden {
     return NO;
 }
 
+
+
+- (void)setupRecordingsWithType:(NSInteger)type {
+    NSMutableArray *localVideoInfos = [GBase recordingsForCamera:self.camera];
+    
+    [self.recordings removeAllObjects];
+    for (LocalVideoInfo *vinfo in localVideoInfos) {
+        
+        if (vinfo.type == type) {
+            [self.recordings addObject:vinfo];
+        }
+    }
+}
+
 - (NSMutableArray *)recordings {
-    _recordings = [GBase recordingsForCamera:self.camera];
+    if (!_recordings) {
+        _recordings = [[NSMutableArray alloc] initWithCapacity:0];
+    }
     return _recordings;
 }
 
@@ -114,6 +161,7 @@
         
         LocalVideoInfo* vi = self.recordings[indexPath.row];
         [GBase deleteRecording:vi.path camera:self.camera];
+        [self.recordings removeObject:vi];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }

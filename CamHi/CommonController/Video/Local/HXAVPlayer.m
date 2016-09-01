@@ -440,6 +440,25 @@
 
 }
 
+- (void)moveProfress:(CGFloat)progress didPlay:(BOOL)playing {
+    
+    //根据进度条换算实际的秒数
+    double moveSeconds = self.totalSeconds*progress;
+    
+    CMTime cTime = _player.currentItem.currentTime;
+    double currentSecond = (CGFloat)cTime.value/cTime.timescale;  //计算当前在第几秒
+    currentSecond = currentSecond + moveSeconds;
+    
+    CMTime backTime = CMTimeMake(currentSecond, 1);
+    
+    [_player pause];
+    [_player seekToTime:backTime completionHandler:^(BOOL finished) {
+        
+        playing ? [_player play] : nil;
+    }];
+
+}
+
 
 
 - (void)dismiss {

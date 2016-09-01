@@ -55,6 +55,7 @@
  *  快进或快退 
  */
 - (void)moveProfress:(CGFloat)progress;
+- (void)moveProfress:(CGFloat)progress didPlay:(BOOL)playing;
 
 /* 
  *  停止播放

@@ -88,5 +88,7 @@
 -(int) getConnectState;
 -(void) setReconnectTimes:(int) times;
 
+- (void) startDownloadRecording:(STimeDay*)startTiem Dir:(NSString*)dir File:(NSString*)file ;
+- (void) stopDownloadRecording;
 
 @end

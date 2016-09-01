@@ -63,8 +63,6 @@
     
     
     
-    ///var/mobile/Containers/Data/Application/DA072F1E-6A42-474D-AD69-B679D1E56488/Documents/AAAA-000066-JNMED/AAAA-000066-JNMED_2016-06-23_09-41-05.mp4
-    ///var/mobile/Containers/Data/Application/607B054C-8AB4-4B51-85EB-091A9978586F/Documents/AAAA-000076-VNMZN/AAAA-000076-VNMZN_2016-08-18_11-11-38.mp4
     //http://mw5.dwstatic.com/2/4/1529/134981-99-1436844583.mp4
     
     //NSURL *videoURL = [NSURL URLWithString:@"/Users/jiang/Downloads/AAAA-000066-JNMED/AAAA-000066-JNMED_2016-07-19_16-22-57.mp4"];
@@ -73,7 +71,18 @@
     
 
     //NSString *urlPath = [self videoPath:self.model.path];
-    NSString *urlPath = [self recordingFilePath:self.camera fileName:self.model.path];
+    //NSString *urlPath = [self recordingFilePath:self.camera fileName:self.model.path];
+    
+    NSString *urlPath = nil;
+    
+    if (self.model.type == 0) {
+        urlPath = [[GBase sharedBase] recordingPathWithCamera:self.camera recordingName:self.model.path];
+    }
+    else {
+        urlPath = [[GBase sharedBase] downloadPathWithCamera:self.camera recordingName:self.model.path];
+    }
+    
+    
 
     NSLog(@"urlPath:%@", urlPath);
     
@@ -127,8 +136,9 @@
         if (type == 2) {
             
             //快进／快退
-            CGFloat pValue = (CGFloat)value-wself.cValue;
-            [wself.hxplayer moveProfress:pValue];
+            CGFloat pValue = ((CGFloat)value-wself.cValue)/100;
+            //[wself.hxplayer moveProfress:pValue];
+            [wself.hxplayer moveProfress:pValue didPlay:wself.isPlaying];
 
          }
 
@@ -206,14 +216,6 @@
     
     return strPath;
 }
-
-
-
-
-
-
-
-
 
 
 - (void)viewWillAppear:(BOOL)animated {

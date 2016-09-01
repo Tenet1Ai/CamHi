@@ -19,6 +19,7 @@
 @property BOOL isFirstPlayTime;
 @property BOOL isPlaying;
 @property BOOL isEndingFlag;
+@property (nonatomic, assign) BOOL isDraging;
 
 
 
@@ -67,12 +68,14 @@
     _isFirstPlayTime = YES;
     _isPlaying = YES;
     _isEndingFlag = NO;
+    _isDraging = NO;
 
     __weak typeof(self) wself = self;
     
 //    __block NSDateFormatter *tFormatter = [[NSDateFormatter alloc] init];
 //    tFormatter.dateFormat = @"HH:mm:ss";
     
+    //
     self.camera.playBackBlock = ^(NSInteger cmd, int seconds) {
         
         if(wself.isFirstPlayTime) {
@@ -83,17 +86,24 @@
 //        NSDate *d = [[NSDate alloc]initWithTimeIntervalSince1970: (CGFloat)seconds/1000.0];
 //        NSLog(@">>> : %@", [tFormatter stringFromDate:d]);
         
-        double per = (double)(seconds - wself.firstPlayTime)/(double)(wself.playTime*10);
+        if (!wself.isDraging) {
+            
+            double per = (double)(seconds - wself.firstPlayTime)/(double)(wself.playTime*10);
+            
+            //NSLog(@">>> seconds:%d", seconds);
+            
+            NSLog(@">>> per:%f ", per);
+            
+            wself.playView.sliderProgress.value = per;
+            
 
-        NSLog(@">>> seconds:%d", seconds);
-
-        NSLog(@">>> per:%f", per);
+        }
         
-        wself.playView.sliderProgress.value = per;
     };
     
     
     
+    //
     self.camera.cmdBlock = ^(BOOL success, NSInteger cmd, NSDictionary *dic) {
       
         if (cmd == HI_P2P_DEV_PLAYBACK_END_FLAG) {
@@ -103,6 +113,13 @@
             wself.isEndingFlag = YES;
             wself.playView.sliderProgress.value = 0;
             wself.playView.btnPlay.selected = YES;
+        }
+        
+        if (cmd == HI_P2P_PB_POS_SET) {
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                wself.isDraging = NO;
+            });
         }
     };
     
@@ -115,7 +132,7 @@
     
     
     
-    
+    //
     self.playView.playBlock = ^(NSInteger type, CGFloat value) {
       
         if (type == 0) {
@@ -199,23 +216,50 @@
         
         if (type == 2) {
             
+            //[wself pause];
+            
+            //wself.isDraging = YES;
+            
             
             HI_P2P_PB_SETPOS_REQ* req = (HI_P2P_PB_SETPOS_REQ*)malloc(sizeof(HI_P2P_PB_SETPOS_REQ));
             STimeDay st = [VideoInfo getTimeDay:wself.video.startTime];
             memcpy(&req->sStartTime, &st, sizeof(STimeDay));
-            req->s32Pos = value;
+            req->s32Pos = (HI_S32)value;
             req->u32Chn = 0;
             [wself.camera sendIOCtrl:HI_P2P_PB_POS_SET Data:(char *)req Size:sizeof(HI_P2P_PB_SETPOS_REQ)];
             
             free(req);
 
+            //[wself pause];
             
+        }
+        
+        
+        if (type == 3) {
+            
+            wself.isDraging = YES;
         }
         
     };
     
 }
 
+
+- (void)pause {
+    
+    //暂停时，发送暂停继续播放，做完任何操作都需要发送stop
+    HI_P2P_S_PB_PLAY_REQ* req = (HI_P2P_S_PB_PLAY_REQ*)malloc(sizeof(HI_P2P_S_PB_PLAY_REQ));
+    memset(req, 0, sizeof(HI_P2P_S_PB_PLAY_REQ));
+    req->command = HI_P2P_PB_PAUSE;
+    req->u32Chn = 0;
+    STimeDay st = [VideoInfo getTimeDay:self.video.startTime];
+    memcpy(&req->sStartTime, &st, sizeof(STimeDay));
+    
+    [self.camera sendIOCtrl:HI_P2P_PB_PLAY_CONTROL Data:(char *)req Size:sizeof(HI_P2P_S_PB_PLAY_REQ)];
+    
+    free(req);
+
+}
 
 - (void)tap:(UITapGestureRecognizer *)recognizer {
     self.playView.isShow ? [self.playView dismiss] : [self.playView show];

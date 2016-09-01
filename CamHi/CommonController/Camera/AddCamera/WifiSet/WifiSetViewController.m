@@ -233,13 +233,14 @@
         [wself stopSmartConfig];
     };
 
+    [SinProgressView sharedProgress].proSin.progress = 0;
     pTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(progressMethod:) userInfo:nil repeats:YES];
 }
 
 
 - (void)progressMethod : (id)sender {
     
-    NSLog(@"progressMethod");
+    NSLog(@"progressMethod progress:%f", [SinProgressView sharedProgress].proSin.progress);
     
     [SinProgressView sharedProgress].proSin.progress += 1.0f/SMART_WIFI_TIME;
     

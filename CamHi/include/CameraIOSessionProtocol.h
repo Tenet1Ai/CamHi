@@ -18,6 +18,12 @@
 #define PLAY_STATE_RECORDING_START  3
 #define PLAY_STATE_RECORDING_END  4
 
+
+#define DOWNLOAD_STATE_START  0
+#define DOWNLOAD_STATE_DOWNLOADING  1
+#define DOWNLOAD_STATE_END  2
+#define DOWNLOAD_STATE_ERROR_PATH  3
+
 //@interface HiCamera;
 
 @protocol CameraIOSessionProtocol <NSObject>
@@ -27,6 +33,8 @@
 - (void)receiveSessionState:(HiCamera *)camera Status:(int)status;
 - (void)receivePlayState:(HiCamera *)camera State:(int)state Width:(int)width Height:(int)height;
 - (void)receivePlayUTC:(HiCamera *)camera Time:(int)time;
+
+- (void)receiveDownloadState:(HiCamera*)camera Total:(int)total CurSize:(int)curSize State:(int)state Path:(NSString*)path;
 
 @end
 

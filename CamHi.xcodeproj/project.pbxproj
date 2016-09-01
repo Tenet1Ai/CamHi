@@ -19,6 +19,7 @@
 		EE0BB29D1D66F1B400F487F9 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0BB29C1D66F1B400F487F9 /* SearchViewController.m */; };
 		EE0BB2A11D66FBCF00F487F9 /* WifiSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0BB2A01D66FBCF00F487F9 /* WifiSetViewController.m */; };
 		EE0BB2A51D6704B800F487F9 /* GUAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0BB2A41D6704B800F487F9 /* GUAAlertView.m */; };
+		EE0CDF521D77C97D00F37104 /* DownloadView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0CDF511D77C97D00F37104 /* DownloadView.m */; };
 		EE0F00D91D546C7200C4516F /* AudioAttr.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0F00D81D546C7200C4516F /* AudioAttr.m */; };
 		EE0F00E41D54951500C4516F /* VideoParam.m in Sources */ = {isa = PBXBuildFile; fileRef = EE0F00E31D54951500C4516F /* VideoParam.m */; };
 		EE13BA851D654A4F005AF3E9 /* more_blue_73.png in Resources */ = {isa = PBXBuildFile; fileRef = EE13BA841D654A4F005AF3E9 /* more_blue_73.png */; };
@@ -208,6 +209,8 @@
 		EE0BB2A01D66FBCF00F487F9 /* WifiSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiSetViewController.m; sourceTree = "<group>"; };
 		EE0BB2A31D6704B800F487F9 /* GUAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUAAlertView.h; sourceTree = "<group>"; };
 		EE0BB2A41D6704B800F487F9 /* GUAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUAAlertView.m; sourceTree = "<group>"; };
+		EE0CDF501D77C97D00F37104 /* DownloadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadView.h; sourceTree = "<group>"; };
+		EE0CDF511D77C97D00F37104 /* DownloadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadView.m; sourceTree = "<group>"; };
 		EE0F00D71D546C7200C4516F /* AudioAttr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioAttr.h; sourceTree = "<group>"; };
 		EE0F00D81D546C7200C4516F /* AudioAttr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioAttr.m; sourceTree = "<group>"; };
 		EE0F00E21D54951500C4516F /* VideoParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoParam.h; sourceTree = "<group>"; };
@@ -587,6 +590,15 @@
 				EE0BB2A41D6704B800F487F9 /* GUAAlertView.m */,
 			);
 			path = GUAAlertView;
+			sourceTree = "<group>";
+		};
+		EE0CDF4F1D77C96400F37104 /* Downloading */ = {
+			isa = PBXGroup;
+			children = (
+				EE0CDF501D77C97D00F37104 /* DownloadView.h */,
+				EE0CDF511D77C97D00F37104 /* DownloadView.m */,
+			);
+			path = Downloading;
 			sourceTree = "<group>";
 		};
 		EE0F00D61D546C4300C4516F /* Audio */ = {
@@ -1070,6 +1082,7 @@
 		EE55EAB01D3345FB003B9D89 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				EE0CDF4F1D77C96400F37104 /* Downloading */,
 				EE0BB2A21D6704B800F487F9 /* GUAAlertView */,
 				EECBDDD41D630C8700849DCB /* QualityDialog */,
 				EECBDDD01D63063700849DCB /* iToast */,
@@ -1588,6 +1601,7 @@
 				EE691C471D3C80AD00775606 /* HXCell.m in Sources */,
 				EE141D731D63F40E00CD8BB8 /* PhotoCollectionViewCell.m in Sources */,
 				EE0BB2A11D66FBCF00F487F9 /* WifiSetViewController.m in Sources */,
+				EE0CDF521D77C97D00F37104 /* DownloadView.m in Sources */,
 				EE1E7F091D3DBFC800D0A21F /* Camera.m in Sources */,
 				EE2A9DB11D35D1E7005E1E0B /* ViewController.m in Sources */,
 				EEA9B3441D65A3B10015A513 /* PlayView.m in Sources */,

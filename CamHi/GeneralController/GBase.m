@@ -27,7 +27,6 @@
 @property FMDatabase *db;
 
 @property (nonatomic, strong) NSFileManager *gFileManager;
-@property (nonatomic, copy) NSString *Documents;
 
 @end
 
@@ -69,9 +68,20 @@
             if (![self.db executeUpdate:SQLCMD_CREATE_TABLE_VIDEO]) LOG(@"Can not create table video");
         }
         
-//        if (![self.db close]) {
-//            LOG(@">>> close db failed.")
-//        }
+        
+        // 新增录像类型字段，用于区分手动录像与下载录像
+        // 判断要添加的字段是否存在
+        if (![self.db columnExists:@"recording_type" inTableWithName:@"video"]) {
+            
+            // 添加不存在的字段
+            NSString *addColumn = @"alter table video add recording_type int default 0";
+            if (![self.db executeUpdate:addColumn]) {
+                NSLog(@"can add Column to table video");
+            }
+            
+        }
+        // 判断要添加的字段是否存在 20160901
+        
     }
     return self;
 }
@@ -229,24 +239,77 @@
 //保存录像
 + (BOOL)saveRecordingForCamera:(Camera *)mycam {
   
+//    GBase *base = [GBase sharedBase];
+//
+//    
+//    NSString *recordFileName = [base recordingFileName:mycam];
+//    
+//    NSString *recordFilePath = [base recordingFilePath:mycam fileName:recordFileName];
+//    
+//    [mycam startRecording:recordFilePath];
+//    
+//    if (base.db != NULL) {
+//        if (![base.db executeUpdate:@"INSERT INTO video(dev_uid, file_path, time) VALUES(?,?,?)", mycam.uid, recordFileName, [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]]) {
+//            LOG(@"Fail to add snapshot to database.");
+//            return NO;
+//        }
+//    }
+//    
+//    return YES;
+    
+    
     GBase *base = [GBase sharedBase];
-
     
-    NSString *recordFileName = [base recordingFileName:mycam];
     
-    NSString *recordFilePath = [base recordingFilePath:mycam fileName:recordFileName];
+    NSString *recordFileName = [base recordingNameWithCamera:mycam];
+    
+    NSString *recordFilePath = [base recordingPathWithCamera:mycam recordingName:recordFileName];
     
     [mycam startRecording:recordFilePath];
     
+//    if (base.db != NULL) {
+//        if (![base.db executeUpdate:@"INSERT INTO video(dev_uid, file_path, time) VALUES(?,?,?)", mycam.uid, recordFileName, [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]]) {
+//            LOG(@"Fail to add snapshot to database.");
+//            return NO;
+//        }
+//    }
+    
     if (base.db != NULL) {
-        if (![base.db executeUpdate:@"INSERT INTO video(dev_uid, file_path, time) VALUES(?,?,?)", mycam.uid, recordFileName, [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]]) {
-            LOG(@"Fail to add snapshot to database.");
+        if (![base.db executeUpdate:@"INSERT INTO video(dev_uid, file_path, recording_type, time) VALUES(?,?,?,?)", mycam.uid, recordFileName, [NSNumber numberWithInteger:0], [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]]) {
+            LOG(@"Fail to save recording to database.");
             return NO;
         }
     }
-    
+
     return YES;
+
 }
+
+
+// 下载录像
++ (void)downloadRecordingForCamera:(Camera *)mycam fileName:(NSString *)fileName time:(NSNumber *)time {
+    
+    
+    GBase *base = [GBase sharedBase];
+    
+    
+    
+    
+//    if (base.db != NULL) {
+//        if (![base.db executeUpdate:@"INSERT INTO video(dev_uid, file_path, time) VALUES(?,?,?)", mycam.uid, fileName, time]) {
+//            LOG(@"Fail to add snapshot to database.");
+//        }
+//    }
+    
+
+    if (base.db != NULL) {
+        if (![base.db executeUpdate:@"INSERT INTO video(dev_uid, file_path, recording_type, time) VALUES(?,?,?,?)", mycam.uid, fileName, [NSNumber numberWithInteger:1], time]) {
+            LOG(@"Fail to download recording to database.");
+        }
+    }
+
+}
+
 
 //删除录像
 + (void)deleteRecording:(NSString *)recordingPath camera:(Camera *)mycam {
@@ -312,6 +375,46 @@
 }
 
 
+- (NSString *)recordingNameWithCamera:(Camera *)mycam {
+    
+    NSDate* date = [NSDate date];
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd_HH-mm-ss"];
+    NSString* strDateTime = [formatter stringFromDate:date];
+    
+    NSString *strFileName = [NSString stringWithFormat:@"%@_%@.mp4", mycam.uid, strDateTime];
+    
+    NSLog(@"strFileName:%@",strFileName);
+    return strFileName;
+
+}
+
+// 本地录像存储路径 Documents/uid/recordingName.mp4
+- (NSString *)recordingPathWithCamera:(Camera *)mycam recordingName:(NSString *)recordingName {
+    
+    NSString *document_uid = [self.Documents stringByAppendingPathComponent:mycam.uid];
+    [[NSFileManager defaultManager] createDirectoryAtPath:document_uid withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    return [document_uid stringByAppendingPathComponent:recordingName];
+}
+
+// 下载录像存储路径 Documents/uid/Download/recordingName
+- (NSString *)downloadPathWithCamera:(Camera *)mycam recordingName:(NSString *)recordingName {
+    
+    return [[self downloadPathWithCamera:mycam] stringByAppendingPathComponent:recordingName];
+}
+
+// 下载录像存储文件夹 Documents/uid/Download/
+- (NSString *)downloadPathWithCamera:(Camera *)mycam {
+    
+    NSString *document_uid = [self.Documents stringByAppendingPathComponent: mycam.uid];
+    [self.gFileManager createDirectoryAtPath:document_uid withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    NSString *document_uid_download = [document_uid stringByAppendingString:@"Download"];
+    [self.gFileManager createDirectoryAtPath:document_uid_download withIntermediateDirectories:YES attributes:nil error:nil];
+    
+    return document_uid_download;
+}
 
 
 + (NSMutableArray *)picturesForCamera:(Camera *)mycam {
@@ -349,10 +452,12 @@
         
         NSString *filePath = [rs stringForColumn:@"file_path"];
         NSInteger time = [rs doubleForColumn:@"time"];
+        NSInteger type = [rs intForColumn:@"recording_type"];
         
         NSLog(@">>>filePath:%@", filePath);
-        
-        LocalVideoInfo* vi = [[LocalVideoInfo alloc]initWithID:filePath Time:time];
+        NSLog(@">>>type:%ld", type);
+
+        LocalVideoInfo* vi = [[LocalVideoInfo alloc] initWithRecordingName:filePath time:time type:type];
         
         [recordings addObject:vi];
     }

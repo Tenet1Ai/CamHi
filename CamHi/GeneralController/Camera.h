@@ -68,6 +68,7 @@
 @property (nonatomic, copy) void(^playBackBlock)(NSInteger cmd, int seconds);
 @property (nonatomic, copy) void(^alarmBlock)(BOOL isAlarm, NSInteger type);
 @property (nonatomic, copy) void(^playStateBlock)(NSInteger state);
+@property (nonatomic, copy) void(^downloadBlock)(Camera *mycam, int tsize, int csize, int state, NSString *recordingPath);
 
 
 //转动摄像机

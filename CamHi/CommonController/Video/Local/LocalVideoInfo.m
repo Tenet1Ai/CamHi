@@ -12,17 +12,26 @@
 
 
 
-- (id)initWithID:(NSString*)path Time:(NSInteger)time {
-    self = [super init];
-    
-    if (self) {
-        self.path = path;
+//- (id)initWithID:(NSString*)path Time:(NSInteger)time {
+//    self = [super init];
+//    
+//    if (self) {
+//        self.path = path;
+//        self.time = time;
+//    }
+//    
+//    return self;
+//}
+
+- (id)initWithRecordingName:(NSString *)name time:(NSInteger)time type:(NSInteger)type {
+    if (self = [super init]) {
+        
+        self.path = name;
         self.time = time;
+        self.type = type;
     }
-    
     return self;
 }
-
 
 
 

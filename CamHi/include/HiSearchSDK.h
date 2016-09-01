@@ -19,7 +19,6 @@
 
 
 
-
 @interface HiSearchResult : NSObject
 {
     NSString* uid;
