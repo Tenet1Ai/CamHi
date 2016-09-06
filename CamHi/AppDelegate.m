@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import "HXTabBarController.h"
 
-
+//
+#import "XGPush.h"
 
 @interface AppDelegate ()
 
@@ -21,32 +22,49 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSLog(@"didFinishLaunchingWithOptions:%@", launchOptions);
+
     HXTabBarController *viewcontroller = [[HXTabBarController alloc] init];
     self.window.rootViewController = viewcontroller;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    //init SDK
+    
+    // init SDK
     [HiChipSDK init];
-    //init camera
+    // init camera
     [GBase initCameras];
+//    // connect camera
+//    [GBase connectCameras];
     
     //注册信鸽推送
+    [XGPush startApp:XingePushID appKey:XingePushKey];
+    [XGPush handleLaunching:launchOptions];
     SystemVersion < 8 ? [self registerPush] : [self registerPushForIOS8];
     
-//    for (UIWindow *window in [UIApplication sharedApplication].windows) {
-//        LOG(@">>>>>>>> window:%@", [NSString stringWithUTF8String:object_getClassName(window)])
+    
+    // 处理远程通知信息
+//    NSDictionary *userInfo = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+//    if (userInfo) {
+//        [self checkAlarmEvent:userInfo];
 //    }
-    
-    
     [self checkAlarmEvent:launchOptions];
+
+    
     
     return YES;
 }
 
+// app即将离开前台
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    NSLog(@"applicationWillResignActive");
+    
+    //disconnect camera
+    [GBase disconnectCameras];
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -55,27 +73,34 @@
 
     
     
-    //disconnect camera
-    [GBase disconnectCameras];
     //进入后台通知
     [[NSNotificationCenter defaultCenter] postNotificationName:DidEnterBackground object:nil];
 }
 
+// app即将进入前台（注：是从后台进入前台，不是启动）
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    NSLog(@"applicationWillEnterForeground");
+    
+    // connect camera
+    [GBase connectCameras];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
-    
-    //connect camera
+    NSLog(@"applicationDidBecomeActive");
+
+    // connect camera
     [GBase connectCameras];
-    //返回前台通知
+
+    
+    // 返回前台通知
     [[NSNotificationCenter defaultCenter] postNotificationName:DidBecomeActive object:nil];
     
-    
-    //清零推送消息
+    // 清零推送消息
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
@@ -98,20 +123,34 @@
     //将注册信鸽推送返回的deviceToken存入本地磁盘，用于信鸽推送的打开与关闭
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"xinge_push_deviceToken"];
 
+    LOG(@"xinge_push_deviceToken:%@", token)
+    
+    // 结果与token一样
+    //NSString *xinge_token = [XGPush registerDevice:deviceToken];
+    //LOG(@"xinge_push_deviceToken:%@", xinge_token)
+
 }
 
+// 如果deviceToken获取失败则会进入此事件
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    //LOG(@"didFailToRegisterForRemoteNotificationsWithError");
 
+    if (error) {
+        LOG(@"didFailToRegisterForRemoteNotificationsWithError:%@", error);
+    }
 }
 
 
+//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+//    
+//}
 
-
-//收到推送消息
+// app在前台，收到推送消息
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
     [self checkAlarmEvent:userInfo];
+    
+    // 推送反馈(app运行时)
+    [XGPush handleReceiveNotification:userInfo];
 }
 
 
@@ -142,8 +181,8 @@
         
         NSDictionary *dictionary = (NSDictionary *)jsonObject;
         
-        NSLog(@"Dersialized JSON Dictionary = %@%ld", [dictionary objectForKey:@"uid"],        (long)[[dictionary objectForKey:@"type"]integerValue]
-              );
+        NSLog(@"Dersialized JSON Dictionary = %@ %ld", dictionary[@"uid"], (long)[dictionary[@"type"] integerValue]);
+        
         NSString *uid =[dictionary objectForKey:@"uid"];
         //NSInteger type =[[dictionary objectForKey:@"type"]integerValue];
         
@@ -229,7 +268,7 @@
 /*
  
  简单总结一下推送消息的相应情况
- １.　当程序处于关闭状态收到推送消息时，点击图标会调用- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions　这个方法，那么消息给通过launchOptions这个参数获取到。
+ １.　当程序处于关闭状态收到推送消息时，点击图标会调用- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions　这个方法，那么消息给通过launchOptions这个参数获取到。注：这样无法获取到远程推送消息
  ２.　当程序处于前台工作时，这时候若收到消息推送，会调用- (void)application:(UIApplication *)application
  didReceiveRemoteNotification:(NSDictionary *)userInfo这个方法
  ３.　当程序处于后台运行时，这时候若收到消息推送，如果点击消息或者点击消息图标时，也会调用- (void)application:(UIApplication*)application

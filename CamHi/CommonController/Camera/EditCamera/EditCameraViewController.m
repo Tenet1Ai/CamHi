@@ -105,6 +105,8 @@
         return;
     }
     
+    LOG(@">>>编辑摄像机 name:%@ user:%@ uid:%@ pwd:%@", self.camera.name, self.camera.username, self.camera.uid, self.camera.password)
+    
     [HXProgress showProgress];
     [self.camera disconnect];
     [GBase editCamera:self.camera];

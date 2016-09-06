@@ -39,7 +39,6 @@
 #define HI_P2P_GET_VIDEO_PARAM1     (1001)
 #define HI_P2P_GET_VIDEO_PARAM2     (1002)
 
-#define XINGECAMPANY        (@"hichip") //"xinge:hichip:ios"
 
 @interface Camera : HiCamera
 <OnPushResult>

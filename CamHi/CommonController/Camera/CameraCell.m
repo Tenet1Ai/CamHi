@@ -92,6 +92,7 @@
         CGFloat oh = CGRectGetHeight(self.snapImgView.frame)/3;
         _labState = [[UILabel alloc] initWithFrame:CGRectMake(ox, oy, ow, oh)];
         _labState.font = [UIFont systemFontOfSize:14];
+        _labState.adjustsFontSizeToFitWidth = YES;
     }
     return _labState;
 

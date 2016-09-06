@@ -77,6 +77,11 @@
 		EE25644D1D61B94B00B6C589 /* ZoomFocusDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = EE25644C1D61B94B00B6C589 /* ZoomFocusDialog.m */; };
 		EE2564511D61CD1E00B6C589 /* PresetDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2564501D61CD1E00B6C589 /* PresetDialog.m */; };
 		EE2A9DB11D35D1E7005E1E0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE2A9DB01D35D1E7005E1E0B /* ViewController.m */; };
+		EE2F53DC1D7E666D00935165 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
+		EE2F53DE1D7E66CC00935165 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DD1D7E66CC00935165 /* CFNetwork.framework */; };
+		EE2F53E01D7E66DF00935165 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DF1D7E66DF00935165 /* SystemConfiguration.framework */; };
+		EE2F53E21D7E66EA00935165 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53E11D7E66EA00935165 /* CoreTelephony.framework */; };
+		EE2F53E41D7E671D00935165 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53E31D7E671D00935165 /* Security.framework */; };
 		EE3605CB1D4F2DF200EAFDFE /* SnapAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = EE3605CA1D4F2DF200EAFDFE /* SnapAlarm.m */; };
 		EE369D6D1D596E6100AD7DEB /* VideoCode.m in Sources */ = {isa = PBXBuildFile; fileRef = EE369D6C1D596E6100AD7DEB /* VideoCode.m */; };
 		EE369D751D59803E00AD7DEB /* WifiParam.m in Sources */ = {isa = PBXBuildFile; fileRef = EE369D741D59803E00AD7DEB /* WifiParam.m */; };
@@ -298,6 +303,13 @@
 		EE2A9DB01D35D1E7005E1E0B /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		EE2A9DB21D35D40B005E1E0B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		EE2BABE61D42021A0090F57D /* HiPushSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiPushSDK.h; sourceTree = "<group>"; };
+		EE2F53D91D7E665C00935165 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		EE2F53DA1D7E665C00935165 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
+		EE2F53DB1D7E666D00935165 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		EE2F53DD1D7E66CC00935165 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		EE2F53DF1D7E66DF00935165 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EE2F53E11D7E66EA00935165 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		EE2F53E31D7E671D00935165 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		EE32D16A1D6EF5F4007108AD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		EE32D16B1D6EF5F5007108AD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		EE32D16C1D6EF5F5007108AD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -482,8 +494,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE691C411D3C76AC00775606 /* libstdc++.tbd in Frameworks */,
+				EE55EAC61D33467A003B9D89 /* libsqlite3.0.tbd in Frameworks */,
+				EE2F53E41D7E671D00935165 /* Security.framework in Frameworks */,
 				EE691C3D1D3C751400775606 /* libz.1.2.5.tbd in Frameworks */,
+				EE2F53E21D7E66EA00935165 /* CoreTelephony.framework in Frameworks */,
+				EE2F53E01D7E66DF00935165 /* SystemConfiguration.framework in Frameworks */,
+				EE2F53DE1D7E66CC00935165 /* CFNetwork.framework in Frameworks */,
+				EE691C411D3C76AC00775606 /* libstdc++.tbd in Frameworks */,
 				EE146F611D3C6BE900E14110 /* libfaac.a in Frameworks */,
 				EE146F691D3C6BE900E14110 /* libswscale.a in Frameworks */,
 				EE146F631D3C6BE900E14110 /* libpostproc.a in Frameworks */,
@@ -497,8 +514,8 @@
 				EE146F681D3C6BE900E14110 /* libswresample.a in Frameworks */,
 				EE146F5F1D3C6BE900E14110 /* libavresample.a in Frameworks */,
 				EE146F5D1D3C6BE900E14110 /* libavfilter.a in Frameworks */,
+				EE2F53DC1D7E666D00935165 /* libXG-SDK.a in Frameworks */,
 				EE146F661D3C6BE900E14110 /* libSVSinVoiceLib.a in Frameworks */,
-				EE55EAC61D33467A003B9D89 /* libsqlite3.0.tbd in Frameworks */,
 				EE146F651D3C6BE900E14110 /* libPPPP_API_IOS.a in Frameworks */,
 				EE146F5B1D3C6BE900E14110 /* libavcodec.a in Frameworks */,
 			);
@@ -708,6 +725,8 @@
 		EE146F401D3C6BE900E14110 /* include */ = {
 			isa = PBXGroup;
 			children = (
+				EE2F53D91D7E665C00935165 /* XGPush.h */,
+				EE2F53DA1D7E665C00935165 /* XGSetting.h */,
 				EE6DF9901D49F542004E0C0A /* hi_base64.h */,
 				EE146F411D3C6BE900E14110 /* CameraIOSessionProtocol.h */,
 				EE146F421D3C6BE900E14110 /* hi_p2p_ipc_protocol.h */,
@@ -726,6 +745,7 @@
 		EE146F4A1D3C6BE900E14110 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				EE2F53DB1D7E666D00935165 /* libXG-SDK.a */,
 				EE146F4B1D3C6BE900E14110 /* libavcodec.a */,
 				EE146F4C1D3C6BE900E14110 /* libavdevice.a */,
 				EE146F4D1D3C6BE900E14110 /* libavfilter.a */,
@@ -1122,6 +1142,10 @@
 		EE55EAC41D334667003B9D89 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EE2F53E31D7E671D00935165 /* Security.framework */,
+				EE2F53E11D7E66EA00935165 /* CoreTelephony.framework */,
+				EE2F53DF1D7E66DF00935165 /* SystemConfiguration.framework */,
+				EE2F53DD1D7E66CC00935165 /* CFNetwork.framework */,
 				EE691C401D3C76AC00775606 /* libstdc++.tbd */,
 				EE55EAC51D33467A003B9D89 /* libsqlite3.0.tbd */,
 				EE691C3C1D3C751400775606 /* libz.1.2.5.tbd */,

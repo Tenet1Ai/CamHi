@@ -469,6 +469,8 @@
 "System Setting" = "系统设置";
 /* No comment provided by engineer. */
 "Device Information" = "设备信息";
+/* No comment provided by engineer. */
+"Command Error!" = "未知错误";
 
 
 
@@ -888,8 +890,6 @@
 //"Video Viewing" = "录像观看";
 ///* No comment provided by engineer. */
 //"about" = "关于";
-///* No comment provided by engineer. */
-//"Command Error!" = "未知错误";
 //
 //
 /////* No comment provided by engineer. */

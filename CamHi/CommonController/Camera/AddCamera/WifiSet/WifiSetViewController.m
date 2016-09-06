@@ -90,6 +90,7 @@
         
         if (row == 1) {
             cell.tfieldDetail.placeholder = self.titles[row];
+            cell.tfieldDetail.secureTextEntry = YES;
         }
         
         
@@ -189,7 +190,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    NSLog(@"buttonIndex:%ld", buttonIndex);
+    //NSLog(@"buttonIndex:%ld", buttonIndex);
     
     if (buttonIndex == 1) {
         [self showSinVoiceAlertView];

@@ -205,7 +205,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    NSLog(@"buttonIndex:%ld", buttonIndex);
+    //NSLog(@"buttonIndex:%ld", buttonIndex);
     
     if (buttonIndex == 1) {
         
@@ -229,7 +229,7 @@ typedef NS_ENUM(NSInteger, CommandType) {
             self.commandType = CommandTypeReset;
         }
         
-        if (alertView.tag == 1) {
+        if (alertView.tag == 2) {
             
             [self.camera setReconnectTimes:20];
             [self.camera request:HI_P2P_SET_DOWNLOAD dson:[self.camera dic:_download]];

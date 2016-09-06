@@ -26,6 +26,8 @@
 
 - (id)initWithUid:(NSString *)uid_ Name:(NSString *)name_ Username:(NSString *)username_ Password:(NSString *)password_ {
     
+    NSLog(@"password_:%@", password_);
+    
     if (self = [super initWithUid:uid_ Username:username_ Password:password_]) {
         self.name = name_;
         self.isAlarm = NO;
@@ -86,7 +88,8 @@
 
 
 - (void)receiveSessionState:(HiCamera *)camera Status:(int)status {
-    LOG(@">>> uid:%@,  receiveSessionState:%x", camera.uid, status);
+    
+    LOG(@">>>HiCamera_receiveSessionState %@ %@ %x", camera.uid, self.state, status);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (_connectBlock) {
@@ -145,7 +148,7 @@
 
 - (void)receivePlayState:(HiCamera *)camera State:(int)state Width:(int)width Height:(int)height {
 
-    LOG(@">>> uid:%@,  receivePlayState:%d", camera.uid, state);
+    LOG(@">>>receivePlayState uid:%@,  State:%d width:%d height:%d", camera.uid, state, width, height);
     
     if (_playStateBlock) {
         _playStateBlock((NSInteger)state);
@@ -556,7 +559,7 @@
 
 - (void)receiveIOCtrl:(HiCamera *)camera Type:(int)type Data:(char*)data Size:(int)size Status:(int)status {
     
-    LOG(@">>> uid:%@ type:%x size:%d",camera.uid, type, size);
+    LOG(@">>>HiCamera_receiveIOCtrl %@ %x %d %d",camera.uid, type, size, status);
     
     
     //获取截图并保存至沙盒
@@ -988,7 +991,7 @@
         if (s->endflag == 1) {
             
             LOG(@"end s->total:%d", s->total);
-            NSLog(@"endflag-onlineRecordings.cout:%ld", self.onlineRecordings.count);
+            //NSLog(@"endflag-onlineRecordings.cout:%ld", self.onlineRecordings.count);
             [self getCMD:type object:self.onlineRecordings success:YES];
         }
     }//
@@ -1107,6 +1110,11 @@
     return cstate == CAMERA_CONNECTION_STATE_LOGIN ? YES : NO;
 }
 
+#pragma mark - getChipVersion
+- (BOOL)isGoke {
+    return [self getChipVersion] == CHIP_VERSION_GOKE ? YES : NO;
+}
+
 
 #pragma mark - OnPushResult/信鸽推送
 - (HiPushSDK *)pushSDK {
@@ -1114,32 +1122,38 @@
         
         //注册信鸽推送返回的deviceToken
         NSString *token = [self.camDefaults objectForKey:@"xinge_push_deviceToken"];
-        _pushSDK = [[HiPushSDK alloc] initWithXGToken:token Uid:self.uid Company:XINGECAMPANY Delegate:self];
+        _pushSDK = [[HiPushSDK alloc] initWithXGToken:token Uid:self.uid Company:XingePushServer Delegate:self];
     }
     return _pushSDK;
 }
 
+// 开启信鸽推送
 - (void)turnOnXingePush {
     [HXProgress showProgress];
     [self.pushSDK bind];
 }
 
+// 关闭信鸽推送
 - (void)turnOffXingePush {
     [HXProgress showProgress];
     [self.pushSDK unbind];
 }
 
-//开启关闭信鸽报警推送代理返回
+// 开启关闭信鸽报警推送代理返回
 - (void)pushBindResult:(int)subID Type:(int)type Result:(int)result {
     
     if (type == PUSH_TYPE_BIND) {
         
         if (result == PUSH_RESULT_FAIL) {
+            //[self setPushOn:0];
             [self.camDefaults setObject:[NSNumber numberWithInteger:0] forKey:self.xingePushKey];
+
         }
         
         if (result == PUSH_RESULT_SUCCESS) {
+//            [self setPushOn:1];
             [self.camDefaults setObject:[NSNumber numberWithInteger:1] forKey:self.xingePushKey];
+
         }
     }
     
@@ -1147,11 +1161,17 @@
     if (type == PUSH_TYPE_UNBIND) {
         
         if (result == PUSH_RESULT_FAIL) {
+//            [self setPushOn:1];
             [self.camDefaults setObject:[NSNumber numberWithInteger:1] forKey:self.xingePushKey];
+
         }
         
         if (result == PUSH_RESULT_SUCCESS) {
+//            [self setPushOn:0];
             [self.camDefaults setObject:[NSNumber numberWithInteger:0 ] forKey:self.xingePushKey];
+
+            // 关闭报警推送成功时，需要清除报警显示状态
+            self.isAlarm = NO;
         }
     }
     
@@ -1171,6 +1191,11 @@
     return [[self.camDefaults objectForKey:self.xingePushKey] integerValue];
 }
 
+// 保存信鸽推送的开关状态  打开1／关闭0
+- (void)setPushOn:(NSInteger)on {
+    [self.camDefaults setObject:[NSNumber numberWithInteger:on] forKey:self.xingePushKey];
+}
+
 - (NSString *)xingePushKey {
     return [NSString stringWithFormat:@"%@-XingePushOn", self.uid];
 }
@@ -1188,10 +1213,6 @@
     return [NSString stringWithFormat:@"uid:%@ user:%@ name:%@ pwd:%@", self.uid, self.username, self.name, self.password];
 }
 
-#pragma mark - getChipVersion
-- (BOOL)isGoke {
-    return [self getChipVersion] == CHIP_VERSION_GOKE ? YES : NO;
-}
 
 
 #pragma mark - 转动摄像机

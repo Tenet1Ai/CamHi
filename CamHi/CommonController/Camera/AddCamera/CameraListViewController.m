@@ -70,9 +70,9 @@
     [self.tableView reloadData];
     [HXProgress dismiss];
     
-    for (HiSearchResult *s in self.dataArray) {
-        LOG(@"HiSearchResult:%@", s.uid);
-    }
+//    for (HiSearchResult *s in self.dataArray) {
+//        LOG(@"HiSearchResult:%@", s.uid);
+//    }
 }
 
 #pragma mark -- UITableViewDelegate

@@ -38,7 +38,6 @@
     [self setupNotifications];
     
     
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -93,7 +92,7 @@
         mycam.connectBlock = ^(NSInteger state, NSString *connection) {
             
             
-            //连接完成，刷新显示
+//            //连接完成，刷新显示
 //            if (state == CAMERA_CONNECTION_STATE_LOGIN) {
 //                [weakSelf.tableView reloadData];
 //            }
@@ -125,6 +124,8 @@
 }
 
 - (void)didReceiveNotification:(NSNotification *)notificaiton {
+    
+    NSLog(@"didReceiveNotification:%@", notificaiton.name);
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.tableView reloadData];

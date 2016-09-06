@@ -139,7 +139,7 @@
             if (state == DOWNLOAD_STATE_END) {
                 
                 weakSelf.downloadView.labTitle.text = INTERSTR(@"Done");
-                [weakSelf.downloadView.btnCancel setTitle:INTERSTR(@"Ok") forState:UIControlStateNormal];
+                [weakSelf.downloadView.btnCancel setTitle:INTERSTR(@"Yes") forState:UIControlStateNormal];
             }
 
         });//@dispatch_get_main_queue
@@ -225,6 +225,11 @@
     [alert addAction:actionweek];
     [alert addAction:actioncustom];
     
+    
+    // iPad使用alertSheet时必须设置这两个属性
+    alert.popoverPresentationController.sourceView = self.view;
+    alert.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0 - 105, self.view.bounds.size.height / 2.0 + 70, 1.0, 1.0);
+
     [self presentViewController:alert animated:YES completion:^{
         
     }];

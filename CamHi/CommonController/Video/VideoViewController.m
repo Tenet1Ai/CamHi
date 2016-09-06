@@ -78,13 +78,13 @@
     
     Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
     
-    NSInteger picCount = [GBase recordingsForCamera:mycam].count;
+    NSUInteger picCount = [GBase recordingsForCamera:mycam].count;
     
     cell.textLabel.text = mycam.name;
     
     
     if (self.segmentedControl.selectedSegmentIndex == 0) {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%ld)", mycam.uid, picCount];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%d)", mycam.uid, (int)picCount];
     }
     
     if (self.segmentedControl.selectedSegmentIndex == 1) {

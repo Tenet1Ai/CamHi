@@ -920,8 +920,8 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     BOOL success = [GBase savePictureForCamera:self.camera];
     if (success) {
         
-        NSMutableArray *pictures = [GBase picturesForCamera:self.camera];
-        LOG(@"pictures.count:%ld", pictures.count)
+        //NSMutableArray *pictures = [GBase picturesForCamera:self.camera];
+        //LOG(@"pictures.count:%ld", pictures.count)
         
         [self presentMessage:INTERSTR(@"Snapshot Saved") atDeviceOrientation:deviceOrientation];
     }
@@ -955,8 +955,8 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         
         [self.camera stopRecording];
         
-        NSMutableArray *recordings = [GBase recordingsForCamera:self.camera];
-        LOG(@"recordings.count:%ld", recordings.count)
+        //NSMutableArray *recordings = [GBase recordingsForCamera:self.camera];
+        //LOG(@"recordings.count:%ld", recordings.count)
 
     }
     else {

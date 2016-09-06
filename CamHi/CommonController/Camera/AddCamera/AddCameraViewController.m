@@ -89,9 +89,12 @@
         return;
     }
 
+    // 密码可以为空 20160902
     if (tpwd == nil || tpwd.length == 0) {
-        [HXProgress showText:NSLocalizedString(@"Password can not be empty", nil)];
-        return;
+//        [HXProgress showText:NSLocalizedString(@"Password can not be empty", nil)];
+//        return;
+        //self.camera.password = @"";
+        tpwd = @"";
     }
     
     //add unexist device

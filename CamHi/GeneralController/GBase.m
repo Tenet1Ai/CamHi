@@ -47,7 +47,7 @@
     
     if (self = [super init]) {
         
-        self.cameras = [[NSMutableArray alloc] initWithCapacity:0];
+//        self.cameras = [[NSMutableArray alloc] initWithCapacity:0];
         
         NSArray *documentsPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *databaseFilePath = [[documentsPaths objectAtIndex:0] stringByAppendingPathComponent:@"databasehx.sqlite"];
@@ -86,13 +86,20 @@
     return self;
 }
 
+- (NSMutableArray *)cameras {
+    if (!_cameras) {
+        _cameras = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return _cameras;
+}
+
 + (void)initCameras {
     
     GBase *base = [GBase sharedBase];
 
-    if (base.cameras.count != 0) {
+//    if (base.cameras.count != 0) {
         [base.cameras removeAllObjects];
-    }
+//    }
     
     if (base.db != NULL) {
         
@@ -106,13 +113,15 @@
             NSString *tuser = [rs stringForColumn:@"view_acc"];
             NSString *tpwd  = [rs stringForColumn:@"view_pwd"];
             //NSInteger tchannel = [rs intForColumn:@"channel"];
-            NSInteger tvideo_quality = [rs intForColumn:@"video_quality"];
+            //NSInteger tvideo_quality = [rs intForColumn:@"video_quality"];
             
-            LOG(@">>> load camera(%@, %@, %@, %@ ,%ld)", tname, tuid, tuser, tpwd,(long)tvideo_quality);
             
             Camera *mycam = [[Camera alloc] initWithUid:tuid Name:tname Username:tuser Password:tpwd];
             
             [base.cameras addObject:mycam];
+            
+            LOG(@">>>Load Camera (%@)", mycam);
+
         }
         
         [rs close];

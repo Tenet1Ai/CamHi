@@ -112,16 +112,39 @@
     [self.view endEditing:YES];
     
     LOG(@"_opwd:%@  _npwd:%@    _cpwd:%@", _opwd, _npwd, _cpwd)
+
+    /*
+     * instruction
+     * 密码不能为nil，但用户不输入时，默认为@""
+     * 下发指令设置密码时，需传入@" " (空格)
+     */
+    
+    // 未输入时
+    if (!_opwd) {
+        _opwd = @"";
+    }
     
     if (![_opwd isEqualToString:self.camera.password]) {
         [HXProgress showText:NSLocalizedString(@"Old password incorrect", nil)];
         return;
     }
     
+    // 允许密码为空 
+    if (_npwd == nil || _npwd.length == 0) {
+        _npwd = @" ";
+    }
+    
+    if (_cpwd == nil || _cpwd.length == 0) {
+        _cpwd = @" ";
+    }
+
+    
     if (![_npwd isEqualToString:_cpwd]) {
         [HXProgress showText:NSLocalizedString(@"New password and confirm password do not match", nil)];
         return;
     }
+    
+    
     
     [HXProgress showProgress];
     [self setUpCamera:self.camera WithNewUserName:self.camera.username NewPassword:_npwd];
@@ -133,6 +156,7 @@
  
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        // 修改用户名与密码
         if (type == HI_P2P_SET_USERNAME) {
             LOG(@">>>修改密码 {%@, %d, %d}", camera.uid, type, size)
             
@@ -147,12 +171,16 @@
             }
         }
         
+        // 只能修改密码
         if (type == HI_P2P_SET_USER_PARAM) {
             LOG(@">>>修改密码 {%@, %d, %d}", camera.uid, type, size)
             
             if (size >= 0) {
                 
-                self.camera.password = _npwd;
+                //self.camera.password = _npwd;
+                self.camera.password = [self isEmpty:_npwd] ? @"" : _npwd;
+                
+                
                 [GBase editCamera:self.camera];
                 
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -197,6 +225,21 @@
     free(auth);
 }
 
+
+- (BOOL)isEmpty:(NSString *)str {
+    
+    if (!str) {
+        return YES;
+    }
+    
+    // 用于过滤空格和Tab换行符
+    NSCharacterSet *characterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    
+    // 去除空格与换行符
+    NSString *retStr = [str stringByTrimmingCharactersInSet:characterSet];
+    
+    return retStr.length == 0 ? YES : NO ;
+}
 
 
 

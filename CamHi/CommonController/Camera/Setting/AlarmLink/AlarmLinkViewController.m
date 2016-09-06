@@ -143,12 +143,14 @@
     
     if (row == 0) {
         
-        if (self.camera.isAlarm) {
-            cell.tswitch.on = YES;
-        }
-        else {
-            cell.tswitch.on = self.camera.isPushOn == 1 ? YES : NO;
-        }
+        cell.tswitch.on = self.camera.isPushOn == 1 ? YES : NO;
+
+//        if (self.camera.isAlarm) {
+//            cell.tswitch.on = YES;
+//        }
+//        else {
+//            cell.tswitch.on = self.camera.isPushOn == 1 ? YES : NO;
+//        }
         
     }
     
