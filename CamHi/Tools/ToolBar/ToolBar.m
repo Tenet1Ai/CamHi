@@ -55,8 +55,16 @@
     UIButton *btn = (UIButton *)sender;
     btn.selected = !btn.selected;
     
-    if (self.delegate) {
+//    if (self.delegate) {
+//        [self.delegate didClickTag:self.tag atIndex:btn.tag];
+//    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didClickTag:atIndex:)]) {
         [self.delegate didClickTag:self.tag atIndex:btn.tag];
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(toolBar:didSelectedAtIndex:selected:)]) {
+        [self.delegate toolBar:self.tag didSelectedAtIndex:btn.tag selected:btn.selected];
     }
 }
 
@@ -64,7 +72,7 @@
     UIButton *btn = (UIButton *)sender;
     btn.selected = !btn.selected;
     
-    if (self.delegate) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didClickDownTag:atIndex:)]) {
         [self.delegate didClickDownTag:self.tag atIndex:btn.tag];
     }
 

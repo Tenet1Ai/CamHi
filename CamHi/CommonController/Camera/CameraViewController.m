@@ -14,6 +14,10 @@
 #import "SettingViewController.h"
 #import "AppDelegate.h"
 
+#import "FourCameraViewController.h"
+#import "FourCameraLiveViewController.h"
+
+
 
 @interface CameraViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
@@ -21,6 +25,8 @@
     UIBarButtonItem *btnItem;
 }
 
+@property (nonatomic, strong) UIBarButtonItem *barButtonItemLeft;
+@property (nonatomic, assign) BOOL isSelectCamera;
 
 @end
 
@@ -120,7 +126,11 @@
 #pragma mark - app进入后台与前台通知
 - (void)setupNotifications {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:DidBecomeActive object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:UIApplicationWillResignActiveNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:UIApplicationWillEnterForegroundNotification object:nil];
+
 }
 
 - (void)didReceiveNotification:(NSNotification *)notificaiton {
@@ -150,7 +160,10 @@
     [btnRight setTitleColor:RGBA_COLOR(0, 125, 255, 1) forState:UIControlStateNormal];
     [btnRight setTitleColor:RGBA_COLOR(0, 125, 255, 1) forState:UIControlStateSelected];
     [btnRight addTarget:self action:@selector(btnRightAction:) forControlEvents:UIControlEventTouchUpInside];
-    */    
+    */
+    
+    
+    self.navigationItem.leftBarButtonItem = self.barButtonItemLeft;
 }
 
 - (void)btnRightAction:(id)sender {
@@ -158,6 +171,9 @@
     isEdit = !isEdit;
 
     btnItem.title = isEdit ? NSLocalizedString(@"Done", nil) : NSLocalizedString(@"Edit", nil);
+    
+    
+    self.navigationItem.leftBarButtonItem = isEdit ? nil : self.barButtonItemLeft;
     
     [self.tableView reloadData];
 
@@ -182,6 +198,31 @@
     [_camera startLiveShow:0 Monitor:monitor3];
      */
 
+}
+
+
+- (UIBarButtonItem *)barButtonItemLeft {
+    if (!_barButtonItemLeft) {
+        _barButtonItemLeft = [[UIBarButtonItem alloc] initWithTitle:INTERSTR(@"FourVideo")
+                                                              style:UIBarButtonItemStyleDone
+                                                             target:self
+                                                             action:@selector(btnLeftAction:)];
+    }
+    return _barButtonItemLeft;
+}
+
+
+- (void)btnLeftAction:(id)sender {
+    
+//    self.isSelectCamera = !self.isSelectCamera;
+//    self.barButtonItemLeft.title = self.isSelectCamera ? INTERSTR(@"Done") : INTERSTR(@"FourVideo");
+    
+//    FourCameraViewController *fourCamera = [[FourCameraViewController alloc] init];
+//    [self.navigationController pushViewController:fourCamera animated:YES];
+    
+    
+    FourCameraLiveViewController *fourCameraLive = [[FourCameraLiveViewController alloc] init];
+    [self.navigationController pushViewController:fourCameraLive animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
@@ -327,8 +368,17 @@
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     
+    
     Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
 
+    
+    if (_isSelectCamera) {
+        
+        [self tableView:tableView didSelectCameraAtIndexPath:indexPath];
+        return;
+    }
+
+    
     if (isEdit) {
         EditCameraViewController *editCamera = [[EditCameraViewController alloc] init];
         editCamera.camera = mycam;
@@ -351,6 +401,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
+    
+    
+    //
+    if (_isSelectCamera) {
+        
+        [self tableView:tableView didSelectCameraAtIndexPath:indexPath];
+        return;
+    }
+    
 
     if (isEdit) {
         EditCameraViewController *editCamera = [[EditCameraViewController alloc] init];
@@ -365,7 +424,7 @@
         return;
     }
     
-    //进入实时画面后隐藏掉报警提示
+    // 进入实时画面后隐藏掉报警提示
     mycam.isAlarm = NO;
     
     LiveViewController *liveView = [[LiveViewController alloc] init];
@@ -374,6 +433,15 @@
     [self.navigationController pushViewController:liveView animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectCameraAtIndexPath:(NSIndexPath *)indexPath {
+    
+    Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
+    
+    mycam.select = !mycam.select;
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = mycam.select ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryDetailButton;
+}
 
 
 

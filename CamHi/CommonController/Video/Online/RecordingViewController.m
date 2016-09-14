@@ -152,12 +152,12 @@
     
     
     // app进入后台通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryNotificaiton:) name:DidEnterBackground object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotificaiton:) name:UIApplicationDidEnterBackgroundNotification object:nil];
     
     
 }
 
-- (void)didReceiveMemoryNotificaiton:(NSNotification *)notification {
+- (void)didReceiveNotificaiton:(NSNotification *)notification {
     
     NSLog(@"didReceiveMemoryNotificaiton:DidEnterBackground");
     [self stopDownload];

@@ -70,11 +70,6 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-
-    
-    
-    //进入后台通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:DidEnterBackground object:nil];
 }
 
 // app即将进入前台（注：是从后台进入前台，不是启动）
@@ -97,8 +92,6 @@
     [GBase connectCameras];
 
     
-    // 返回前台通知
-    [[NSNotificationCenter defaultCenter] postNotificationName:DidBecomeActive object:nil];
     
     // 清零推送消息
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];

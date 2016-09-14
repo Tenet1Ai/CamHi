@@ -212,8 +212,8 @@
 
 
 //根据键盘移动视图高度
-- (void)offViewWithFrame:(CGRect)frame
-{
+- (void)offViewWithFrame:(CGRect)frame {
+    
     NSLog(@"frame.origin.y:%f", frame.origin.y);
     NSLog(@"frame.size.height:%f", frame.size.height);
     

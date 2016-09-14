@@ -26,7 +26,7 @@
 
 - (id)initWithUid:(NSString *)uid_ Name:(NSString *)name_ Username:(NSString *)username_ Password:(NSString *)password_ {
     
-    NSLog(@"password_:%@", password_);
+    //NSLog(@"password_:%@", password_);
     
     if (self = [super initWithUid:uid_ Username:username_ Password:password_]) {
         self.name = name_;
@@ -203,8 +203,12 @@
         }
         
         if (cmd == HI_P2P_SET_DISPLAY_PARAM) {
-            Display *display = [self object:dic];
-            HI_P2P_S_DISPLAY *s_display = [display model];
+            //Display *display = [self object:dic];
+            
+            if (dic) {
+                self.g_display = [self object:dic];
+            }
+            HI_P2P_S_DISPLAY *s_display = [self.g_display model];
             [self sendIOCtrl:cmd Data:(char *)s_display Size:sizeof(HI_P2P_S_DISPLAY)];
             free(s_display);
         }
@@ -618,8 +622,9 @@
     if (type == HI_P2P_GET_DISPLAY_PARAM || type == HI_P2P_SET_DISPLAY_PARAM) {
         
         if (type == HI_P2P_GET_DISPLAY_PARAM) {
-            Display *display = [[Display alloc] initWithData:data size:size];
-            [self getCMD:type object:display success:YES];
+            //Display *display = [[Display alloc] initWithData:data size:size];
+            self.g_display = [[Display alloc] initWithData:data size:size];
+            [self getCMD:type object:self.g_display success:YES];
         }
         
         if (type == HI_P2P_SET_DISPLAY_PARAM) {
@@ -1079,7 +1084,7 @@
 
 
 
-#pragma mark - 懒加载
+#pragma mark - setter/getter
 - (NSString *)state {
     
     if ([self getConnectState] == CAMERA_CONNECTION_STATE_LOGIN) {
@@ -1270,6 +1275,37 @@
     
     [self sendIOCtrl:HI_P2P_SET_PTZ_CTRL Data:(char *)ptz Size:sizeof(HI_P2P_S_PTZ_CTRL)];
     free(ptz);
+}
+
+#pragma mark - Mirror/Flip
+- (void)changeMirror {
+    
+    if ([self getCommandFunction:HI_P2P_GET_DISPLAY_PARAM]) {
+        
+        if (!self.g_display) {
+            return;
+        }
+        
+        int mirror = self.g_display.u32Mirror;
+        self.g_display.u32Mirror = mirror == 0 ? 1 : 0 ;
+        
+        [self request:HI_P2P_SET_DISPLAY_PARAM dson:nil];
+    }
+}
+
+- (void)changeFlip {
+    
+    if ([self getCommandFunction:HI_P2P_GET_DISPLAY_PARAM]) {
+        
+        if (!self.g_display) {
+            return;
+        }
+        
+        int flip = self.g_display.u32Flip;
+        self.g_display.u32Flip = flip == 0 ? 1 : 0 ;
+        
+        [self request:HI_P2P_SET_DISPLAY_PARAM dson:nil];
+    }
 }
 
 @end

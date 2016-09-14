@@ -184,7 +184,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     };
     
     //注册通知，进入后台时退回主界面
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveMemoryNotification:) name:DidEnterBackground object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didReceiveNotification:) name:UIApplicationDidEnterBackgroundNotification object:nil];
   
 }
 
@@ -199,10 +199,10 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 
 
 
-- (void)didReceiveMemoryNotification:(NSNotification *)notification {
+- (void)didReceiveNotification:(NSNotification *)notification {
     
     [self exit];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DidEnterBackground object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
 
 
@@ -492,6 +492,10 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 
 
 #pragma mark - ToolBarDelegate
+
+- (void)toolBar:(NSInteger)barTag didSelectedAtIndex:(NSInteger)index selected:(BOOL)select {
+    
+}
 
 - (void)didClickTag:(NSInteger)tag atIndex:(NSInteger)index {
     

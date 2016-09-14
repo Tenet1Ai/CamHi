@@ -69,17 +69,28 @@
         }
         
         
-        // 新增录像类型字段，用于区分手动录像与下载录像
+        
         // 判断要添加的字段是否存在
+        
+        // 新增录像类型字段，用于区分手动录像与下载录像
         if (![self.db columnExists:@"recording_type" inTableWithName:@"video"]) {
             
             // 添加不存在的字段
             NSString *addColumn = @"alter table video add recording_type int default 0";
             if (![self.db executeUpdate:addColumn]) {
-                NSLog(@"can add Column to table video");
+                NSLog(@"cann't add recording_type to table video");
             }
-            
         }
+        
+        // 新增是否添加四画面字段
+        if (![self.db columnExists:@"add_four" inTableWithName:@"device"]) {
+            
+            NSString *addColum = @"alter table device add add_four int default 0";
+            if (![self.db executeUpdate:addColum]) {
+                LOG(@"cann't add add_four to table device");
+            }
+        }
+        
         // 判断要添加的字段是否存在 20160901
         
     }
@@ -114,9 +125,11 @@
             NSString *tpwd  = [rs stringForColumn:@"view_pwd"];
             //NSInteger tchannel = [rs intForColumn:@"channel"];
             //NSInteger tvideo_quality = [rs intForColumn:@"video_quality"];
+            NSInteger add_four = [rs intForColumn:@"add_four"];
             
             
             Camera *mycam = [[Camera alloc] initWithUid:tuid Name:tname Username:tuser Password:tpwd];
+            mycam.select = add_four == 1 ? YES : NO;
             
             [base.cameras addObject:mycam];
             
@@ -182,6 +195,19 @@
             LOG(@"Fail to update device to database.")
         }
     }
+}
+
++ (void)editCameraSelect:(Camera *)mycam {
+    GBase *base = [GBase sharedBase];
+    
+    NSNumber *selectNum = [NSNumber numberWithInteger:mycam.select ? 1 : 0];
+    
+    if (base.db != NULL) {
+        if (![base.db executeUpdate:@"UPDATE device SET add_four=? WHERE dev_uid=?", selectNum, mycam.uid]) {
+            LOG(@"Fail to update device to database.")
+        }
+    }
+
 }
 
 
@@ -463,8 +489,7 @@
         NSInteger time = [rs doubleForColumn:@"time"];
         NSInteger type = [rs intForColumn:@"recording_type"];
         
-        NSLog(@">>>filePath:%@", filePath);
-        NSLog(@">>>type:%ld", type);
+        NSLog(@">>>filePath:%@ type:%d", filePath, (int)type);
 
         LocalVideoInfo* vi = [[LocalVideoInfo alloc] initWithRecordingName:filePath time:time type:type];
         

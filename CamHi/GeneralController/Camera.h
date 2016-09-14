@@ -35,6 +35,8 @@
 #import "VideoInfo.h"
 #import "ListReq.h"
 
+//判断是否空字符串
+#define isNullString(s)         (!s || [s isEqual:[NSNull null]] || [s isEqualToString:@""])
 
 #define HI_P2P_GET_VIDEO_PARAM1     (1001)
 #define HI_P2P_GET_VIDEO_PARAM2     (1002)
@@ -46,6 +48,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *state;
 @property (nonatomic, assign) BOOL online;
+@property (nonatomic, assign) BOOL select;
 @property (nonatomic, assign) id<CameraIOSessionProtocol> delegate;
 @property (nonatomic, strong) NSMutableArray *onlineRecordings;
 
@@ -86,5 +89,11 @@
 @property (nonatomic, copy) void(^xingePushBlock)(int subID, int type, int result);
 - (void)turnOnXingePush;
 - (void)turnOffXingePush;
+
+
+#pragma mark - Mirror/Flip
+@property (nonatomic, strong) Display *g_display;
+- (void)changeMirror;
+- (void)changeFlip;
 
 @end

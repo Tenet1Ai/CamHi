@@ -52,7 +52,7 @@ typedef NS_ENUM(NSInteger, UIScrollViewTag) {
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.imagearray  = [NSArray arrayWithArray:imageArray];
+        self.imagearray  = (NSMutableArray *)[NSArray arrayWithArray:imageArray];
         self.titlearray  = [NSArray arrayWithArray:titleArray];
         self.detailarray = [NSArray arrayWithArray:detailArray];
 
@@ -150,7 +150,7 @@ typedef NS_ENUM(NSInteger, UIScrollViewTag) {
         imageindex = 0;
         pageW = frame.size.width;
         pageH = frame.size.height;
-        self.imagearray = [NSArray arrayWithArray:imageArray];
+        self.imagearray = (NSMutableArray *)[NSArray arrayWithArray:imageArray];
         
         [self addSubview:self.imagescroll];
         

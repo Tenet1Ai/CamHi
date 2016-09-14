@@ -10,11 +10,16 @@
 
 @protocol ToolBarDelegate <NSObject>
 
-@required
 
 @optional
+
 - (void)didClickTag:(NSInteger)tag atIndex:(NSInteger)index;
 - (void)didClickDownTag:(NSInteger)tag atIndex:(NSInteger)index;
+
+- (void)toolBar:(NSInteger)barTag didSelectedAtIndex:(NSInteger)index selected:(BOOL)select;
+
+@required
+
 
 @end
 

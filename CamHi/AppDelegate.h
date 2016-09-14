@@ -10,11 +10,6 @@
 #import "FMDB.h"
 
 
-#pragma mark - Key/app进入后台与前台通知
-#define DidBecomeActive     (@"applicationDidBecomeActive")
-#define DidEnterBackground  (@"applicationDidEnterBackground")
-
-
 #pragma mark - XingePush/信鸽推送
 // CamHi
 #define XingePushID     (2200126647)

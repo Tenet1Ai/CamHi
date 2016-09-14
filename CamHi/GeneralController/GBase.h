@@ -22,6 +22,7 @@
 + (void)disconnectCameras;
 + (void)addCamera:(Camera *)mycam;
 + (void)editCamera:(Camera *)mycam;
++ (void)editCameraSelect:(Camera *)mycam;
 + (void)deleteCamera:(Camera *)mycam;
 + (BOOL)savePictureForCamera:(Camera *)mycam;
 + (BOOL)saveRecordingForCamera:(Camera *)mycam;
