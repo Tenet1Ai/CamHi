@@ -124,6 +124,14 @@
     }];
 }
 
+
+//- (void)presentAlertViewWithTitle:(NSString *)title message:(NSString *)message delegate:(id)delegate cancelTitle:(NSString *)cancelTitle buttonTitles:(NSArray *)titles {
+//    
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:delegate cancelButtonTitle:cancelTitle otherButtonTitles:@"", nil];
+//    
+//    [alertView show];
+//}
+
 - (NSMutableArray *)timeZones {
     if (!_timeZones) {
         

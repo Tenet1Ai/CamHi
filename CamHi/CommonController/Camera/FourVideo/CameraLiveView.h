@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Recording.h"
 
 @interface CameraLiveView : UIView
 
@@ -15,6 +16,7 @@
 @property (nonatomic, strong) UILabel *labName;
 @property (nonatomic, strong) Camera *camera;
 @property (nonatomic, strong) UIButton *btnMore;
+@property (nonatomic, strong) Recording *recordView;
 
 - (void)setBorderColor:(UIColor *)color;
 

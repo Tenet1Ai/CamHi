@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = INTERSTR(@"Camera List");
     [self.view addSubview:self.tableView];
     
     //self.navigationItem.rightBarButtonItem = self.barButtonItemRight;

@@ -57,7 +57,7 @@
     NSInteger picCount = [GBase picturesForCamera:mycam].count;
     
     cell.textLabel.text = mycam.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%ld)", mycam.uid, picCount];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (%d)", mycam.uid, (int)picCount];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     

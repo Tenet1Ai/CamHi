@@ -175,7 +175,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     
     
     _isShowing = NO;
-    //画面显示状态
+    // 画面显示状态/录像状态
     self.camera.playStateBlock = ^(NSInteger state) {
         
         if (state == 0) {
@@ -1042,7 +1042,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
                 
             }
 
-        };
+        };// @qualityBlock
         
     }
     return _quality;

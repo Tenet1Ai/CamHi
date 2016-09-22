@@ -71,7 +71,7 @@ static NSString * const footerIdentifier = @"footerIdentifier";
         [self.images addObject:photo];
     }
 
-    NSLog(@"self.images.count:%ld", self.images.count);
+    NSLog(@"self.images.count:%d", (int)self.images.count);
     
     [self.collectionView reloadData];
 }
@@ -425,7 +425,7 @@ static NSString * const footerIdentifier = @"footerIdentifier";
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    NSLog(@"buttonIndex:%ld", buttonIndex);
+    NSLog(@"buttonIndex:%d", (int)buttonIndex);
     
     if (buttonIndex == 1) {
         

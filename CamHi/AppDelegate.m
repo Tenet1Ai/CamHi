@@ -116,7 +116,7 @@
     //将注册信鸽推送返回的deviceToken存入本地磁盘，用于信鸽推送的打开与关闭
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"xinge_push_deviceToken"];
 
-    LOG(@"xinge_push_deviceToken:%@", token)
+    LOG(@"xinge_push_deviceToken : %@", token)
     
     // 结果与token一样
     //NSString *xinge_token = [XGPush registerDevice:deviceToken];

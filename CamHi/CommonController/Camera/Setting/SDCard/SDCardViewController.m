@@ -145,7 +145,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    NSLog(@"buttonIndex:%ld", buttonIndex);
+    NSLog(@"buttonIndex:%d", (int)buttonIndex);
     
     if (buttonIndex == 1) {
         [self.camera request:HI_P2P_SET_FORMAT_SD dson:nil];

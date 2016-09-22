@@ -55,7 +55,7 @@
         [imagePaths addObject:model.imgPath];
         [imageNames addObject:model.imgName];
         
-        NSLog(@"indexOfObject:%ld", [self.images indexOfObject:model]);
+        NSLog(@"indexOfObject:%d", (int)[self.images indexOfObject:model]);
     }
     
     
@@ -96,7 +96,7 @@
             weakSelf.cIndex = currentIndex;
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.indexTitle.text = [NSString stringWithFormat:@"%ld/%ld", currentIndex+1, weakSelf.images.count];
+                weakSelf.indexTitle.text = [NSString stringWithFormat:@"%d/%d", (int)(currentIndex+1), (int)weakSelf.images.count];
             });
 
         }
@@ -123,7 +123,7 @@
         _indexTitle.center = CGPointMake(CGRectGetWidth(self.naToolbar.frame)/2, CGRectGetHeight(self.naToolbar.frame)/2);
         _indexTitle.textAlignment = NSTextAlignmentCenter;
         
-        _indexTitle.text = [NSString stringWithFormat:@"%ld/%ld", [self.images indexOfObject:self.selectPhoto]+1, self.images.count];
+        _indexTitle.text = [NSString stringWithFormat:@"%d/%d", (int)([self.images indexOfObject:self.selectPhoto]+1), (int)self.images.count];
     }
     return _indexTitle;
 }
@@ -291,7 +291,7 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     
-    [self dismissViewControllerAnimated:controller completion:^{
+    [self dismissViewControllerAnimated:YES completion:^{
         
         // Was there an error?
         if (error != NULL) {

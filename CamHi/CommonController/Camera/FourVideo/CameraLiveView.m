@@ -28,6 +28,7 @@
         [self addSubview:self.monitor];
         [self addSubview:self.labName];
         [self addSubview:self.btnMore];
+        [self addSubview:self.recordView];
         
         self.layer.borderWidth = 1.0f;
         self.layer.borderColor = [UIColor blackColor].CGColor;
@@ -53,6 +54,17 @@
         make.top.mas_equalTo(5);
         make.right.mas_equalTo(-5);
     }];
+    
+    
+    [self.recordView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+//        make.size.mas_equalTo(CGSizeMake(RecordingW/2, RecordingH/2));
+  //      make.right.mas_equalTo(self.btnMore.mas_left).offset(-5);
+        make.top.mas_equalTo(5);
+        make.left.mas_equalTo(5);
+    }];
+    
+    //[self.recordView show];
     
 }
 
@@ -85,6 +97,13 @@
         //_labName.backgroundColor = [UIColor orangeColor];
     }
     return _labName;
+}
+
+- (Recording *)recordView {
+    if (!_recordView) {
+        _recordView = [[Recording alloc] initWithFrame:CGRectMake(0, 0, RecordingW, RecordingH)];
+    }
+    return _recordView;
 }
 
 - (void)setBorderColor:(UIColor *)color {

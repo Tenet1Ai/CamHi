@@ -113,7 +113,7 @@ typedef NS_ENUM(NSInteger, UIScrollViewTag) {
     self.countLable = [[UILabel alloc] initWithFrame:CGRectMake(lableX, lableY, lableW, lableH)];
     //    lable.backgroundColor = [UIColor redColor];
     [self addSubview:self.countLable];
-    self.countLable.text = [NSString stringWithFormat:@"%d/%ld", 1, self.imagearray.count];
+    self.countLable.text = [NSString stringWithFormat:@"%d/%d", 1, (int)self.imagearray.count];
     self.countLable.textAlignment = NSTextAlignmentCenter;
     self.countLable.textColor     = [UIColor blackColor];
     
@@ -179,7 +179,7 @@ typedef NS_ENUM(NSInteger, UIScrollViewTag) {
         NSInteger fIndex = (imageindex - 1 + self.imagearray.count) % self.imagearray.count;
         NSInteger nIndex = (imageindex + 1) % self.imagearray.count;
 
-        NSLog(@"fIndex:%ld, index:%ld, nIndex:%ld", fIndex, index, nIndex);
+        NSLog(@"fIndex:%d, index:%d, nIndex:%d", (int)fIndex, (int)index, (int)nIndex);
         
         
         [self setup:self.imagecenter withImage:self.imagearray[imageindex]];
@@ -350,7 +350,7 @@ typedef NS_ENUM(NSInteger, UIScrollViewTag) {
         
         int page = floor((scrollView.contentOffset.x - pageWidth/2)/pageWidth) + 1 + 1;
         
-        self.countLable.text  = [NSString stringWithFormat:@"%d/%ld", page, self.imagearray.count];
+        self.countLable.text  = [NSString stringWithFormat:@"%d/%d", page, (int)self.imagearray.count];
 //        self.detailLable.text = [NSString stringWithFormat:@"这是图片 %d ", page];
         self.detailLable.text = [NSString stringWithFormat:@"%@", self.detailarray[page-1]];
 
@@ -532,7 +532,7 @@ typedef NS_ENUM(NSInteger, UIScrollViewTag) {
     self.imageleft.image   = [self imageAlwaysOriginal:[self.imagearray objectAtIndex:imageIndexleft]];
     self.imageright.image  = [self imageAlwaysOriginal:[self.imagearray objectAtIndex:imageIndexright]];
     
-    NSLog(@"imageIndex :%ld", imageIndex);
+    NSLog(@"imageIndex :%d", (int)imageIndex);
     if (_tapBlock) {
         _tapBlock(imageIndex, 1);
     }

@@ -107,6 +107,8 @@
             if (state == DOWNLOAD_STATE_START) {
                 
                 weakSelf.downloadView.labTitle.text = INTERSTR(@"Downloading");
+                [weakSelf.downloadView.btnCancel setTitle:INTERSTR(@"Cancel") forState:UIControlStateNormal];
+
                 [weakSelf.downloadView show];
                 
                 //Documents
@@ -289,7 +291,7 @@
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"buttonIndex:%ld", buttonIndex);
+    NSLog(@"buttonIndex:%d", (int)buttonIndex);
     
     // play
     if (buttonIndex == 1) {
@@ -374,7 +376,7 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    NSLog(@"buttonIndex:%ld", buttonIndex);
+    NSLog(@"buttonIndex:%d", (int)buttonIndex);
     if (buttonIndex == 0) {
         [self searchWithInAnHour];
     }

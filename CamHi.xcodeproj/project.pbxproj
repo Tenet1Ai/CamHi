@@ -295,6 +295,7 @@
 		EE159AA51D7FA859008AF5E6 /* FourCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourCameraViewController.m; sourceTree = "<group>"; };
 		EE159AA71D7FB845008AF5E6 /* FourCameraLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourCameraLiveViewController.h; sourceTree = "<group>"; };
 		EE159AA81D7FB845008AF5E6 /* FourCameraLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourCameraLiveViewController.m; sourceTree = "<group>"; };
+		EE18909C1D91302F003DF76C /* CamHi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CamHi.entitlements; sourceTree = "<group>"; };
 		EE1E7F071D3DBFC800D0A21F /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		EE1E7F081D3DBFC800D0A21F /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Camera.m; sourceTree = "<group>"; };
 		EE1E7F0A1D3DCA6F00D0A21F /* GBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBase.h; sourceTree = "<group>"; };
@@ -1057,6 +1058,7 @@
 		EE55EA741D333EE7003B9D89 /* CamHi */ = {
 			isa = PBXGroup;
 			children = (
+				EE18909C1D91302F003DF76C /* CamHi.entitlements */,
 				EE146F401D3C6BE900E14110 /* include */,
 				EE146F4A1D3C6BE900E14110 /* lib */,
 				EE55EA781D333EE8003B9D89 /* AppDelegate.h */,
@@ -1600,6 +1602,11 @@
 					EE55EA711D333EE7003B9D89 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = QQ4CT72F56;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					EE55EA8A1D333EE8003B9D89 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1991,6 +1998,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = CamHi/CamHi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Qi Zhao (W7QHFJ7UWD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Qi Zhao (W7QHFJ7UWD)";
 				DEVELOPMENT_TEAM = QQ4CT72F56;
@@ -2028,6 +2036,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = CamHi/CamHi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Qi Zhao (QQ4CT72F56)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Qi Zhao (QQ4CT72F56)";
 				DEVELOPMENT_TEAM = QQ4CT72F56;

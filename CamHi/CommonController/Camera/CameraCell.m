@@ -60,6 +60,10 @@
     return self;
 }
 
+//- (void)drawRect:(CGRect)rect {
+//    
+//}
+
 - (UIImageView *)snapImgView {
     if (!_snapImgView) {
         

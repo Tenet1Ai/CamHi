@@ -421,7 +421,6 @@
     
     NSLog(@"strFileName:%@",strFileName);
     return strFileName;
-
 }
 
 // 本地录像存储路径 Documents/uid/recordingName.mp4
@@ -495,8 +494,8 @@
         
         [recordings addObject:vi];
     }
+    
     [rs close];
-
 
     return recordings;
 }

@@ -26,7 +26,6 @@
 }
 
 @property (nonatomic, strong) UIBarButtonItem *barButtonItemLeft;
-@property (nonatomic, assign) BOOL isSelectCamera;
 
 @end
 
@@ -76,7 +75,6 @@
 
 
 - (void)setup {
-    
     
     __weak typeof(self) weakSelf = self;
     
@@ -135,7 +133,7 @@
 
 - (void)didReceiveNotification:(NSNotification *)notificaiton {
     
-    NSLog(@"didReceiveNotification:%@", notificaiton.name);
+    NSLog(@"didReceiveNotification : %@", notificaiton.name);
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.tableView reloadData];
@@ -203,7 +201,7 @@
 
 - (UIBarButtonItem *)barButtonItemLeft {
     if (!_barButtonItemLeft) {
-        _barButtonItemLeft = [[UIBarButtonItem alloc] initWithTitle:INTERSTR(@"FourVideo")
+        _barButtonItemLeft = [[UIBarButtonItem alloc] initWithTitle:INTERSTR(@"Scenes")
                                                               style:UIBarButtonItemStyleDone
                                                              target:self
                                                              action:@selector(btnLeftAction:)];
@@ -257,6 +255,7 @@
     return CELLH;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
@@ -272,7 +271,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
         
-    }//@isEdit
+    }// @isEdit
     
     
     if (!isEdit) {
@@ -292,7 +291,7 @@
         
         return cell;
 
-    }//@!isEdit
+    }// @!isEdit
     
     return nil;
 }
@@ -372,12 +371,6 @@
     Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
 
     
-    if (_isSelectCamera) {
-        
-        [self tableView:tableView didSelectCameraAtIndexPath:indexPath];
-        return;
-    }
-
     
     if (isEdit) {
         EditCameraViewController *editCamera = [[EditCameraViewController alloc] init];
@@ -403,13 +396,6 @@
     Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
     
     
-    //
-    if (_isSelectCamera) {
-        
-        [self tableView:tableView didSelectCameraAtIndexPath:indexPath];
-        return;
-    }
-    
 
     if (isEdit) {
         EditCameraViewController *editCamera = [[EditCameraViewController alloc] init];
@@ -418,6 +404,8 @@
         return;
     }
     
+    
+    // offline
     if (!mycam.online) {
         [HXProgress showText:NSLocalizedString(@"Offline", nil)];
         [mycam connect];
@@ -433,15 +421,15 @@
     [self.navigationController pushViewController:liveView animated:YES];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectCameraAtIndexPath:(NSIndexPath *)indexPath {
-    
-    Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
-    
-    mycam.select = !mycam.select;
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = mycam.select ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryDetailButton;
-}
+//- (void)tableView:(UITableView *)tableView didSelectCameraAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    Camera *mycam = [[GBase sharedBase].cameras objectAtIndex:indexPath.row];
+//    
+//    mycam.select = !mycam.select;
+//    
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.accessoryType = mycam.select ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryDetailButton;
+//}
 
 
 

@@ -86,7 +86,7 @@
 
 
 
-
+#pragma mark - 连接状态
 - (void)receiveSessionState:(HiCamera *)camera Status:(int)status {
     
     LOG(@">>>HiCamera_receiveSessionState %@ %@ %x", camera.uid, self.state, status);
@@ -133,6 +133,18 @@
     }
 }
 
+
+#pragma mark - 回放/录像
+- (void)receivePlayState:(HiCamera *)camera State:(int)state Width:(int)width Height:(int)height {
+    
+    LOG(@">>>receivePlayState uid:%@,  State:%d width:%d height:%d", camera.uid, state, width, height);
+    
+    if (_playStateBlock) {
+        _playStateBlock((NSInteger)state);
+    }
+    
+}
+
 - (void)receivePlayUTC:(HiCamera *)camera Time:(int)time {
     
     //NSLog(@"%@ - receivePlayUTC : %d", camera.uid, time);
@@ -146,15 +158,7 @@
 }
 
 
-- (void)receivePlayState:(HiCamera *)camera State:(int)state Width:(int)width Height:(int)height {
 
-    LOG(@">>>receivePlayState uid:%@,  State:%d width:%d height:%d", camera.uid, state, width, height);
-    
-    if (_playStateBlock) {
-        _playStateBlock((NSInteger)state);
-    }
-
-}
 
 
 

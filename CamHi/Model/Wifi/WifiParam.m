@@ -60,8 +60,8 @@
     return self;
 }
 
-//- (HI_P2P_S_WIFI_PARAM *)model {
-//    
+- (HI_P2P_S_WIFI_PARAM *)model {
+    
 //    HI_P2P_S_WIFI_PARAM *t_model = (HI_P2P_S_WIFI_PARAM *)malloc(sizeof(HI_P2P_S_WIFI_PARAM));
 //    memset(t_model, 0, sizeof(HI_P2P_S_WIFI_PARAM));
 //    
@@ -76,8 +76,9 @@
 //    //strncpy(t_model->strKey, [_strKey cStringUsingEncoding:NSUTF8StringEncoding], HI_P2P_NET_LEN);
 //    
 //    return t_model;
-//    
-//}
+    
+    return nil;
+}
 
 - (HI_P2P_S_WIFI_CHECK *)modelCheck {
     
