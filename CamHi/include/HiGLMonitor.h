@@ -20,6 +20,7 @@
 @interface HiGLMonitor: UIView
 
 - (void)setYuvFrame:(char*)yuvdata Lenght:(int)lenght Width:(int)width Height:(int)height;
+- (void)cleanWithR:(float)r G:(float)g B:(float)b;
 
 @end
 

@@ -52,7 +52,17 @@
 
 - (void)btnAction:(id)sender {
     
+    
     UIButton *btn = (UIButton *)sender;
+    
+//    [self.btnArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//       
+//        UIButton *button = (UIButton *)obj;
+//        if (button.tag != btn.tag) {
+//            button.selected = NO;
+//        }
+//    }];
+
     btn.selected = !btn.selected;
     
 //    if (self.delegate) {
@@ -96,6 +106,7 @@
 }
 
 - (void)setImage:(UIImage*)img atIndex:(NSInteger)index forState:(UIControlState)state {
+    
     [(UIButton *)[self.btnArray objectAtIndex:index] setImage:img forState:state];
 }
 

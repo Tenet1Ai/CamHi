@@ -9,9 +9,74 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>CamHiGH.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>JS-AP131.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>KS-AP130.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>My camera+.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Q100.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>XMcam.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>ccs.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>keye.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>EE0312A91D98C18C0091872D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE03136F1D98C5330091872D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE0314351D98C79B0091872D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE1F71981D95154A000938FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE1F725D1D951886000938FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EE55EA711D333EE7003B9D89</key>
 		<dict>
 			<key>primary</key>
@@ -23,6 +88,21 @@
 			<true/>
 		</dict>
 		<key>EE55EA951D333EE8003B9D89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEE0B6781D97A14E0065292A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEE0B73E1D97ABED0065292A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEE0B8041D97B84B0065292A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

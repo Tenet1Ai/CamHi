@@ -8,15 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FMDB.h"
-
-
-#pragma mark - XingePush/信鸽推送
-// CamHi
-#define XingePushID     (2200126647)
-#define XingePushKey    (@"IQKRZ88762PX")
-#define XingePushServer (@"hichip") //"xinge:hichip:ios"
-
-
+#import "GModel.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -200,6 +200,12 @@
 
 
 - (UIBarButtonItem *)barButtonItemLeft {
+    
+    if (![DisplayName isEqualToString:@"CamHiGH"]) {
+        return nil;
+    }
+    
+    
     if (!_barButtonItemLeft) {
         _barButtonItemLeft = [[UIBarButtonItem alloc] initWithTitle:INTERSTR(@"Scenes")
                                                               style:UIBarButtonItemStyleDone

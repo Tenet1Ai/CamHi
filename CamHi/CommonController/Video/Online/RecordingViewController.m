@@ -289,26 +289,6 @@
 }
 
 
-#pragma mark - UIAlertViewDelegate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"buttonIndex:%d", (int)buttonIndex);
-    
-    // play
-    if (buttonIndex == 1) {
-        [self playRecording];
-    }
-    
-    // download
-    if (buttonIndex == 2) {
-        
-        [self startDownload:self.selectedVideoInfo];
-    }
-    
-    // cancel
-    if (buttonIndex == 0) {
-        
-    }
-}
 
 
 #pragma mark - down/录像下载
@@ -496,8 +476,21 @@
 }
 
 - (void)presentAlertView {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:INTERSTR(@"Cancel") otherButtonTitles:INTERSTR(@"Play"), INTERSTR(@"Download"), nil];
-    [alertView show];
+    
+    // 远程下载
+    if ([DisplayName isEqualToString:@"CamHiGH"]) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:nil delegate:self cancelButtonTitle:INTERSTR(@"Cancel") otherButtonTitles:INTERSTR(@"Play"), INTERSTR(@"Download"), nil];
+        alertView.tag = 1;
+        [alertView show];
+    }
+    else {
+        
+        UIAlertView *alertViewPlay = [[UIAlertView alloc] initWithTitle:INTERSTR(@"Play") message:nil delegate:self cancelButtonTitle:INTERSTR(@"Cancel") otherButtonTitles:INTERSTR(@"Yes"), nil];
+        alertViewPlay.tag = 2;
+        [alertViewPlay show];
+
+    }
 }
 
 - (void)playRecording {
@@ -508,6 +501,48 @@
     
     [self.navigationController pushViewController:playBack animated:YES];
 }
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSLog(@"buttonIndex:%d", (int)buttonIndex);
+    
+    if (alertView.tag == 1) {
+        
+        // play
+        if (buttonIndex == 1) {
+            [self playRecording];
+        }
+        
+        // download
+        if (buttonIndex == 2) {
+            
+            [self startDownload:self.selectedVideoInfo];
+        }
+        
+        // cancel
+        if (buttonIndex == 0) {
+            
+        }
+        
+    }// @tag == 1
+    
+    
+    if (alertView.tag == 2) {
+        
+        // play
+        if (buttonIndex == 1) {
+            [self playRecording];
+        }
+        
+        // cancel
+        if (buttonIndex == 0) {
+            
+        }
+        
+    }// @tag == 2
+    
+}
+
 
 /*
 #pragma mark - Navigation

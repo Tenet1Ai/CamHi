@@ -22,7 +22,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    NSLog(@"didFinishLaunchingWithOptions:%@", launchOptions);
+    NSLog(@"application_didFinishLaunchingWithOptions : %@", launchOptions);
 
     HXTabBarController *viewcontroller = [[HXTabBarController alloc] init];
     self.window.rootViewController = viewcontroller;
@@ -37,10 +37,11 @@
 //    // connect camera
 //    [GBase connectCameras];
     
-    //注册信鸽推送
-    [XGPush startApp:XingePushID appKey:XingePushKey];
-    [XGPush handleLaunching:launchOptions];
-    SystemVersion < 8 ? [self registerPush] : [self registerPushForIOS8];
+    
+
+    // 注册信鸽推送
+    [self registerXingePushWithOptions:launchOptions];
+
     
     
     // 处理远程通知信息
@@ -50,7 +51,6 @@
 //    }
     [self checkAlarmEvent:launchOptions];
 
-    
     
     return YES;
 }
@@ -206,6 +206,139 @@
     
 }
 
+
+
+#pragma mark - 注册信鸽推送
+- (void)registerXingePushWithOptions:(NSDictionary *)launchOptions {
+    
+    NSString *bundelDisplayName = [NSBundle mainBundle].infoDictionary[@"CFBundleDisplayName"];
+    NSString *xingeCompany = nil;
+    LOG(@"bundelDisplayName : %@", bundelDisplayName)
+    
+    
+    // *******************************************************
+    // displayName  : CamHiGH
+    // appId        : 2200126647
+    // appKey       : IQKRZ88762PX
+    // company      : hichip
+    // server       : xinge:hichip:ios
+    
+    if ([bundelDisplayName isEqualToString:@"CamHiGH"]) {
+        [XGPush startApp:2200126647 appKey:@"IQKRZ88762PX"];
+        xingeCompany = @"hichip";
+    }
+
+    
+    // *******************************************************
+    // displayName  : CamHi
+    // appId        : 2200126647
+    // appKey       : IQKRZ88762PX
+    // company      : hichip
+    // server       : xinge:hichip:ios
+    
+    if ([bundelDisplayName isEqualToString:@"CamHi"]) {
+        [XGPush startApp:2200126647 appKey:@"IQKRZ88762PX"];
+        xingeCompany = @"hichip";
+    }
+
+    
+    // *******************************************************
+    // displayName  : JS-AP131
+    // appId        : 2200179317
+    // appKey       : I1T7U867BBNQ
+    // company      : jsap
+    // server       : xinge:jsap:ios
+    
+    if ([bundelDisplayName isEqualToString:@"JS-AP131"]) {
+        [XGPush startApp:2200179317 appKey:@"I151T1EM8JNI"];
+        xingeCompany = @"jsap";
+    }
+
+    
+    // *******************************************************
+    // displayName  : KS-AP130
+    // appId        : 2200181079
+    // appKey       : I151T1EM8JNI
+    // company      : ksap
+    // server       : xinge:ksap:ios
+
+    if ([bundelDisplayName isEqualToString:@"KS-AP130"]) {
+        [XGPush startApp:2200181079 appKey:@"I151T1EM8JNI"];
+        xingeCompany = @"ksap";
+    }
+
+    
+    // *******************************************************
+    // displayName  : XMcam
+    // appId        : 2200196556
+    // appKey       : I271ZTG2WF4I
+    // company      : xmcam
+    // server       : xinge:xmcam:ios
+    
+    if ([bundelDisplayName isEqualToString:@"XMcam"]) {
+        [XGPush startApp:2200196556 appKey:@"I271ZTG2WF4I"];
+        xingeCompany = @"xmcam";
+    }
+
+    
+    // *******************************************************
+    // displayName  : My camera+
+    // appId        : 2200215126
+    // appKey       : I2FA2CR676XC
+    // company      : addcam
+    // server       : xinge:addcam:ios
+    
+    if ([bundelDisplayName isEqualToString:@"My camera+"]) {
+        [XGPush startApp:2200215126 appKey:@"I2FA2CR676XC"];
+        xingeCompany = @"addcam";
+    }
+
+    
+    // *******************************************************
+    // displayName  : keye
+    // appId        : 2200198425
+    // appKey       : I8N175PWP9LJ
+    // company      : keye
+    // server       : xinge:keye:ios
+    
+    if ([bundelDisplayName isEqualToString:@"keye"]) {
+        [XGPush startApp:2200198425 appKey:@"I8N175PWP9LJ"];
+        xingeCompany = @"keye";
+    }
+
+    
+    // *******************************************************
+    // displayName  : Q100
+    // appId        : 2200194285
+    // appKey       : I53QYH9D98MM
+    // company      : q100
+    // server       : xinge:q100:ios
+    
+    if ([bundelDisplayName isEqualToString:@"Q100"]) {
+        [XGPush startApp:2200194285 appKey:@"I53QYH9D98MM"];
+        xingeCompany = @"q100";
+    }
+
+    
+    // *******************************************************
+    // displayName  : ccs
+    // appId        : 2200207116
+    // appKey       : I1BP9R2XZ17K
+    // company      : ccs
+    // server       : xinge:ccs:ios
+    
+    if ([bundelDisplayName isEqualToString:@"ccs"]) {
+        [XGPush startApp:2200207116 appKey:@"I1BP9R2XZ17K"];
+        xingeCompany = @"ccs";
+    }
+
+    
+    [XGPush handleLaunching:launchOptions];
+    SystemVersion < 8 ? [self registerPush] : [self registerPushForIOS8];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:xingeCompany forKey:@"xinge_push_company"];
+
+}// @registerXingePushWithOptions
 
 
 - (void)registerPushForIOS8{

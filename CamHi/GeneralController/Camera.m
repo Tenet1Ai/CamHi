@@ -7,6 +7,7 @@
 //
 
 #import "Camera.h"
+#import "AppDelegate.h"
 
 @interface Camera ()
 {
@@ -216,8 +217,38 @@
             [self sendIOCtrl:cmd Data:(char *)s_display Size:sizeof(HI_P2P_S_DISPLAY)];
             free(s_display);
         }
-    }
+        
+    }// @镜像／翻转
     
+    
+    if (cmd == HI_P2P_WHITE_LIGHT_GET || cmd == HI_P2P_WHITE_LIGHT_SET) {
+        
+        if (cmd == HI_P2P_WHITE_LIGHT_GET) {
+            [self sendIOCtrl:cmd Data:(char *)nil Size:0];
+        }
+        
+        if (cmd == HI_P2P_WHITE_LIGHT_SET) {
+            HI_P2P_WHITE_LIGHT_INFO *white_light = [self.whiteLight model];
+            [self sendIOCtrl:cmd Data:(char *)white_light Size:sizeof(HI_P2P_WHITE_LIGHT_INFO)];
+            free(white_light);
+        }
+        
+    }// @白光灯开关
+    
+    
+    if (cmd == HI_P2P_WHITE_LIGHT_GET_EXT || cmd == HI_P2P_WHITE_LIGHT_SET_EXT) {
+        
+        if (cmd == HI_P2P_WHITE_LIGHT_GET_EXT) {
+            [self sendIOCtrl:cmd Data:(char *)nil Size:0];
+        }
+        
+        if (cmd == HI_P2P_WHITE_LIGHT_SET_EXT) {
+            HI_P2P_WHITE_LIGHT_INFO_EXT *white_ligth = [self.whiteLight modelExt];
+            [self sendIOCtrl:cmd Data:(char *)white_ligth Size:sizeof(HI_P2P_WHITE_LIGHT_INFO_EXT)];
+            free(white_ligth);
+        }
+        
+    }// @夜视模式选择
     
     
     
@@ -635,6 +666,33 @@
             [self setCMD:type size:size];
         }
     }
+
+    
+    if (type == HI_P2P_WHITE_LIGHT_GET || type == HI_P2P_WHITE_LIGHT_SET) {
+        
+        if (type == HI_P2P_WHITE_LIGHT_GET) {
+            self.whiteLight = [[ModelWhiteLight alloc] initWithData:data size:size];
+            [self getCMD:type object:self.whiteLight success:YES];
+        }
+        
+        if (type == HI_P2P_WHITE_LIGHT_SET) {
+            [self setCMD:type size:size];
+        }
+        
+    }// @白光灯开关
+
+    if (type == HI_P2P_WHITE_LIGHT_GET_EXT || type == HI_P2P_WHITE_LIGHT_SET_EXT) {
+        
+        if (type == HI_P2P_WHITE_LIGHT_GET_EXT) {
+            self.whiteLight = [[ModelWhiteLight alloc] initWithData:data size:size command:type];
+            [self getCMD:type object:self.whiteLight success:YES];
+        }
+        
+        if (type == HI_P2P_WHITE_LIGHT_SET_EXT) {
+            [self setCMD:type size:size];
+        }
+        
+    }// @夜视模式选择
 
     
     //报警设置页面
@@ -1130,11 +1188,17 @@
     if (!_pushSDK) {
         
         //注册信鸽推送返回的deviceToken
-        NSString *token = [self.camDefaults objectForKey:@"xinge_push_deviceToken"];
-        _pushSDK = [[HiPushSDK alloc] initWithXGToken:token Uid:self.uid Company:XingePushServer Delegate:self];
+        NSString *token     = [self.camDefaults objectForKey:@"xinge_push_deviceToken"];
+        NSString *company   = [self.camDefaults objectForKey:@"xinge_push_company"];
+        
+        LOG(@"xinge_push_deviceToken : %@", token)
+        LOG(@"xinge_push_company : %@", company)
+
+        _pushSDK = [[HiPushSDK alloc] initWithXGToken:token Uid:self.uid Company:company Delegate:self];
     }
     return _pushSDK;
 }
+
 
 // 开启信鸽推送
 - (void)turnOnXingePush {
@@ -1219,7 +1283,7 @@
 
 #pragma mark - description
 - (NSString *)description {
-    return [NSString stringWithFormat:@"uid:%@ user:%@ name:%@ pwd:%@", self.uid, self.username, self.name, self.password];
+    return [NSString stringWithFormat:@"uid : %@ user : %@ name : %@ pwd : %@", self.uid, self.username, self.name, self.password];
 }
 
 
@@ -1310,6 +1374,23 @@
         
         [self request:HI_P2P_SET_DISPLAY_PARAM dson:nil];
     }
+}
+
+#pragma mark - 白光灯控制／夜视模式选择
+
+- (void)turnOnWhiteLight {
+    self.whiteLight.u32State = 1;
+    [self request:HI_P2P_WHITE_LIGHT_SET dson:nil];
+}
+
+- (void)turnOffWhiteLight {
+    self.whiteLight.u32State = 0;
+    [self request:HI_P2P_WHITE_LIGHT_SET dson:nil];
+}
+
+- (void)changeWhiteLightModel:(NSInteger)command {
+    self.whiteLight.u32State = (HI_U32)command;
+    [self request:HI_P2P_WHITE_LIGHT_SET_EXT dson:nil];
 }
 
 @end

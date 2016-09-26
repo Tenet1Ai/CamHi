@@ -15,6 +15,9 @@
 #import "Recording.h"
 #import "QualityDialog.h"
 #import "iToast.h"
+#import "WhiteLightView.h"
+
+#import "LiveModel.h"
 
 
 #define SMONITOR    (100)
@@ -68,12 +71,15 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 @property (nonatomic, strong) Microphone *microphone;
 @property (nonatomic, strong) Recording *record;
 @property (nonatomic, strong) QualityDialog *quality;
-
+@property (nonatomic, strong) WhiteLightView *lightView;
+@property (nonatomic, strong) NSMutableArray *topLiveModels;
+@property (nonatomic, strong) NSMutableArray *bottomLiveModels;
 
 @end
 
 @implementation LiveViewController
 
+#pragma mark - viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -83,7 +89,6 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 
     [self setupView];
     [self setup];
-    
     
     //注册屏幕旋转通知
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarOrientationsDidChange:) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
@@ -146,8 +151,36 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
             weakSelf.mirror.switchMirror.on = weakSelf.display.u32Mirror == 1 ? YES : NO;
             weakSelf.mirror.switchFlip.on = weakSelf.display.u32Flip == 1 ? YES : NO;
 
+        }// @镜像翻转
+        
+        if (cmd == HI_P2P_WHITE_LIGHT_GET) {
+            
+            [weakSelf.topLiveModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                LiveModel *t_live = (LiveModel *)obj;
+                if ([t_live.normalImgName isEqualToString:@"light_gray"]) {
+                    
+                    if (weakSelf.camera.whiteLight.u32State == 0) {
+                        [weakSelf.topToolBar setSelect:NO atIndex:(int)idx];
+                    }
+                    
+                    if (weakSelf.camera.whiteLight.u32State == 1) {
+                        [weakSelf.topToolBar setSelect:YES atIndex:(int)idx];
+                    }
+
+                }
+            }];
+            
+        }// 白光灯开关
+        
+        
+        if (cmd == HI_P2P_WHITE_LIGHT_GET_EXT) {
+            
+            [weakSelf.lightView reloadWithIndex:(NSInteger)weakSelf.camera.whiteLight.u32State];
         }
-    };
+        
+        
+    };// @cmdBlock
 
     
     qualityType = QualityTypeNone;
@@ -171,7 +204,8 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
             }
 
         }
-    };
+        
+    };// @connectBlock
     
     
     _isShowing = NO;
@@ -206,6 +240,8 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 }
 
 
+
+
 - (void)setupView {
     
     ptz_ctrl_time = 0;
@@ -235,6 +271,12 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     [self.view addSubview:self.record];
     [self.view addSubview:self.quality];
     
+    if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET_EXT]) {
+        [self.view addSubview:self.lightView];
+        
+    }// 夜视模式选择
+    
+    
     [self transformLandscapeLeft];
 
 }
@@ -262,6 +304,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         [self transformMicrophonePortrait];
         [self transformRecordingPortrait];
         [self transformQualityPortrait];
+        [self transformLightViewPortrait];
         
     }];
 }
@@ -285,6 +328,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         [self transformMicrophoneLandscapeLeft];
         [self transformRecordingLandscapeLeft];
         [self transformQualityLandscapeLeft];
+        [self transformLightViewLandscapeLeft];
 
     }];
 }
@@ -495,101 +539,101 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 
 - (void)toolBar:(NSInteger)barTag didSelectedAtIndex:(NSInteger)index selected:(BOOL)select {
     
+    if (barTag == 0) {
+        
+        // 改变工具栏按钮的选中状态
+        [self.topLiveModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET]) {
+                
+                LiveModel *t_live = (LiveModel *)obj;
+                if (![t_live.normalImgName isEqualToString:@"light_gray"] || index != idx) {
+                    [self.topToolBar setSelect:NO atIndex:(int)idx];
+                }
+            }
+            else {
+                if (index != idx) {
+                    [self.topToolBar setSelect:NO atIndex:(int)idx];
+                }
+            }
+            
+        }];// @enumerateObjectsUsingBlock
+        
+        LiveModel *t_livem = self.topLiveModels[index];
+        
+        if (select) {
+            [self performSelector:t_livem.selectSelector withObject:nil afterDelay:0];
+        }
+        else {
+            [self performSelector:t_livem.normalSelector withObject:nil afterDelay:0];
+        }
+        
+    }// @barTag == 0
+    
+    
+    if (barTag == 1) {
+        
+        LiveModel *t_livem = self.bottomLiveModels[index];
+        
+        if (select) {
+            [self performSelector:t_livem.selectSelector withObject:nil afterDelay:0];
+        }
+        else {
+            [self performSelector:t_livem.normalSelector withObject:nil afterDelay:0];
+        }
+
+    }// @barTag == 1
 }
 
-- (void)didClickTag:(NSInteger)tag atIndex:(NSInteger)index {
-    
-    
-    if (tag == 0) {
-        
-        if (index == 0) {
-            [self showMirror];
-        }
-        
-        if (index == 1) {
-            [self showZoomFocus];
-        }
+//- (void)didClickTag:(NSInteger)tag atIndex:(NSInteger)index {
+//    
+//    
+//    if (tag == 0) {
+//        
+//        if (index == 0) {
+//            [self showMirror];
+//        }
+//        
+//        if (index == 1) {
+//            [self showZoomFocus];
+//        }
+//
+//        if (index == 2) {
+//            [self showPreset];
+//        }
+//        
+//        if (index == 3) {
+//            [self exit];
+//        }
+//        
+//    }
+//    
+//    
+//    if (tag == 1) {
+//        
+//        if (index == 0) {
+//            [self showMicrophone];
+//        }
+//        
+//        if (index == 1) {
+//            [self takeSnapShot];
+//        }
+//        
+//        if (index == 2) {
+//            [self takeRecording];
+//        }
+//        
+//        
+//        if (index == 3) {
+//            [self showQuality];
+//        }
+//        
+//        if (index == 4) {
+//            isFullScreen ? [self transformPortrait] : [self transformLandscapeLeft];
+//        }
+//    }
+//}
 
-        if (index == 2) {
-            [self showPreset];
-        }
-        
-        if (index == 3) {
-            [self exit];
-        }
-        
-    }
-    
-    
-    if (tag == 1) {
-        
-        if (index == 0) {
-            [self showMicrophone];
-        }
-        
-        if (index == 1) {
-            [self takeSnapShot];
-        }
-        
-        if (index == 2) {
-            [self takeRecording];
-        }
-        
-        
-        if (index == 3) {
-            [self showQuality];
-        }
-        
-        if (index == 4) {
-            isFullScreen ? [self transformPortrait] : [self transformLandscapeLeft];
-        }
-    }
-}
-
-
-// 退出
-- (void)exit {
-    
-    if (self.mirror) {
-        [self.mirror removeFromSuperview];
-    }
-    
-    
-    //Goke版本的摄像机每次退出实时界面时更换显示画面
-    if ([self.camera isGoke]) {
-        if (self.isShowing) {
-            [self.camera saveImage:[self.camera getSnapshot]];
-        }
-    }
-    
-    
-    [self.camera stopLiveShow];
-    [self.navigationController popViewControllerAnimated:YES];
-
-}
-
-- (void)showZoomFocus {
-    
-    //隐藏镜像翻转
-    self.mirror.isShow ? [self.mirror dismiss]: nil;
-    //隐藏预置位
-    self.preset.isShow ? [self.preset dismiss] : nil;
-
-    if ([self.camera getCommandFunction:HI_P2P_SET_PTZ_CTRL]) {
-        self.zoomfocus.isShow ? [self.zoomfocus dismiss] : [self.zoomfocus show];
-    }
-}
-
-- (void)showPreset {
-    //隐藏镜像翻转
-    self.mirror.isShow ? [self.mirror dismiss]: nil;
-    //隐藏变焦
-    self.zoomfocus.isShow ? [self.zoomfocus dismiss] : nil;
-
-    if ([self.camera getCommandFunction:HI_P2P_SET_PTZ_PRESET]) {
-        self.preset.isShow ? [self.preset dismiss] : [self.preset show];
-    }
-}
 
 - (void)dismissAll {
     //隐藏镜像翻转
@@ -602,32 +646,118 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     //隐藏高清流畅切换
     !self.quality.isShow ? [self.quality show] : nil ;
 
+    self.lightView.isShow ? [self.lightView dismiss] : nil ;
+    
+    
+    [self.topLiveModels enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET]) {
+            
+            LiveModel *t_live = (LiveModel *)obj;
+            if (![t_live.normalImgName isEqualToString:@"light_gray"]) {
+                [self.topToolBar setSelect:NO atIndex:(int)idx];
+            }
+            
+        }
+        else {
+            [self.topToolBar setSelect:NO atIndex:(int)idx];
+        }
+        
+    }];// @enumerateObjectsUsingBlock
 }
 
 
-#pragma mark -- topToolBar
+#pragma mark - topToolBar/顶部工具栏
 - (void)setupTopToolBar:(BOOL)fullScreen {
     
     [self.view addSubview:self.topToolBar];
 }
 
+- (NSMutableArray *)topLiveModels {
+    if (!_topLiveModels) {
+        _topLiveModels = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        
+        // 镜像／翻转
+        if ([self.camera getCommandFunction:HI_P2P_SET_DISPLAY_PARAM]) {
+            [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"mirror_white" selectImage:@"mirror_white" normalSel:@selector(showMirror) selectSel:@selector(showMirror)]];
+        }
+        
+        
+        // 数字变焦
+        if ([self.camera getCommandFunction:HI_P2P_SET_PTZ_CTRL]) {
+            [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"zoom_focus" selectImage:@"zoom_focus" normalSel:@selector(showZoomFocus) selectSel:@selector(showZoomFocus)]];
+        }
+        
+        
+        // 预置位调用
+        if ([self.camera getCommandFunction:HI_P2P_SET_PTZ_PRESET]) {
+            [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"mark" selectImage:@"mark" normalSel:@selector(showPreset) selectSel:@selector(showPreset)]];
+        }
+        
+        
+        
+        // 白光灯／夜视模式
+        // 如果有   HI_P2P_WHITE_LIGHT_GET_EXT 则为夜视选项模式
+        // 如果没有 HI_P2P_WHITE_LIGHT_GET_EXT 则判断 HI_P2P_WHITE_LIGHT_GET
+        // 如果有   HI_P2P_WHITE_LIGHT_GET 则为白光灯开关模式
+        // 如果没有 HI_P2P_WHITE_LIGHT_GET 则不需要显示
+        if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET_EXT]) {
+            NSLog(@"live_topbar_getCommandFunction 夜视选择模式");
+            [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"light_gray" selectImage:@"light_blue" normalSel:@selector(showLightView) selectSel:@selector(showLightView)]];
+            [self.camera request:HI_P2P_WHITE_LIGHT_GET_EXT dson:nil];
+        }
+        else {
+            if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET]) {
+                NSLog(@"live_topbar_getCommandFunction 白光灯开关模式");
+                [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"light_gray" selectImage:@"light_blue" normalSel:@selector(turnOffWhiteLight) selectSel:@selector(turnOnWhiteLight)]];
+                [self.camera request:HI_P2P_WHITE_LIGHT_GET dson:nil];
+            }
+        }
+        
+        
+        // 退出
+        [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"exitbutton" selectImage:@"exitbutton" normalSel:@selector(exit) selectSel:@selector(exit)]];
+        
+        
+    }
+    return _topLiveModels;
+}
+
+
+
 - (ToolBar *)topToolBar {
     if (!_topToolBar) {
         
         CGFloat h = 40.0f;
-        int num = 4;
+        //int num = 4;
         
-        _topToolBar = [[ToolBar alloc] initWithFrame:CGRectMake(0, 0, WIDTH, h) btnNumber:num];
+        _topToolBar = [[ToolBar alloc] initWithFrame:CGRectMake(0, 0, WIDTH, h) btnNumber:(int)self.topLiveModels.count];
         _topToolBar.tag = 0;
         _topToolBar.delegate = self;
         
-        NSArray *images = @[[UIImage imageNamed:@"mirror_white"], [UIImage imageNamed:@"zoom_focus"],
-                            [UIImage imageNamed:@"mark"], [UIImage imageNamed:@"exitbutton"]];
+//        NSArray *images = @[[UIImage imageNamed:@"mirror_white"], [UIImage imageNamed:@"zoom_focus"],
+//                            [UIImage imageNamed:@"mark"], [UIImage imageNamed:@"exitbutton"]];
+//        
+//        for (int i = 0; i < num; i++) {
+//            [_topToolBar setImage:images[i] atIndex:i forState:UIControlStateNormal];
+//        }
         
-        for (int i = 0; i < num; i++) {
-            [_topToolBar setImage:images[i] atIndex:i forState:UIControlStateNormal];
-        }
         
+        for (int i = 0; i < self.topLiveModels.count; i++) {
+            
+            LiveModel *t_livem = self.topLiveModels[i];
+            //NSLog(@"normalImgName : %@", t_livem.normalImgName);
+            [_topToolBar setImage:[UIImage imageNamed:t_livem.normalImgName] atIndex:i forState:UIControlStateNormal];
+            [_topToolBar setImage:[UIImage imageNamed:t_livem.selectImgName] atIndex:i forState:UIControlStateSelected];
+            
+//            UIImage *imgs = [UIImage imageWithColor:RGBA_COLOR(100, 0, 0, 1) wihtSize:CGSizeMake(100, 100)];
+//            UIImage *imgn = [UIImage imageWithColor:RGBA_COLOR(0, 0, 100, 1) wihtSize:CGSizeMake(100, 100)];
+//            
+//            [_topToolBar setBackgroudImage:imgn atIndex:i forState:UIControlStateNormal];
+//            [_topToolBar setBackgroudImage:imgs atIndex:i forState:UIControlStateSelected];
+
+        }// @for
     }
     return _topToolBar;
 }
@@ -647,8 +777,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 }
 
 
-#pragma mark --- MirrorView
-//控制画面镜像与翻转
+#pragma mark --- MirrorView/镜像与翻转
 - (MirrorView *)mirror {
     if (!_mirror) {
         
@@ -694,16 +823,21 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     self.zoomfocus.isShow ? [self.zoomfocus dismiss] : nil;
     //隐藏预置位
     self.preset.isShow ? [self.preset dismiss] : nil;
+    //
+    self.lightView.isShow ? [self.lightView dismiss] : nil ;
     
-    if ([self.camera getCommandFunction:HI_P2P_SET_DISPLAY_PARAM]) {
-        self.mirror.isShow ? [self.mirror dismiss] : [self.mirror show];
-    }
+    self.mirror.isShow ? [self.mirror dismiss] : [self.mirror show];
+    
+}
+
+- (void)dismissMirror {
+    self.mirror.isShow ? [self.mirror dismiss] : nil;
 }
 
 
 
-#pragma mark -- ZoomFocusDialog
-//变焦
+
+#pragma mark -- ZoomFocusDialog/变焦
 - (ZoomFocusDialog *)zoomfocus {
     if (!_zoomfocus) {
         
@@ -738,7 +872,7 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
                 [weakSelf.camera zoomWithCtrl:HI_P2P_PTZ_CTRL_STOP];
             }
 
-        };//@zoomBlock
+        };// @zoomBlock
         
     }
     return _zoomfocus;
@@ -753,6 +887,23 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 - (void)transformZoomfocusLandscapeLeft {
     self.zoomfocus.isShow ? [self.zoomfocus show] : nil;
     self.zoomfocus.center = CGPointMake(HEIGHT/2, -ZoomH/2-ZoomH);
+}
+
+- (void)showZoomFocus {
+    
+    //隐藏镜像翻转
+    self.mirror.isShow ? [self.mirror dismiss]: nil;
+    //隐藏预置位
+    self.preset.isShow ? [self.preset dismiss] : nil;
+    
+    self.lightView.isShow ? [self.lightView dismiss] : nil;
+    
+    self.zoomfocus.isShow ? [self.zoomfocus dismiss] : [self.zoomfocus show];
+    
+}
+
+- (void)dismissZoomFocus {
+    self.zoomfocus.isShow ? [self.zoomfocus dismiss] : nil;
 }
 
 
@@ -791,10 +942,119 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     self.preset.center = CGPointMake(HEIGHT/2, -PresetH/2-PresetH);
 }
 
+- (void)showPreset {
+    //隐藏镜像翻转
+    self.mirror.isShow ? [self.mirror dismiss]: nil;
+    //隐藏变焦
+    self.zoomfocus.isShow ? [self.zoomfocus dismiss] : nil;
+    self.lightView.isShow ? [self.lightView dismiss] : nil;
+    self.preset.isShow ? [self.preset dismiss] : [self.preset show];
+    
+}
 
-#pragma mark -- bottomToolBar／底部工具栏
+- (void)dismissPreset {
+    self.preset.isShow ? [self.preset dismiss] : nil;
+}
+
+
+#pragma mark -- 白光灯
+- (WhiteLightView *)lightView {
+    if (!_lightView) {
+        
+        CGFloat w = 200.0f;
+        CGFloat h = 120.0f;
+        CGFloat px = [UIScreen mainScreen].bounds.size.height/2;
+        //CGFloat py = [UIScreen mainScreen].bounds.size.width/2;
+        
+        _lightView = [[WhiteLightView alloc] initWithFrame:CGRectMake(0, 0, w, h)];
+        _lightView.center = CGPointMake(px, -h);
+        _lightView.camera = self.camera;
+        
+    }
+    return _lightView;
+}
+
+- (void)showLightView {
+    
+    //隐藏变焦
+    self.zoomfocus.isShow ? [self.zoomfocus dismiss] : nil;
+    //隐藏预置位
+    self.preset.isShow ? [self.preset dismiss] : nil;
+    
+    self.mirror.isShow ? [self.mirror dismiss] : nil;
+    
+    self.lightView.isShow ? [self.lightView dismiss] : [self.lightView show];
+    
+}
+
+- (void)transformLightViewPortrait {
+    self.lightView.isShow ? [self.lightView show] : nil;
+    self.lightView.center = CGPointMake(WIDTH/2, -CGRectGetHeight(self.lightView.frame));
+}
+
+- (void)transformLightViewLandscapeLeft {
+    self.lightView.isShow ? [self.lightView show] : nil;
+    self.lightView.center = CGPointMake(HEIGHT/2, -CGRectGetHeight(self.lightView.frame));
+}
+
+- (void)turnOnCameraWhiteLight {
+    [self.camera turnOnWhiteLight];
+}
+
+- (void)turnOffCameraWhiteLight {
+    [self.camera turnOffWhiteLight];
+}
+
+
+#pragma mark -- 退出
+- (void)exit {
+    
+    if (self.mirror) {
+        [self.mirror removeFromSuperview];
+    }
+    
+    
+    //Goke版本的摄像机每次退出实时界面时更换显示画面
+    if ([self.camera isGoke]) {
+        if (self.isShowing) {
+            [self.camera saveImage:[self.camera getSnapshot]];
+        }
+    }
+    
+    
+    [self.camera stopLiveShow];
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+
+#pragma mark - bottomToolBar／底部工具栏
 - (void)setupBottomToolBar:(BOOL)fullScreen {
     [self.view addSubview:self.bottomToolBar];
+}
+
+- (NSMutableArray *)bottomLiveModels {
+    if (!_bottomLiveModels) {
+        
+        _bottomLiveModels = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        // 对讲／监听
+        [_bottomLiveModels addObject:[LiveModel modelWithNormalImage:@"speaker_on" selectImage:@"speaker_off" normalSel:@selector(showMicrophone) selectSel:@selector(showMicrophone)]];
+        
+        // 快照
+        [_bottomLiveModels addObject:[LiveModel modelWithNormalImage:@"snopshot" selectImage:@"snopshot" normalSel:@selector(takeSnapShot) selectSel:@selector(takeSnapShot)]];
+        
+        // 录像
+        [_bottomLiveModels addObject:[LiveModel modelWithNormalImage:@"record_white" selectImage:@"record_red" normalSel:@selector(takeRecording) selectSel:@selector(takeRecording)]];
+        
+        // 流畅／高清
+        [_bottomLiveModels addObject:[LiveModel modelWithNormalImage:@"share" selectImage:@"share" normalSel:@selector(showQuality) selectSel:@selector(showQuality)]];
+        
+        // 全屏
+//        [_bottomLiveModels addObject:[LiveModel modelWithNormalImage:@"share" selectImage:@"share" normalSel:@selector(transformPortrait) selectSel:@selector(transformLandscapeLeft)]];
+        
+    }
+    return _bottomLiveModels;
 }
 
 
@@ -804,20 +1064,32 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         CGFloat h = 40.0f;
         CGFloat y = HEIGHT - h;
 
-        int num = 4;
+        //int num = 4;
         
-        _bottomToolBar = [[ToolBar alloc] initWithFrame:CGRectMake(0, y, WIDTH, h) btnNumber:num];
+        _bottomToolBar = [[ToolBar alloc] initWithFrame:CGRectMake(0, y, WIDTH, h) btnNumber:(int)self.bottomLiveModels.count];
         _bottomToolBar.tag = 1;
         _bottomToolBar.delegate = self;
         //    self.bottomToolBar.frame = CGRectMake(x, y, w, h);
         
-        [_bottomToolBar setImage:[UIImage imageNamed:@"speaker_on"] atIndex:0 forState:UIControlStateNormal];
-        [_bottomToolBar setImage:[UIImage imageNamed:@"speaker_off"] atIndex:0 forState:UIControlStateSelected];
-        [_bottomToolBar setImage:[UIImage imageNamed:@"snopshot"] atIndex:1 forState:UIControlStateNormal];
-        [_bottomToolBar setImage:[UIImage imageNamed:@"record_white"] atIndex:2 forState:UIControlStateNormal];
-        [_bottomToolBar setImage:[UIImage imageNamed:@"record_red"] atIndex:2 forState:UIControlStateSelected];
-        [_bottomToolBar setImage:[UIImage imageNamed:@"share"] atIndex:3 forState:UIControlStateNormal];
-        [_bottomToolBar setTitle:@"Full" atIndex:4 forState:UIControlStateNormal];
+//        [_bottomToolBar setImage:[UIImage imageNamed:@"speaker_on"] atIndex:0 forState:UIControlStateNormal];
+//        [_bottomToolBar setImage:[UIImage imageNamed:@"speaker_off"] atIndex:0 forState:UIControlStateSelected];
+//        [_bottomToolBar setImage:[UIImage imageNamed:@"snopshot"] atIndex:1 forState:UIControlStateNormal];
+//        [_bottomToolBar setImage:[UIImage imageNamed:@"record_white"] atIndex:2 forState:UIControlStateNormal];
+//        [_bottomToolBar setImage:[UIImage imageNamed:@"record_red"] atIndex:2 forState:UIControlStateSelected];
+//        [_bottomToolBar setImage:[UIImage imageNamed:@"share"] atIndex:3 forState:UIControlStateNormal];
+//        [_bottomToolBar setTitle:@"Full" atIndex:4 forState:UIControlStateNormal];
+        
+        
+        
+        for (int i = 0; i < self.bottomLiveModels.count; i++) {
+            
+            LiveModel *t_livem = self.bottomLiveModels[i];
+            
+            [_bottomToolBar setImage:[UIImage imageNamed:t_livem.normalImgName] atIndex:i forState:UIControlStateNormal];
+            [_bottomToolBar setImage:[UIImage imageNamed:t_livem.selectImgName] atIndex:i forState:UIControlStateSelected];
+        
+        }// @for
+        
     }
     return _bottomToolBar;
 }

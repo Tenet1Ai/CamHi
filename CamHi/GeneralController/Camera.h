@@ -34,6 +34,7 @@
 #import "Display.h"
 #import "VideoInfo.h"
 #import "ListReq.h"
+#import "ModelWhiteLight.h"
 
 //判断是否空字符串
 #define isNullString(s)         (!s || [s isEqual:[NSNull null]] || [s isEqualToString:@""])
@@ -95,5 +96,15 @@
 @property (nonatomic, strong) Display *g_display;
 - (void)changeMirror;
 - (void)changeFlip;
+
+
+
+#pragma mark - 白光灯控制／夜视模式选择
+
+@property (nonatomic, strong) ModelWhiteLight *whiteLight;
+- (void)turnOnWhiteLight;
+- (void)turnOffWhiteLight;
+- (void)changeWhiteLightModel:(NSInteger)command;
+
 
 @end
