@@ -1,0 +1,506 @@
+/* No comment provided by engineer. */
+"1-25 fps" = "1-25 fps";
+/* No comment provided by engineer. */
+"1-30 fps" = "1-30 fps";
+/* No comment provided by engineer. */
+"1-6" = "1-6";
+/* No comment provided by engineer. */
+"15 - 900 seconds" = "15 - 900 초";
+/* No comment provided by engineer. */
+"32-6144 kbps" = "32-6144 kbps";
+/* No comment provided by engineer. */
+"50Hz" = "50Hz";
+/* No comment provided by engineer. */
+"60Hz" = "60Hz";
+/* No comment provided by engineer. */
+"Account" = "계정";
+/* No comment provided by engineer. */
+"Add Camera" = "터치하여 카메라 추가하기";
+/* No comment provided by engineer. */
+"admin" = "admin";
+/* No comment provided by engineer. */
+"Alarm Link Setting" = "알람 연동";
+/* No comment provided by engineer. */
+"Alarm recording" = "전체 비디오";
+/* No comment provided by engineer. */
+"Alarm Setting" = "움직임 감지 알람";
+/* No comment provided by engineer. */
+"Alaska;" = "알래스카;";
+/* No comment provided by engineer. */
+"All Day" = "종일";
+/* No comment provided by engineer. */
+"All recording" = "전체 비디오";
+/* No comment provided by engineer. */
+"Atlantic Time(Canada);" = "대서양 표준시(캐나다);산티아고;라파스;";
+/* No comment provided by engineer. */
+"Audio Setting" = "사운드 설정";
+/* No comment provided by engineer. */
+"Authentication" = "인증";
+/* No comment provided by engineer. */
+"Azores;Cape Verde;" = "아조레스;카보베르데제도;";
+/* No comment provided by engineer. */
+"Back" = "뒤로";
+/* No comment provided by engineer. */
+"Baku;Tbilisi;Abu Dhabi;Mascot;" = "바쿠;트빌리시;아부다비;무스카트;";
+/* No comment provided by engineer. */
+"Bangkok;Hanoi;Jakarta;" = "방콕;하노이;자카르타;";
+/* No comment provided by engineer. */
+"Beijing;Singapore;Hongkong;Taipei;" = "베이징;싱가포르;홍콩;타이페이;";
+/* No comment provided by engineer. */
+"Bit Rate" = "전송율";
+/* No comment provided by engineer. */
+"Call" = "불러오기";
+/* No comment provided by engineer. */
+"Camera" = "카메라";
+/* No comment provided by engineer. */
+"Camera Account can not be empty" = "계정을 입력하세요.";
+/* No comment provided by engineer. */
+"Camera Name" = "카메라 이름";
+/* No comment provided by engineer. */
+"Camera Name can not be empty" = "카메라 이름을 입력하세요.";
+/* No comment provided by engineer. */
+"Camera PassWord" = "비밀번호";
+/* No comment provided by engineer. */
+"Camera Password can not be empty" = "비밀번호를 입력하세요.";
+/* No comment provided by engineer. */
+"Camera UID" = "UID";
+/* No comment provided by engineer. */
+"Camera UID can not be empty" = "UID를 입력하세요.";
+/* No comment provided by engineer. */
+"Can't change quality while Speaking" = "대화중 해상도를 변경할 수 없습니다.";
+/* No comment provided by engineer. */
+"Cancel" = "취소";
+/* No comment provided by engineer. */
+"Central Time(USA or Canada);" = "중부 표준시(미국과 캐나다);";
+/* No comment provided by engineer. */
+"Confirm" = "비밀번호 확인";
+/* No comment provided by engineer. */
+"Confirm Password" = "비밀번호 확인";
+/* No comment provided by engineer. */
+"Connect Failed" = "연결실패";
+/* No comment provided by engineer. */
+"Connect Timeout" = "연결시간초과";
+/* No comment provided by engineer. */
+"Connecting..." = "연결 중...";
+/* No comment provided by engineer. */
+"Current Client" = "현재 사용자수";
+/* No comment provided by engineer. */
+"Current Wifi" = "현재 WiFi";
+/* No comment provided by engineer. */
+"Custom" = "사용자 정의";
+/* No comment provided by engineer. */
+"Dakar;Alma Ata;Novosibirsk;Astana;" = "다카;노보시비르스크;아스타나;";
+/* No comment provided by engineer. */
+"DayLight Saving Time" = "여름시간제";
+/* No comment provided by engineer. */
+"Delete" = "삭제";
+/* No comment provided by engineer. */
+"Delete Photo" = "스냅샷 삭제";
+/* No comment provided by engineer. */
+"Delete?" = "삭제하시겠습니까?";
+/* No comment provided by engineer. */
+"Device ID" = "카메라ID";
+/* No comment provided by engineer. */
+"Device Information" = "카메라 정보";
+/* No comment provided by engineer. */
+"Device on LAN:" = "네크워크상의 장치:";
+/* No comment provided by engineer. */
+"Device Time Setting" = "카메라 시간 설정";
+/* No comment provided by engineer. */
+"Device Time Zone" = "카메라 표준 시간대";
+/* No comment provided by engineer. */
+"DeviceTime" = "장치 시간";
+/* No comment provided by engineer. */
+"Disconnected" = "연결 안됨";
+/* No comment provided by engineer. */
+"Dismiss" = "취소";
+/* No comment provided by engineer. */
+"DNS" = "DNS";
+/* No comment provided by engineer. */
+"Do you hear the sound from Device?" = "카메라에서 딩동댕 소리가 들립니까?";
+/* No comment provided by engineer. */
+"Done" = "완료";
+/* No comment provided by engineer. */
+"Duration" = "녹화파일 길이";
+/* No comment provided by engineer. */
+"Duration mast between 15 to 900" = "시간범위는15초에서 900초";
+/* No comment provided by engineer. */
+"Eastern Time(USA or Canada);" = "동부 표준시(미국과 캐나다);보고타;리마; ";
+/* No comment provided by engineer. */
+"Edit" = "편집";
+/* No comment provided by engineer. */
+"Edit Password" = "비밀번호 변경";
+/* No comment provided by engineer. */
+"Edit Succuss" = "비밀번호 변경";
+/* No comment provided by engineer. */
+"Email Alarm Picture" = "이메일 알람 스냅샷";
+/* No comment provided by engineer. */
+"Email Photo" = "이메일 스냅샷";
+/* No comment provided by engineer. */
+"Email Setting" = "이메일 설정";
+/* No comment provided by engineer. */
+"Failed to save photo to camera roll." = "갤러리에 저장하지 못했습니다..";
+/* No comment provided by engineer. */
+"First Stream" = "제1스트림";
+/* No comment provided by engineer. */
+"Focus in" = "초점 -";
+/* No comment provided by engineer. */
+"Focus out" = "초점 +";
+/* No comment provided by engineer. */
+"Format command will ERASE all data of SDCard" = "포맷을 하시면 SD카드의 모든 내용이 지워집니다. ";
+/* No comment provided by engineer. */
+"Format SDCard" = "SD카드 포맷";
+/* No comment provided by engineer. */
+"Format Succuss" = "포맷을 성공적으로 완료하였습니다.";
+/* No comment provided by engineer. */
+"Frame rate" = "프레임율";
+/* No comment provided by engineer. */
+"Free size" = "여유공간크기";
+/* No comment provided by engineer. */
+"ftp server address" = "FTP서버 주소";
+/* No comment provided by engineer. */
+"FTP Setting" = "FTP설정";
+/* No comment provided by engineer. */
+"Full-time recording" = "종일 녹화";
+/* No comment provided by engineer. */
+"Gateway" = "게이트웨이";
+/* No comment provided by engineer. */
+"Guam;Melbourne;Sydney;" = "괌;마가단;시드니;";
+/* No comment provided by engineer. */
+"Hawaii;" = "하와이;";
+/* No comment provided by engineer. */
+"HIGH" = "높음";
+/* No comment provided by engineer. */
+"high" = "아주 높음";
+/* No comment provided by engineer. */
+"Image Capture Number" = "스냅샷 장수";
+/* No comment provided by engineer. */
+"Information" = "정보";
+/* No comment provided by engineer. */
+"Input Type" = "입력 유형";
+/* No comment provided by engineer. */
+"Input Volum" = "입력 음량";
+/* No comment provided by engineer. */
+"IO Alarm" = "외부 알람";
+/* No comment provided by engineer. */
+"IP Address" = "IP주소";
+/* No comment provided by engineer. */
+"Key" = "비밀번호";
+/* No comment provided by engineer. */
+"LAN" = "LAN";
+/* No comment provided by engineer. */
+"Line in" = "라인 입력";
+/* No comment provided by engineer. */
+"loading" = "로딩 중…";
+/* No comment provided by engineer. */
+"London;Iceland;Lisbon;" = "협정 세계시：런던;리스본;카사블랑카;";
+/* No comment provided by engineer. */
+"LOW" = "낮음";
+/* No comment provided by engineer. */
+"low" = "원활";
+/* No comment provided by engineer. */
+"Magadan;New Caledonia;Solomon Islands;  " = "솔로몬제도;뉴칼레도니아;초쿠르다흐;";
+/* No comment provided by engineer. */
+"Mail Access" = "이메일 계정";
+/* No comment provided by engineer. */
+"Manual recording" = "수동 녹화";
+/* No comment provided by engineer. */
+"MEDIUM" = "보통";
+/* No comment provided by engineer. */
+"Mic" = "마이크 입력";
+/* No comment provided by engineer. */
+"MID" = "보통";
+/* No comment provided by engineer. */
+"Mid-Atlantic;" = "세계 협정시-02;";
+/* No comment provided by engineer. */
+"Midway Islands;Samoa;" = "세계 협정시-11";
+/* No comment provided by engineer. */
+"Moscow;Nairobi;Riyadh;" = "모스크바;나이로비;리야드; ";
+/* No comment provided by engineer. */
+"Motion Detection" = "움직임 감지";
+/* No comment provided by engineer. */
+"Motion Detection Senstitivity" = "움직임 감지 감도";
+/* No comment provided by engineer. */
+"Mountain Time(USA or Canada);" = "산지 표준시(미국과 캐나다);";
+/* No comment provided by engineer. */
+"Name" = "이름";
+/* No comment provided by engineer. */
+"Network" = "네트워크 유형";
+/* No comment provided by engineer. */
+"New" = "신규 비밀번호";
+/* No comment provided by engineer. */
+"New Delhi;Islamabad;" = "뉴델리;이스라마바드;카라치;";
+/* No comment provided by engineer. */
+"New Password" = "신규 비밀번호";
+/* No comment provided by engineer. */
+"NO" = "아니오";
+/* No comment provided by engineer. */
+"No Device on LAN" = "네크워크에 카메라가 없습니다.";
+/* No comment provided by engineer. */
+"No Photo Available" = "스냅샷이 없습니다.";
+/* No comment provided by engineer. */
+"No result found" = "검색결과가 없습니다.";
+/* No comment provided by engineer. */
+"No Video Recording" = "녹화 파일이 존재하지 않습니다.";
+/* No comment provided by engineer. */
+"None" = "없음";
+/* No comment provided by engineer. */
+"OK" = "예";
+/* No comment provided by engineer. */
+"Old" = "현재 비밀번호";
+/* No comment provided by engineer. */
+"Old Password" = "현재 비밀번호";
+/* No comment provided by engineer. */
+"Online" = "온라인";
+/* No comment provided by engineer. */
+"Open Record" = "녹화 온/오프.";
+/* No comment provided by engineer. */
+"out of rang" = "범위를 초과하였습니다.";
+/* No comment provided by engineer. */
+"Output Volum" = "스피커 음량";
+/* No comment provided by engineer. */
+"Pacific Time(USA or Canada);" = "태평양 표준시(미국과 캐나다);";
+/* No comment provided by engineer. */
+"Paris;Rome;Berlin;Madrid;" = "파리;베를린;로마;마드리드; ";
+/* No comment provided by engineer. */
+"Passive mode" = "패시브 모드";
+/* No comment provided by engineer. */
+"PassWord" = "비밀번호";
+/* No comment provided by engineer. */
+"Password" = "비밀번호";
+/* No comment provided by engineer. */
+"Password can not be empty" = "비밀번호를 입력하세요.";
+/* No comment provided by engineer. */
+"path" = "경로";
+/* No comment provided by engineer. */
+"Path" = "경로";
+/* No comment provided by engineer. */
+"Phone Time Zone" = "휴대폰 표준 시간대";
+/* No comment provided by engineer. */
+"Plan recording" = "시간 녹화";
+/* No comment provided by engineer. */
+"Please connect WIFI" = "먼저 WiFi에 연결하십시오.";
+/* No comment provided by engineer. */
+"Please input the password" = "비밀번호를 입력하세요.";
+/* No comment provided by engineer. */
+"Please press the rest key for 10 seconds" = "카메라의 리셋버튼을 10초간 눌러 초기화 하십시오.";
+/* No comment provided by engineer. */
+"Please select photos to delete." = "삭제할 스냅샷을 선택하세요.";
+/* No comment provided by engineer. */
+"Please wait for connect" = "연결하고 있습니다. 기다려주십시오.";
+/* No comment provided by engineer. */
+"Press To Join" = "터치하여 연결합니다.";
+/* No comment provided by engineer. */
+"Quality" = "인코딩 등급";
+/* No comment provided by engineer. */
+"Reboot" = "카메라 리셋";
+/* No comment provided by engineer. */
+"Record Timer" = "녹화 시간 ";
+/* No comment provided by engineer. */
+"Reset" = "공장 초기화";
+/* No comment provided by engineer. */
+"Safe Link" = "보안 연결";
+/* No comment provided by engineer. */
+"Save Photo" = "스냅샷 저장";
+/* No comment provided by engineer. */
+"Save Picture on the FTP server" = " FTP서버에 스냅샷 저장";
+/* No comment provided by engineer. */
+"Save Video on SD Card" = " SD카드에 비디오 저장";
+/* No comment provided by engineer. */
+"Save Video on the FTP server" = "FTP서버에 비디오 저장";
+/* No comment provided by engineer. */
+"Saving Time Zone For Device" = "장시 표준 시간대 설정";
+/* No comment provided by engineer. */
+"Scan Search" = "QR코드 스캔";
+/* No comment provided by engineer. */
+"SD Card Setting" = "SD카드 설정";
+/* No comment provided by engineer. */
+"SDCard Fault" = "SD카드를 인식할 수 없습니다.";
+/* No comment provided by engineer. */
+"SDK Version" = "SDK버전";
+/* No comment provided by engineer. */
+"Second Stream" = "제2스트림";
+/* No comment provided by engineer. */
+"Send To" = "수신 주소";
+/* No comment provided by engineer. */
+"Send To Access" = "발신 주소";
+/* No comment provided by engineer. */
+"Sender" = "발신 주소";
+/* No comment provided by engineer. */
+"Server add." = "서버";
+/* No comment provided by engineer. */
+"server port" = "포트";
+/* No comment provided by engineer. */
+"Server Port" = "포트";
+/* No comment provided by engineer. */
+"Set" = "설정";
+/* No comment provided by engineer. */
+"Set Device Time Zone Success" = "표준 시간대를 설정하였습니다.";
+/* No comment provided by engineer. */
+"Set Device Time Zone will REBOOT device" = "표준 시간대를 변경하면 카메라가 재시작됩니다.";
+/* No comment provided by engineer. */
+"Setting Device Time Success" = "장치 시간을 설정하였습니다.";
+/* No comment provided by engineer. */
+"Setting Succuss" = "설정 성공";
+/* No comment provided by engineer. */
+"Setup data will be initialized.Are you sure to reset?" = "모든 설정이 초기화 됩니다. 공장 초기화를 하시겠습니까? ";
+/* No comment provided by engineer. */
+"singal" = "신호 강도";
+/* No comment provided by engineer. */
+"SMTP Server" = "SMTP서버";
+/* No comment provided by engineer. */
+"SMTP server address" = "SMTP서버 주소";
+/* No comment provided by engineer. */
+"Snapshot" = "스냅샷";
+/* No comment provided by engineer. */
+"Soft Version" = "소프트웨어 버전";
+/* No comment provided by engineer. */
+"Soft Version" = "소프트웨어 버전";
+/* No comment provided by engineer. */
+"SSID" = "SSID";
+/* No comment provided by engineer. */
+"SSID can not be empty" = "SSID를 입력하세요.";
+/* No comment provided by engineer. */
+"SSL" = "SSL";
+/* No comment provided by engineer. */
+"STARTTLS" = "STARTTLS";
+/* No comment provided by engineer. */
+"Subject" = "제목";
+/* No comment provided by engineer. */
+"Subnet Mask" = "서브넷 마스크";
+/* No comment provided by engineer. */
+"Succeeded to save photo to camera roll." = "카메라롤에 사진을 저장하였습니다.";
+/* No comment provided by engineer. */
+"Sync with Phone Time" = "휴대폰시간으로 동기화";
+/* No comment provided by engineer. */
+"System Setting" = "시스템 설정";
+/* No comment provided by engineer. */
+"Test FTP Settings" = "FTP설정 테스트";
+/* No comment provided by engineer. */
+"Test......Failed!" = "테스트 실패.";
+/* No comment provided by engineer. */
+"Test......Success!" = "테스트 성공!";
+/* No comment provided by engineer. */
+"The camera will be rebooted.Are you sure to reboot?" = "카메라를 재시작 하시겠습니까?";
+/* No comment provided by engineer. */
+"The name, uid and password field can not be empty" = "이름, UID, 비밀번호를 입력하세요. ";
+/* No comment provided by engineer. */
+"The new password and confirm password do not match" = "두 번 입력한 비밀번호가 일치하지 않습니다.";
+/* No comment provided by engineer. */
+"The old password is wrong" = "현재 비밀번호가 틀렸습니다.";
+/* No comment provided by engineer. */
+"This device is already exists" = "카메라가 이미 존재합니다.";
+/* No comment provided by engineer. */
+"Time Record Setting" = "시간 녹화";
+/* No comment provided by engineer. */
+"TLS" = "TLS";
+/* No comment provided by engineer. */
+"Tokyo;Seoul;Yakutsk;" = "서울;야쿠츠크;도쿄;";
+/* No comment provided by engineer. */
+"Total size" = "저장공간크기";
+/* No comment provided by engineer. */
+"UID" = "UID";
+/* No comment provided by engineer. */
+"Unknown" = "미확인";
+/* No comment provided by engineer. */
+"Unknown Device" = "미확인 장치";
+/* No comment provided by engineer. */
+"user name" = "아이디";
+/* No comment provided by engineer. */
+"User Name" = "아이디";
+/* No comment provided by engineer. */
+"Version" = "버전";
+/* No comment provided by engineer. */
+"Video Format" = "비디오 방식";
+/* No comment provided by engineer. */
+"Video Lost" = "녹화 실패";
+/* No comment provided by engineer. */
+"Video Resume" = "일시 정지";
+/* No comment provided by engineer. */
+"Video Setting" = "비디오 설정";
+/* No comment provided by engineer. */
+"Warning" = "경고";
+/* No comment provided by engineer. */
+"Wellington;Auckland;fiji" = "웰링턴;피지;오클랜드;";
+/* No comment provided by engineer. */
+"LAN Search" = "LAN에서 UID 찾기";
+/* No comment provided by engineer. */
+"Wifi Setting" = "WiFi 설정";
+/* No comment provided by engineer. */
+"WIFI Smart Set" = "WiFi 자동 설정";
+/* No comment provided by engineer. */
+"Within a day" = "12시간 이내";
+/* No comment provided by engineer. */
+"Within a week" = "일주일 이내";
+/* No comment provided by engineer. */
+"Within an hour" = "1시간 이내";
+/* No comment provided by engineer. */
+"Within half a day" = "12시간 이내";
+
+/* No comment provided by engineer. */
+"WLAN" = "무선";
+/* No comment provided by engineer. */
+"Wrong Password" = "비밀번호 오류";
+/* No comment provided by engineer. */
+"YES" = "예";
+/* No comment provided by engineer. */
+"You mast input numbers" = "숫자를 입력하여야 합니다.";
+/* No comment provided by engineer. */
+"Your email account is disabled or removed, please check your email account." = "이메일 주소를 확인할 수 없습니다. 이메일 주소를 확인하세요.";
+/* No comment provided by engineer. */
+"Zoom in" = "줌 인";
+/* No comment provided by engineer. */
+"Zoom out" = "줌 아웃";
+/* No comment provided by engineer. */
+"Exit" = "나가기";
+/* No comment provided by engineer. */
+"Mirror" = "좌우반전";
+/* No comment provided by engineer. */
+"Flip" = "상하반전";
+/* No comment provided by engineer. */
+"Message" = "메세지";
+/* No comment provided by engineer. */
+"Snapshot saved" = "스냅샷이 저장되었습니다.";
+"Local" = "로컬";
+"Remote" = "원격";
+"REC" = "녹화";
+"Alarm Push" = "푸쉬 알람";
+"Turn on Alarm Push" = "푸쉬 알람 사용";
+"Turn off Alarm Push" = "푸쉬 알람 사용안함";
+" success" = "성공";
+" fail" = "실패";
+"downloading" = "다운로드 중…";
+"Download Done" = "다운로드 완료";
+"Long Press to download" = "길게 눌러 다운로드";
+
+
+/* No comment provided by engineer. */
+"15s" = "15초";
+
+/* No comment provided by engineer. */
+"30s" = "30초";
+
+/* No comment provided by engineer. */
+"60s" = "60초";
+
+/* No comment provided by engineer. */
+"90s" = "90초";
+
+/* No comment provided by engineer. */
+"s" = "초";
+
+"Camera Setting" = "카메라 설정";
+
+
+"Input Alarm" = "외부 알람";
+"Alarm Mode" = "알람 모드";
+"Open" = "오픈";
+"Close" = "클로즈";
+"Alarm Preset" = "알람 프리셋 이동";
+"Close Done" = "폐쇄";
+
+"Copyright 2016 주식회사 에버넷" = "Copyright 2016 주식회사 에버넷";
+
+"Please change the password of wifi and camera periodicity in case of lost" = "와이파이 비밀번호 및 카메라 비밀번호가 노출되지 않도록 관리하며, 주기적으로 비밀번호를 변경하여 주시기 바랍니다.";
+"Our company will take no legal responsibility to any lost caused by password leaked" = "비밀번호 노출로 인한 사생활 침해 및 발생한 피해에 대하여 당사는 어떠한 법적 책임도 지지 않습니다.";
+

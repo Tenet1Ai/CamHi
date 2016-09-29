@@ -279,7 +279,17 @@
         scan.title = INTERSTR(@"Scan QR Code");
         scan.delegate = self;
         
-        [self.navigationController pushViewController:scan animated:YES];
+
+        if (SystemVersion < 8.0) {
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self.navigationController pushViewController:scan animated:YES];
+            });
+        }
+        else {
+            [self.navigationController pushViewController:scan animated:YES];
+        }
+        
     }
 }
 

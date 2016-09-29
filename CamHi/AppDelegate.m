@@ -13,6 +13,7 @@
 #import "XGPush.h"
 
 @interface AppDelegate ()
+<HiChipInitCallback>
 
 @end
 
@@ -31,7 +32,9 @@
     
     
     // init SDK
-    [HiChipSDK init];
+//    [HiChipSDK init];
+    [HiChipSDK initAsync:self];
+    
     // init camera
     [GBase initCameras];
 //    // connect camera
@@ -54,6 +57,8 @@
     
     return YES;
 }
+
+
 
 // app即将离开前台
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -201,8 +206,9 @@
                 
             }//@isEqualToString
             
-        }//@for
-    }
+        }// @for
+        
+    }// @jsonObject
     
 }
 
@@ -387,7 +393,10 @@
 
 
 
-
+#pragma mark - HiChipInitCallback
+- (void)onInitResult:(int)result {
+    LOG(@"onInitResult :%d", result)
+}
 
 
 

@@ -96,7 +96,7 @@
             weakSelf.cIndex = currentIndex;
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                weakSelf.indexTitle.text = [NSString stringWithFormat:@"%d/%d", (int)(currentIndex+1), (int)weakSelf.images.count];
+                //weakSelf.indexTitle.text = [NSString stringWithFormat:@"%d/%d", (int)(currentIndex+1), (int)weakSelf.images.count];
             });
 
         }
@@ -122,8 +122,9 @@
         _indexTitle = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 40)];
         _indexTitle.center = CGPointMake(CGRectGetWidth(self.naToolbar.frame)/2, CGRectGetHeight(self.naToolbar.frame)/2);
         _indexTitle.textAlignment = NSTextAlignmentCenter;
-        
-        _indexTitle.text = [NSString stringWithFormat:@"%d/%d", (int)([self.images indexOfObject:self.selectPhoto]+1), (int)self.images.count];
+        _indexTitle.adjustsFontSizeToFitWidth = YES;
+        _indexTitle.text = INTERSTR(@"Local Picture");
+        //_indexTitle.text = [NSString stringWithFormat:@"%d/%d", (int)([self.images indexOfObject:self.selectPhoto]+1), (int)self.images.count];
     }
     return _indexTitle;
 }
@@ -292,15 +293,19 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     
     [self dismissViewControllerAnimated:YES completion:^{
-        
-        // Was there an error?
-        if (error != NULL) {
-            [HXProgress showText:error.domain];
-        }
-        else {// No errors
-            [HXProgress showText:INTERSTR(@"Send success")];
-        }
+    
+        if (result == MFMailComposeResultSent) {
+            
+            // Was there an error?
+            if (error != NULL) {
+                [HXProgress showText:error.domain];
+            }
+            else {// No errors
+                [HXProgress showText:INTERSTR(@"Send success")];
+            }
 
+        }
+        
     }];
 }
 

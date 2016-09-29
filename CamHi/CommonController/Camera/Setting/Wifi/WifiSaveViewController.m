@@ -80,7 +80,7 @@
                 [HXProgress showText:INTERSTR(@"Save Failed")];
             }
 
-        }
+        }// @check wifi
     };
 }
 

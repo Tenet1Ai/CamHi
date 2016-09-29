@@ -119,9 +119,18 @@
         [self.session addOutput:self.output];
     }
     
-    //条码类型
-    self.output.metadataObjectTypes = @[AVMetadataObjectTypeQRCode];
-   
+    // 条码类型 metadataObjectTypes 必须为 availableMetadataObjectTypes 里面支持的类型
+    NSArray *metadataObjectTypes = nil;
+    if ([self.output.availableMetadataObjectTypes containsObject:AVMetadataObjectTypeQRCode]) {
+        metadataObjectTypes = @[AVMetadataObjectTypeQRCode];
+    }
+    
+    NSLog(@"self.output.availableMetadataObjectTypes :%@", self.output.availableMetadataObjectTypes);
+
+    
+    self.output.metadataObjectTypes = metadataObjectTypes;
+
+    NSLog(@"self.output.metadataObjectTypes :%@", self.output.metadataObjectTypes);
     
     //创建输出对象
     self.preview = [AVCaptureVideoPreviewLayer layerWithSession:self.session];

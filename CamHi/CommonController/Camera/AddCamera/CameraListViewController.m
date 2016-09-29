@@ -73,8 +73,10 @@
     [self.tableView reloadData];
     [HXProgress dismiss];
     
+    LOG(@"self_dataArray_count : %d", (int)self.dataArray.count);
+
     for (HiSearchResult *s in self.dataArray) {
-        LOG(@"HiSearchResult:%@", s.uid);
+        LOG(@"searchResult_HiSearchResult : %@", s.uid);
     }
 }
 

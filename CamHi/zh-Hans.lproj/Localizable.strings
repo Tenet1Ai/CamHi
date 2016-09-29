@@ -34,6 +34,13 @@
 "HD" = "高清";
 /* No comment provided by engineer. */
 "SD" = "流畅";
+/* No comment provided by engineer. */
+"Ordinary" = "普通夜视";
+/* No comment provided by engineer. */
+"Color" = "全彩夜视";
+/* No comment provided by engineer. */
+"Intelligent" = "智能夜视";
+
 
 
 
@@ -112,6 +119,10 @@
 "No Picture" = "未保存图片";
 /* No comment provided by engineer. */
 "Email Photo" = "邮件照片";
+/* No comment provided by engineer. */
+"Local Picture" = "本地照片";
+/* No comment provided by engineer. */
+"Send success" = "发送成功";
 
 
 
@@ -888,8 +899,6 @@
 //// "HXTabBarController.m"
 ///* No comment provided by engineer. */
 //"camera" = "摄像机";
-///* No comment provided by engineer. */
-//"Local Picture" = "本地照片";
 ///* No comment provided by engineer. */
 //"Video Viewing" = "录像观看";
 ///* No comment provided by engineer. */

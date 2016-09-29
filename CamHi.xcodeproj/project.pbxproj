@@ -1830,6 +1830,8 @@
 		EE1F73211D951887000938FC /* KS-AP130-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KS-AP130-Info.plist"; path = "/Users/jiang/Downloads/My-Desktop/20160825-CamHi/CamHi/KS-AP130-Info.plist"; sourceTree = "<absolute>"; };
 		EE1F73281D9532E2000938FC /* GModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GModel.h; sourceTree = "<group>"; };
 		EE1F73291D9532E2000938FC /* GModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GModel.m; sourceTree = "<group>"; };
+		EE21811E1D9B9A6F00C33770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EE21811F1D9B9AF400C33770 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EE21D7811D3F4653001A3A1C /* mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark.png; sourceTree = "<group>"; };
 		EE21D7821D3F4653001A3A1C /* mic_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic_blue.png; sourceTree = "<group>"; };
 		EE21D7831D3F4653001A3A1C /* mic_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mic_gray.png; sourceTree = "<group>"; };
@@ -2085,6 +2087,9 @@
 		EECBDDD21D63063700849DCB /* iToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iToast.m; sourceTree = "<group>"; };
 		EECBDDD51D630C9800849DCB /* QualityDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QualityDialog.h; sourceTree = "<group>"; };
 		EECBDDD61D630C9800849DCB /* QualityDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QualityDialog.m; sourceTree = "<group>"; };
+		EECD2E4C1D9A3F5100A452F9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		EECD2E4D1D9A3F5100A452F9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		EECD2E4E1D9A3F5200A452F9 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EED191F01D7FF0A300C54A97 /* CameraLiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraLiveView.h; sourceTree = "<group>"; };
 		EED191F11D7FF0A300C54A97 /* CameraLiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraLiveView.m; sourceTree = "<group>"; };
 		EED822131D3E1FED00812F73 /* ToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBar.h; sourceTree = "<group>"; };
@@ -3615,6 +3620,7 @@
 				de,
 				es,
 				"pt-PT",
+				ko,
 			);
 			mainGroup = EE55EA691D333EE7003B9D89;
 			productRefGroup = EE55EA731D333EE7003B9D89 /* Products */;
@@ -5306,6 +5312,7 @@
 				EE32D16D1D6EF63A007108AD /* de */,
 				EE32D1701D6EF671007108AD /* es */,
 				EE32D1731D6EF69E007108AD /* pt-PT */,
+				EECD2E4C1D9A3F5100A452F9 /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -5319,6 +5326,7 @@
 				EE32D16E1D6EF63A007108AD /* de */,
 				EE32D1711D6EF671007108AD /* es */,
 				EE32D1741D6EF69E007108AD /* pt-PT */,
+				EECD2E4D1D9A3F5100A452F9 /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -5331,6 +5339,9 @@
 				EE32D16F1D6EF63A007108AD /* de */,
 				EE32D1721D6EF671007108AD /* es */,
 				EE32D1751D6EF69E007108AD /* pt-PT */,
+				EECD2E4E1D9A3F5200A452F9 /* ko */,
+				EE21811E1D9B9A6F00C33770 /* Base */,
+				EE21811F1D9B9AF400C33770 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -5598,7 +5609,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KBSB.JS-AP131";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12e4ea13-aa65-47b2-a2c4-f30f07c20678";
+				PROVISIONING_PROFILE = "6a9ecbfa-fe07-4d59-b1b2-dd8197f4510e";
 				PROVISIONING_PROFILE_SPECIFIER = "com.development.JS-AP131";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -5636,7 +5647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.KBSB.JS-AP131";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d28fd975-48fc-40c2-911e-dc71e0b39b57";
+				PROVISIONING_PROFILE = "ab26f5fd-ca0c-4d8c-ba3c-0771302a03b6";
 				PROVISIONING_PROFILE_SPECIFIER = "com.distributionHoc.JS-AP131";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

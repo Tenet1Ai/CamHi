@@ -30,8 +30,13 @@
     
     [self.view addSubview:self.tableView];
 
-    self.navigationItem.title = nil;
-    self.navigationItem.titleView = self.tsegmented;
+    
+    if ([DisplayName isEqualToString:@"CamHiGH"]) {
+        self.navigationItem.titleView = self.tsegmented;
+    }
+    else {
+        self.navigationItem.title = INTERSTR(@"Record");
+    }
     
 
 }

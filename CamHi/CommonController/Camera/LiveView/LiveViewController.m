@@ -696,24 +696,30 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
         }
         
         
-        
-        // 白光灯／夜视模式
-        // 如果有   HI_P2P_WHITE_LIGHT_GET_EXT 则为夜视选项模式
-        // 如果没有 HI_P2P_WHITE_LIGHT_GET_EXT 则判断 HI_P2P_WHITE_LIGHT_GET
-        // 如果有   HI_P2P_WHITE_LIGHT_GET 则为白光灯开关模式
-        // 如果没有 HI_P2P_WHITE_LIGHT_GET 则不需要显示
-        if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET_EXT]) {
-            NSLog(@"live_topbar_getCommandFunction 夜视选择模式");
-            [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"light_gray" selectImage:@"light_blue" normalSel:@selector(showLightView) selectSel:@selector(showLightView)]];
-            [self.camera request:HI_P2P_WHITE_LIGHT_GET_EXT dson:nil];
-        }
-        else {
-            if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET]) {
-                NSLog(@"live_topbar_getCommandFunction 白光灯开关模式");
-                [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"light_gray" selectImage:@"light_blue" normalSel:@selector(turnOffWhiteLight) selectSel:@selector(turnOnWhiteLight)]];
-                [self.camera request:HI_P2P_WHITE_LIGHT_GET dson:nil];
+        // 军／警视卫版本才有白光灯
+        if ([DisplayName isEqualToString:@"JS-AP131"] || [DisplayName isEqualToString:@"KS-AP130"]) {
+            
+            // 白光灯／夜视模式
+            // 如果有   HI_P2P_WHITE_LIGHT_GET_EXT 则为夜视选项模式
+            // 如果没有 HI_P2P_WHITE_LIGHT_GET_EXT 则判断 HI_P2P_WHITE_LIGHT_GET
+            // 如果有   HI_P2P_WHITE_LIGHT_GET 则为白光灯开关模式
+            // 如果没有 HI_P2P_WHITE_LIGHT_GET 则不需要显示
+            if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET_EXT]) {
+                LOG(@"live_topbar_getCommandFunction 夜视选择模式");
+                [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"light_gray" selectImage:@"light_blue" normalSel:@selector(showLightView) selectSel:@selector(showLightView)]];
+                [self.camera request:HI_P2P_WHITE_LIGHT_GET_EXT dson:nil];
             }
-        }
+            else {
+                if ([self.camera getCommandFunction:HI_P2P_WHITE_LIGHT_GET]) {
+                    LOG(@"live_topbar_getCommandFunction 白光灯开关模式");
+                    [_topLiveModels addObject:[LiveModel modelWithNormalImage:@"light_gray" selectImage:@"light_blue" normalSel:@selector(turnOffWhiteLight) selectSel:@selector(turnOnWhiteLight)]];
+                    [self.camera request:HI_P2P_WHITE_LIGHT_GET dson:nil];
+                }
+            }
+
+        }// @isEqualToString
+        
+        
         
         
         // 退出

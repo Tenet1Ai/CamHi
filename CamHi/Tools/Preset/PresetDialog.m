@@ -73,7 +73,7 @@
             CGFloat btny = 50 + i/4*(offx+btnh);
             
             UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(btnx, btny, buttonw, btnh)];
-            [button setTitle:[NSString stringWithFormat:@"%d", i] forState:UIControlStateNormal];
+            [button setTitle:[NSString stringWithFormat:@"%d", i+1] forState:UIControlStateNormal];
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [button setBackgroundImage:imgNor forState:UIControlStateNormal];
             [button setBackgroundImage:imgSel forState:UIControlStateSelected];

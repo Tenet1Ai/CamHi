@@ -598,7 +598,7 @@
 
 - (void)receiveIOCtrl:(HiCamera *)camera Type:(int)type Data:(char*)data Size:(int)size Status:(int)status {
     
-    LOG(@">>>HiCamera_receiveIOCtrl %@ %x %d %d",camera.uid, type, size, status);
+    LOG(@"HiCamera_receiveIOCtrl : %@ %x %d %d %@",camera.uid, type, size, status, self.isGoke ? @"Goke" : @"Haisi");
     
     
     //获取截图并保存至沙盒
