@@ -161,7 +161,7 @@
             cell.labTitle.text = [self.titleArr objectAtIndex:indexPath.row];
         }
         
-        NSLog(@"cell.labTitle.text:%@", cell.labTitle.text);
+        NSLog(@"cell.labTitle.text : %@", cell.labTitle.text);
         
         cell.tfieldDetail.delegate = self;
         

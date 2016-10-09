@@ -339,6 +339,32 @@
     }
 
     
+    // *******************************************************
+    // displayName  : C4 CAM
+    // appId        : 2200195009
+    // appKey       : IVT1ZRK3873B
+    // company      : cfour
+    // server       : xinge:cfour:ios
+    
+    if ([bundelDisplayName isEqualToString:@"C4 CAM"]) {
+        [XGPush startApp:2200195009 appKey:@"IVT1ZRK3873B"];
+        xingeCompany = @"cfour";
+    }
+
+    
+    
+    // *******************************************************
+    // displayName  : Camera IP EM
+    // appId        : 2200216916
+    // appKey       : I84UY6P1HG7L
+    // company      : ipem
+    // server       : xinge:ipem:ios
+    
+    if ([bundelDisplayName isEqualToString:@"Camera IP EM"]) {
+        [XGPush startApp:2200216916 appKey:@"I84UY6P1HG7L"];
+        xingeCompany = @"ipem";
+    }
+
     [XGPush handleLaunching:launchOptions];
     SystemVersion < 8 ? [self registerPush] : [self registerPushForIOS8];
     
@@ -383,6 +409,7 @@
     
     
     [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
 #endif
     
 }
