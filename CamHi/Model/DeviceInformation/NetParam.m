@@ -13,6 +13,10 @@
 - (id)initWithData:(char *)data size:(int)size {
     if (self = [super init]) {
         
+        if (size < 0) {
+            return self;
+        }
+        
         HI_P2P_S_NET_PARAM *model = (HI_P2P_S_NET_PARAM *)malloc(sizeof(HI_P2P_S_NET_PARAM));
         memset(model, 0, sizeof(HI_P2P_S_NET_PARAM));
         memcpy(model, data, size);

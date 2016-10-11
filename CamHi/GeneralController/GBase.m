@@ -146,7 +146,12 @@
     GBase *base = [GBase sharedBase];
     
     for (Camera *mycam in base.cameras) {
-        [mycam connect];
+        
+        [mycam shouldConnect] ? [mycam connect] : nil;
+
+//        if ([mycam.uid containsString:@"AAAA"]) {
+//            [mycam connect];
+//        }
     }
 }
 
@@ -488,8 +493,11 @@
         NSInteger time = [rs doubleForColumn:@"time"];
         NSInteger type = [rs intForColumn:@"recording_type"];
         
-        NSLog(@">>>filePath:%@ type:%d", filePath, (int)type);
-
+        NSLog(@">>>filePath : %@ type:%d", filePath, (int)type);
+        // 兼容Goke机器之前版本录像
+        if ([filePath rangeOfString:@".mp4"].location == NSNotFound) {
+            filePath = [filePath stringByAppendingString:@".mp4"];
+        }
         LocalVideoInfo* vi = [[LocalVideoInfo alloc] initWithRecordingName:filePath time:time type:type];
         
         [recordings addObject:vi];

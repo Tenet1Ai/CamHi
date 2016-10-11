@@ -94,7 +94,7 @@ typedef NS_ENUM(NSInteger, EmailTextField) {
         if (cmd == HI_P2P_SET_EMAIL_PARAM_EXT) {
             
             if (success) {
-                [HXProgress showText:INTERSTR(@"Test Successful")];
+                [HXProgress showText:INTERSTR(@"Test Succeed")];
             }
             else {
                 [HXProgress showText:INTERSTR(@"Test Failed")];
@@ -193,15 +193,15 @@ typedef NS_ENUM(NSInteger, EmailTextField) {
                 break;
             case 6:
                 
-                cell.tfieldDetail.placeholder = INTERSTR(@"Receiver");
-                cell.tfieldDetail.text = _emailParam.strFrom;
+                cell.tfieldDetail.placeholder = INTERSTR(@"Send To");
+                cell.tfieldDetail.text = _emailParam.strTo;
                 cell.tfieldDetail.tag = EmailTextFieldReceiver;
 
                 break;
             case 7:
                 
                 cell.tfieldDetail.placeholder = INTERSTR(@"Sender");
-                cell.tfieldDetail.text = _emailParam.strTo;
+                cell.tfieldDetail.text = _emailParam.strFrom;
                 cell.tfieldDetail.tag = EmailTextFieldSender;
 
                 break;

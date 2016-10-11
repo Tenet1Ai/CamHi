@@ -81,7 +81,7 @@ typedef NS_ENUM(NSInteger, FTPTextField) {
             }
             
             if (success) {
-                [HXProgress showText:INTERSTR(@"Test Successful")];
+                [HXProgress showText:INTERSTR(@"Test Succeed")];
             }
             else {
                 [HXProgress showText:INTERSTR(@"Test Failed")];
@@ -220,6 +220,7 @@ typedef NS_ENUM(NSInteger, FTPTextField) {
     if (indexPath.section == 1) {
         
         _ftpParam.u32Check = 1;
+        NSLog(@"_ftpParam : %@", _ftpParam);
         
         [self.camera request:HI_P2P_SET_FTP_PARAM_EXT dson:[self.camera dic:_ftpParam]];
     }

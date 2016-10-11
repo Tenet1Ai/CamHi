@@ -13,5 +13,4 @@
 @property (nonatomic, strong) TimeZone *timeZone;
 @property (nonatomic, copy)  void(^timezoneBlock)(BOOL success, NSInteger cmd, TimeZone *tzone);
 
-
 @end

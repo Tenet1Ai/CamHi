@@ -78,6 +78,7 @@
     
     if (row == 2) {
         cell.tfieldDetail.text = self.camera.uid;
+        cell.tfieldDetail.enabled = NO;
     }
 
     
@@ -112,7 +113,9 @@
     [GBase editCamera:self.camera];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.camera connect];
+        //[self.camera connect];
+        [self.camera shouldConnect] ? [self.camera connect] : nil;
+
         [HXProgress dismiss];
         [self.navigationController popViewControllerAnimated:YES];
     });

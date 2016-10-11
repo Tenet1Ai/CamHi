@@ -112,6 +112,7 @@
         _labUid = [[UILabel alloc] initWithFrame:CGRectMake(ox, oy, ow, oh)];
         _labUid.font = [UIFont systemFontOfSize:12];
         _labUid.textColor = [UIColor grayColor];
+        _labUid.adjustsFontSizeToFitWidth = YES;
 //        _labUid.backgroundColor = [UIColor redColor];
     }
     return _labUid;

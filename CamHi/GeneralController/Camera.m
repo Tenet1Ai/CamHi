@@ -90,7 +90,7 @@
 #pragma mark - 连接状态
 - (void)receiveSessionState:(HiCamera *)camera Status:(int)status {
     
-    LOG(@">>>HiCamera_receiveSessionState %@ %@ %x", camera.uid, self.state, status);
+    LOG(@">>>HiCamera_receiveSessionState %@ %@ %x %@", camera.uid, self.state, status, self.isGoke ? @"Goke" : @"Haisi");
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (_connectBlock) {
@@ -183,6 +183,10 @@
 
 #pragma mark - send request
 - (void)request:(int)cmd dson:(NSDictionary *)dic {
+    
+//    if (![self getCommandFunction:cmd]) {
+//        return;
+//    }
     
     [HXProgress showProgress];
     
@@ -547,6 +551,7 @@
     
     //system界面
     if (cmd == HI_P2P_GET_DEV_INFO_EXT) {
+        
         [self sendIOCtrl:cmd Data:(char *)nil Size:0];
     }//@HI_P2P_GET_DEV_INFO_EXT
     
@@ -699,7 +704,6 @@
     if (type == HI_P2P_GET_MD_PARAM || type == HI_P2P_SET_MD_PARAM) {
         
         if (type == HI_P2P_GET_MD_PARAM) {
-            
             MdParam *mdparam = [[MdParam alloc] initWithData:data size:size];
             [self getCMD:type object:mdparam success:YES];
         }
@@ -1001,7 +1005,6 @@
 
     //system界面
     if (type == HI_P2P_GET_DEV_INFO_EXT) {
-        
         DeviceInfoExt *deviceInfo = [[DeviceInfoExt alloc] initWithData:data size:size];
         [self getCMD:type object:deviceInfo success:YES];
     }//@HI_P2P_GET_DEV_INFO_EXT
@@ -1391,6 +1394,33 @@
 - (void)changeWhiteLightModel:(NSInteger)command {
     self.whiteLight.u32State = (HI_U32)command;
     [self request:HI_P2P_WHITE_LIGHT_SET_EXT dson:nil];
+}
+
+
+#pragma mark - 特殊uid特殊处理
+- (BOOL)containString:(NSString *)string {
+    return [self.uid rangeOfString:string].location == NSNotFound ? NO : YES;
+}
+
+- (BOOL)containFDTAA {
+    return [self containString:@"FDTAA"];
+}
+
+- (BOOL)shouldConnect {
+    
+    if (self.uid && self.uid.length > 4) {
+        
+        NSString *temp = [self.uid substringWithRange:NSMakeRange(0, 4)];
+        NSArray *temps = @[@"AAAA", @"BBBB", @"CCCC", @"DDDD", @"EEEE"];
+        
+        for (NSString *t_uid in temps) {
+            if ([t_uid isEqualToString:temp]) {
+                return YES;
+            }
+        }
+    }
+    
+    return NO;
 }
 
 @end

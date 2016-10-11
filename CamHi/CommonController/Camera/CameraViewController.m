@@ -388,7 +388,7 @@
     
     if (!mycam.online) {
         [HXProgress showText:NSLocalizedString(@"Offline", nil)];
-        [mycam connect];
+        [mycam shouldConnect] ? [mycam connect] : nil;
         return;
     }
 
@@ -415,7 +415,7 @@
     // offline
     if (!mycam.online) {
         [HXProgress showText:NSLocalizedString(@"Offline", nil)];
-        [mycam connect];
+        [mycam shouldConnect] ? [mycam connect] : nil;
         return;
     }
     

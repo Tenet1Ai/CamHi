@@ -138,8 +138,9 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     [self syncWithPhoneTime];
 
     
-    
-    [self.camera request:HI_P2P_GET_DISPLAY_PARAM dson:nil];
+    if ([self.camera getCommandFunction:HI_P2P_GET_DISPLAY_PARAM]) {
+        [self.camera request:HI_P2P_GET_DISPLAY_PARAM dson:nil];
+    }
     
     __weak typeof(self) weakSelf = self;
     
@@ -277,7 +278,18 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     }// 夜视模式选择
     
     
-    [self transformLandscapeLeft];
+    
+//    UIDeviceOrientation currentOrientation = [UIDevice currentDevice].orientation;
+//    
+//    
+//    if (currentOrientation != UIDeviceOrientationLandscapeLeft || currentOrientation != UIDeviceOrientationLandscapeRight) {
+//        [self transformLandscapeLeft];
+//    }
+    
+    UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        [self transformLandscapeLeft];
+    }
 
 }
 
@@ -410,6 +422,14 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
     if (!_monitor) {
         
         CGFloat h = WIDTH/1.5;
+        
+        UIInterfaceOrientation interfaceOrientation = [UIApplication sharedApplication].statusBarOrientation;
+        
+        
+        if (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+            h = HEIGHT;
+        }
+
         _monitor = [[HiGLMonitor alloc] initWithFrame:CGRectMake(0, 0, WIDTH, h)];
         _monitor.center = self.view.center;
         [self.camera startLiveShow:0 Monitor:_monitor];
@@ -503,36 +523,36 @@ typedef NS_ENUM(NSInteger, DeviceOrientation) {
 
 
 #pragma mark - 屏幕旋转(暂时未使用该系列方法)
-- (BOOL)shouldAutorotate {
-    return YES;
-}
+//- (BOOL)shouldAutorotate {
+//    return YES;
+//}
 
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+//    return UIInterfaceOrientationMaskAllButUpsideDown;
+//}
 
 //切换横竖屏
-- (void)forceChangeToOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:interfaceOrientation] forKey:@"orientation"];
-}
-
-- (void)statusBarOrientationsDidChange:(NSNotification *)notification {
-    
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-
-    if (orientation == UIInterfaceOrientationPortrait) {
-        isFullScreen = NO;
-    }
-    
-    if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
-        isFullScreen = YES;
-    }
-    
-    [self setupMonitor:isFullScreen];
-    [self setupTopToolBar:isFullScreen];
-    [self setupBottomToolBar:isFullScreen];
-
-}
+//- (void)forceChangeToOrientation:(UIInterfaceOrientation)interfaceOrientation {
+//    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:interfaceOrientation] forKey:@"orientation"];
+//}
+//
+//- (void)statusBarOrientationsDidChange:(NSNotification *)notification {
+//    
+//    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+//
+//    if (orientation == UIInterfaceOrientationPortrait) {
+//        isFullScreen = NO;
+//    }
+//    
+//    if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+//        isFullScreen = YES;
+//    }
+//    
+//    [self setupMonitor:isFullScreen];
+//    [self setupTopToolBar:isFullScreen];
+//    [self setupBottomToolBar:isFullScreen];
+//
+//}
 
 
 #pragma mark - ToolBarDelegate

@@ -14,6 +14,10 @@
 - (id)initWithData:(char *)data size:(int)size {
     if (self = [super init]) {
         
+        if (size < 0) {
+            return self;
+        }
+        
         HI_P2P_S_EMAIL_PARAM_EXT *model = (HI_P2P_S_EMAIL_PARAM_EXT *)malloc(sizeof(HI_P2P_S_EMAIL_PARAM_EXT));
         memset(model, 0, sizeof(HI_P2P_S_EMAIL_PARAM_EXT));
         memcpy(model, data, size);
@@ -120,9 +124,11 @@
 
 
 - (void)memcopy:(char *)copyer obj:(NSString *)str length:(int)len {
-    memset(copyer, 0, len);
-    char *strcopy = (char *)[str UTF8String];
-    memcpy(copyer, strcopy, strlen(strcopy));
+    if (str) {
+        memset(copyer, 0, len);
+        char *strcopy = (char *)[str UTF8String];
+        memcpy(copyer, strcopy, strlen(strcopy));
+    }
 }
 
 

@@ -229,6 +229,8 @@
 // TimeZoneViewController
 
 /* No comment provided by engineer. */
+"Zones" = "时区";
+/* No comment provided by engineer. */
 "Daylight Saving Time" = "夏令时";
 /* No comment provided by engineer. */
 "Alaska;" = "阿拉斯加;";
@@ -388,6 +390,10 @@
 "15 - 900 s" = "15 - 900 秒";
 /* No comment provided by engineer. */
 "15 - 600 s" = "15 - 600 秒";
+/* No comment provided by engineer. */
+"Duration must between 15 to 900" = "报警时长为15至900毫秒";
+/* No comment provided by engineer. */
+"Duration must between 15 to 600" = "报警时长为15至600毫秒";
 
 
 
@@ -617,9 +623,6 @@
 //
 //
 ///* No comment provided by engineer. */
-//"Duration must between 15 to 900" = "报警时长为15至900毫秒";
-//
-//"Duration must between 15 to 600" = "报警时长为15至600毫秒";
 //
 //
 ///* No comment provided by engineer. */

@@ -119,7 +119,7 @@
         
         NSString *detail = [NSString stringWithFormat:@"%@:%@    %@", INTERSTR(@"singal"), wifiap.Signal, [wifiap strEncType]];
         
-        LOG(@">>> _wifiParam.strSSID:%@ detail:%@", _wifiParam.strSSID, detail)
+        LOG(@">>> _wifiParam.strSSID : %@ detail : %@", _wifiParam.strSSID, detail)
         cell.detailTextLabel.text = detail;
 
     }

@@ -54,6 +54,7 @@
 @property (nonatomic, strong) NSMutableArray *onlineRecordings;
 
 - (id)initWithUid:(NSString *)uid_ Name:(NSString *)name_ Username:(NSString *)username_ Password:(NSString *)password_;
+- (BOOL)shouldConnect;
 - (BOOL)isGoke;
 - (UIImage *)image;
 - (void)saveImage:(UIImage *)image;

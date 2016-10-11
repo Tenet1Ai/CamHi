@@ -13,6 +13,10 @@
 - (id)initWithData:(char *)data size:(int)size {
     if (self = [super init]) {
         
+        if (size != sizeof(HI_P2P_S_DEV_INFO_EXT)) {
+            return self;
+        }
+        
         HI_P2P_S_DEV_INFO_EXT *model = (HI_P2P_S_DEV_INFO_EXT *)malloc(sizeof(HI_P2P_S_DEV_INFO_EXT));
         memset(model, 0, sizeof(HI_P2P_S_DEV_INFO_EXT));
         memcpy(model, data, size);

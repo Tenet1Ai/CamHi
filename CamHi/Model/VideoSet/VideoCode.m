@@ -35,7 +35,9 @@
     t_model->u32Channel     = _u32Channel;
     t_model->u32Frequency   = _u32Frequency;
     t_model->u32Profile     = _u32Profile;
-    memcpy(t_model->sReserved, [_sReserved cStringUsingEncoding:NSUTF8StringEncoding], 2*_sReserved.length);
+    if (_sReserved) {
+        memcpy(t_model->sReserved, [_sReserved cStringUsingEncoding:NSUTF8StringEncoding], 2*_sReserved.length);
+    }
     
     return t_model;
     

@@ -55,10 +55,17 @@
             [wself.camera request:HI_P2P_GET_NET_PARAM dson:nil];
 
             wself.deviceInfo = [wself.camera object:dic];
-            [wself.infos addObject:wself.deviceInfo.strDeviceName];
-            [wself.infos addObject:[wself.deviceInfo netType]];
-            [wself.infos addObject:[NSString stringWithFormat:@"%d", wself.deviceInfo.sUserNum]];
-            [wself.infos addObject:wself.deviceInfo.strSoftVer];
+            
+//            [wself.infos addObject:wself.deviceInfo.strDeviceName];
+//            [wself.infos addObject:[wself.deviceInfo netType]];
+//            [wself.infos addObject:[NSString stringWithFormat:@"%d", wself.deviceInfo.sUserNum]];
+//            [wself.infos addObject:wself.deviceInfo.strSoftVer];
+            
+            [wself addInfosNotNullObject:wself.deviceInfo.strDeviceName];
+            [wself addInfosNotNullObject:[wself.deviceInfo netType]];
+            [wself addInfosNotNullObject:[NSString stringWithFormat:@"%d", wself.deviceInfo.sUserNum]];
+            [wself addInfosNotNullObject:wself.deviceInfo.strSoftVer];
+
             
             [wself.tableView reloadData];
         }
@@ -66,17 +73,34 @@
         if (cmd == HI_P2P_GET_NET_PARAM) {
             
             wself.netParam = [wself.camera object:dic];
-            [wself.params addObject:wself.netParam.strIPAddr];
-            [wself.params addObject:wself.netParam.strNetMask];
-            [wself.params addObject:wself.netParam.strGateWay];
-            [wself.params addObject:wself.netParam.strFDNSIP];
             
+//            [wself.params addObject:wself.netParam.strIPAddr];
+//            [wself.params addObject:wself.netParam.strNetMask];
+//            [wself.params addObject:wself.netParam.strGateWay];
+//            [wself.params addObject:wself.netParam.strFDNSIP];
+            
+            [wself addParamsNotNullObject:wself.netParam.strIPAddr];
+            [wself addParamsNotNullObject:wself.netParam.strNetMask];
+            [wself addParamsNotNullObject:wself.netParam.strGateWay];
+            [wself addParamsNotNullObject:wself.netParam.strFDNSIP];
+
             [wself.tableView reloadData];
         }
 
     };
 }
 
+- (void)addInfosNotNullObject:(id)object {
+    if (object) {
+        [self.infos addObject:object];
+    }
+}
+
+- (void)addParamsNotNullObject:(id)object {
+    if (object) {
+        [self.params addObject:object];
+    }
+}
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

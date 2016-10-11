@@ -137,11 +137,12 @@
         self.titleArr = [[NSMutableArray alloc] initWithCapacity:0];
         
         
+        // EditPasswordViewController
         [self.dataArray addObject:@"EditPasswordViewController"];
         [self.titleArr addObject:NSLocalizedString(@"Edit Password", nil)];
         
         
-        //AlarmSettingViewController
+        // AlarmSettingViewController
         [self.dataArray addObject:@"AlarmSettingViewController"];
         [self.titleArr addObject:NSLocalizedString(@"Alarm Setting", nil)];
 

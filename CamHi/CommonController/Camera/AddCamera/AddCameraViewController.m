@@ -109,11 +109,22 @@
     //init camera
     Camera *mycam = [[Camera alloc] initWithUid:tuid Name:tname Username:tuser Password:tpwd];
     [mycam registerIOSessionDelegate:self];
-    [mycam connect];
-    [HXProgress showProgress];
     
-    //add camera to database
-    [GBase addCamera:mycam];
+    // 限制不符合协议的摄像机连接
+    if ([mycam shouldConnect]) {
+        [mycam connect];
+        [HXProgress showProgress];
+        
+        //add camera to database
+        [GBase addCamera:mycam];
+    }
+    else {
+        
+        //add camera to database
+        [GBase addCamera:mycam];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
     
 }
 

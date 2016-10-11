@@ -2514,7 +2514,7 @@
 		EED822141D3E1FED00812F73 /* ToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBar.m; sourceTree = "<group>"; };
 		EEE0B73C1D97A14E0065292A /* XMcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE0B73D1D97A14F0065292A /* XMcam-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "XMcam-Info.plist"; path = "/Users/jiang/Downloads/My-Desktop/20160825-CamHi/CamHi/XMcam-Info.plist"; sourceTree = "<absolute>"; };
-		EEE0B8021D97ABED0065292A /* My camera+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My camera+.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEE0B8021D97ABED0065292A /* My camera+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "My camera+.app"; path = "My camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE0B8031D97ABEF0065292A /* My camera+-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "My camera+-Info.plist"; path = "/Users/jiang/Downloads/My-Desktop/20160825-CamHi/CamHi/My camera+-Info.plist"; sourceTree = "<absolute>"; };
 		EEE0B8C81D97B84B0065292A /* keye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = keye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE0B8C91D97B8520065292A /* keye-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "keye-Info.plist"; path = "/Users/jiang/Downloads/My-Desktop/20160825-CamHi/CamHi/keye-Info.plist"; sourceTree = "<absolute>"; };
@@ -6737,8 +6737,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Z846JV8G4X.com.hichip.CamHi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c8c36e0f-67da-4770-b8c3-126ed4c27529";
-				PROVISIONING_PROFILE_SPECIFIER = com.distribution.CamHi;
+				PROVISIONING_PROFILE = "33249ffd-eba1-43d1-8d7d-6aa5a6f6d184";
+				PROVISIONING_PROFILE_SPECIFIER = com.distributionHoc.CamHi;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

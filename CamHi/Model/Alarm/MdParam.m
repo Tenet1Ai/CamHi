@@ -14,6 +14,10 @@
 - (id)initWithData:(char *)data size:(int)size {
     if (self = [super init]) {
         
+        if (size < 0) {
+            return self;
+        }
+        
         HI_P2P_S_MD_PARAM *model = (HI_P2P_S_MD_PARAM*)malloc(sizeof(HI_P2P_S_MD_PARAM));
         memset(model, 0, sizeof(HI_P2P_S_MD_PARAM));
         memcpy(model, data, size);

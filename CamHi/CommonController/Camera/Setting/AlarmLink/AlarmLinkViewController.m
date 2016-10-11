@@ -44,6 +44,8 @@
     
     [self.camera request:HI_P2P_GET_ALARM_PARAM dson:nil];
     
+    
+    
     if ([self.camera getCommandFunction:HI_P2P_GET_SNAP_ALARM_PARAM]) {
         [self.camera request:HI_P2P_GET_SNAP_ALARM_PARAM dson:nil];
     }
@@ -109,13 +111,41 @@
 }
 
 
+//- (void)setupTitles {
+//    
+//    [self.titles addObject:NSLocalizedString(@"Alarm Notifications", nil)];
+//    [self.titles addObject:NSLocalizedString(@"Alarm Notifications", nil)];
+//    [self.titles addObject:NSLocalizedString(@"Alarm Notifications", nil)];
+//    [self.titles addObject:NSLocalizedString(@"Alarm Notifications", nil)];
+//    [self.titles addObject:NSLocalizedString(@"Alarm Notifications", nil)];
+//
+//    
+//    
+//
+//    if ([self.camera getCommandFunction:HI_P2P_GET_SNAP_ALARM_PARAM]) {
+//        [self.camera request:HI_P2P_GET_SNAP_ALARM_PARAM dson:nil];
+//    }
+//
+//}
+
+
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.titles.count+1;
+    //return self.titles.count+1;
+    
+    if ([self.camera isGoke]) {
+        return self.titles.count;
+    }
+    
+    if ([self.camera getCommandFunction:HI_P2P_GET_SNAP_ALARM_PARAM]) {
+        return self.titles.count+1;
+    }
+
+    return self.titles.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -224,8 +254,12 @@
         _model.u32FtpRec = tswitch.on ? 1 : 0;
     }
 
-    NSDictionary *dic = @{@"model": _model};
-    [self.camera request:HI_P2P_SET_ALARM_PARAM dson:dic];
+    if (_model) {
+        NSDictionary *dic = @{@"model": _model};
+        [self.camera request:HI_P2P_SET_ALARM_PARAM dson:dic];
+    }
+    
+
 }
 
 
@@ -243,11 +277,13 @@
 #pragma mark - lazy load
 - (NSArray *)titles {
     if (!_titles) {
+//        _titles = [[NSMutableArray alloc] initWithCapacity:0];
         _titles = @[NSLocalizedString(@"Alarm Notifications", nil),
                     NSLocalizedString(@"Alarm SD REC", nil),
                     NSLocalizedString(@"E-mail Alarm with Pictures", nil),
                     NSLocalizedString(@"Save Snapshots on FTP Server", nil),
                     NSLocalizedString(@"Save Video on FTP Server", nil)];
+
     }
     return _titles;
 }
@@ -287,8 +323,11 @@
     }
     _snapAlarm.u32Interval = _snapAlarm.u32Interval < 5 ? 5 : _snapAlarm.u32Interval;
 
-    NSDictionary *dic = @{@"model": _snapAlarm};
-    [self.camera request:HI_P2P_SET_SNAP_ALARM_PARAM dson:dic];
+    if (_snapAlarm) {
+        NSDictionary *dic = @{@"model": _snapAlarm};
+        [self.camera request:HI_P2P_SET_SNAP_ALARM_PARAM dson:dic];
+    }
+    
 }
 
 /*

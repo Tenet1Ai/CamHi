@@ -95,7 +95,10 @@
         return;
     }
     
-    [self.camera request:HI_P2P_SET_WIFI_CHECK dson:[self.camera dic:_wifiParam]];
+    if (_wifiParam) {
+        [self.camera request:HI_P2P_SET_WIFI_CHECK dson:[self.camera dic:_wifiParam]];
+    }
+    
 }
 
 

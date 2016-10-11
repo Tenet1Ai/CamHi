@@ -179,6 +179,7 @@
             timezone.timeZone = _timeZone;
             timezone.title = INTERSTR(@"Zones");
             timezone.timezoneBlock = ^(BOOL success, NSInteger cmd, TimeZone *tzone) {
+                NSLog(@"s32TimeZone : %d  u32DstMode : %d", tzone.s32TimeZone, tzone.u32DstMode);
                 weakSelf.timeZone = tzone;
                 [weakSelf.tableView reloadData];
             };
@@ -195,7 +196,9 @@
                 
                 [self presentAlertTitle:nil message:INTERSTR(@"Set Device Time Zone will REBOOT device") alertStyle:UIAlertControllerStyleAlert actionDefaultTitle:INTERSTR(@"Yes") actionDefaultBlock:^{
                     
-                    [weakSelf.camera request:HI_P2P_SET_TIME_ZONE dson:[weakSelf.camera dic:_timeZone]];
+                    if (_timeZone) {
+                        [weakSelf.camera request:HI_P2P_SET_TIME_ZONE dson:[weakSelf.camera dic:_timeZone]];
+                    }
                     
                 } actionCancelTitle:INTERSTR(@"No") actionCancelBlock:^{
                     

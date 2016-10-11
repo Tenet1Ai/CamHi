@@ -14,6 +14,12 @@
 - (id)initWithData:(char *)data size:(int)size {
     if (self = [super init]) {
         
+        if (size < 0) {
+            return self;
+        }
+        
+//        NSLog(@"size : %d, HI_P2P_S_DEV_INFO : %d", size, (int)sizeof(HI_P2P_S_DEV_INFO));
+        
         HI_P2P_S_DEV_INFO *model = (HI_P2P_S_DEV_INFO *)malloc(sizeof(HI_P2P_S_DEV_INFO));
         memset(model, 0, sizeof(HI_P2P_S_DEV_INFO));
         memcpy(model, data, size);
@@ -28,6 +34,7 @@
         _strHardVer     = [NSString stringWithUTF8String:model->strHardVer];
         _strDeviceName  = [NSString stringWithUTF8String:model->strDeviceName];
 
+        //NSLog(@"model_sUserNum : %d", model->sUserNum);
         
         free(model);
     }

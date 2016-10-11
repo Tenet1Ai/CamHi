@@ -107,7 +107,7 @@ typedef NS_ENUM(NSInteger, TField) {
     }
     
     int iBitRate1 = _videoParam1.u32BitRate;
-    if (iBitRate1 < 32 || iBitRate1 >6144) {
+    if (iBitRate1 < 30 || iBitRate1 >6144) {
         [HXProgress showText:INTERSTR(@"Input First Bit Rate between 30 and 6144")];
         return;
     }
@@ -171,9 +171,13 @@ typedef NS_ENUM(NSInteger, TField) {
         return;
     }
 
+    if (_videoParam1) {
+        [self.camera request:HI_P2P_SET_VIDEO_PARAM dson:[self.camera dic:_videoParam1]];
+    }
     
-    [self.camera request:HI_P2P_SET_VIDEO_PARAM dson:[self.camera dic:_videoParam1]];
-    [self.camera request:HI_P2P_SET_VIDEO_PARAM dson:[self.camera dic:_videoParam2]];
+    if (_videoParam2) {
+        [self.camera request:HI_P2P_SET_VIDEO_PARAM dson:[self.camera dic:_videoParam2]];
+    }
 }
 
 
@@ -306,7 +310,10 @@ typedef NS_ENUM(NSInteger, TField) {
     
     _videoCode.u32Frequency = index == 0 ? 50 : 60;
     
-    [self.camera request:HI_P2P_SET_VIDEO_CODE dson:[self.camera dic:_videoCode]];
+    if (_videoCode) {
+        [self.camera request:HI_P2P_SET_VIDEO_CODE dson:[self.camera dic:_videoCode]];
+    }
+    
 }
 
 

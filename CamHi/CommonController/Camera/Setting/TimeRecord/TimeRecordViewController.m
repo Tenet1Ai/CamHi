@@ -86,21 +86,24 @@
     
     if ([self.camera isGoke]) {
         if (len < 15 || len > 600) {
-            [HXProgress showText:INTERSTR(@"Input number between 15 and 600")];
+            [HXProgress showText:INTERSTR(@"Duration must between 15 to 600")];
             return;
         }
     }
     else {
         if (len < 15 || len > 900) {
-            [HXProgress showText:INTERSTR(@"Input number between 15 and 900")];
+            [HXProgress showText:INTERSTR(@"Duration must between 15 to 900")];
             return;
         }
     }
     
     _recAutoParam.u32FileLen = len;
-    NSDictionary *dic = @{@"model": _recAutoParam};
-    [self.camera request:HI_P2P_SET_REC_AUTO_PARAM dson:dic];
-}
+    
+    if (_recAutoParam) {
+        NSDictionary *dic = @{@"model": _recAutoParam};
+        [self.camera request:HI_P2P_SET_REC_AUTO_PARAM dson:dic];
+    }
+ }
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -194,9 +197,11 @@
     
     _recAutoParam.u32Enable = t_switch.on ? 1 : 0;
     
-    NSDictionary *dic = @{@"model": _recAutoParam};
-    [self.camera request:HI_P2P_SET_REC_AUTO_PARAM dson:dic];
-
+    if (_recAutoParam) {
+        NSDictionary *dic = @{@"model": _recAutoParam};
+        [self.camera request:HI_P2P_SET_REC_AUTO_PARAM dson:dic];
+    }
+    
 }
 
 
@@ -241,9 +246,12 @@
     
     _quantumTime.recordTime = (unsigned int)index;
     
-    NSDictionary *dic = @{@"model": _quantumTime};
-    [self.camera request:HI_P2P_SET_REC_AUTO_SCHEDULE dson:dic];
-}
+    if (_quantumTime) {
+        NSDictionary *dic = @{@"model": _quantumTime};
+        [self.camera request:HI_P2P_SET_REC_AUTO_SCHEDULE dson:dic];
+    }
+    
+ }
 
 - (NSArray *)titles {
     if (!_titles) {

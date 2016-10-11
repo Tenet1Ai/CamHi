@@ -11,6 +11,8 @@
 @interface TimeZoneViewController ()
 
 @property (nonatomic, strong) UISwitch *enableSwitch;
+@property (nonatomic, strong) TimeZoneInfo *g_timezoneinfo;
+@property (nonatomic, strong) UIBarButtonItem *barButtonSave;
 
 @end
 
@@ -24,6 +26,20 @@
     self.tableView.backgroundColor = RGBA_COLOR(220, 220, 220, 0.5);
     
     LOG(@"_timeZone.u32DstMode:%d", _timeZone.u32DstMode)
+    
+    
+    for (TimeZoneInfo *t_timezone in self.timeZones) {
+        
+        if (t_timezone.timeZone == _timeZone.s32TimeZone) {
+            
+            self.g_timezoneinfo = t_timezone;
+            self.g_timezoneinfo.dstMode = _timeZone.u32DstMode;
+        }
+    }
+
+    
+    self.navigationItem.rightBarButtonItem = self.barButtonSave;;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,6 +57,30 @@
     self.tabBarController.tabBar.hidden = NO;
 }
 
+- (UIBarButtonItem *)barButtonSave {
+    if (!_barButtonSave) {
+        _barButtonSave = [[UIBarButtonItem alloc] initWithTitle:INTERSTR(@"Save") style:UIBarButtonItemStyleDone target:self action:@selector(btnSaveAction:)];
+    }
+    return _barButtonSave;
+}
+
+- (void)btnSaveAction:(id)sender {
+    
+//    TimeZoneInfo *zone = self.g_timezoneinfo;
+
+    _timeZone.s32TimeZone = self.g_timezoneinfo.timeZone;
+    _timeZone.u32DstMode = self.g_timezoneinfo.dstMode;
+    
+    _timeZone.u32DstMode = self.enableSwitch.on ? 1 : 0 ;
+//    self.enableSwitch.on = _timeZone.u32DstMode == 1 ? YES : NO;
+    
+    if (_timezoneBlock) {
+        _timezoneBlock(YES, 0, _timeZone);
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -65,7 +105,38 @@
         
         cell.textLabel.text = INTERSTR(@"Daylight Saving Time");
         cell.accessoryView = self.enableSwitch;
-        self.enableSwitch.on = _timeZone.u32DstMode == 1 ? YES : NO;
+        
+//        self.enableSwitch.on = _timeZone.u32DstMode == 1 ? YES : NO;
+//        
+//        for (TimeZoneInfo *t_timezone in self.timeZones) {
+//            
+//            if (t_timezone.timeZone == _timeZone.s32TimeZone) {
+//                
+//                self.g_timezoneinfo = t_timezone;
+//                
+//                if (t_timezone.dstMode == 0) {
+//                    self.enableSwitch.enabled = NO;
+//                }
+//
+//            }
+//        }
+        
+
+        self.enableSwitch.on = self.g_timezoneinfo.dstMode == 1 ? YES : NO;
+//        self.enableSwitch.enabled = self.g_timezoneinfo.dstMode == 1 ? YES : NO;
+        
+        for (TimeZoneInfo *t_timezone in self.timeZones) {
+            
+            if (t_timezone.timeZone == self.g_timezoneinfo.timeZone) {
+                
+                if (t_timezone.dstMode == 0) {
+                    self.enableSwitch.enabled = NO;
+                }
+                
+            }
+        }
+
+
         
     }//@section == 0
     
@@ -77,9 +148,17 @@
         TimeZoneInfo *zone = self.timeZones[row];
         cell.textLabel.text = [NSString stringWithFormat:@"%@  %@", zone.abbreviation, zone.detail];
         
-        if (zone.timeZone == _timeZone.s32TimeZone) {
+//        if (zone.timeZone == _timeZone.s32TimeZone) {
+//            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//        }
+        
+        if (zone.timeZone == self.g_timezoneinfo.timeZone) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
+        else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+
         
     }
     
@@ -105,19 +184,32 @@
     
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    
-    TimeZoneInfo *zone = self.timeZones[indexPath.row];
 
-    _timeZone.s32TimeZone = zone.timeZone;
-    _timeZone.u32DstMode = zone.dstMode;
+    self.g_timezoneinfo = self.timeZones[indexPath.row];
     
-    self.enableSwitch.on = _timeZone.u32DstMode == 1 ? YES : NO;
-    
-    if (_timezoneBlock) {
-        _timezoneBlock(YES, 0, _timeZone);
+    if (self.g_timezoneinfo.dstMode == 0) {
+        self.enableSwitch.enabled = NO;
+    }
+    else {
+        self.enableSwitch.enabled = YES;
     }
     
-    [self.navigationController popViewControllerAnimated:YES];
+    self.enableSwitch.on = self.g_timezoneinfo.dstMode == 1 ? YES : NO;
+
+//    [self.tableView reloadData];
+    
+//    TimeZoneInfo *zone = self.timeZones[indexPath.row];
+//
+//    _timeZone.s32TimeZone = zone.timeZone;
+//    _timeZone.u32DstMode = zone.dstMode;
+//    
+//    self.enableSwitch.on = _timeZone.u32DstMode == 1 ? YES : NO;
+//    
+//    if (_timezoneBlock) {
+//        _timezoneBlock(YES, 0, _timeZone);
+//    }
+//    
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

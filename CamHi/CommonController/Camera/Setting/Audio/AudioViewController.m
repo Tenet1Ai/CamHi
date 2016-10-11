@@ -203,7 +203,10 @@
         _audio.u32OutVol = (int)slider.value;
     }
     
-    [self.camera request:HI_P2P_SET_AUDIO_ATTR dson:[self.camera dic:_audio]];
+    if (_audio) {
+        [self.camera request:HI_P2P_SET_AUDIO_ATTR dson:[self.camera dic:_audio]];
+    }
+    
 }
 
 -(void)sliderChanged:(id)sender{
@@ -250,7 +253,10 @@
     
     _audio.u32InMode = (unsigned int)index;
     
-    [self.camera request:HI_P2P_SET_AUDIO_ATTR dson:[self.camera dic:_audio]];
+    if (_audio) {
+        [self.camera request:HI_P2P_SET_AUDIO_ATTR dson:[self.camera dic:_audio]];
+    }
+    
 }
 
 /*
