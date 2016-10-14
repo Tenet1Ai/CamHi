@@ -144,7 +144,6 @@
 		EE03132D1D98C18C0091872D /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EE03132E1D98C18C0091872D /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EE03132F1D98C18C0091872D /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EE0313301D98C18C0091872D /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EE0313311D98C18C0091872D /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EE0313321D98C18C0091872D /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EE0313331D98C18C0091872D /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -152,7 +151,6 @@
 		EE0313351D98C18C0091872D /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EE0313361D98C18C0091872D /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EE0313371D98C18C0091872D /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EE0313381D98C18C0091872D /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EE0313391D98C18C0091872D /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EE03133B1D98C18C0091872D /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EE03133C1D98C18C0091872D /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -333,7 +331,6 @@
 		EE0313F31D98C5330091872D /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EE0313F41D98C5330091872D /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EE0313F51D98C5330091872D /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EE0313F61D98C5330091872D /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EE0313F71D98C5330091872D /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EE0313F81D98C5330091872D /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EE0313F91D98C5330091872D /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -341,7 +338,6 @@
 		EE0313FB1D98C5330091872D /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EE0313FC1D98C5330091872D /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EE0313FD1D98C5330091872D /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EE0313FE1D98C5330091872D /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EE0313FF1D98C5330091872D /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EE0314011D98C5330091872D /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EE0314021D98C5330091872D /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -522,7 +518,6 @@
 		EE0314B91D98C79B0091872D /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EE0314BA1D98C79B0091872D /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EE0314BB1D98C79B0091872D /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EE0314BC1D98C79B0091872D /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EE0314BD1D98C79B0091872D /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EE0314BE1D98C79B0091872D /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EE0314BF1D98C79B0091872D /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -530,7 +525,6 @@
 		EE0314C11D98C79B0091872D /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EE0314C21D98C79B0091872D /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EE0314C31D98C79B0091872D /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EE0314C41D98C79B0091872D /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EE0314C51D98C79B0091872D /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EE0314C71D98C79B0091872D /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EE0314C81D98C79B0091872D /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -613,8 +607,6 @@
 		EE146F611D3C6BE900E14110 /* libfaac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F511D3C6BE900E14110 /* libfaac.a */; };
 		EE146F621D3C6BE900E14110 /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
 		EE146F631D3C6BE900E14110 /* libpostproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F531D3C6BE900E14110 /* libpostproc.a */; };
-		EE146F641D3C6BE900E14110 /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
-		EE146F651D3C6BE900E14110 /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EE146F661D3C6BE900E14110 /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
 		EE146F671D3C6BE900E14110 /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EE146F681D3C6BE900E14110 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -756,7 +748,6 @@
 		EE1F721B1D95154A000938FC /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EE1F721C1D95154A000938FC /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EE1F721D1D95154A000938FC /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EE1F721E1D95154A000938FC /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EE1F721F1D95154A000938FC /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EE1F72201D95154A000938FC /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EE1F72211D95154A000938FC /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -764,7 +755,6 @@
 		EE1F72231D95154A000938FC /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EE1F72241D95154A000938FC /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EE1F72251D95154A000938FC /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EE1F72261D95154A000938FC /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EE1F72271D95154A000938FC /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EE1F72291D95154A000938FC /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EE1F722A1D95154A000938FC /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -1043,7 +1033,6 @@
 		EE8353071D9DF6E600AE92D1 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EE8353081D9DF6E600AE92D1 /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EE8353091D9DF6E600AE92D1 /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EE83530A1D9DF6E600AE92D1 /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EE83530B1D9DF6E600AE92D1 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EE83530C1D9DF6E600AE92D1 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EE83530D1D9DF6E600AE92D1 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -1051,7 +1040,6 @@
 		EE83530F1D9DF6E600AE92D1 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EE8353101D9DF6E600AE92D1 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EE8353111D9DF6E600AE92D1 /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EE8353121D9DF6E600AE92D1 /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EE8353131D9DF6E600AE92D1 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EE8353151D9DF6E600AE92D1 /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EE8353161D9DF6E600AE92D1 /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -1232,7 +1220,6 @@
 		EE8353CD1D9DF8DF00AE92D1 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EE8353CE1D9DF8DF00AE92D1 /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EE8353CF1D9DF8DF00AE92D1 /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EE8353D01D9DF8DF00AE92D1 /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EE8353D11D9DF8DF00AE92D1 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EE8353D21D9DF8DF00AE92D1 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EE8353D31D9DF8DF00AE92D1 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -1240,7 +1227,6 @@
 		EE8353D51D9DF8DF00AE92D1 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EE8353D61D9DF8DF00AE92D1 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EE8353D71D9DF8DF00AE92D1 /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EE8353D81D9DF8DF00AE92D1 /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EE8353D91D9DF8DF00AE92D1 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EE8353DB1D9DF8DF00AE92D1 /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EE8353DC1D9DF8DF00AE92D1 /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -1441,7 +1427,6 @@
 		EE8354B81D9E54BB00AE92D1 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EE8354B91D9E54BB00AE92D1 /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EE8354BA1D9E54BB00AE92D1 /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EE8354BB1D9E54BB00AE92D1 /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EE8354BC1D9E54BB00AE92D1 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EE8354BD1D9E54BB00AE92D1 /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EE8354BE1D9E54BB00AE92D1 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -1449,7 +1434,6 @@
 		EE8354C01D9E54BB00AE92D1 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EE8354C11D9E54BB00AE92D1 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EE8354C21D9E54BB00AE92D1 /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EE8354C31D9E54BB00AE92D1 /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EE8354C41D9E54BB00AE92D1 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EE8354C61D9E54BB00AE92D1 /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EE8354C71D9E54BB00AE92D1 /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -1686,7 +1670,6 @@
 		EEE0B6FC1D97A14E0065292A /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EEE0B6FD1D97A14E0065292A /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EEE0B6FE1D97A14E0065292A /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EEE0B6FF1D97A14E0065292A /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EEE0B7001D97A14E0065292A /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EEE0B7011D97A14E0065292A /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EEE0B7021D97A14E0065292A /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -1694,7 +1677,6 @@
 		EEE0B7041D97A14E0065292A /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EEE0B7051D97A14E0065292A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EEE0B7061D97A14E0065292A /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EEE0B7071D97A14E0065292A /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EEE0B7081D97A14E0065292A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EEE0B70A1D97A14E0065292A /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EEE0B70B1D97A14E0065292A /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -1875,7 +1857,6 @@
 		EEE0B7C21D97ABED0065292A /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EEE0B7C31D97ABED0065292A /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EEE0B7C41D97ABED0065292A /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EEE0B7C51D97ABED0065292A /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EEE0B7C61D97ABED0065292A /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EEE0B7C71D97ABED0065292A /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EEE0B7C81D97ABED0065292A /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -1883,7 +1864,6 @@
 		EEE0B7CA1D97ABED0065292A /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EEE0B7CB1D97ABED0065292A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EEE0B7CC1D97ABED0065292A /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EEE0B7CD1D97ABED0065292A /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EEE0B7CE1D97ABED0065292A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EEE0B7D01D97ABED0065292A /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EEE0B7D11D97ABED0065292A /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -2064,7 +2044,6 @@
 		EEE0B8881D97B84B0065292A /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4C1D3C6BE900E14110 /* libavdevice.a */; };
 		EEE0B8891D97B84B0065292A /* libswreasample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F571D3C6BE900E14110 /* libswreasample.a */; };
 		EEE0B88A1D97B84B0065292A /* libHiP2PSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */; };
-		EEE0B88B1D97B84B0065292A /* libPPCS_API.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F541D3C6BE900E14110 /* libPPCS_API.a */; };
 		EEE0B88C1D97B84B0065292A /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F501D3C6BE900E14110 /* libavutil.a */; };
 		EEE0B88D1D97B84B0065292A /* libavformat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4E1D3C6BE900E14110 /* libavformat.a */; };
 		EEE0B88E1D97B84B0065292A /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F581D3C6BE900E14110 /* libswresample.a */; };
@@ -2072,7 +2051,6 @@
 		EEE0B8901D97B84B0065292A /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4D1D3C6BE900E14110 /* libavfilter.a */; };
 		EEE0B8911D97B84B0065292A /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2F53DB1D7E666D00935165 /* libXG-SDK.a */; };
 		EEE0B8921D97B84B0065292A /* libSVSinVoiceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */; };
-		EEE0B8931D97B84B0065292A /* libPPPP_API_IOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */; };
 		EEE0B8941D97B84B0065292A /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE146F4B1D3C6BE900E14110 /* libavcodec.a */; };
 		EEE0B8961D97B84B0065292A /* record_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7871D3F4653001A3A1C /* record_white.png */; };
 		EEE0B8971D97B84B0065292A /* mirror_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EE21D7841D3F4653001A3A1C /* mirror_white.png */; };
@@ -2217,8 +2195,6 @@
 		EE146F511D3C6BE900E14110 /* libfaac.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfaac.a; sourceTree = "<group>"; };
 		EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libHiP2PSDK.a; sourceTree = "<group>"; };
 		EE146F531D3C6BE900E14110 /* libpostproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libpostproc.a; sourceTree = "<group>"; };
-		EE146F541D3C6BE900E14110 /* libPPCS_API.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPPCS_API.a; sourceTree = "<group>"; };
-		EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPPPP_API_IOS.a; sourceTree = "<group>"; };
 		EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSVSinVoiceLib.a; sourceTree = "<group>"; };
 		EE146F571D3C6BE900E14110 /* libswreasample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswreasample.a; sourceTree = "<group>"; };
 		EE146F581D3C6BE900E14110 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
@@ -2514,7 +2490,7 @@
 		EED822141D3E1FED00812F73 /* ToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBar.m; sourceTree = "<group>"; };
 		EEE0B73C1D97A14E0065292A /* XMcam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMcam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE0B73D1D97A14F0065292A /* XMcam-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "XMcam-Info.plist"; path = "/Users/jiang/Downloads/My-Desktop/20160825-CamHi/CamHi/XMcam-Info.plist"; sourceTree = "<absolute>"; };
-		EEE0B8021D97ABED0065292A /* My camera+.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "My camera+.app"; path = "My camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEE0B8021D97ABED0065292A /* My camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My camera.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE0B8031D97ABEF0065292A /* My camera+-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "My camera+-Info.plist"; path = "/Users/jiang/Downloads/My-Desktop/20160825-CamHi/CamHi/My camera+-Info.plist"; sourceTree = "<absolute>"; };
 		EEE0B8C81D97B84B0065292A /* keye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = keye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE0B8C91D97B8520065292A /* keye-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "keye-Info.plist"; path = "/Users/jiang/Downloads/My-Desktop/20160825-CamHi/CamHi/keye-Info.plist"; sourceTree = "<absolute>"; };
@@ -2539,7 +2515,6 @@
 				EE03132D1D98C18C0091872D /* libavdevice.a in Frameworks */,
 				EE03132E1D98C18C0091872D /* libswreasample.a in Frameworks */,
 				EE03132F1D98C18C0091872D /* libHiP2PSDK.a in Frameworks */,
-				EE0313301D98C18C0091872D /* libPPCS_API.a in Frameworks */,
 				EE0313311D98C18C0091872D /* libavutil.a in Frameworks */,
 				EE0313321D98C18C0091872D /* libavformat.a in Frameworks */,
 				EE0313331D98C18C0091872D /* libswresample.a in Frameworks */,
@@ -2547,7 +2522,6 @@
 				EE0313351D98C18C0091872D /* libavfilter.a in Frameworks */,
 				EE0313361D98C18C0091872D /* libXG-SDK.a in Frameworks */,
 				EE0313371D98C18C0091872D /* libSVSinVoiceLib.a in Frameworks */,
-				EE0313381D98C18C0091872D /* libPPPP_API_IOS.a in Frameworks */,
 				EE0313391D98C18C0091872D /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2570,7 +2544,6 @@
 				EE0313F31D98C5330091872D /* libavdevice.a in Frameworks */,
 				EE0313F41D98C5330091872D /* libswreasample.a in Frameworks */,
 				EE0313F51D98C5330091872D /* libHiP2PSDK.a in Frameworks */,
-				EE0313F61D98C5330091872D /* libPPCS_API.a in Frameworks */,
 				EE0313F71D98C5330091872D /* libavutil.a in Frameworks */,
 				EE0313F81D98C5330091872D /* libavformat.a in Frameworks */,
 				EE0313F91D98C5330091872D /* libswresample.a in Frameworks */,
@@ -2578,7 +2551,6 @@
 				EE0313FB1D98C5330091872D /* libavfilter.a in Frameworks */,
 				EE0313FC1D98C5330091872D /* libXG-SDK.a in Frameworks */,
 				EE0313FD1D98C5330091872D /* libSVSinVoiceLib.a in Frameworks */,
-				EE0313FE1D98C5330091872D /* libPPPP_API_IOS.a in Frameworks */,
 				EE0313FF1D98C5330091872D /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2601,7 +2573,6 @@
 				EE0314B91D98C79B0091872D /* libavdevice.a in Frameworks */,
 				EE0314BA1D98C79B0091872D /* libswreasample.a in Frameworks */,
 				EE0314BB1D98C79B0091872D /* libHiP2PSDK.a in Frameworks */,
-				EE0314BC1D98C79B0091872D /* libPPCS_API.a in Frameworks */,
 				EE0314BD1D98C79B0091872D /* libavutil.a in Frameworks */,
 				EE0314BE1D98C79B0091872D /* libavformat.a in Frameworks */,
 				EE0314BF1D98C79B0091872D /* libswresample.a in Frameworks */,
@@ -2609,7 +2580,6 @@
 				EE0314C11D98C79B0091872D /* libavfilter.a in Frameworks */,
 				EE0314C21D98C79B0091872D /* libXG-SDK.a in Frameworks */,
 				EE0314C31D98C79B0091872D /* libSVSinVoiceLib.a in Frameworks */,
-				EE0314C41D98C79B0091872D /* libPPPP_API_IOS.a in Frameworks */,
 				EE0314C51D98C79B0091872D /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2632,7 +2602,6 @@
 				EE1F721B1D95154A000938FC /* libavdevice.a in Frameworks */,
 				EE1F721C1D95154A000938FC /* libswreasample.a in Frameworks */,
 				EE1F721D1D95154A000938FC /* libHiP2PSDK.a in Frameworks */,
-				EE1F721E1D95154A000938FC /* libPPCS_API.a in Frameworks */,
 				EE1F721F1D95154A000938FC /* libavutil.a in Frameworks */,
 				EE1F72201D95154A000938FC /* libavformat.a in Frameworks */,
 				EE1F72211D95154A000938FC /* libswresample.a in Frameworks */,
@@ -2640,7 +2609,6 @@
 				EE1F72231D95154A000938FC /* libavfilter.a in Frameworks */,
 				EE1F72241D95154A000938FC /* libXG-SDK.a in Frameworks */,
 				EE1F72251D95154A000938FC /* libSVSinVoiceLib.a in Frameworks */,
-				EE1F72261D95154A000938FC /* libPPPP_API_IOS.a in Frameworks */,
 				EE1F72271D95154A000938FC /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2663,7 +2631,6 @@
 				EE146F5C1D3C6BE900E14110 /* libavdevice.a in Frameworks */,
 				EE146F671D3C6BE900E14110 /* libswreasample.a in Frameworks */,
 				EE146F621D3C6BE900E14110 /* libHiP2PSDK.a in Frameworks */,
-				EE146F641D3C6BE900E14110 /* libPPCS_API.a in Frameworks */,
 				EE146F601D3C6BE900E14110 /* libavutil.a in Frameworks */,
 				EE146F5E1D3C6BE900E14110 /* libavformat.a in Frameworks */,
 				EE146F681D3C6BE900E14110 /* libswresample.a in Frameworks */,
@@ -2671,7 +2638,6 @@
 				EE146F5D1D3C6BE900E14110 /* libavfilter.a in Frameworks */,
 				EE2F53DC1D7E666D00935165 /* libXG-SDK.a in Frameworks */,
 				EE146F661D3C6BE900E14110 /* libSVSinVoiceLib.a in Frameworks */,
-				EE146F651D3C6BE900E14110 /* libPPPP_API_IOS.a in Frameworks */,
 				EE146F5B1D3C6BE900E14110 /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2708,7 +2674,6 @@
 				EE8353071D9DF6E600AE92D1 /* libavdevice.a in Frameworks */,
 				EE8353081D9DF6E600AE92D1 /* libswreasample.a in Frameworks */,
 				EE8353091D9DF6E600AE92D1 /* libHiP2PSDK.a in Frameworks */,
-				EE83530A1D9DF6E600AE92D1 /* libPPCS_API.a in Frameworks */,
 				EE83530B1D9DF6E600AE92D1 /* libavutil.a in Frameworks */,
 				EE83530C1D9DF6E600AE92D1 /* libavformat.a in Frameworks */,
 				EE83530D1D9DF6E600AE92D1 /* libswresample.a in Frameworks */,
@@ -2716,7 +2681,6 @@
 				EE83530F1D9DF6E600AE92D1 /* libavfilter.a in Frameworks */,
 				EE8353101D9DF6E600AE92D1 /* libXG-SDK.a in Frameworks */,
 				EE8353111D9DF6E600AE92D1 /* libSVSinVoiceLib.a in Frameworks */,
-				EE8353121D9DF6E600AE92D1 /* libPPPP_API_IOS.a in Frameworks */,
 				EE8353131D9DF6E600AE92D1 /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2739,7 +2703,6 @@
 				EE8353CD1D9DF8DF00AE92D1 /* libavdevice.a in Frameworks */,
 				EE8353CE1D9DF8DF00AE92D1 /* libswreasample.a in Frameworks */,
 				EE8353CF1D9DF8DF00AE92D1 /* libHiP2PSDK.a in Frameworks */,
-				EE8353D01D9DF8DF00AE92D1 /* libPPCS_API.a in Frameworks */,
 				EE8353D11D9DF8DF00AE92D1 /* libavutil.a in Frameworks */,
 				EE8353D21D9DF8DF00AE92D1 /* libavformat.a in Frameworks */,
 				EE8353D31D9DF8DF00AE92D1 /* libswresample.a in Frameworks */,
@@ -2747,7 +2710,6 @@
 				EE8353D51D9DF8DF00AE92D1 /* libavfilter.a in Frameworks */,
 				EE8353D61D9DF8DF00AE92D1 /* libXG-SDK.a in Frameworks */,
 				EE8353D71D9DF8DF00AE92D1 /* libSVSinVoiceLib.a in Frameworks */,
-				EE8353D81D9DF8DF00AE92D1 /* libPPPP_API_IOS.a in Frameworks */,
 				EE8353D91D9DF8DF00AE92D1 /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2770,7 +2732,6 @@
 				EE8354B81D9E54BB00AE92D1 /* libavdevice.a in Frameworks */,
 				EE8354B91D9E54BB00AE92D1 /* libswreasample.a in Frameworks */,
 				EE8354BA1D9E54BB00AE92D1 /* libHiP2PSDK.a in Frameworks */,
-				EE8354BB1D9E54BB00AE92D1 /* libPPCS_API.a in Frameworks */,
 				EE8354BC1D9E54BB00AE92D1 /* libavutil.a in Frameworks */,
 				EE8354BD1D9E54BB00AE92D1 /* libavformat.a in Frameworks */,
 				EE8354BE1D9E54BB00AE92D1 /* libswresample.a in Frameworks */,
@@ -2778,7 +2739,6 @@
 				EE8354C01D9E54BB00AE92D1 /* libavfilter.a in Frameworks */,
 				EE8354C11D9E54BB00AE92D1 /* libXG-SDK.a in Frameworks */,
 				EE8354C21D9E54BB00AE92D1 /* libSVSinVoiceLib.a in Frameworks */,
-				EE8354C31D9E54BB00AE92D1 /* libPPPP_API_IOS.a in Frameworks */,
 				EE8354C41D9E54BB00AE92D1 /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2801,7 +2761,6 @@
 				EEE0B6FC1D97A14E0065292A /* libavdevice.a in Frameworks */,
 				EEE0B6FD1D97A14E0065292A /* libswreasample.a in Frameworks */,
 				EEE0B6FE1D97A14E0065292A /* libHiP2PSDK.a in Frameworks */,
-				EEE0B6FF1D97A14E0065292A /* libPPCS_API.a in Frameworks */,
 				EEE0B7001D97A14E0065292A /* libavutil.a in Frameworks */,
 				EEE0B7011D97A14E0065292A /* libavformat.a in Frameworks */,
 				EEE0B7021D97A14E0065292A /* libswresample.a in Frameworks */,
@@ -2809,7 +2768,6 @@
 				EEE0B7041D97A14E0065292A /* libavfilter.a in Frameworks */,
 				EEE0B7051D97A14E0065292A /* libXG-SDK.a in Frameworks */,
 				EEE0B7061D97A14E0065292A /* libSVSinVoiceLib.a in Frameworks */,
-				EEE0B7071D97A14E0065292A /* libPPPP_API_IOS.a in Frameworks */,
 				EEE0B7081D97A14E0065292A /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2832,7 +2790,6 @@
 				EEE0B7C21D97ABED0065292A /* libavdevice.a in Frameworks */,
 				EEE0B7C31D97ABED0065292A /* libswreasample.a in Frameworks */,
 				EEE0B7C41D97ABED0065292A /* libHiP2PSDK.a in Frameworks */,
-				EEE0B7C51D97ABED0065292A /* libPPCS_API.a in Frameworks */,
 				EEE0B7C61D97ABED0065292A /* libavutil.a in Frameworks */,
 				EEE0B7C71D97ABED0065292A /* libavformat.a in Frameworks */,
 				EEE0B7C81D97ABED0065292A /* libswresample.a in Frameworks */,
@@ -2840,7 +2797,6 @@
 				EEE0B7CA1D97ABED0065292A /* libavfilter.a in Frameworks */,
 				EEE0B7CB1D97ABED0065292A /* libXG-SDK.a in Frameworks */,
 				EEE0B7CC1D97ABED0065292A /* libSVSinVoiceLib.a in Frameworks */,
-				EEE0B7CD1D97ABED0065292A /* libPPPP_API_IOS.a in Frameworks */,
 				EEE0B7CE1D97ABED0065292A /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2863,7 +2819,6 @@
 				EEE0B8881D97B84B0065292A /* libavdevice.a in Frameworks */,
 				EEE0B8891D97B84B0065292A /* libswreasample.a in Frameworks */,
 				EEE0B88A1D97B84B0065292A /* libHiP2PSDK.a in Frameworks */,
-				EEE0B88B1D97B84B0065292A /* libPPCS_API.a in Frameworks */,
 				EEE0B88C1D97B84B0065292A /* libavutil.a in Frameworks */,
 				EEE0B88D1D97B84B0065292A /* libavformat.a in Frameworks */,
 				EEE0B88E1D97B84B0065292A /* libswresample.a in Frameworks */,
@@ -2871,7 +2826,6 @@
 				EEE0B8901D97B84B0065292A /* libavfilter.a in Frameworks */,
 				EEE0B8911D97B84B0065292A /* libXG-SDK.a in Frameworks */,
 				EEE0B8921D97B84B0065292A /* libSVSinVoiceLib.a in Frameworks */,
-				EEE0B8931D97B84B0065292A /* libPPPP_API_IOS.a in Frameworks */,
 				EEE0B8941D97B84B0065292A /* libavcodec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3102,8 +3056,6 @@
 				EE146F511D3C6BE900E14110 /* libfaac.a */,
 				EE146F521D3C6BE900E14110 /* libHiP2PSDK.a */,
 				EE146F531D3C6BE900E14110 /* libpostproc.a */,
-				EE146F541D3C6BE900E14110 /* libPPCS_API.a */,
-				EE146F551D3C6BE900E14110 /* libPPPP_API_IOS.a */,
 				EE146F561D3C6BE900E14110 /* libSVSinVoiceLib.a */,
 				EE146F571D3C6BE900E14110 /* libswreasample.a */,
 				EE146F581D3C6BE900E14110 /* libswresample.a */,
@@ -3355,7 +3307,7 @@
 				EE55EA961D333EE8003B9D89 /* CamHiUITests.xctest */,
 				EE1F725B1D95154A000938FC /* JS-AP131.app */,
 				EEE0B73C1D97A14E0065292A /* XMcam.app */,
-				EEE0B8021D97ABED0065292A /* My camera+.app */,
+				EEE0B8021D97ABED0065292A /* My camera.app */,
 				EEE0B8C81D97B84B0065292A /* keye.app */,
 				EE03136D1D98C18C0091872D /* Q100.app */,
 				EE0314331D98C5330091872D /* ccs.app */,
@@ -4066,7 +4018,7 @@
 			);
 			name = "My camera";
 			productName = CamHi;
-			productReference = EEE0B8021D97ABED0065292A /* My camera+.app */;
+			productReference = EEE0B8021D97ABED0065292A /* My camera.app */;
 			productType = "com.apple.product-type.application";
 		};
 		EEE0B8041D97B84B0065292A /* keye */ = {
@@ -6737,8 +6689,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Z846JV8G4X.com.hichip.CamHi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "33249ffd-eba1-43d1-8d7d-6aa5a6f6d184";
-				PROVISIONING_PROFILE_SPECIFIER = com.distributionHoc.CamHi;
+				PROVISIONING_PROFILE = "c8c36e0f-67da-4770-b8c3-126ed4c27529";
+				PROVISIONING_PROFILE_SPECIFIER = com.distribution.CamHi;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

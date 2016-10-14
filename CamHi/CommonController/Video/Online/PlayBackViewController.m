@@ -9,6 +9,7 @@
 #import "PlayBackViewController.h"
 #import "VideoInfo.h"
 #import "PlayView.h"
+#import "iToast.h"
 
 @interface PlayBackViewController ()
 
@@ -70,10 +71,34 @@
     _isEndingFlag = NO;
     _isDraging = NO;
 
+    LOG(@"start playback");
     __weak typeof(self) wself = self;
     
 //    __block NSDateFormatter *tFormatter = [[NSDateFormatter alloc] init];
 //    tFormatter.dateFormat = @"HH:mm:ss";
+    
+    
+    self.camera.playStateBlock = ^(NSInteger cmd) {
+        
+        NSLog(@"playStateBlock : %d", (int)cmd);
+
+        
+        if (cmd == PLAY_STATE_EDN) {
+            NSLog(@"PLAY_STATE_EDN");
+            
+            //[wself.camera stopPlayback];
+            //wself.playView.btnPlay.selected = !wself.playView.btnPlay.selected;
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[iToast makeText:INTERSTR(@"Video has stopped")] showRota];
+            });
+
+        }
+        
+        if (cmd == HI_P2P_DEV_PLAYBACK_END_FLAG) {
+            NSLog(@"HI_P2P_DEV_PLAYBACK_END_FLAG");
+        }
+    };
     
     //
     self.camera.playBackBlock = ^(NSInteger cmd, int seconds) {
@@ -96,8 +121,13 @@
             
             wself.playView.sliderProgress.value = per;
             
+//            if (per > 100) {
+//                [HXProgress showText:INTERSTR(@"Video has stopped")];
+//
+//            }
 
         }
+        
         
     };
     

@@ -1411,7 +1411,9 @@
     if (self.uid && self.uid.length > 4) {
         
         NSString *temp = [self.uid substringWithRange:NSMakeRange(0, 4)];
+//        NSArray *temps = @[@"AAAA", @"BBBB", @"CCCC", @"DDDD", @"EEEE", @"FFFF"];
         NSArray *temps = @[@"AAAA", @"BBBB", @"CCCC", @"DDDD", @"EEEE"];
+
         
         for (NSString *t_uid in temps) {
             if ([t_uid isEqualToString:temp]) {

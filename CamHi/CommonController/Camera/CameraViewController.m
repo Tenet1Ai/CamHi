@@ -97,10 +97,14 @@
         mycam.connectBlock = ^(NSInteger state, NSString *connection) {
             
             
-//            //连接完成，刷新显示
-//            if (state == CAMERA_CONNECTION_STATE_LOGIN) {
-//                [weakSelf.tableView reloadData];
-//            }
+            //连接完成，刷新显示
+            if (state == CAMERA_CONNECTION_STATE_LOGIN) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [weakSelf.tableView reloadData];
+                });
+                
+            }
             
             //刷新显示连接状态
             [weakSelf.tableView reloadData];

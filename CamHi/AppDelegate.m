@@ -94,7 +94,7 @@
     NSLog(@"applicationDidBecomeActive");
 
     // connect camera
-    [GBase connectCameras];
+//    [GBase connectCameras];
 
     
     
@@ -422,7 +422,11 @@
 
 #pragma mark - HiChipInitCallback
 - (void)onInitResult:(int)result {
+    
     LOG(@"onInitResult :%d", result)
+    
+    // connect camera
+    [GBase connectCameras];
 }
 
 

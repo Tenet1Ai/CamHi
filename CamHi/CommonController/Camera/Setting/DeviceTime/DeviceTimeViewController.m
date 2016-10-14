@@ -78,11 +78,22 @@
         
         if (cmd == HI_P2P_SET_REBOOT) {
             
-            if (success) {
-                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
-            }
+//            if (success) {
+//                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+//            }
+            [HXProgress showProgress];
         }
         
+    };
+    
+    
+    // 重启成功,开始连接后返回主界面
+    self.camera.connectBlock = ^(NSInteger state, NSString *station) {
+        
+        if (state == CAMERA_CONNECTION_STATE_CONNECTING) {
+            [HXProgress dismiss];
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }
     };
     
 }

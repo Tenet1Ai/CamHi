@@ -186,7 +186,7 @@
     if (base.db != NULL) {
         
         if (![base.db executeUpdate:@"DELETE FROM device where dev_uid=?", mycam.uid]) {
-            LOG(@"Fail to remove device from database.")
+            NSLog(@"Fail to remove device from database.");
         }
     }
 }
@@ -197,7 +197,7 @@
 
     if (base.db != NULL) {
         if (![base.db executeUpdate:@"UPDATE device SET dev_nickname=?, view_pwd=? ,view_acc=? WHERE dev_uid=?", mycam.name, mycam.password, mycam.username , mycam.uid]) {
-            LOG(@"Fail to update device to database.")
+            NSLog(@"Fail to update device to database.");
         }
     }
 }
@@ -209,7 +209,7 @@
     
     if (base.db != NULL) {
         if (![base.db executeUpdate:@"UPDATE device SET add_four=? WHERE dev_uid=?", selectNum, mycam.uid]) {
-            LOG(@"Fail to update device to database.")
+            NSLog(@"Fail to update device to database.");
         }
     }
 
@@ -239,7 +239,7 @@
     
     if (base.db != NULL) {
         if (![base.db executeUpdate:@"INSERT INTO snapshot(dev_uid, file_path, time) VALUES(?,?,?)", mycam.uid, imgName, [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]]) {
-            LOG(@"Fail to add snapshot to database.");
+            NSLog(@"Fail to add snapshot to database.");
             return NO;
         }
     }
@@ -316,7 +316,7 @@
     
     if (base.db != NULL) {
         if (![base.db executeUpdate:@"INSERT INTO video(dev_uid, file_path, recording_type, time) VALUES(?,?,?,?)", mycam.uid, recordFileName, [NSNumber numberWithInteger:0], [NSNumber numberWithDouble:[[NSDate date] timeIntervalSince1970]]]) {
-            LOG(@"Fail to save recording to database.");
+            NSLog(@"Fail to save recording to database.");
             return NO;
         }
     }
@@ -344,7 +344,7 @@
 
     if (base.db != NULL) {
         if (![base.db executeUpdate:@"INSERT INTO video(dev_uid, file_path, recording_type, time) VALUES(?,?,?,?)", mycam.uid, fileName, [NSNumber numberWithInteger:1], time]) {
-            LOG(@"Fail to download recording to database.");
+            NSLog(@"Fail to download recording to database.");
         }
     }
 
@@ -389,7 +389,8 @@
     
     NSString *strFileName = [NSString stringWithFormat:@"%@_%@.mp4", mycam.uid, strDateTime];
     
-    NSLog(@"strFileName:%@",strFileName);
+    LOG(@"recording_strFileName : %@",strFileName);
+
     return strFileName;
 }
 
@@ -408,7 +409,7 @@
     
     strPath = [strPath stringByAppendingPathComponent:fileName];
 
-    NSLog(@"strPath:%@",strPath);
+    LOG(@"recording_strPath : %@",strPath);
 
     
     return strPath;
@@ -424,7 +425,7 @@
     
     NSString *strFileName = [NSString stringWithFormat:@"%@_%@.mp4", mycam.uid, strDateTime];
     
-    NSLog(@"strFileName:%@",strFileName);
+    LOG(@"recording_strFileName : %@",strFileName);
     return strFileName;
 }
 
@@ -493,7 +494,7 @@
         NSInteger time = [rs doubleForColumn:@"time"];
         NSInteger type = [rs intForColumn:@"recording_type"];
         
-        NSLog(@">>>filePath : %@ type:%d", filePath, (int)type);
+        LOG(@"FMResultSet_filePath : %@ type:%d", filePath, (int)type);
         // 兼容Goke机器之前版本录像
         if ([filePath rangeOfString:@".mp4"].location == NSNotFound) {
             filePath = [filePath stringByAppendingString:@".mp4"];
@@ -525,7 +526,7 @@
             
             [base.gFileManager removeItemAtPath:[base documentsWithFileName:filePath] error:NULL];
             
-            NSLog(@"delete -> pictureName:%@", pictureName);
+            LOG(@"delete_pictureName : %@", pictureName);
             //NSLog(@"delete -> picturePath:%@", [base documentsWithFileName:filePath]);
 
         }

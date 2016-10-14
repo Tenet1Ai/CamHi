@@ -223,13 +223,13 @@
 //根据键盘移动视图高度
 - (void)offViewWithFrame:(CGRect)frame {
     
-    NSLog(@"frame.origin.y:%f", frame.origin.y);
-    NSLog(@"frame.size.height:%f", frame.size.height);
+//    NSLog(@"frame.origin.y:%f", frame.origin.y);
+//    NSLog(@"frame.size.height:%f", frame.size.height);
     
     //键盘高度
     int offset = frame.origin.y + frame.size.height + 64 - (self.view.frame.size.height - 216);
     
-    NSLog(@"offset:%d", offset);
+    NSLog(@"keyboard_offset:%d", offset);
     
     //将视图的Y坐标向上移动offset个单位，以使下面腾出地方用于软键盘的显示
     if (offset > 0)

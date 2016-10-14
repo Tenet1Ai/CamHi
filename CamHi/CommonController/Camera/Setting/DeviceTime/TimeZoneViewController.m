@@ -33,7 +33,6 @@
         if (t_timezone.timeZone == _timeZone.s32TimeZone) {
             
             self.g_timezoneinfo = t_timezone;
-            self.g_timezoneinfo.dstMode = _timeZone.u32DstMode;
         }
     }
 
@@ -122,7 +121,8 @@
 //        }
         
 
-        self.enableSwitch.on = self.g_timezoneinfo.dstMode == 1 ? YES : NO;
+        self.enableSwitch.on = _timeZone.u32DstMode == 1 ? YES : NO;
+//        self.enableSwitch.on = self.g_timezoneinfo.dstMode == 1 ? YES : NO;
 //        self.enableSwitch.enabled = self.g_timezoneinfo.dstMode == 1 ? YES : NO;
         
         for (TimeZoneInfo *t_timezone in self.timeZones) {
@@ -131,6 +131,9 @@
                 
                 if (t_timezone.dstMode == 0) {
                     self.enableSwitch.enabled = NO;
+                }
+                else {
+                    self.enableSwitch.enabled = YES;
                 }
                 
             }
@@ -187,6 +190,9 @@
 
     self.g_timezoneinfo = self.timeZones[indexPath.row];
     
+    self.enableSwitch.on = self.g_timezoneinfo.dstMode == 1 ? YES : NO;
+    
+
     if (self.g_timezoneinfo.dstMode == 0) {
         self.enableSwitch.enabled = NO;
     }
@@ -194,7 +200,6 @@
         self.enableSwitch.enabled = YES;
     }
     
-    self.enableSwitch.on = self.g_timezoneinfo.dstMode == 1 ? YES : NO;
 
 //    [self.tableView reloadData];
     

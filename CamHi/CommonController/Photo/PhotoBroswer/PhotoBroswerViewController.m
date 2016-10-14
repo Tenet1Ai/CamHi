@@ -325,7 +325,7 @@
         [HXProgress showText:error.domain];
     }
     else {// No errors
-        [HXProgress showText:INTERSTR(@"Save success")];
+        [HXProgress showText:INTERSTR(@"Save Success")];
     }
 }
 
