@@ -57,7 +57,7 @@
 //系统版本号
 #define SystemVersion       ([[UIDevice currentDevice] systemVersion].floatValue)
 #define DisplayName         ([NSBundle mainBundle].infoDictionary[@"CFBundleDisplayName"])
-
+#define DisplayNameCamHiGH  ([DisplayName isEqualToString:@"CamHiGH"])
 
 
 #endif /* PrefixHeader_pch */

@@ -44,6 +44,11 @@
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
+		<key>Security Visual.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>XMcam.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -98,6 +103,11 @@
 			<true/>
 		</dict>
 		<key>EE55EA951D333EE8003B9D89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE7366331DB0AF59001723B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -54,6 +54,7 @@
 //    }
     [self checkAlarmEvent:launchOptions];
 
+    [NSThread sleepForTimeInterval:2.0];
     
     return YES;
 }
@@ -365,6 +366,22 @@
         xingeCompany = @"ipem";
     }
 
+    
+    // *******************************************************
+    // displayName  : Security Visual
+    // appId        : 2200239006
+    // appKey       : IN5PP3P5D49H
+    // company      : visual
+    // server       : xinge:visual:ios
+    
+    if ([bundelDisplayName isEqualToString:@"Security Visual"]) {
+        [XGPush startApp:2200239006 appKey:@"IN5PP3P5D49H"];
+        xingeCompany = @"visual";
+    }
+
+    
+    
+    
     [XGPush handleLaunching:launchOptions];
     SystemVersion < 8 ? [self registerPush] : [self registerPushForIOS8];
     
