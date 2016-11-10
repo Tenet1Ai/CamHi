@@ -19,10 +19,13 @@
 
 @implementation AppDelegate
 
+/* use svn server 20161022 */
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSLog(@"use_svn_server_20161022");
+
     NSLog(@"application_didFinishLaunchingWithOptions : %@", launchOptions);
 
     HXTabBarController *viewcontroller = [[HXTabBarController alloc] init];
